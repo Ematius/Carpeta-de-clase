@@ -113,40 +113,50 @@ function app(){
 
 //----------------12. Crea una función que reciba un número como parámetro e imprima por consola si el número dado es par o impar.
 
-function evenood(numb){   
-    //Metodo condicional if-else 
+// probar en casa con un isOod 
+function evenOod(numb){   
+    // esto cubriría si no es numero entero, convirtiéndolo pero también recoge si es string y cualquier caso que no sea number.
+    if(!Number.isInteger(numb)){
+        return 'El valor no es entero'
+    }
+
+        
+    //Método condicional if-else 
     if (numb % 2 === 0){
         return'Par'
     } else {
         return 'Impar'
     }    
 }    
-console.log(evenood())
+console.log(evenOod(-2))
 
-//Metodo condicional ternario
-function parimpar(numb){return numb % 2 === 0 ? 'Par':'Impar'}
-console.log(parimpar())
+//Método condicional ternario
+function evenOrOdd(numb){return numb % 2 === 0 ? 'Par':'Impar'}
+console.log(evenOrOdd(5))
 
  
 
 //-----------------------13. Crea una función que reciba un parámetro de tipo string e imprima por consola el string revertido. (ejemplo: 'casa' => 'asac).
 
-function reverse(string){
+    // probar con un slice,() reverse() en casa
+    // Hacer el ejercicio del palindromo sin usar array y usando
+
+function reverseString(string){
     
-    let rev = '';
+    let accumulatorWordRev = '';
     for (i = string.length -1; i >= 0; i--){
-        rev += string[i]
+        accumulatorWordRev += string[i]
     }
-    return console.log(rev)
+    return console.log(accumulatorWordRev)
 }
 
-reverse('casa')
+reverseString('casa')
 
 //----------------------------14. Crea una función que imprima por consola la tabla de multiplicar de un número introducido como parámetro.
 
 function tableMul(numb){
     for( i = 0; i <= 10; i ++){
-        console.log(`${i} = ${i * numb} \n`)
+        console.log(` ${numb}${i} = ${i * numb} \n`)
         
     }
 }
@@ -155,19 +165,75 @@ tableMul(3)
 
 //-----------------------------15. Crea una función que reciba un número por parámetros e imprima por consola si el número recibido es un número primo.
 
-function prim(numb){
-    if (numb <= 1){ return 'No es primo'}
-    for(i = 2; i <= Math.sqrt(numb); i++){ 
-        if(numb % i === 0){
-            return 'No es primo'
-        }
-    }    
+function prime(numb){
+    
+    if(!Number.isInteger(numb) || numb < 0) return 'El valor no es valido'
+    
+    if (numb <= 1) return 'No es primo'
+
+        for(i = 2; i <= Math.sqrt(numb); i++){ 
+            if(numb % i === 0) return 'No es primo'
+        }    
     return 'Es primo'
 }
 
-console.log(prim(2))
-console.log(prim(5))
-console.log(prim(91))
-console.log(prim(31))
+console.log(prime(-1))
+console.log(prime(5))
+console.log(prime(91))
+console.log(prime(31))
+
+//Mirar el git hub de Alejandro se rebusca mucho mas, trabajos de boolean
+function isPrime(num){
+
+}
+//Esto esta mal con esta function porque devuelve cadena pero con true o false podría hacer un condicional ternario en la salida
+console.log(prime() ?'Es super primo': 'Esta perdido en el abismo');
+
+//
 console.log(true + false);//por la coercion hace binario los datos y los suma
 console.log(Boolean(false));
+
+console.log(Math.trunc(Math.random() * 6) + 1 )
+
+//tirar un dado. Ejercicio en clase 
+
+function rollDiceN(n){
+    let accumulator = 0
+    for(let i = 0; i <= n; i++){
+        const dice = Math.trunc(Math.random() * 6) + 1
+        console.log('valor del dado: ', dice);
+        accumulator += dice
+    }
+    console.log('Total: ',accumulator);
+    return accumulator
+}
+console.log(rollDiceN(10));
+
+
+//-----------------el pc lo ve mas logico si es invertido
+
+
+function rollDiceNFriki(n){
+    let accumulator = 0
+    for(let i = n; i < 0 ; i--){
+        const dice = Math.trunc(Math.random() * 6) + 1
+        console.log('valor del dado: ', dice);
+        accumulator += dice
+    }
+    console.log('Total: ',accumulator);
+    return accumulator
+}
+console.log(rollDiceNFriki(3));
+
+//--- más ejercicio de clase
+
+const cad = 'Hola que tal';
+console.log(cad.length);
+console.log(cad[2]);
+
+for (let i = 0; i < cad.length; i++) {
+    const element = cad[i];
+    console.log(element);
+    
+}
+

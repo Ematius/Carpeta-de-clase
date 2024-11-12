@@ -1,4 +1,7 @@
 {
   "files.autoSave": "onFocusChange",
-  "editor.fontSize": 16
+  "editor.fontSize": 17,
+  "cSpell.words": [
+    "palindromo"
+  ]
 }
