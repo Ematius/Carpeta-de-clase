@@ -151,16 +151,31 @@ function reverseString(string){
 }
 
 reverseString('casa')
+//--------------
+function revertStringArray(value= ''){ //al darle un valor por defecto VC te ayuda
+    const array = value.split()//crea una arrays de un string separando cada string por un indice
+    array.reverse()
+    const result = array.join('')
+    return result
+}
+//-------
+function revertStringArray1(value= ''){ 
+    return value.split('').reverse().join('')
+}
+    
+console.log(revertStringArray1('casa'));
+
 
 //----------------------------14. Crea una función que imprima por consola la tabla de multiplicar de un número introducido como parámetro.
 
 function tableMul(numb){
+    let accumulator = []
     for( i = 0; i <= 10; i ++){
-        console.log(` ${numb}${i} = ${i * numb} \n`)
+        accumulator.push(`${numb}${i} = ${i * numb}`)
         
     }
 }
-
+console.table(accumulator);
 tableMul(3)
 
 //-----------------------------15. Crea una función que reciba un número por parámetros e imprima por consola si el número recibido es un número primo.
@@ -237,3 +252,37 @@ for (let i = 0; i < cad.length; i++) {
     
 }
 
+//------- while------do-while----
+
+//Este bucle solo da vueltas por lo tanto ahi se inicia la idea de hacer un while
+
+function rollDiceUntil(value){
+    if(value < 1 || value > 6){
+        return console.log('valor fuera de rango');   
+    }
+    let accumulator = 0
+    let dice = 0
+
+    /*for(let i = 0; dice !== value; i++){
+        dice = Math.trunc(Math.random() * 6) + 1
+        console.log('valor del dado: ', dice);
+        accumulator += dice       
+    }*/
+   
+   /*do{  // do while es infinito en este caso si pones tiradas a 0
+        dice = Math.trunc(Math.random() * 6) + 1  //Es un bucle for pero solo con la condición de salida. No cuenta como tal
+            console.log('valor del dado: ', dice);
+            accumulator += dice  
+
+   }while(dice !== value)*/
+
+    while(dice !== value) {
+      dice = Math.trunc(Math.random() * 6) + 1
+        console.log('valor del dado: ', dice);
+        accumulator += dice    
+    }
+    
+    console.log('Total: ',accumulator);
+    return accumulator
+}
+console.log(rollDiceUntil(2));

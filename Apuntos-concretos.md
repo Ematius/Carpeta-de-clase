@@ -16,3 +16,10 @@ conceptos de ingeniería, primero que funcione y luego preguntarse hace falta me
 Al hacer una función 1º me deshago de lo que no me es valido 2º siendo valido es condiciones y salidas
 
 Los nombres de las funciones seria lo suyo que dijeran lo que hacen, en ingles siempre
+
+El continue sirve para que lo que haya debajo no tire, si es bucle continuaría con el bucle 
+break se saca del bucle en el que esta, es decir que si esta en un bucle anidado te saca del anidado, no de todos los bucles
+
+hay 8 tipos de datos y los objetos
+
+repasar los folsies
