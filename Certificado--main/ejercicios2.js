@@ -13,6 +13,8 @@ const countVocals = function(value = ''){
     //meterlo en una constante seria mejor practica
     let accumulator = 0
     const vocales =  'aeiouáéíóú' //['a','e','i','o','u', 'á', 'é', 'í', 'ó', 'ú', 'ü']
+    //vocals.normalize()
+    'a'.charCodeAt(0)
     for (let i = 0; i < value.length; i++) {
         const items = value[i].toLocaleLowerCase();
         accumulator += vocales.includes(items)
@@ -24,3 +26,7 @@ const countVocals = function(value = ''){
     return accumulator
 }
 console.log(countVocals('El Murciélago verde'));
+
+vocals.normalize() //buscar más explicación
+// buscar información sobre los diacriticos
+// buscar el normalize

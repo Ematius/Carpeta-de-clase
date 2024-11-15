@@ -23,3 +23,6 @@ break se saca del bucle en el que esta, es decir que si esta en un bucle anidado
 hay 8 tipos de datos y los objetos
 
 repasar los folsies
+
+
+

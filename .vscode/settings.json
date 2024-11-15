@@ -2,6 +2,8 @@
   "files.autoSave": "onFocusChange",
   "editor.fontSize": 17,
   "cSpell.words": [
+    "áéíóúü",
+    "alreves",
     "folsies",
     "palindromo"
   ]
