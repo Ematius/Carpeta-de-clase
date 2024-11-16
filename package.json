@@ -1,0 +1,15 @@
+{
+    "name": "ifcd0210_2024",
+    "version": "1.0.0",
+    "description": "Documentación Certificado de Profesionalidad IFCD0210 - Desarrollo de aplicaciones con tecnologías web.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "prettier": {
+        "singleQuote": true
+    }
+}
