@@ -11,5 +11,8 @@
     "license": "ISC",
     "prettier": {
         "singleQuote": true
+    },
+    "dependencies": {
+        "ifcd0210_2024": "file:"
     }
 }
