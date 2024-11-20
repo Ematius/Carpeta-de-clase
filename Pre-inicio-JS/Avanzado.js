@@ -58,6 +58,31 @@ console.log(countWords('El pájaro verde va al árbol, dejándose la comida atr�
 
 //5. Crea una función que ordene un array de nombres alfabéticamente.
 function sortNames(){
-
+    const listNames = [
+        'Sofía', 'Martín', 'Lucas', 'Emma', 'Mateo', 'Olivia', 'Daniel', 'Valeria', 'Hugo', 'Camila',
+        'Alejandro', 'Martina', 'Diego', 'Victoria', 'David', 'Isabella', 'Miguel', 'Zoe', 'Álvaro', 'Abril',
+        'Javier', 'Sara', 'Manuel', 'Lucía', 'Antonio', 'María', 'José', 'Paula', 'Andrés', 'Claudia'
+    ];
+    return listNames.sort()
 }
+console.log(sortNames());
 
+//6. Generador de números pares e impares: Escribe una función que tome un número como argumento y genere dos arrays, uno con los números pares hasta ese número y otro con los números impares hasta ese número.
+
+function generateNumberEvenOdd(value = 0){
+    let listPair = []
+    let listOdd = []
+    for(let i = 0; i < value; i++) {
+        if(i % 2 === 0){
+            listPair += i + ',';
+        
+        }
+        if (i % 3 === 0) {
+            listOdd += i + ',';
+        }  
+    }
+    const lists = `La lista par es ${listPair} y la lista impar es ${listOdd}`
+    return lists
+}
+//mejorar la salida
+console.log(generateNumberEvenOdd(20));
