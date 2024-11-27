@@ -74,15 +74,31 @@ function generateNumberEvenOdd(value = 0){
     let listOdd = []
     for(let i = 0; i < value; i++) {
         if(i % 2 === 0){
-            listPair += i + ',';
+            listPair += i + ' ';
         
         }
         if (i % 3 === 0) {
-            listOdd += i + ',';
+            listOdd += i + ' ';
         }  
     }
+
     const lists = `La lista par es ${listPair} y la lista impar es ${listOdd}`
     return lists
 }
-//mejorar la salida
+
 console.log(generateNumberEvenOdd(20));
+
+
+/*7. Crea una función que reciba un texto en kebab-case y devuelva el texto escrito en lowerCamelCase.
+   La función debe realizar las siguientes comprobaciones sobre el texto recibido:
+
+- Si tiene alguna mayúscula, debe devolver "The text contains capital letters"
+- Si tiene algún guión bajo, debe devolver "The text contains underscores"
+- Si el texto está vacío, debe devolver "You must provide some text"*/
+
+function transformKebadCasetoLowerCamelCase(value = string){
+    
+
+
+    return lowerCamelCase
+}
