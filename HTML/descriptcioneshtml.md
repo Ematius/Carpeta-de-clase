@@ -93,16 +93,113 @@ Mirar siempre en *mozillaMDN*
 
   ### tamaños de imagenes
   atributos
-  width y height es importante porque reserva un espacio para que luego al cargar no haya saltos de textos 
+  - width y height es importante porque reserva un espacio para que luego al cargar no haya saltos de textos 
   srcset con tres imágenes de diferentes formatos de resolución para asi poder darle a cada dispositivo el tamaño que puede aguantar como máximo 
   picture
   sorce
 
-  articulo en el md referencias y html.md
+  - articulo en el md referencias y html.md
 
   tener presente el uso de can I use
 
-  lazy se carga en secuencia, es decir que si esta la 6 imagen pues va con perspectiva desde calculos del navegador, se ve en los mangas que cargan el principio y los del final van a medida que vas a bajar, se usa en las imagenes de abajo. 
+  - lazy se carga en secuencia, es decir que si esta la 6 imagen pues va con perspectiva desde calculos del navegador, se ve en los mangas que cargan el principio y los del final van a medida que vas a bajar, se usa en las imagenes de abajo. 
   decoding es muy parecido
 
-  high es lo contrario le da importancia de carga
+  - high es lo contrario le da importancia de carga
+
+## Videos
+   - video> constrols es boolean (yes)
+
+  - iframe> te abre una ventana a otra pagina en youtube ves un ejemplo ocn compartir embed
+  allow es de iframe y es lo que le dejas hacer, son los permisos que le permitas que este 
+
+## Tablas, formularios y elementos interactivos
+
+### Tablas
+
+tablas, tr, th, td (la filosofia es crear filas no columnas, estan se distribuyen automaticamente es como las arays de las arrtas)
+    tabla>caption(titulo)>thead(encabezado)>
+    - tr (table row)
+    - td (table date)
+    - th (table head) notifica cabezera, sale en negrita
+
+
+    table>
+      tr>td>dato
+          td>dato
+      tr>td>Dato
+        td>Dato
+    dos filas cos columnas, las columnas son los datos, se colocan en fila 
+
+    table>
+    thead> th> datos 
+            th> datos
+    cabecera y dos datos correspondientes a las filas
+
+
+    table>
+
+    caption> (Es para el titulo de la tabla)
+
+    thead> th> datos 
+            th> datos
+        tr>th>name raw
+              td>dato
+              td>dato
+        tr>th>name raw
+              td>Dato
+              td>Dato
+
+    tfoot> (para incluir mas lectura de datos)
+
+    Extender celdas,
+      td colspan= "2"> 
+      td rowspan= "2">
+
+hay herramientas en google para hacer tablas
+
+
+### Formulario
+
+    form action=""> Hay que definir la accion o si no se carga la pagina
+    input type="muchos tipos"> Es la clave del formulario para recoger informacion del usuario
+    input type="text" name="user-name" (name= es critico para saber que dato esta recogiendo y asi enviarlo, si no no se enviaría)
+    input type="password" name="password"
+    button type="submit">
+
+    todo aparece en la query string, lo malo es que se ve arriba en la url, pero no se debe ver las password o información sensible esto se soluciona al principio con en la etiqueta de form
+
+    form action="" method="post"> Esto empaqueta la informacion y no se ve en la url querystring// el method=get es por defecto
+
+    function handleSubmit(ev){
+      ev.preventDefault()
+      console.log(ev.targer.value)
+    }
+
+    const form = document.querySelector('form')
+    form.addEventListener('submit', handleSubmit) si no le pongo parentesis hago que solo se ejecute cuando el listener lo escuche por el submit
+
+    label>nombre< el for="" del label y el id="" del input deben coincidir
+
+    y otra meter el input label>input>label< la ventaja es que al seleccionar el nombre te selecciona el input que debe seleccionar 
+
+    aqui entra el meter div ya que los input son inline y los div son en bloque
+
+
+    agrupar las cosas en un fildset> ayuda para separa los bloques y para poner un legend es darle un titulo es para poner secciones de informacion diferentes, tiene un valor semantico // Puede haber un fildset dentro de otro fildset
+
+    input type="radio", si comparten un name deben conpartirlo, asi solo puedes elegir una opcion// estos deben tener un value="aqui notifica el valor para poder ser visto, si no se envia on, como booleano sin saber cual de las posibilidades hay posibles"
+    input type=""
+
+    label>select name="">option>option>option
+    Aqui no es obligatorio usar value="", ya que asume la respuesta el nombre de la seleccion de option, se usa value="" si quieres que envie un valor concreto, abreviado por ejemplo y no completo el nombre
+    un option, con value vacio y nombre indicativo de lo que hay que hacer haria funcion de placeholder pero sin estar vacio al enviarse
+
+    required para hacer que sea obligatorio
+
+
+Aportes al empezar CSS
+
+main no es obligatorio pero si usar cuando se va mantener el header y el footer, hace referencia a que el main es lo que se modifica al movernos de una pagina ha otra
+
+  
