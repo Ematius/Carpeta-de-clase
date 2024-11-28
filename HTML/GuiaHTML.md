@@ -202,4 +202,6 @@ Aportes al empezar CSS
 
 main no es obligatorio pero si usar cuando se va mantener el header y el footer, hace referencia a que el main es lo que se modifica al movernos de una pagina ha otra
 
-  
+dialog> es un mensaje, un pop
+
+ul>li{Aqui el contenido que quieres si es repetido}

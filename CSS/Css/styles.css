@@ -1,6 +1,7 @@
 *{
     box-sizing: border-box; /*Para que trabaje como caja*/
 }
+
 html{
     min-height: 100vh; /*viewForHead Tiene un tamaño mínimo pero aumenta para que no haya desborde*/
 }
@@ -20,7 +21,7 @@ body{
 header,
 main,
 footer {
-    border: 2px solid crimson;
+    border: 2px solid rgb(218, 141, 156);
 
 }
 header,
@@ -46,7 +47,7 @@ section{
         justify-content: space-around;
         list-style: none;/*Es para cambiar el punto de la lista*/
         li{
-            border: 1px solid  ;
+            border: 1px solid rgb(218, 141, 156) ;
             border-radius: 0.5rem;
             padding: 0.2rem;
             
@@ -79,3 +80,9 @@ main{
     flex: 1 1 auto; /*tiene tres valores, grow, shrink y basic*/
     padding: 0.5rem 0.8rem;/*Es darle aire a la tipografía. Sentido de las agujas del reloj empezando por donde se da aire a la izquierda*/
 }
+
+/* REPASAR EN CASA
+:is(section,li)::marker{
+    color: aqua;
+}
+*/
