@@ -189,3 +189,42 @@ echar un vistazo en casa al details>summary> contenido y jugar con el style:disp
 li::marked{
   color
 }
+
+Hay que entender los conceptos de cascada y de especificad y herencia. Para evitar errores
+-variables (custom properties)
+-funciones: calc(), min(),max() Echar un vistazo
+-pseudo-clases y pseudo-elemento
+- emergentes ::mark() -> details (summary) /  
+
+practicar 
+a:hover::before{}
+section::after{}
+:is(summary, li)::marker{}
+
+## box model
+
+weigth:
+
+resetear css por defectoç
+https://www.joshwcomeau.com/css/custom-css-reset/
+
+Las hojas de reset ayudan y se colocan antes del css
+
+leer sobre aspect-ratio
+
+en cuestion de diseño las imagenes tienen rango y se juega con los ajustesen donde se coloca
+
+## Layout
+
+son cajas colocadas en su sitio, es decir en el espacio que disponemos
+lo mas sencill es pasar de:
+display: block  a display: inline-block aunque esto es como se hacia antiguamente y tiene un problema de espacios, crea espacios
+
+no forzar la semantica por el diseño, section>article
+section es al cambio de informaicon 
+y article cuando es informaicon mas especifica o concreta sobre la seccion
+
+flex crea un contenedor que regula a sus hijos(es un envoltorio)
+
+guia para entender flex
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
