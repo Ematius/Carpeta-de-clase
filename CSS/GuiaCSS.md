@@ -205,26 +205,76 @@ section::after{}
 
 weigth:
 
-resetear css por defectoç
+respetar css por defecto
 https://www.joshwcomeau.com/css/custom-css-reset/
 
 Las hojas de reset ayudan y se colocan antes del css
 
 leer sobre aspect-ratio
 
-en cuestion de diseño las imagenes tienen rango y se juega con los ajustesen donde se coloca
+en cuestión de diseño las imágenes tienen rango y se juega con los ajustasen donde se coloca
 
 ## Layout
 
 son cajas colocadas en su sitio, es decir en el espacio que disponemos
-lo mas sencill es pasar de:
+lo mas sencilla es pasar de:
 display: block  a display: inline-block aunque esto es como se hacia antiguamente y tiene un problema de espacios, crea espacios
 
-no forzar la semantica por el diseño, section>article
-section es al cambio de informaicon 
-y article cuando es informaicon mas especifica o concreta sobre la seccion
+no forzar la semántica por el diseño, section>article
+section es al cambio de información 
+y article cuando es información mas especifica o concreta sobre la sección
 
 flex crea un contenedor que regula a sus hijos(es un envoltorio)
 
-guia para entender flex
+guía para entender flex
 https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+## --Repaso--
+
+1-tengo que repasar pseudo-elementos y pseudo-clases
+1.1- pseudo clases funcionales, finding element
+
+2-como llamar mis clases método bem es una forma.
+selectores anidando o descendencia(herencia)
+cascado, herencia y especificad, es la clave de cuando algo sale mal.
+3-al hacer un ejercicio pensar en como hacerlo sin clases, con selectores
+4-repasar todas las funciones para saber que hace y para ello usar el css.review.full.md
+
+:root es una pseudo clase, pregunta de examen
+a que hace referencia a la etiqueta a html
+porque tiene mayor especificad es por lo que usa
+
+color.adobe.com(para paleta de colores)
+
+sass es un metalenguaje de css
+
+## tipo de unidades en CSS
+
+- apartado de sizing units
+- relativas a la letra em(el ancho de la letra m, es decir que estas definido por el tamaño de la letra, acumulan, son relativos al del padre, es decir del anterior, es util para aumentar de forma relativa cuando se interconectada diferente elementos del html, ya sea títulos con div y espacios de padding por ejemplo), rem(el ancho de la letra m, es decir que estas definido por el tamaño de la letra según el root), ch
+- las relativas al tamaño al ancho de la pantalla vw,vh
+- NUNCA definir el tamaño de la fuente con pixel porque entras en la interacción del usuario
+
+## Box model
+
+object-fit
+esto es para fijar una img o video al tamaño del contenedor ya que tiene su propio tamaño.
+- si la imagen es grande se sale del tamaño definido
+- pedir al imagen un width: 100% del contenedor
+- flex manda 4 juegos 
+
+tricks
+separar sin hacer bloques es poner un margin-left: auto
+
+grid
+muchas veces hay que convinarlos 
+
+display: grid
+
+que grid queires usar
+grid-template-columns: ... ... ...;
+
+contol + d multicursor
+
+en grip puedes superponer capas
+
