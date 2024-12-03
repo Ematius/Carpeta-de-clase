@@ -78,7 +78,7 @@ h3{
 }
 /*Selector de ID: Esto no se usa, es mejor no usarlo porque tiene una gran especificad y luego cuesta cambios, usar ID para CSS lo menos posible.*/
 
-#p1 {color: violet;}
+# p1 {color: violet;}
 
 /*Selector de class:
 Se puede aprovechar para darle valor semántico y es lo que usaremos.
@@ -194,9 +194,10 @@ Hay que entender los conceptos de cascada y de especificad y herencia. Para evit
 -variables (custom properties)
 -funciones: calc(), min(),max() Echar un vistazo
 -pseudo-clases y pseudo-elemento
+
 - emergentes ::mark() -> details (summary) /  
 
-practicar 
+practicar
 a:hover::before{}
 section::after{}
 :is(summary, li)::marker{}
@@ -206,7 +207,7 @@ section::after{}
 weigth:
 
 respetar css por defecto
-https://www.joshwcomeau.com/css/custom-css-reset/
+<https://www.joshwcomeau.com/css/custom-css-reset/>
 
 Las hojas de reset ayudan y se colocan antes del css
 
@@ -221,13 +222,13 @@ lo mas sencilla es pasar de:
 display: block  a display: inline-block aunque esto es como se hacia antiguamente y tiene un problema de espacios, crea espacios
 
 no forzar la semántica por el diseño, section>article
-section es al cambio de información 
+section es al cambio de información
 y article cuando es información mas especifica o concreta sobre la sección
 
 flex crea un contenedor que regula a sus hijos(es un envoltorio)
 
 guía para entender flex
-https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+<https://css-tricks.com/snippets/css/a-guide-to-flexbox/>
 
 ## --Repaso--
 
@@ -259,22 +260,52 @@ sass es un metalenguaje de css
 
 object-fit
 esto es para fijar una img o video al tamaño del contenedor ya que tiene su propio tamaño.
+
 - si la imagen es grande se sale del tamaño definido
 - pedir al imagen un width: 100% del contenedor
-- flex manda 4 juegos 
+- flex manda 4 juegos
 
 tricks
 separar sin hacer bloques es poner un margin-left: auto
 
 grid
-muchas veces hay que convinarlos 
+muchas veces hay que convinarlos
 
 display: grid
 
-que grid queires usar
+que grid queries usar
 grid-template-columns: ... ... ...;
 
-contol + d multicursor
+control + D = multicursor
 
 en grip puedes superponer capas
 
+## columns, relative y absolute de css pripio
+
+    nav>ul>li>a
+
+    con este anidamiento ya estas llegando hasta A y no hace falta marcar el ul y el li
+
+    nav {
+        a{}
+    }
+
+concepto de raper, envoltorio
+div
+
+trabajo con column y con position absolute y relative apuntes en grid.css
+cuando usarlo: es para poner una imagen encima de otra.
+
+csstricks, css anchor por si quiero hecharle un vistazo
+
+## responsive web desing
+
+un mismo trabajo que puede ser para móvil o para pc.
+Es el trabajo con @, hay muchas, las directivas:
+@import url; para importar un css sin hacerlo desde link
+
+La idea es es hacer que sea ordenado por medidas, de mayor a pequeño cuando es diseño desktop
+y de diseño descendente cuando es de móvil, y la forma nueva es width > xxx
+
+se hace mobile first porque es mas fácil hacer primero lo pequeño (mas fácil hacerlo en pequeño) y luego pasar a lo grande.
+copiar del fork me he perdido con el importar icons con staroverflaw

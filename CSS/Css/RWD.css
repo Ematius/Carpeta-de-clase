@@ -1,0 +1,64 @@
+/*desktop first o diseño descendiente*/
+/*
+body{
+    margin: 2rem;
+    background-color: bisque;
+}
+
+@media(max-width: 800px){
+    body{
+        background-color: blueviolet;
+    }
+}
+
+@media(max-width: 400px){
+    body{
+        background-color: chocolate;
+    }
+}
+
+/*mobile first o diseño ascendente*/
+/*
+body{
+    margin: 2rem;
+    background-color: bisque;
+}
+
+@media(min-width: 400px){
+    body{
+        background-color: blueviolet;
+    }
+}
+
+@media(min-width: 800px){
+    body{
+        background-color: chocolate;
+    }
+}
+*/
+/*Esta es la forma moderna*/
+:root{
+    --font-bar: "Roboto", sans-serif;
+    --font-tech: "Chakra Petch", sans-serif;
+}
+h1,h2,h3{
+    font-family: var(--font-tech)
+}
+
+body{
+    margin: 2rem;
+    font-family: var(--font-bar);
+    background-color: bisque;
+}
+
+@media(width > 400px){
+    body{
+        
+    }
+}
+
+@media(width > 800px){
+    body{
+        
+    }
+}
