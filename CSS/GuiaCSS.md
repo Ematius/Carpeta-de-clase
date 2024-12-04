@@ -7,14 +7,14 @@
 <https://developer.mozilla.org/>
 <https://moderncss.dev/>
 <https://manz.dev/>
- (Es curso es español, bastante actualizado)
- <https://stateofcss.com/> Son encuestas que ayudan para saber si estas o no a la ultima, sabiendo de que están hablando o no y buscar información
+(Es curso es español, bastante actualizado)
+<https://stateofcss.com/> Son encuestas que ayudan para saber si estas o no a la ultima, sabiendo de que están hablando o no y buscar información
 
 REPETIMOS <https://caniuse.com/> para ver que navegadores lo soportan
 
 ## Donde usar CSS
 
-Inline:  Lo menos posible y muy justificado, da muchos problemas y es ineficiente.
+Inline: Lo menos posible y muy justificado, da muchos problemas y es ineficiente.
 
 Etiqueta style> en el head: Es mejor opcion que inline pero deja mucho chorro de código y mayor inconveniente es que no te permite compartir entre varias paginas
 
@@ -40,7 +40,7 @@ conceptos claves!!
 Más información en el CSS
 
 *{
-    box-sizing: border-box; /*Para que trabaje como caja*/
+box-sizing: border-box; /*Para que trabaje como caja\*/
 }
 border-line: es el console.log() de css
 
@@ -68,41 +68,41 @@ los que el espacio que opcupan los nth-...
 p
 etc...] Esta forma es mejor que usar #
 
-/*Selectores*/
-/*Selectores de etiqueta*/
+/_Selectores_/
+/_Selectores de etiqueta_/
 
 h1,
 h2,
 h3{
-    color:brown
+color:brown
 }
-/*Selector de ID: Esto no se usa, es mejor no usarlo porque tiene una gran especificad y luego cuesta cambios, usar ID para CSS lo menos posible.*/
+/_Selector de ID: Esto no se usa, es mejor no usarlo porque tiene una gran especificad y luego cuesta cambios, usar ID para CSS lo menos posible._/
 
 # p1 {color: violet;}
 
-/*Selector de class:
+/_Selector de class:
 Se puede aprovechar para darle valor semántico y es lo que usaremos.
-Se encadena en el html con espacio*/
+Se encadena en el html con espacio_/
 .interesting{
-    color: blue;
-    background-color: antiquewhite;
+color: blue;
+background-color: antiquewhite;
 }
 .sports{
-    font-size: 1.2rem;
+font-size: 1.2rem;
 }
 
-/*Selectores de atributo, es una variedad de selector de clases*/
+/_Selectores de atributo, es una variedad de selector de clases_/
 [title]{
-    color: chocolate;
+color: chocolate;
 }
 [title="Párrafo muy interesante"]{
-    color: chocolate;
-    background-color: rgb(175, 234, 236);
+color: chocolate;
+background-color: rgb(175, 234, 236);
 }
-/*Reconvertir un id si hiciera falta*/
+/_Reconvertir un id si hiciera falta_/
 
 [id='p2']{
-    color: rgb(50, 182, 182);
+color: rgb(50, 182, 182);
 }
 
 Selectores Combinados, están condenados a desaparecer:
@@ -110,23 +110,23 @@ Descendiente: espacio (todos los descendientes)
 Hijo/s: >
 Hermano/s ~
 Hermano adyacente +
-/* article p// article ~ p// article + p
+/\* article p// article ~ p// article + p
 
-/*CSS puede trabajar con anidamientos y es como se trabaja ahora*/
+/_CSS puede trabajar con anidamientos y es como se trabaja ahora_/
 
 [class^="widget"]{que contenga widget}
 
 - psuedoelementos[::] psuedoclase[:]
-::first-letter{text-decoration: underline;}
-p .foo{
-    con espacio es solo los foo(foo que es hijo de p)
-}
-p, foo{
-    a p y a foo
-}
+  ::first-letter{text-decoration: underline;}
+  p .foo{
+  con espacio es solo los foo(foo que es hijo de p)
+  }
+  p, foo{
+  a p y a foo
+  }
 
 p.foo{
-    No entiendo bien debo probar
+No entiendo bien debo probar
 }
 
 :nth-child(2) los que siendo hijos ocupen la segunda posición se le aplique algo
@@ -173,7 +173,7 @@ en inline es lo que mayor especificacion tiene
 p{color: ... !important} Usar lo menos posible, porque es importante pisa todo, y habría que usar doble !important
 
 is(section,article) :is(h1,h2,h3) {
-  si eres h1,2,3 descendiente de section o article, ... ayuda a escribir menos
+si eres h1,2,3 descendiente de section o article, ... ayuda a escribir menos
 }
 
 pero el "has" es algo nuevo,
@@ -181,13 +181,13 @@ pero el "has" es algo nuevo,
 cascada dominar herencia, especifidad y orden, ya se puede saber lo que esta pasando y como, MUY IMPORTANTE!!
 
 ::before{
-  Siempre debe contener content: lo que sea
+Siempre debe contener content: lo que sea
 }
 
 echar un vistazo en casa al details>summary> contenido y jugar con el style:display:inline para que no este oculto
 
 li::marked{
-  color
+color
 }
 
 Hay que entender los conceptos de cascada y de especificad y herencia. Para evitar errores
@@ -195,7 +195,7 @@ Hay que entender los conceptos de cascada y de especificad y herencia. Para evit
 -funciones: calc(), min(),max() Echar un vistazo
 -pseudo-clases y pseudo-elemento
 
-- emergentes ::mark() -> details (summary) /  
+- emergentes ::mark() -> details (summary) /
 
 practicar
 a:hover::before{}
@@ -219,7 +219,7 @@ en cuestión de diseño las imágenes tienen rango y se juega con los ajustasen 
 
 son cajas colocadas en su sitio, es decir en el espacio que disponemos
 lo mas sencilla es pasar de:
-display: block  a display: inline-block aunque esto es como se hacia antiguamente y tiene un problema de espacios, crea espacios
+display: block a display: inline-block aunque esto es como se hacia antiguamente y tiene un problema de espacios, crea espacios
 
 no forzar la semántica por el diseño, section>article
 section es al cambio de información
@@ -296,9 +296,9 @@ div
 trabajo con column y con position absolute y relative apuntes en grid.css
 cuando usarlo: es para poner una imagen encima de otra.
 
-csstricks, css anchor por si quiero hecharle un vistazo
+CssTricks, css anchor por si quiero echarle un vistazo
 
-## responsive web desing
+## Responsive Web Design
 
 un mismo trabajo que puede ser para móvil o para pc.
 Es el trabajo con @, hay muchas, las directivas:
@@ -308,4 +308,21 @@ La idea es es hacer que sea ordenado por medidas, de mayor a pequeño cuando es 
 y de diseño descendente cuando es de móvil, y la forma nueva es width > xxx
 
 se hace mobile first porque es mas fácil hacer primero lo pequeño (mas fácil hacerlo en pequeño) y luego pasar a lo grande.
-copiar del fork me he perdido con el importar icons con staroverflaw
+
+si digo tio es mi origen de coordenadas asi que si digo 10 bajo y si te digo bottom seria origen abajo y si te digo 10 subes y lo mismo para derecha e izquierda
+
+position: fixed se puede fijar lo que queramos; deja de ser un bloque y se convierte inline
+
+los puntos de corte de cambio de tamaño se hace a ojo, se va aumentando hasta que crees que ya hay que hacer un cambio
+
+li\*5>a>{Item $}
+
+podemos scar algo de pantalla con un posición relative o absoluta y sacarlo de la pantalla y hacer una transición de entrada-- con visibility: hidden--display:none, seria otra opción.
+
+auto coge todos los espacios disponibles
+
+lo único que no se puede meter en un div es un ul porque rompes el funcionamiento correcto quitando ese caso puedes hacer todos los div que necesitas por cuestión estética
+
+dialog muestra desplegable en java scrip concreto para menus
+
+area-hidden="true" oculta a los lectores de voz para que no lo sea, es importante para accesibilidad
