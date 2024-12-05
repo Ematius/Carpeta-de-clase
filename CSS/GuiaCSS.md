@@ -78,7 +78,7 @@ color:brown
 }
 /_Selector de ID: Esto no se usa, es mejor no usarlo porque tiene una gran especificad y luego cuesta cambios, usar ID para CSS lo menos posible._/
 
-# p1 {color: violet;}
+# p1{color: violet}
 
 /_Selector de class:
 Se puede aprovechar para darle valor semántico y es lo que usaremos.
@@ -326,3 +326,36 @@ lo único que no se puede meter en un div es un ul porque rompes el funcionamien
 dialog muestra desplegable en java scrip concreto para menus
 
 area-hidden="true" oculta a los lectores de voz para que no lo sea, es importante para accesibilidad
+
+si seguiré que sea flexible un menu, en RWD
+ver grid como columns y lineas, y el al verlo ves difícil flex y en grid aunque sea difícil mas grid, grid deja hacer diseños muy raros.
+
+ver esta pagina https://bentogrids.com/ para ver modelos de grid.
+
+flex-basis: si tiene permisos ocupa lo que le pides, mientras que width no, es mas concreto
+
+Los   DIVS QUE HAGAN FALTA POR CUESTIONES ESTÉTICAS.
+
+buscar información y leer sobre auto-fil, min-max etc...
+
+z-index revisar, solo afecta a elemento con position, flex o grid.
+
+css.review. mirar apartir del css4 interactiones, porque nos lo deja para explorar la curiosidad y la busqueda; hasta el 6 incluido. El 4 se vera al final.
+
+volver a ver el pseudo ::mark
+
+sistemas de escritura diferente es interesante verlo
+
+CARMEN ANSIO PARA VER FIGMA
+ver conferencia de programacion solidario por valencia
+
+saber algo de figma se ha comido el mercado de herramietnas, es el estandar y estaria bien saber usarlo un poco
+
+## Transition
+
+los elementos de css, es decir width, height background-color etc...
+
+en las transiciones solo se le puede dar un final, desde su forma inicial hasta la indicada
+
+pero en las animaciones se puede hacer transiciones intermedias que quiera hasta llegar a la ultima
+https://www.joshwcomeau.com/gradient-generator/

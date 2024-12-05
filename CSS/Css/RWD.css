@@ -74,7 +74,7 @@ body {
 }
 .container {
     max-width: 900px;
-    margin: 0 auto;
+    margin: 0 auto ;
 }
 
 h1,
@@ -202,11 +202,25 @@ dialog {
     header nav ul {
         align-items: baseline;
     }
-    .main-img{
+    /* .main-img{
         float: right;
         padding-inline-start: 1rem ;
         width: 50%
-    }
+    } */
+     .intro-wrapper{
+        display: flex;
+       
+
+        gap: 1rem;
+
+        & > div{
+            flex-basis: 40%;
+        }
+        & > img{
+            flex-basis: 60%;
+        }
+
+     }
 
     .menu-header {
         flex-basis: initial;
@@ -225,11 +239,21 @@ dialog {
         grid-template-columns: 1fr 1fr;
         gap: 1.5rem;
     }
+    button{
+        appearance: none;
+        padding: 0.5rem 1rem ;
+        background-color: brown;
+        border: none;
+        margin-block: 1rem;
+        color: bisque;
+    }
     .final-content{
         columns:2;
+        
     }
 }
 
 /* @media (min-width: 800px) { */
 @media (width > 850px) {
 }
+
