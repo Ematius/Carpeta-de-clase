@@ -1,7 +1,7 @@
 {
     "editor.fontFamily": "Mono Comic, 'Courier New', monospace",
     "editor.fontSize": 18,
-    "cSpell.words": ["corelacionados"],
+    "cSpell.words": ["corelacionados", "renderiza"],
     "liveServer.settings.root": "./Mañanas(Emad)/CSS",
     "liveServer.settings.port": 5501
 }

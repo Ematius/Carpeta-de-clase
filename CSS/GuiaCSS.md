@@ -359,3 +359,23 @@ en las transiciones solo se le puede dar un final, desde su forma inicial hasta 
 
 pero en las animaciones se puede hacer transiciones intermedias que quiera hasta llegar a la ultima
 https://www.joshwcomeau.com/gradient-generator/
+
+currarse el reademe incluso imagen 
+fijarse el preconeccect que no se repita
+
+article es una parte de una pagina, no tiene sentido llamarlo al global, puedes usar el body como contenedor flex, contener el cuerpo en un div. div="container"
+
+estructura generales
+
+seguir los patrones de nombre de clase que sean describcion, seguir patrones.
+
+
+usar por accebilidad que se pueda usar por teclado, el el pseudo elemento :hover, debiria ir aompañada de :focus para moverse con tab.
+
+:active es cuando un elemento se mantiene cliceado
+
+animation-timeline, probar en casa
+
+mirar posicion stiky
+
+las transformaciones cambian al pintado es verdad y los height afecta al renderizado , no left, no margen etc... porque pesa mas en rendimiento.
