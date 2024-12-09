@@ -17,7 +17,7 @@ export function countWords(sentence = '') {
 
 export function randomPasswords(pass) {
     if (typeof pass !== 'number')
-        return 'Por favor introduce la longitud de la contraseña random que quieres';
+        return 'Por favor introduce un números solamente';
 
     let randomPass = '';
     const characters =
@@ -30,6 +30,4 @@ export function randomPasswords(pass) {
     return randomPass;
 }
 
-console.log(randomPasswords(10));
 
-console.log(typeof 42);
