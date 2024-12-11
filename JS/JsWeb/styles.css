@@ -1,3 +1,7 @@
+:root{
+    font-family: chakra-petch-semibold-italic;
+}
+
 header {
     padding-block: 1rem;
     background-color: beige;
@@ -17,3 +21,37 @@ menu{
         
     }
 }
+main{
+
+    background-color: cadetblue;
+    display: flex;
+    flex-direction: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin: auto;
+    
+    
+    
+}
+
+section.ttt{
+
+    .board{
+    margin: auto;
+    margin-bottom: 10rem;
+    width: 400px;
+    height: 400px;
+    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    & div{
+        background-color: bisque;
+        
+    }
+}
+
+}
+
+

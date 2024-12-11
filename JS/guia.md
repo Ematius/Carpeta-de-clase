@@ -41,7 +41,7 @@ SPA singer page aplicación.
 
 ## JavaScript consejos y chuletas
 
-##### Planteamiento, consejos, pensamiento JavaScript 
+##### Planteamiento, consejos, pensamiento JavaScript, teoria (hay que colocarlo con orden) 
 
 - Planteamiento de conflicto, ver el funcionamiento centrado para empezar y luego irse a los extremos, es decir los extremos, en los cornerCase, hay que intentar prever los casos extremos.
   - Si intuyo que una function puede ser usada mas veces, la separo y la hago independiente para poder volver a usarla.
@@ -64,6 +64,33 @@ SPA singer page aplicación.
   - GERARQUIA DE ELEMENTOS .DOCUMENT
     - El DOM arbol de objetos
     - esto te permite un acceso directo buscando un nodo
+  - Un primitivo es un tipo de dato atomico, que no se descompone
+  - Javascripts no contiene datos apunta a los datos, el nombre de la variable es la flecha  que une la variable con el dato.
+  - const significa que no se puede reasignar, ahora si la const apunta a un primitivo
+  - Repasar tipo de datos, esta en el fork. Entender los statements y las expressions
+  
+- Los falsis importante!!  coercion, casting
+
+- coercion y casting
+- A bollean:
+  - falsy: false, null, undefined, NaN, 0, -0, 0n, '';
+  - Truthy: Todo lo demás es true.
+
+typeof solo podra decir uno de los 8 tipos de datos existentes.
+
+Colecciones de datos
+  -indexados --> array
+  -nombrados ---> object
+
+const data = ['Pepe', 22]
+data.foo = 'soy array'
+la array tendria dos elementos para recorrer, foo:'soy array' no seria proceso de iteracion.
+
+DOM, el document es un objeto que señala a más objetos y nodos. no se contiene solo apunta, no olvidar
+
+las funciones tienen verbo! porque las funciones hacen algo
+
+una funcion no estar acoplada es decir depender de algo de fuera, es mala practica
 
 ##### chuletas o especifidades de codigo
 
@@ -74,5 +101,14 @@ Detalles
   Chuletas
   .splice(desde donde, y cuanta cantidad)= coge de una array un elemento y reajusta el array a su nueva longitud
   .join(Separación deseada ['',-,/,etc...]) = convierte array en string
+  terhtml
+  queryselector
+  template
+  type="module" en el script
 
 ## JavaScript en la web
+
+En node no existe DOCUMENT. es decir en el back solo en js web
+
+.innerhtml
+ou
