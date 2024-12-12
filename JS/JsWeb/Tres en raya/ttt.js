@@ -1,7 +1,19 @@
 export function tttGame() {
     const players = [
-        { firstName: 'Pepe', surName: '', alias: 'Pepin', icon: '😎' },
-        { firstName: 'Ernestina', surName: '', alias: '', icon: '👺' },
+        {
+            firstName: 'Pepe',
+            surName: '',
+            alias: 'Pepin',
+            icon: '😎',
+            positions: '',
+        },
+        {
+            firstName: 'Ernestina',
+            surName: '',
+            alias: '',
+            icon: '👺',
+            positions: '',
+        },
     ];
 
     const ddElements = document.querySelectorAll('.players dd');
@@ -16,13 +28,18 @@ export function tttGame() {
 
         // item.textContent = text;
         item.innerHTML = text;
-        item.insertAdjacentHTML('',text)
     }
 
-    function playTurn(position, player) {
-        const boardElement = document.querySelector('.board');
-        // Alternativa: acceder a cada casilla
-        // const boardElements = document.querySelectorAll('.board div');
+    const boardElement = document.querySelector('.board');
+    // Alternativa: acceder a cada casilla
+    // const boardElements = document.querySelectorAll('.board div');
+
+    function playTurn(position, playerIndex) {
+        ddElements.forEach((item) => {
+            item.classList.remove('current-player');
+        });
+        ddElements[playerIndex].classList.add('current-player');
+
         const infoElement = document.querySelector('dialog.info');
         // console.dir(boardElement.children[0]);
         // console.dir(boardElements[0]);
@@ -37,8 +54,10 @@ export function tttGame() {
             return;
         }
 
-        boardElement.children[position - 1].innerHTML = player.icon;
- 
+        boardElement.children[position - 1].innerHTML =
+            players[playerIndex].icon;
+
+        players[playerIndex].positions += position;
     }
 
     // Jugar simulado
@@ -48,30 +67,31 @@ export function tttGame() {
         const delay = 1000;
         setTimeout(() => {
             // Empieza Pepe
-            playTurn(5, players[0]);
+            playTurn(5, 0);
             setTimeout(() => {
                 // Juega Ernestina (error)
-                playTurn(5, players[1]);
+                playTurn(5, 1);
                 setTimeout(() => {
                     // Juega Ernestina bien
-                    playTurn(4, players[1]);
+                    playTurn(4, 1);
                     setTimeout(() => {
                         // Juega Pepe
-                        playTurn(3, players[0]);
+                        playTurn(3, 0);
                         setTimeout(() => {
                             // Juega Ernestina
-                            playTurn(7, players[1]);
+                            playTurn(7, 1);
                             setTimeout(() => {
                                 // Juega Pepe
-                                playTurn(1, players[0]);
+                                playTurn(1, 0);
 
                                 setTimeout(() => {
                                     // Juega Ernestina
-                                    playTurn(2, players[1]);
+                                    playTurn(2, 1);
 
                                     setTimeout(() => {
                                         // Juega Pepe
-                                        playTurn(9, players[0]);
+                                        playTurn(9, 0);
+                                        console.log(players);
                                     }, delay);
                                 }, delay);
                             }, delay);
@@ -82,22 +102,49 @@ export function tttGame() {
         }, delay);
     }
 
-    simulateGame();
+    function clearGame() {
+        [...boardElement.children].forEach((item) => {
+            item.textContent = '';
+        });
+    }
+
+    function handleButtonClick(event) {
+        console.log('click', event);
+        console.dir(event.target);
+        const id = +event.target.dataset.id;
+        console.log(id);
+
+        if (id === 0) {
+            simulateGame();
+        } else {
+            clearGame();
+        }
+
+        // const functions = [simulateGame, clearGame];
+        // functions[id]();
+    }
+
+    document.querySelectorAll('.ttt button').forEach((button) => {
+        button.addEventListener('click', handleButtonClick);
+    });
 }
 
 // TODO
-
-// Modificar atributos de un elemento
-// Botón x disable / enable
-
-// Añadir / eliminar clases
-// e..g. para cambiar el color del jugador activo
 
 // Algoritmia
 // Comprobar si ya hay 3 piezas de un jugador
 // Permitir movimientos solo a las casillas vacías y cercanas
 // Comprobar si un jugador ganó
 // Mostrar un mensaje de victoria
+
+function checkWinner(value) {
+    // winnerSeries = ['123', '456', '789', '147', '258', '369', '159', '357'];
+}
+
+let option1 = '1247'; // true
+let option2 = '2358'; // true
+let option = '1248'; // false
+checkWinner(option); // true
 
 // Interacción con el usuario
 // Permitir a los jugadores introducir su nombre
