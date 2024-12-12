@@ -57,26 +57,26 @@ SPA singer page aplicación.
   - let Y = X; JavaScript, solo tiene datos nunca constantes, asi que realmente y pasa a tener el valor de 12, no de X. x = 13, es una reasignación, entonces cuanto vale Y? Y vale 12, no 13, es X la que ahora vale 13, los valores no se pierden, ni sustituyen. NO EXISTE EN JAVASCRIPT UNA VARIABLE QUE SE REFERENCIA A OTRA VARIABLE, SE ASIGNAN LOS VALORES DE LA VARIABLE
   - Pero las variables de tipo objeto contienen propiedades, no valores puros, y al cambiar una propiedad muta para todas los objetos que estén señalando a esas propiedades, a diferencia del ejemplo anterior.
   https://excalidraw.com/#room=682f4b93591314b4482f,uWtj0erMVYlY-3ll0_LoSQ
-  - obj1 {name: pepe} obj2 = obj1, cambia los valores para los dos pero...(obligatorio los tres puntos(...))aqui si se crean dos objetos, asi que puedes cambiar el name solo a obj2 y no alterar a obj1
+  - obj1 {name: pepe} obj2 = obj1, cambia los valores para los dos pero...(obligatorio los tres puntos(...))aquí si se crean dos objetos, asi que puedes cambiar el name solo a obj2 y no alterar a obj1
   - NO EXISTEN OBJETOS DENTRO DE OBJETOS
   - las variables nunca apuntas a otras variables siempre a datos
   - pueden apuntar a objetos, no a otras variables
   - GERARQUIA DE ELEMENTOS .DOCUMENT
-    - El DOM arbol de objetos
+    - El DOM árbol de objetos
     - esto te permite un acceso directo buscando un nodo
-  - Un primitivo es un tipo de dato atomico, que no se descompone
-  - Javascripts no contiene datos apunta a los datos, el nombre de la variable es la flecha  que une la variable con el dato.
+  - Un primitivo es un tipo de dato atómico, que no se descompone
+  - Javascript no contiene datos apunta a los datos, el nombre de la variable es la flecha  que une la variable con el dato.
   - const significa que no se puede reasignar, ahora si la const apunta a un primitivo
   - Repasar tipo de datos, esta en el fork. Entender los statements y las expressions
   
-- Los falsis importante!!  coercion, casting
+- Los falses importante!!  coercion, casting
 
 - coercion y casting
-- A bollean:
+- A bolean:
   - falsy: false, null, undefined, NaN, 0, -0, 0n, '';
   - Truthy: Todo lo demás es true.
 
-typeof solo podra decir uno de los 8 tipos de datos existentes.
+typeof solo podrá decir uno de los 8 tipos de datos existentes.
 
 Colecciones de datos
   -indexados --> array
@@ -84,15 +84,25 @@ Colecciones de datos
 
 const data = ['Pepe', 22]
 data.foo = 'soy array'
-la array tendria dos elementos para recorrer, foo:'soy array' no seria proceso de iteracion.
+la array tendría dos elementos para recorrer, foo:'soy array' no seria proceso de iteración.
 
 DOM, el document es un objeto que señala a más objetos y nodos. no se contiene solo apunta, no olvidar
 
 las funciones tienen verbo! porque las funciones hacen algo
 
-una funcion no estar acoplada es decir depender de algo de fuera, es mala practica
+una función no estar acoplada es decir depender de algo de fuera, es mala practica
 
-##### chuletas o especifidades de codigo
+Repasar funciones callback, pasar una función sin ser llamada a otra función.
+
+innerHTML y outerHTML introduce sustituyendo, es decir inner algo concreto y outer una div entero, y insertAdjacentHTML, que esto introduce  sin sustituir o llevarse nada por delante, tiene 4 propiedades que ayudan para poder meterlo antes, después, al principio y justo al final
+
+LOS OBJETOS TIENE PROPIEDADES!!
+
+Si un button desde html le añades disabled, desactivado
+
+variable = query para selecciona el DOM. Desde query se puede hacer modificaciones solo a los atributos propios que ya tiene html
+
+##### chuletas o especificidad de código
 
 Detalles
 
@@ -101,14 +111,22 @@ Detalles
   Chuletas
   .splice(desde donde, y cuanta cantidad)= coge de una array un elemento y reajusta el array a su nueva longitud
   .join(Separación deseada ['',-,/,etc...]) = convierte array en string
-  terhtml
-  queryselector
-  template
+  
+  templateHTML
   type="module" en el script
+  .querySelector
+  .querySelectorAll
+  .setAttribute (nombre, valor) ('class', 'patata')
+  .removeAttribute (nombre) No hace falta valor solo el atributo a remover.
+  .classList.(ctrl + C) accede a la lista de atributos que tiene la class
+  .forEach() Repasar en casa es para leer arrays directamente
+  callBack y arrowFunction repasar en casa
+  un callBack es sin parentesis, asi le pasas la funcion sin ser llamada.
+  data-id= es para nombrar mi id personalizado, en vez de id= que tiene una base interna en html y por ello tiene protooclos
 
 ## JavaScript en la web
 
 En node no existe DOCUMENT. es decir en el back solo en js web
 
-.innerhtml
-ou
+.innerHTML
+out
