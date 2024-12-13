@@ -102,6 +102,49 @@ Si un button desde html le añades disabled, desactivado
 
 variable = query para selecciona el DOM. Desde query se puede hacer modificaciones solo a los atributos propios que ya tiene html
 
+LOs 4 puntos clave para hacer una web, creo que seria innerHTML, query, lo que es recoger información y mandar información hay que profundizar
+
+tres funciones claves que se deben conocer, foreach, map filter
+las tres reciben un callBack para hacer algo, es lo que se llama funciones de orden superior de un array, las tres tienen un bucle, es decir que para cada una ejecuta el callBack que tu le hayan dado, las tres te van a pasar el item, el i y el array por si quieres hacer algo. Estas nunca modifican el array original
+.map((item, i, array) => {}) te devuelve algo,
+.filter((item, i,  array) => {})
+.forEach((item, i, array) => {}) No devuelve nada, es un bucle for
+
+const newArray = []
+[1,4,5].forEach((item,i)) =>{
+  newArray[i] = item *2
+  console.log(2,8,10)
+}
+
+const newArray = [1,4,8].map((item, i) => {item*2}) o dejas las llaves y metes un return o quitas las llaves y entonces el return esta implícito
+
+const initialData = [1,2,3]
+
+.push()empuja al final
+.sort()ordenar pero ordena el original y te devuelve otro más ordenado, una opción es pasarle una copia
+const data = [23,34,18];
+const sorted = [...initialData].sort() para que no modifique el original
+
+.toSorted() es la version moderna
+
+filter y find
+
+Filter es inmutable, no modifica
+const names = ['Pepe', 'Pedro', 'Ramón', 'Luis']
+Es una función booleana
+name.filter((item) => {
+  if(item[0] === 'P') return true
+})
+const x = name.filter((item) => item [0] === 'P');
+filter da todas las vuelvas
+
+Prima hermana seria .find la diferencia seria es find encuentra uno y para
+
+const fonded = nam.find((item) => item[0] === 'R)
+en cuanto encuentre uno devuelve un string y se para
+
+Diferencia entre callback y funciones anónimas
+
 ##### chuletas o especificidad de código
 
 Detalles
@@ -121,12 +164,23 @@ Detalles
   .classList.(ctrl + C) accede a la lista de atributos que tiene la class
   .forEach() Repasar en casa es para leer arrays directamente
   callBack y arrowFunction repasar en casa
-  un callBack es sin parentesis, asi le pasas la funcion sin ser llamada.
-  data-id= es para nombrar mi id personalizado, en vez de id= que tiene una base interna en html y por ello tiene protooclos
+  un callBack es sin paréntesis, asi le pasas la función sin ser llamada.
+  data-id= es para nombrar mi id personalizado, en vez de id= que tiene una base interna en html y por ello tiene protocolos
+
+  revisar el setTimeout
 
 ## JavaScript en la web
 
 En node no existe DOCUMENT. es decir en el back solo en js web
 
 .innerHTML
-out
+.outHTML(como sea)
+.querySelector
+.addEventListener
+.textContent
+
+lo que hay en una función (value) , si vas hacer algo es recoger y si no vas a usarlo no necesitas recogerlo y puedes dejarlo ()
+
+los input tiene .value para luego recogerlo desde js la información de html
+
+event.preventDefault() quitarle el comportamiento por defecto a un comportamiento por defecto, por ejemplo un input ocn submit, evita el lanzar al servidor

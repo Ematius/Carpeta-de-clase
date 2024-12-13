@@ -100,10 +100,17 @@ let option5 = '1248';
 
 const winnerSeries1 = ['123', '456', '789', '147', '258', '369', '159', '357'];
 
-const prueba2 = winnerSeries.some((series) =>
-    series.split('').every((digit) => option5.includes(digit))
-);
+const prueba2 = winnerSeries.some((series) => series.split('').every((digit) => option5.includes(digit)));
 console.log(prueba2);
+
+
+const board = ['Posiciones en el tablero' ];
+for (let i = 1; i < 10; i++) {
+    board[i]='';
+ 
+    
+}
+console.log({board});
 
 /*
 Iteración	Combinación	Conversión a array	Comprobación every()	Resultado de every()	Resultado de some()	
@@ -111,3 +118,29 @@ Iteración	Combinación	Conversión a array	Comprobación every()	Resultado de e
 2	456'	['4', '5', '6']	No todos los dígitos están en '1247'	FALSE	Continúa	
 ...	...	...	...	...	...	
 n	147'	['1', '4', '7']	Todos los dígitos están en '1247'	TRUE	true (se detiene)	*/
+
+
+const nam = ['Pepe', 'Pedro', 'Ramón', 'Luis']
+
+
+const x = nam.filter((item) => {
+  if(item[0] === 'P') return true
+})
+console.log(x);
+console.log(nam);
+const x1 = nam.filter((item) => item[0] === 'P');
+
+console.log(x1);
+
+//Ejercios crear tus propias funciones en base a las funciones
+//implementar todos los metodos de arrays sin usar ninguno y lo mismo con los metodos de string
+
+function myPush(array, value){
+    
+    
+}
+
+
+const data = []
+;
+
