@@ -138,13 +138,18 @@ export function tttGame() {
 // Mostrar un mensaje de victoria
 
 function checkWinner(value) {
-    // winnerSeries = ['123', '456', '789', '147', '258', '369', '159', '357'];
+    const winnerSeries = ['123', '456', '789', '147', '258', '369', '159', '357'];
+    const result = winnerSeries.some((series) => 
+    series.split('').every((digit) => value.includes(digit)))
+    return result
 }
 
+let option = '1248'; // false
 let option1 = '1247'; // true
 let option2 = '2358'; // true
-let option = '1248'; // false
-checkWinner(option); // true
+console.log(checkWinner(option));
+console.log(checkWinner(option1));
+console.log(checkWinner(option2));
 
 // Interacción con el usuario
 // Permitir a los jugadores introducir su nombre
