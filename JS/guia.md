@@ -145,6 +145,76 @@ en cuanto encuentre uno devuelve un string y se para
 
 Diferencia entre callback y funciones anónimas
 
+json= es una serializacion que entienden todos los lenguajes,
+
+JSON.parse()
+JSON.stringify()= esto es para convertir en string para que otros lenguajes puedan entenderlo//se puede guardar en un servidor, en una cookie//las funciones y los object data dan mas problemas, no se parsean bien, cuesta. COpiar de sample.js en JS me despistado enseñando el challenger y no me enterado, repasar tranquilamente
+
+Para importar seria import FACTS (esto es un convenio) from'./facts.JSon' (aunque este en la misma carpeta hay que poner el ./) with {type: 'json} hay que decir el tipo también
+
+innerHTML  y textContent = ambos borraría, pero si añadimos += statementElement.textContent += fact[questions].statement; Asi añadiría a lo que hay. texContent no interpreta los codigos de html es texto puro lo que pasa, pero usar innerHTML si interpreta por si quieres añadir html desde javascript
+
+No vamos a ver expresiones regulares, mirar por internet por saber lo que es
+
+Hacer validaciones propias
+
+addevenlister('blur') es cuando pierde el focus algo que esta en focus
+              (input)
+              (focus), todos los eventos focusables
+              (change) nunca usar eventos click en eventos que cambian, el radio button no usar un addlistener click
+              Estos 4 son imperantes REPASAR!!
+
+En un formulario hay que aprender dos cosas, validar y recoger los datos. 
+
+.target, es verlo como un queryselector, dispara el addlistener , ver de nuevo en casa!
+
+objeto FormData(form);
+const formData = new FormData(form);
+const playerData = object.fromEntries(formData); 
+const plater = {
+  firstName : playerData['first-name']
+}
+para javascript no existen propiedades ocn - por ello se ha hecho con [], de no ser asi podría ser perfectamente playerData.firstName
+
+La anotacion con corchetes evalua lo que le des y con puntos es literal.
+
+const user = {
+  name:'pepe'
+  age: 22
+  'algo-mas' = 45
+}
+const prop = 'age'
+
+user.name
+
+user.prop//undefined
+
+user[prop]//22
+user['name']//pepe se autoevalua
+
+user['algo.mas'] //45
+
+for of para array
+for in para objetos for key in object { const x = object[key]}
+
+form.reset() = estándar para borrar el formulario.
+
+Saber recoger los datos de un formulario importante
+
+.setCustomValidity = añade una cadena de caracteres que desees Establezco un mensaje de validación
+
+.reportValidity = es para mostrar el mensaje en ese momento
+
+El storage del navegador en f12 pestaña aplication para la persistencia de datos.
+
+seguridad y locastore
+
+localStorage
+            .setItem()
+            .getItem()
+            .removeItem()
+            .clear()
+
 ##### chuletas o especificidad de código
 
 Detalles
@@ -184,3 +254,13 @@ lo que hay en una función (value) , si vas hacer algo es recoger y si no vas a 
 los input tiene .value para luego recogerlo desde js la información de html
 
 event.preventDefault() quitarle el comportamiento por defecto a un comportamiento por defecto, por ejemplo un input ocn submit, evita el lanzar al servidor
+
+
+### Ejercicios que creo útiles
+
+revision de conceptos de métodos de array
+
+  mutables: 
+  inmutable:
+  1.ejercicio: explicar método con imágenes dibujadas scalidrow
+  2.ejercicio: crear los métodos sin usar métodos, puro js
