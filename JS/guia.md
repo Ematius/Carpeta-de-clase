@@ -275,7 +275,7 @@ revision de conceptos de métodos de array
 
 mutables:
 inmutable:
-1.ejercicio: explicar método con imágenes dibujadas scalidrow
+1.ejercicio: explicar método con imágenes dibujadas excalidraw
 2.ejercicio: crear los métodos sin usar métodos, puro js
 
 ## Rutas
