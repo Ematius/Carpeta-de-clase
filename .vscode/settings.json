@@ -4,6 +4,8 @@
     "cSpell.words": [
         "autoevalua",
         "corelacionados",
+        "CORNERCASE",
+        "enrutado",
         "Ernestina",
         "GERARQUIA",
         "gerarquicamente",
@@ -11,6 +13,6 @@
         "pasarle",
         "renderiza"
     ],
-    "liveServer.settings.root": "./Mañanas(Emad)/CSS",
+    "liveServer.settings.root": "./Mañanas(Emad)",
     "liveServer.settings.port": 5501
 }

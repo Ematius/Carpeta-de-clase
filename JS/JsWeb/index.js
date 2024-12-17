@@ -23,6 +23,7 @@ console.log('Index loaded');
 function checkDOM(params) {
     // El DOM como "árbol" de objetos
     console.dir(document);
+    
 
     // Acceso secuencial a cualquier nodo
     console.dir(document.children[0].children[1].children[0].children[1]);
@@ -70,3 +71,6 @@ elementButton.removeAttribute('disabled', '');
 // elementButton.disabled = false;
 console.log('disable', elementButton.disabled);
 console.log('attributes', elementButton.attributes);
+
+
+
