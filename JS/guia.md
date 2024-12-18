@@ -105,6 +105,7 @@ LOs 4 puntos clave para hacer una web, creo que seria innerHTML, query, lo que e
 
 tres funciones claves que se deben conocer, foreach, map filter
 las tres reciben un callBack para hacer algo, es lo que se llama funciones de orden superior de un array, las tres tienen un bucle, es decir que para cada una ejecuta el callBack que tu le hayan dado, las tres te van a pasar el item, el i y el array por si quieres hacer algo. Estas nunca modifican el array original
+```javascript
 .map((item, i, array) => {}) te devuelve algo,
 .filter((item, i, array) => {})
 .forEach((item, i, array) => {}) No devuelve nada, es un bucle for
@@ -144,14 +145,14 @@ en cuanto encuentre uno devuelve un string y se para
 
 Diferencia entre callback y funciones anónimas
 
-json= es una serializacion que entienden todos los lenguajes,
+json= es una serialization que entienden todos los lenguajes,
 
 JSON.parse()
 JSON.stringify()= esto es para convertir en string para que otros lenguajes puedan entenderlo//se puede guardar en un servidor, en una cookie//las funciones y los object data dan mas problemas, no se parsean bien, cuesta. COpiar de sample.js en JS me despistado enseñando el challenger y no me enterado, repasar tranquilamente
-
+```
 Para importar seria import FACTS (esto es un convenio) from'./facts.JSon' (aunque este en la misma carpeta hay que poner el ./) with {type: 'json} hay que decir el tipo también
 
-innerHTML y textContent = ambos borraría, pero si añadimos += statementElement.textContent += fact[questions].statement; Asi añadiría a lo que hay. texContent no interpreta los codigos de html es texto puro lo que pasa, pero usar innerHTML si interpreta por si quieres añadir html desde javascript
+innerHTML y textContent = ambos borraría, pero si añadimos += statementElement.textContent += fact[questions].statement; Asi añadiría a lo que hay. texContent no interpreta los códigos de html es texto puro lo que pasa, pero usar innerHTML si interpreta por si quieres añadir html desde javascript
 
 No vamos a ver expresiones regulares, mirar por internet por saber lo que es
 
@@ -159,11 +160,13 @@ Hacer validaciones propias
 
 addevenlister('blur') es cuando pierde el focus algo que esta en focus
 (input)
-(focus), todos los eventos focusables
+(focus), todos los eventos focusable
 (change) nunca usar eventos click en eventos que cambian, el radio button no usar un addlistener click
 Estos 4 son imperantes REPASAR!!
 
 En un formulario hay que aprender dos cosas, validar y recoger los datos.
+
+```javascript
 
 .target, es verlo como un queryselector, dispara el addlistener , ver de nuevo en casa!
 
@@ -175,7 +178,11 @@ firstName : playerData['first-name']
 }
 para javascript no existen propiedades ocn - por ello se ha hecho con [], de no ser asi podría ser perfectamente playerData.firstName
 
-La anotacion con corchetes evalua lo que le des y con puntos es literal.
+```
+
+La anotación con corchetes evalúa lo que le des y con puntos es literal.
+
+```javascript
 
 const user = {
 name:'pepe'
@@ -204,9 +211,13 @@ Saber recoger los datos de un formulario importante
 
 .reportValidity = es para mostrar el mensaje en ese momento
 
-El storage del navegador en f12 pestaña aplication para la persistencia de datos.
+```
 
-seguridad y locastore
+El storage del navegador en f12 pestaña application para la persistencia de datos.
+
+seguridad y localStorage
+
+```javascript
 
 localStorage
 .setItem()
@@ -214,13 +225,17 @@ localStorage
 .removeItem()
 .clear()
 
+
+```
+
 #### chuletas o especificidad de código
 
 Detalles
 
 - Los arrays y los objetos casi siempre van a ser const porque pueden mutables
+```javascript
 
-  Chuletas
+Chuletas
   .splice(desde donde, y cuanta cantidad)= coge de una array un elemento y reajusta el array a su nueva longitud
   .join(Separación deseada ['',-,/,etc...]) = convierte array en string
 
@@ -232,30 +247,42 @@ Detalles
   .removeAttribute (nombre) No hace falta valor solo el atributo a remover.
   .classList.(ctrl + C) accede a la lista de atributos que tiene la class
   .forEach() Repasar en casa es para leer arrays directamente
-  callBack y arrowFunction repasar en casa
+  /*callBack y arrowFunction repasar en casa
   un callBack es sin paréntesis, asi le pasas la función sin ser llamada.
-  data-id= es para nombrar mi id personalizado, en vez de id= que tiene una base interna en html y por ello tiene protocolos
+  data-id= es para nombrar mi id personalizado, en vez de id= que tiene una base interna en html y por ello tiene protocolos*/
 
   revisar el setTimeout
 
 .at(-1) hace lo mismo que length pero mas sofisticado permitiéndote contar negativos, asi que seria:
 console.log( patch.split('/').at(-1).split('.').at(0))
-Módulos, enrutado, enrutado javascript
+/*Módulos, enrutado, enrutado javascript
 Para no repetir un nav de html compartido no hay forma nativa en html, habría que acudir a nuestro JS.
-  Seria meter en una const lo que se quiere compartir, y dentro de un template por delante de el poner un comentario  /*html*/ es para que visualmente se vea igual que un html
+  Seria meter en una const lo que se quiere compartir, y dentro de un template por delante de el poner un comentario  /*html*/ /*es para que visualmente se vea igual que un html
 document.body.insertAdjacentHTML(las 4 opciones que hay al ser body seria 'afterBegin')
 insertAdjacentHTML = es importante que inner ya que no borra si no que inserta!
 Cuanto mas se encapsula, todo en una función queda mas modular y es buena practica
 
+
+```
+  
 Dentro de un objeto se pueden guardar propiedades
 Los if siempre que se pueda cambiar por colección de datos
 render necesita un que, SELECTOR y un donde POSITION
-.map proyecta arrays
-.map((valor, index// item) => TEMPLATE(no se escribe) `item.path` ) devuelve un array
+
+```javascript
+
+.map 'proyecta arrays'
+.map((valor, index item) => TEMPLATE(no se escribe) `item.path` ) devuelve un array
+.slice(No muta el array original)
+.splice(si muta el array original)
+
+```
 
 ## JavaScript en la web
 
 En node no existe DOCUMENT. es decir en el back solo en js web
+
+```javascript
 
 .innerHTML
 .outHTML(como sea)
@@ -263,12 +290,34 @@ En node no existe DOCUMENT. es decir en el back solo en js web
 .addEventListener
 .textContent
 
+
+```    true1 && true2 (sigue si el anterior es true)
+    si el primero deja pasar es decir true1 te deja pasar se evalúa el true2 y si da true el segundo true es true. las && se llaman puertas de paso true, verlo con una puerta que solo deja pasar si el primero es true.
+
+    true || false (sigue si el anterior es false) se ejecuta el true y no hace falta pasar por la puerta y ya daría positivo, y si fuese false, entonces si te deja pasar la puerta para comprobar el siguiente. Si es true no te deja pasar, si es false te deja pasar
+
+    true ?? true() (sigue si el anterior es nullish) si el primero es falsy, entonces comprueba la siguiente, si no es falsy directamente ya se activa 
+  
+
+
+8
+typos de JS -> 8
+falsys de JS -> 8
+
+nulish -> 2 null / undefined
+otros 6 falsies -> 0, -0, 0n, '', NaN, false,
+
+*/
+````
+
 lo que hay en una función (value) , si vas hacer algo es recoger y si no vas a usarlo no necesitas recogerlo y puedes dejarlo ()
 
 los input tiene .value para luego recogerlo desde js la información de html
 
 event.preventDefault() quitarle el comportamiento por defecto a un comportamiento por defecto, por ejemplo un input ocn submit, evita el lanzar al servidor
 
+Ver expresiones regulares no se verán
+```
 ### Ejercicios que creo útiles
 
 revision de conceptos de métodos de array
@@ -296,4 +345,34 @@ inmutable:
 Es buena practica cargar las paginas siempre desde el server, es decir desde la tarjeta de origen
 rutas relativas al origen
 
-console.log(location) Entender la anatomia de un url
+console.log(location) Entender la anatomía de un url
+
+```console
+npm i -g patata-server
+npm list -g
+```
+
+## Gestión de datos
+
+CRUD =
+Create
+Read
+Update
+Delete
+
+### Entidades (Modelo)
+
+```TS
+
+type Task = {
+  id: string,
+  title: string,
+  owner: string,
+  isDone: boolean 
+}
+
+```
+
+## Ejercicios
+
+construirse un toggle con css y javascript

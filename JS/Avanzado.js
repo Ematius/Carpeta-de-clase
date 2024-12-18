@@ -147,9 +147,19 @@ console.log(generateNumberEvenOdd(20));
 - Si tiene algún guión bajo, debe devolver "The text contains underscores"
 - Si el texto está vacío, debe devolver "You must provide some text"*/
 
-function transformKebadCasetoLowerCamelCase(value = string) {
-    return lowerCamelCase;
+function checkKebabCasetoLowerCamelCase(value = string) {
+     const checkword = value.find()
+     if (checkword()) {
+        return "The text contains capital letters";
+    } else if (checkword()) {
+        return "The text contains underscores";
+    } else if (value === '') {
+        return "You must provide some text";
+    }
+    checkword
+    return checkword;
 }
+console.log(checkKebadCasetoLowerCamelCase(''));
 
 var number=function(array){
   //your awesome code here

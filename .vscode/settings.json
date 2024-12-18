@@ -2,7 +2,10 @@
     "editor.fontFamily": "Mono Comic, 'Courier New', monospace",
     "editor.fontSize": 18,
     "cSpell.words": [
+        "addevenlister",
+        "addlistener",
         "autoevalua",
+        "checkword",
         "corelacionados",
         "CORNERCASE",
         "enrutado",
@@ -10,8 +13,10 @@
         "excalidraw",
         "GERARQUIA",
         "gerarquicamente",
+        "Kebad",
         "parsean",
         "pasarle",
+        "queryselector",
         "renderiza"
     ],
     "liveServer.settings.root": "./Mañanas(Emad)",
