@@ -233,6 +233,7 @@ localStorage
 Detalles
 
 - Los arrays y los objetos casi siempre van a ser const porque pueden mutables
+
 ```javascript
 
 Chuletas
