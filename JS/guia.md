@@ -380,6 +380,7 @@ type Task = {
 ## Ejercicios
 
 construirse un toggle con css y javascript
+hacer un ejercicio con apis, con tarjetas por ejemplo
 
 ## Repasar
 
