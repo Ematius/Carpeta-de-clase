@@ -276,6 +276,7 @@ render necesita un que, SELECTOR y un donde POSITION
 .map((valor, index item) => TEMPLATE(no se escribe) `item.path` ) devuelve un array
 .slice(No muta el array original)
 .splice(si muta el array original)
+.remove()
 
 ```
 
@@ -292,15 +293,15 @@ En node no existe DOCUMENT. es decir en el back solo en js web
 .textContent
 
 
-```    true1 && true2 (sigue si el anterior es true)
+```
+
+ true1 && true2 (sigue si el anterior es true)
     si el primero deja pasar es decir true1 te deja pasar se evalúa el true2 y si da true el segundo true es true. las && se llaman puertas de paso true, verlo con una puerta que solo deja pasar si el primero es true.
 
     true || false (sigue si el anterior es false) se ejecuta el true y no hace falta pasar por la puerta y ya daría positivo, y si fuese false, entonces si te deja pasar la puerta para comprobar el siguiente. Si es true no te deja pasar, si es false te deja pasar
 
     true ?? true() (sigue si el anterior es nullish) si el primero es falsy, entonces comprueba la siguiente, si no es falsy directamente ya se activa 
   
-
-
 8
 typos de JS -> 8
 falsys de JS -> 8
@@ -309,7 +310,6 @@ nulish -> 2 null / undefined
 otros 6 falsies -> 0, -0, 0n, '', NaN, false,
 
 */
-````
 
 lo que hay en una función (value) , si vas hacer algo es recoger y si no vas a usarlo no necesitas recogerlo y puedes dejarlo ()
 
@@ -318,7 +318,7 @@ los input tiene .value para luego recogerlo desde js la información de html
 event.preventDefault() quitarle el comportamiento por defecto a un comportamiento por defecto, por ejemplo un input ocn submit, evita el lanzar al servidor
 
 Ver expresiones regulares no se verán
-```
+
 ### Ejercicios que creo útiles
 
 revision de conceptos de métodos de array
@@ -361,6 +361,9 @@ Read
 Update
 Delete
 
+Separar la idea del negocio es decir componentes, separar bien las capas de negocio de la capa de interfaz. es la arquitectura de negocio o datos, son capas y capas.
+Componentes de crear, componente de leer. profundizar en el vista controlador, aunque no es lo mismo.
+
 ### Entidades (Modelo)
 
 ```TS
@@ -377,3 +380,87 @@ type Task = {
 ## Ejercicios
 
 construirse un toggle con css y javascript
+
+## Repasar
+
+- `toggle
+- formulario con addEventListener('submit', handleSubmit), o ()=> {}
+- preventDefault, en las funciones addListener, para evitar la recarga de pagina a traves del event.preventDefault()
+- .target.elements[0] para acceder al formulario  
+- o el const x = new FormData(event.target) el event esta apuntando al submit del formulario
+- object.fromEntries(x) aprender y aprender a usarlas para resolver la vida con los formularios, lo vuelvo a escribir
+- fijarse que los name de los input del formular coincidan con la array
+- const formData = ner FormData(event.target)
+- const data = object.formEntries(x)
+- clg(data)
+- ...data -> para desestructurar para dejar lo que se queda y si añades no tener que retocar todo,
+- checkbox que en el array sea true o false
+- aparte de queryselector hay closets(buscaría lo mas cercano, buscar información)
+
+## Asynchronous
+
+JavaScript es monohilo
+paralelismo trabajo con concurrencia o sin concurrencia
+Promesas es como el setTimeOut pero tiene prioridad
+Las promesas nos gustan mas que las callBack. Las promesas son objetos. su valor se ejecuta en el futuro.
+
+```javascript
+new promise((resolve, reject) =>{
+  resolve(dato)
+  reject(new Error());
+})
+
+.then((data)=>{clg()}) //LO QUE QUIERES HACER SI TODO VA BIEN Y TE LLEGA EL DATO, UNA FUNCIÓN 
+.catch((error)=>{clg()}) //LO QUE AHORA SI LLEGA EL ERROR FUNCIÓN
+.finally(()=>{clg()}) //Y LO QUE HARÍAS SI O SI (NO SE SUELE USAR)
+
+//trabajar en paralelo //explicación en /JS/async.../chain.js
+ Promise.allSettled(promises).then(result).catch().finally() 
+ Promise.all()
+ Promise.race()
+ Promise.any()
+ 
+
+//Ejemplo de function que preparas para que sea asynchronously
+ async function foo() {
+  return Math.random()
+ }
+
+ const x = foo()
+ console.log(x) //promise{.....}
+
+foo().then(n) => console.log(n) // solo el numero
+
+//await Promise
+const x = await foo()
+.then o await
+todo lo que pongas después de nombra await entra en await, no es como el then que debes meterlo dentro.
+
+```
+
+try catch
+
+capturar el error sin que el programa de rompa y se pueda seguir funcionando
+
+```javascript
+
+
+try{
+  const foo = 12;
+  foo = 13
+}
+catch(error){
+  console.error(error.message) 
+}
+
+throw new error('') nos permite tirar error cuando quiera para tener un mejor vision de los errores posibles, cuando puedes intuir excepciones
+
+```
+
+IIFE (mirar que es, función anónima que se llama a si misma,)
+
+```javascript
+(() => {
+console.log('Soy IIFE')
+}) ()
+```
