@@ -381,6 +381,13 @@ type Task = {
 
 construirse un toggle con css y javascript
 hacer un ejercicio con apis, con tarjetas por ejemplo
+chismas-challenger hay 5, 1,2,3, son de una tarde y el 4 de un fin de y el ultimo es intenso :
+
+1: convertir en componentes y que salgan uno al lado de otro, leer instrucciones// buscar componentes después de hecho
+2: vació 100%, con componentes funciones, header etc...
+3:hacer dinámico las estrellas, el blanco no valorado, esta sin ver y al valorar pasa a estar en la lista de vistos, una valoración(independizar un componentes para las estrellas)
+4: pagina lista pagina lista, tiene que ir paginado o scroll infinito, listado incluye nombre de Pokemon y su imagen, poder ver en que numero de Pokemon del total, llegar a la pagina EXtra añadir tercera pagina mis Pokemon ponerle un seleccionar los que te gustan y que se guarden ahi. Pista promise.all().promise...
+5:Ya esta hecho pero se puede hacer sin mirar. Acceder a una lista de perros con un perro random, añadir lo que queramos
 
 ## Repasar
 
@@ -465,3 +472,84 @@ IIFE (mirar que es, función anónima que se llama a si misma,)
 console.log('Soy IIFE')
 }) ()
 ```
+
+## Fetch
+
+```javascript
+
+const URL = url de json
+
+```
+
+status:
+los 100 esta procesando
+los 200 todo ha ido bien
+los 300 ni bien ni mal, suele ser redirecciones, espera al siguiente mensaje 304: quiere decir que no traje nada nuevo
+los 400 tu petición tiene un problema, (el front hizo algo mal)
+los 500 tu petición esta bien pero el servidor esta mal
+
+```javascript
+function getCharacters(){
+    const URL = "https://dragonball-api.com/api/characters?limit=10";
+
+    return fetch(URL)
+      .then((response) => {
+        //console.log(response);
+        if (response.ok) {
+          return response.json();
+        } else {
+            throw new Error(response.status, response.statusText)
+        }
+      })
+      .then((data) => {console.log(data.items)});
+}
+
+getCharacters()
+//throw para los errores
+
+
+
+
+async function getCharacters1() {
+  const URL = "https://dragonball-api.com/api/characters?limit=10";
+  const response = await fetch(URL);
+  let data = "";
+
+  if (response.ok) {
+    data = await response.json();
+  } else {
+    console.log(response.status, response.statusText);
+  }
+  return data.items;
+}
+
+const characters1 = await getCharacters1();
+console.log(characters1);
+//try/catch para  async//await
+
+
+```
+
+fetch(URL, header{AÑADIR CABECERAS DE METADATO})
+Es asíncrono ya que el console log va mas rápido que la petición, por eso el then o wait
+se llama response porque la respuesta es response
+los datos vienen en el body como binario es codificado
+el response.json para descodificar el binario para poder recuperarlo
+then siempre devuelve uan promesa void
+async/await es mas sencillo pero es lo mismo que then
+Siempre que devuelva una promesa se coloca a la función un await; await va con try y catch
+
+## API Rest
+
+- recursos(sustantivos): url
+- operaciones (verbos): methods
+
+http -> datos (CRUD)
+C -> POST CREAD
+R -> GET READ
+U -> PUT/PATCH UPDATE
+D -> DELETE
+
+Montar un server node
+en una carpeta nueva
+packjson npm init -y
