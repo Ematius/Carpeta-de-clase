@@ -1,5 +1,5 @@
 {
-  "character": [
+  "characters": [
       {
           "isAlive": true,
           "message": "You're all to die!",
@@ -7,7 +7,8 @@
           "family": "Baratheon",
           "age": 18,
           "reignYears": 1,
-          "category": "king"
+          "category": "king",
+          "image": "./assets/images/joffrey.jpg"
       },
       {
           "isAlive": true,
@@ -17,7 +18,8 @@
           "age": 33,
           "weapon": "sword",
           "skillLevel": 10,
-          "category": "fighter"
+          "category": "fighter",
+          "image" :  "./assets/images/jaime.jpg"
       },
       {
           "isAlive": true,
@@ -27,7 +29,8 @@
           "age": 18,
           "weapon": "dragons",
           "skillLevel": 8,
-          "category": "fighter"
+          "category": "fighter",
+          "image" : "./assets/images/daenerys.jpg"
       },
       {
           "isAlive": true,
@@ -35,6 +38,7 @@
           "name": "Tyrion",
           "family": "Lannister",
           "age": 40,
+          "image": "./assets/images/tyrion.jpg",
           "adviseTo": {
               "isAlive": true,
               "message": "I hit first and ask later",
@@ -42,6 +46,7 @@
               "family": "Targaryen",
               "age": 18,
               "weapon": "dragons",
+              "image": "./assets/images/daenerys.jpg",
               "skillLevel": 8
           },
           "category": "adviser"
@@ -53,6 +58,7 @@
           "family": "Nieve",
           "age": 35,
           "serveLevel": 5,
+          "image": "./assets/images/bronn.jpg",
           "servesTo": {
               "isAlive": true,
               "message": "I hit first and ask later",
@@ -60,6 +66,7 @@
               "family": "Lannister",
               "age": 33,
               "weapon": "sword",
+              "image": "./assets/img/jaime.jpg",
               "skillLevel": 10
           },
           "category": "squire"
