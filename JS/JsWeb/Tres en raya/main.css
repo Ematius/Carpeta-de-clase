@@ -1,0 +1,179 @@
+:root {
+    /* typography */
+    --base-size: 1rem;
+    --scale: 1.25;
+    --h1: calc(var(--h2) * var(--scale)); /* 3.052rem */
+    --h2: calc(var(--h3) * var(--scale)); /* 2.441rem */
+    --h3: calc(var(--h4) * var(--scale)); /* 1.953rem */
+    --h4: calc(var(--h5) * var(--scale)); /* 1.563rem */
+    --h5: calc(var(--h6) * var(--scale)); /* 1.25rem */
+    --h6: var(--base-size); /* 1rem */
+    --small: var(--base-size) / var(--scale); /* 0.8rem */
+    --x-small: var(--small) / var(--scale); /* 0.64rem */
+
+    --line-height-x: 1.25;
+    --line-height: 1.5;
+    --line-height-l: 1.75;
+
+    /* weight */
+
+    --weight-light: 300;
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-bold: 700;
+
+    --bisque: bisque;
+    --brown-dark: rgb(86, 45, 45);
+    --golden: goldenrod;
+    --brown: brown;
+    --light-brown: rgb(168, 88, 88);
+    --bronze: #988758;
+    --white: #ffffff;
+    --black: #050d14;
+    --gray-light: #f9f9f9;
+    --gray: #bababa;
+    --gray-dark: #333;
+
+    /* intention colors */
+
+    /* Main colors*/
+    /* --primary:  */
+    --color-primary: var(--brown-dark);
+    --color-primary-background: var(--bisque);
+    --color-accent: var(--golden);
+    --color-accent-background: var(--brown);
+    --color-link: var(--brown-dark);
+    --color-link-hover: var(--light-brown);
+
+    /* Brown area colors */
+    --color-secondary: var(--bisque);
+    --color-secondary-background: var(--brown);
+    --color-accent-secondary: var(--brown-dark);
+    --color-accent-secondary-background: var(--bronze);
+
+    /* Gray area colors*/
+    --color-secondary-gray: var(--black);
+    --color-secondary-background-gray: var(--gray);
+
+    /* spacing */
+
+    --space: 1rem;
+    --space-double: calc(var(--space) * 2); /* 2rem */
+    --space-triple: calc(var(--space) * 3); /* 3rem */
+    --space-quadruple: calc(var(--space) * 4); /* 4rem */
+    --space-half: calc(var(--space) / 2); /* 0.5rem */
+    --space-quarter: calc(var(--space) / 4); /* 0.25rem */
+
+    --radius: 0.25rem; /* 4px */
+
+    /* fonts */
+    --sans-base: 'Manrope', sans-serif;
+}
+
+body {
+    font-family: var(--sans-base);
+    font-weight: var(--weight-light);
+    line-height: var(--line-height-l);
+    background-color: var(--color-primary-background);
+    color: var(--color-primary);
+    font-size: var(--base-size);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    padding-block: var(--space);
+    color: var(--color-secondary-gray);
+    background-color: var(--color-secondary-background-gray);
+    display: flex;
+    gap: var(--space);
+    justify-content: center;
+}
+
+.header-brown {
+    color: var(--color-secondary);
+    background-color: var(--color-secondary-background);
+}
+
+main {
+    margin: var(--space) var(--space-double);
+}
+
+menu {
+    display: flex;
+    list-style: none;
+    button {
+        appearance: none;
+        border: none;
+        padding: var(--space-half) var(--space);
+    }
+}
+
+section {
+    margin-block: var(--space);
+    padding: var(--space);
+    border: 1px solid var(--color-secondary-background);
+    border-radius: var(--radius);
+}
+
+section.ttt {
+    dl {
+        margin-block: var(--space);
+        min-width: 300px;
+        width: 50%;
+        margin-block-end: var(--space-double);
+        div {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 1px solid var(--brown);
+
+            dt {
+                grid-column: 1/2;
+            }
+
+            dd {
+                grid-column: 2/3;
+
+                &:nth-of-type(1) {
+                    grid-row: 1/2;
+                }
+            }
+        }
+    }
+
+    .wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: var(--space);
+    }
+
+    .info {
+        border: 1px solid var(--brown);
+    }
+
+    .board {
+        width: 200px;
+        height: 200px;
+        display: grid;
+        gap: 30px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        & div {
+            background-color: var(--bronze);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .current-player {
+        color: var(--color-accent);
+        transform: scale(110%);
+    }
+}
+
+section.test {
+    button {
+        padding: var(--space-half) var(--space);
+    }
+}

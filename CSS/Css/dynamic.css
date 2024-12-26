@@ -1,0 +1,27 @@
+body{
+    background-color: bisque;
+}
+
+.object{
+    width: 20px;
+    height: 20px;
+    background-color: brown;
+    
+}
+
+.object:hover{
+    transition-timing-function: cubic-bezier(1, 0, 0.17, 1);
+    transform: scale(2) translate(0.5rem, 0.5rem) rotate(45deg);
+    background-color: blue;
+    transition-property: background-color;
+    transition-duration: 5s;
+  
+}
+.object1{
+    width: 20px;
+    height: 20px;
+    background-color: rgb(42, 165, 63);
+}
+.object1:hover{
+    animation: sample 2s 1 delay iteration-count direction fill-mode;
+}
