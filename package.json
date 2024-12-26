@@ -14,6 +14,7 @@
         "singleQuote": true
     },
     "dependencies": {
-        "ifcd0210_2024": "file:"
+        "ifcd0210_2024": "file:",
+        "json-server": "^1.0.0-beta.3"
     }
 }
