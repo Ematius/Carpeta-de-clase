@@ -26,8 +26,8 @@ function createCard(character){
                 ${character.skillLevel ? `<li>Destreza: ${character.skillLevel}</li>` : ''}
                 <li>Mensaje: ${character.message}</li>
                 <li>Peloteo: X</li>
-                <li>Asesora a: X</li>
-                <li>Sirve a: X</li>
+                ${character.adviseTo ? ` <li>Asesora a: ${character.adviseTo.name} </li>` : ''}
+                ${character.servesTo ? ` <li>Sirve a: ${character.servesTo.name} </li>` : ''}
               </ul>
               <div class="character__actions">
                 <button class="character__action btn">habla</button>
@@ -39,8 +39,12 @@ function createCard(character){
         </div>
       </li>
     `;
-    render(selector, position, template);
+    const element = render(selector, position, template);
 
+   
+
+    return element
+   
 }
 
 async function getCharacters(){

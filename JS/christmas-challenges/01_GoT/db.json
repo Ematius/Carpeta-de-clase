@@ -8,7 +8,7 @@
           "age": 18,
           "reignYears": 1,
           "category": "king",
-          "image": "./assets/images/joffrey.jpg"
+          "image": "./assets/img/joffrey.jpg"
       },
       {
           "isAlive": true,
@@ -19,7 +19,7 @@
           "weapon": "sword",
           "skillLevel": 10,
           "category": "fighter",
-          "image" :  "./assets/images/jaime.jpg"
+          "image" :  "assets/img/jaime.jpg"
       },
       {
           "isAlive": true,
@@ -30,7 +30,7 @@
           "weapon": "dragons",
           "skillLevel": 8,
           "category": "fighter",
-          "image" : "./assets/images/daenerys.jpg"
+          "image" : "/assets/img/daenerys.jpg"
       },
       {
           "isAlive": true,
@@ -38,7 +38,7 @@
           "name": "Tyrion",
           "family": "Lannister",
           "age": 40,
-          "image": "./assets/images/tyrion.jpg",
+          "image": "assets/img/tyrion.jpg",
           "adviseTo": {
               "isAlive": true,
               "message": "I hit first and ask later",
@@ -46,7 +46,7 @@
               "family": "Targaryen",
               "age": 18,
               "weapon": "dragons",
-              "image": "./assets/images/daenerys.jpg",
+              "image": "./assets/img/daenerys.jpg",
               "skillLevel": 8
           },
           "category": "adviser"
@@ -58,7 +58,7 @@
           "family": "Nieve",
           "age": 35,
           "serveLevel": 5,
-          "image": "./assets/images/bronn.jpg",
+          "image": "./assets/img/bronn.jpg",
           "servesTo": {
               "isAlive": true,
               "message": "I hit first and ask later",
