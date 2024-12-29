@@ -6,9 +6,13 @@ function createCard(character){
     const template = /*html*/ ` 
     <li class="character col">
         <div class="card character__card">
-          <img src="${character.image}" alt="${character.name} y ${character.family}" class="character__picture card-img-top" />
+          <img src="${character.image} " alt="${character.name} y ${
+        character.family
+    }" class="character__picture card-img-top" />
           <div class="card-body">
-            <h2 class="character__name card-title h4">"${character.name} y ${character.family}"</h2>
+            <h2 class="character__name card-title h4">"${character.name} y ${
+        character.family
+    }"</h2>
             <div class="character__info">
               <ul class="list-unstyled">
                 <li>Edad: ${character.age} años</li>
@@ -21,13 +25,29 @@ function createCard(character){
             </div>
             <div class="character__overlay">
               <ul class="list-unstyled">
-                ${character.reignYears ? `<li>Años de reinado: ${character.reignYears}</li>` : ''}
+                ${
+                    character.reignYears
+                        ? `<li>Años de reinado: ${character.reignYears}</li>`
+                        : ''
+                }
                 ${character.weapon ? `<li>Arma: ${character.weapon}</li>` : ''}
-                ${character.skillLevel ? `<li>Destreza: ${character.skillLevel}</li>` : ''}
+                ${
+                    character.skillLevel
+                        ? `<li>Destreza: ${character.skillLevel}</li>`
+                        : ''
+                }
                 <li>Mensaje: ${character.message}</li>
-                <li>Peloteo: X</li>
-                ${character.adviseTo ? ` <li>Asesora a: ${character.adviseTo.name} </li>` : ''}
-                ${character.servesTo ? ` <li>Sirve a: ${character.servesTo.name} </li>` : ''}
+                
+                ${
+                    character.adviseTo
+                        ? ` <li>Asesora a: ${character.adviseTo.name} </li>`
+                        : ''
+                }
+                ${
+                    character.servesTo
+                        ? ` <li>Sirve a: ${character.servesTo.name} </li>`
+                        : ''
+                }
               </ul>
               <div class="character__actions">
                 <button class="character__action btn">habla</button>
@@ -60,3 +80,4 @@ async function getCharacters(){
 }
 
 getCharacters();
+
