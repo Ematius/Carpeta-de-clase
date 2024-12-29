@@ -7,7 +7,7 @@
           "family": "Baratheon",
           "age": 18,
           "reignYears": 1,
-          "category": "king",
+          "category": "king 👑",
           "image": "img/joffrey.jpg"
       },
       {
@@ -16,7 +16,7 @@
           "name": "Jamie",
           "family": "Lannister",
           "age": 33,
-          "weapon": "sword",
+          "weapon": "sword 🗡",
           "skillLevel": 10,
           "category": "fighter",
           "image" :  "img/jaime.jpg"
@@ -29,7 +29,7 @@
           "age": 18,
           "weapon": "dragons",
           "skillLevel": 8,
-          "category": "fighter",
+          "category": "fighter 🗡",
           "image" : "img/daenerys.jpg"
       },
       {
@@ -49,7 +49,7 @@
               "image": "img/daenerys.jpg",
               "skillLevel": 8
           },
-          "category": "adviser"
+          "category": "adviser 🎓"
       },
       {
           "isAlive": true,
@@ -69,7 +69,7 @@
               "image": "img/jaime.jpg",
               "skillLevel": 10
           },
-          "category": "squire"
+          "category": "squire 🛡"
       }
   ]
 }

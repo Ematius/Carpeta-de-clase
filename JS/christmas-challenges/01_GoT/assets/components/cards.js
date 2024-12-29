@@ -6,9 +6,8 @@ function createCard(character){
     const template = /*html*/ ` 
     <li class="character col">
         <div class="card character__card">
-          <img src="${character.image} " alt="${character.name} y ${
-        character.family
-    }" class="character__picture card-img-top" />
+          <img src="${character.image} " alt="${character.name} y ${character.family}" 
+                                        class="character__picture card-img-top" />
           <div class="card-body">
             <h2 class="character__name card-title h4">"${character.name} y ${
         character.family
@@ -25,6 +24,7 @@ function createCard(character){
             </div>
             <div class="character__overlay">
               <ul class="list-unstyled">
+              ${character.category ? `<li>Categoría: ${character.category}</li>` : ''}
                 ${
                     character.reignYears
                         ? `<li>Años de reinado: ${character.reignYears}</li>`
