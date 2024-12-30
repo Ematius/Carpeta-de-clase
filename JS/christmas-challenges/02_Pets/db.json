@@ -1,0 +1,77 @@
+
+{
+  "pets": [
+    {
+      "id": 1,
+      "name": "Rex",
+      "species": "Perro",
+      "isAdopted": true,
+      "owner": "Juan Pérez"
+    },
+    {
+      "id": 2,
+      "name": "Mimi",
+      "species": "Gato",
+      "isAdopted": false,
+      "owner": null
+    },
+    {
+      "id": 3,
+      "name": "Luna",
+      "species": "Conejo",
+      "isAdopted": true,
+      "owner": "Sofía López"
+    },
+    {
+      "id": 4,
+      "name": "Tommy",
+      "species": "Tortuga",
+      "isAdopted": false,
+      "owner": null
+    },
+    {
+      "id": 5,
+      "name": "Rocky",
+      "species": "Perro",
+      "isAdopted": true,
+      "owner": "Carlos Ruiz"
+    },
+    {
+      "id": 6,
+      "name": "Coco",
+      "species": "Gato",
+      "isAdopted": false,
+      "owner": null
+    },
+    {
+      "id": 7,
+      "name": "Lola",
+      "species": "Hamster",
+      "isAdopted": true,
+      "owner": "María García"
+    },
+    {
+      "id": 8,
+      "name": "Max",
+      "species": "Perro",
+      "isAdopted": true,
+      "owner": "Pedro Ramírez"
+    },
+    {
+      "id": 9,
+      "name": "Nala",
+      "species": "Gato",
+      "isAdopted": false,
+      "owner": null
+    },
+    {
+      "id": 10,
+      "name": "Bobby",
+      "species": "Pez",
+      "isAdopted": true,
+      "owner": "Ana Fernández"
+    }
+  ]
+}
+
+    
