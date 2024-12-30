@@ -61,10 +61,21 @@ function createCard(character){
     `;
     const element = render(selector, position, template);
 
-   
+    const cardElement = document.querySelector(`${selector} li`);
 
-    return element
+    const actionButtons = cardElement.querySelectorAll('.character__action');
+    const imageElement = cardElement.querySelector('.character__picture');
+
+    const comunicacionesElement = document.querySelector('.comunicaciones');
    
+    actionButtons.forEach((button) =>
+        button.addEventListener('click', (event) => {
+            if (event.target.textContent === 'muere') {
+                imageElement.classList.toggle('flipped');
+            } 
+        })
+    ); 
+    return element; 
 }
 
 async function getCharacters(){

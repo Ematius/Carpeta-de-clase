@@ -21,6 +21,10 @@ body {
   object-position: top;
   height: 200px;
 }
+.character__picture.flipped {
+  transform: rotateX(180deg);
+  transition: transform 1s;
+}
 .character__card {
   position: relative;
   border: none;
