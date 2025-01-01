@@ -44,12 +44,15 @@ img {
 .info {
   font-size: 0.9em;
 }
-.series-list {
+.series-list,
+.series-list--watched {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 .serie {
+  display: flex;
+  flex-wrap: wrap;
   width: 24%;
   height: 422px;
   margin-bottom: 20px;

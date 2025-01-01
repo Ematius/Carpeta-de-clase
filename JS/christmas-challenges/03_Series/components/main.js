@@ -5,6 +5,7 @@ function watchedSerie(serie){
     const selector = '.series-list';
     const position = 'beforeend';
     const template = /*html*/ `
+    
         <li class="serie">
                 <img class="serie__poster"
                     src="${serie.poster}"
@@ -44,9 +45,14 @@ function watchedSerie(serie){
                 icon.classList.add('far');
             }
         });
-    }
-    
+            const watchedList = document.querySelector('.series-watched');
+            watchedList.appendChild(serieElement);       
+    }  
 
+    const erase = serieElement.querySelector('.icon--delete');
+    erase.addEventListener('click', () => {
+        serieElement.remove();
+    });
 }
 
 
