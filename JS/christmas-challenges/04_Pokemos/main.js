@@ -14,33 +14,35 @@ function createPokemonCard(pokemon){
 }
 
 
+
 let offset = 0;
 const limit = 10;
 
-const buttonNext = document.querySelector('.next');
-const buttonPrevious = document.querySelector('.previous');
-buttonNext.addEventListener('click', () => {   
-    const pokemonContainer = document.querySelector('.main-container');
-    pokemonContainer.innerHTML = '';
-    offset += limit;
-    getPokemon(offset, limit); 
-});
-buttonPrevious.addEventListener('click', () => {
-    const pokemonContainer = document.querySelector('.main-container');
-    pokemonContainer.innerHTML = '';
-    offset -= limit;
-    getPokemon(offset, limit);
-});
-
-
+function buttons(){
+    const buttonNext = document.querySelector('.next');
+    const buttonPrevious = document.querySelector('.previous');
+    buttonNext.addEventListener('click', () => {
+        const pokemonContainer = document.querySelector('.main-container');
+        pokemonContainer.innerHTML = '';
+        offset += limit;
+        getPokemon(offset, limit);
+        
+    });
+    buttonPrevious.addEventListener('click', () => {
+        const pokemonContainer = document.querySelector('.main-container');
+        pokemonContainer.innerHTML = '';
+        offset -= limit;
+        getPokemon(offset, limit);
+    });
+}
 
 async function getPokemon(offset, limit){
     try{
-        const response = await fetch(
-            `https://pokeapi.co/api/v2/pokemon?offset= ${offset}&limit=${limit}`
-        );
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?offset= ${offset}&limit=${limit}`);
         const data = await response.json();
         const pokemonList = data.results;
+        buttons();
+        
         pokemonList.forEach(async (pokemon) => {
             try {
                 const pokemonDetails = await fetch(pokemon.url);
@@ -51,11 +53,18 @@ async function getPokemon(offset, limit){
             } catch (error) {
                 console.error('Error fetching Pokémon imagen:', error);
             }
+        
+        
+
         });
     }
     catch(error){
         console.error('Error:', error);
     }
 }
+
+
+
+
 
 getPokemon();
