@@ -2,7 +2,7 @@
 
 export function createMainList(pet){
     const body = document.querySelector('body');
-    const main = document.createElement('section');
+    const main = document.createElement('main');
 
     main.innerHTML = `
         <div>
@@ -16,6 +16,10 @@ export function createMainList(pet){
         </div>
     `;
     body.appendChild(main);
+
+
+
+    
 }
 
 

@@ -5,8 +5,6 @@ import {createFooter} from './components/footer.js';
 
 
 
-
-
 createHeader();
 createMainList();
 createFooter();

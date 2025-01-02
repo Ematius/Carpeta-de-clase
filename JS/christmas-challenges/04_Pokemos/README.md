@@ -4,6 +4,22 @@
 
 ## Pokémon
 
+TODO
+HTMLS
+    main que contenga principal
+            h1
+            buttons (next-previus-details(te lleva a details.html))
+            footer
+    details contiene lo que llevaria a los detalles del pokemon seleccionado
+
+scripts
+    main que tenga imports de Render
+    que recoja la informacion de la api
+    que la inserte en el html main
+    un addlistener para los buttons previus-next que mueve a la lista de apis
+    otro addlistener que te mueva a el otro html details
+
+
 Esta aplicación tendrá inicialmente 2 páginas:
 
 - Todos los pokémon
