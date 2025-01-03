@@ -3,9 +3,10 @@ import {render} from './components/render.js';
 function createPokemonCard(pokemon){
     const selector = '.main-container';
     const position = 'beforeend';
+    const capitalize = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
     const template = /*html*/ `
         <div class="pokemon-card">
-            <h2>${pokemon.name}</h2>
+            <h2>${capitalize}</h2>
             <img src="${pokemon.imagenUrl}" alt="imagen de ${pokemon.name}" class="pokemon-image">
             <button class="pokemon-button">details</button>
         </div>
@@ -16,7 +17,7 @@ function createPokemonCard(pokemon){
 
 
 let offset = 0;
-const limit = 10;
+
 
 function buttons(){
     const buttonNext = document.querySelector('.next');
@@ -24,24 +25,26 @@ function buttons(){
     buttonNext.addEventListener('click', () => {
         const pokemonContainer = document.querySelector('.main-container');
         pokemonContainer.innerHTML = '';
-        offset += limit;
-        getPokemon(offset, limit);
+        offset += 10;
+        getPokemon(offset);
+        console.log(offset);
         
     });
     buttonPrevious.addEventListener('click', () => {
         const pokemonContainer = document.querySelector('.main-container');
         pokemonContainer.innerHTML = '';
-        offset -= limit;
-        getPokemon(offset, limit);
+        offset -= 10;
+        getPokemon(offset);
+        console.log(offset);
     });
 }
 
-async function getPokemon(offset, limit){
+async function getPokemon(offset){
     try{
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?offset= ${offset}&limit=${limit}`);
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset} &limit=10`);
         const data = await response.json();
         const pokemonList = data.results;
-        buttons();
+       
         
         pokemonList.forEach(async (pokemon) => {
             try {
@@ -66,5 +69,5 @@ async function getPokemon(offset, limit){
 
 
 
-
+ buttons();
 getPokemon();
