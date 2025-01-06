@@ -1,0 +1,59 @@
+:root {
+  --delay-medium: 1s;
+  --delay-long: 2s;
+  --animation: motion 5s infinite;
+  --gradient: linear-gradient(
+    45deg,
+    hsl(240deg 100% 20%) 0%,
+    hsl(281deg 100% 21%) 8%,
+    hsl(304deg 100% 23%) 17%,
+    hsl(319deg 100% 30%) 25%,
+    hsl(329deg 100% 36%) 33%,
+    hsl(336deg 100% 41%) 42%,
+    hsl(346deg 83% 51%) 50%,
+    hsl(3deg 95% 61%) 58%,
+    hsl(17deg 100% 59%) 67%,
+    hsl(30deg 100% 55%) 75%,
+    hsl(40deg 100% 50%) 83%,
+    hsl(48deg 100% 50%) 92%,
+    hsl(55deg 100% 50%) 100%
+  );
+}
+
+.object {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-image: var(--gradient);
+  animation: var(--animation)
+}
+
+.object1 {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-image: var(--gradient);
+  animation: var(--animation);
+  animation-delay: var(--delay-medium);
+}
+
+.object2 {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-image: var(--gradient);
+  animation: var(--animation);
+  animation-delay: var(--delay-long);
+}
+
+@keyframes motion {
+  25% {
+    transform: translateX(250px);
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}

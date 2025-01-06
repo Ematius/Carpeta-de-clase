@@ -1,0 +1,89 @@
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 2fr 3fr 4fr;
+
+}
+p {
+    padding: 1rem
+}
+.grid{
+    p:nth-of-type(3){
+        background-color: rgba(255, 228, 196, 0.596);
+        grid-column: 1/3;
+        grid-row: 1/4;
+    }
+
+    p:nth-of-type(2){
+        background-color: rgba(233, 9, 9, 0.555);
+        grid-column: -1/-3;
+        grid-row: 1/3;
+        z-index: 1;
+    }
+
+    /*posicionamientos relativo*/
+    p:nth-of-type(5){
+    color: crimson;
+    background-color: rgba(252, 214, 2, 0.575);
+    /*Es para posicionar en capas sin perder su posición*/
+    position:relative;
+    top: -100px;
+    left: -80px;        
+    }
+    /*posicionamiento absoluto*/
+    p:nth-of-type(8){
+        color: chocolate;
+        /*Pierde su plaza y el resto se acomoda y ocupa la posición 0, 0*/
+        position: absolute;
+        background-color: rgba(222, 184, 135, 0.74);
+    }
+
+}
+
+section.columns{
+    .text-wrapper {
+      columns: 3;   
+      column-gap: 2rem;
+      column-rule: 1px solid gray;
+     
+    }
+    p{
+        margin-block-start: 0;
+        margin-block-end: 1.5rem;
+        padding-block:0;
+        
+    }
+    p:nth-of-type(2n){
+        background-color: rgba(233, 9, 196, 0.555);
+        
+    }
+    p:nth-of-type(3n){
+        background-color: rgba(76, 9, 233, 0.555);
+        
+    }
+    p:nth-of-type(5n){
+        background-color: rgba(39, 158, 69, 0.555);
+        
+    }
+    
+}
+
+section.icon{
+    /*aqui ocupa el espacio que tenia al principio*/
+    min-height: 3rem;
+    border: 1px solid;
+    border-radius: 3rem;
+    /*al no estar en grid, se ha quedado donde estaba pero en una capa superior y el resto se recolara como si no estuviera*/
+    p:first-child{
+        color: brown;
+        background-color: rgba(127, 255, 212, 0.507) ;
+        border-radius: 50%;
+        position: absolute;
+        /*aquí lo muevo borrar parar comprobar lo anterior*/
+        /*El problema es que moverlo en absoluto es dificil moverlo por toda la pagina*/
+        top:0;
+        right: 0;
+    }
+
+
+}

@@ -1,0 +1,95 @@
+:root{
+    --primary-color: #d4a373;
+    --secondary-color: #FAEDCD;
+    --tertiary-color: #FEFAE0;
+    --cuartean-color: #E9EDC9;
+    --quintan-color: #CCD5AE;
+}
+
+
+
+
+body{
+    background-color: antiquewhite;
+    font-family: cursive;
+    width: 100vw;
+    height: 100vh;
+}
+header,
+footer{
+    background-color: var(--primary-color);
+    padding: 2rem 2rem;
+    text-align: center;
+}
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        img{   
+            width: 25vw;
+        }
+    
+}
+.main-container,
+.pokemon-details{
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.pokemon-card{
+    background-color: var(--tertiary-color);
+    width: 20vw;
+    border-radius: 2rem;
+    margin: 0.5rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    box-shadow: 1rem 1rem 0.5rem rgba(0, 0, 0, 0.663);
+        img{
+            width: 70%;
+            
+        }
+        button{
+            border:none;
+            background-color: var(--primary-color);
+            border-radius: 1rem;
+            padding: 0.2rem 1rem;
+            margin: 0.5rem;
+            cursor: pointer;
+            color: var(--tertiary-color);
+        }
+}
+
+.pagination{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+        button{
+            border:none;
+            background-color: var(--primary-color);
+            border-radius: 1rem;
+            padding: 0.5rem;
+            margin: 0.5rem;
+            color: antiquewhite;
+            cursor: pointer;
+        }
+    
+}
+.pokemon-details-card{
+    background-color: var(--tertiary-color);
+    width: 30vw;
+    border-radius: 2rem;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    box-shadow: 1rem 1rem 0.5rem rgba(0, 0, 0, 0.663);
+        img{
+            width: 60%; 
+        }
+}

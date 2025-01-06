@@ -1,0 +1,72 @@
+:root {
+    /*paleta de colores*/
+    --color-primary: black;
+    --color-secondary: bisque;
+    --back-color-primary:bisque;
+    --back-color-secondary: rgb(165, 42, 42);
+    --back-color-accent: rgb(86,45,45);
+
+    --font-primary: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+    /* --size-x-large: calc(var(--size-large) + 0.2rem);
+    --size-large: calc(var(--size-medium) + 0.2rem);
+    --size-medium: calc(var(--size-normal) + 0.2rem);
+    --size-normal: 1rem;
+    --size-small: calc(var(--size-normal) - 0.2rem);
+    --size-x-small: calc(var(--size-small) - 0.2rem); */
+
+    --escala: 1.2;
+    --base: 1rem;
+
+    --size-x-large: calc(var(--size-large) * var(--escala));
+    --size-large: calc(var(--size-medium) * var(--escala));
+    --size-medium: calc(var(--size-normal) * var(--escala));
+    --size-normal: var(--base);
+    --size-small: calc(var(--size-normal) / var(--escala));
+    --size-x-small: calc(var(--size-small) / var(--escala));
+ 
+}
+body{
+    line-height: 1.5;
+}
+
+h1,
+.h1 {
+    font-size: var(--size-x-large);
+    line-height: 1;
+}
+h2,
+.h2 {
+    font-size: var(--size-large);
+}
+h3,
+.h3 {
+    font-size: var(--size-medium);
+}
+h4,
+.h4 {
+    font-size: var(--size-normal);
+}
+h5,
+.h5 {
+    font-size: var(--size-small);
+}
+h6,
+.h6 {
+    font-size: var(--size-x-small);
+}
+
+.escala2{
+
+  --escala: 1.5;
+    --base: 1rem;
+
+    --size-x-large: calc(var(--size-large) * var(--escala));
+    --size-large: calc(var(--size-medium) * var(--escala));
+    --size-medium: calc(var(--size-normal) * var(--escala));
+    --size-normal: var(--base);
+    --size-small: calc(var(--size-normal) / var(--escala));
+    --size-x-small: calc(var(--size-small) / var(--escala));
+ 
+}
+

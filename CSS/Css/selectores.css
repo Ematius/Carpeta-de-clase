@@ -1,0 +1,52 @@
+/* Selectores*/
+/* Selectores de etiqueta*/
+
+h1,
+h2,
+h3{
+    color:brown
+}
+/* Selector de ID: Esto no se usa, es mejor no usarlo porque tiene una gran especificad y luego cuesta cambios, usar ID para CSS lo menos posible.*/
+#p1 {color: violet;}
+
+/* Selector de class:
+Se puede aprovechar para darle valor semántico y es lo que usaremos.
+Se encadena en el html con espacio*/
+.interesting{
+    color: blue;
+    background-color: antiquewhite;
+}
+.sports{
+    font-size: 1.2rem;
+}
+
+/*Selectores de atributo, es una variedad de selector de clases*/
+[title]{
+    color: chocolate;
+}
+[title="Párrafo muy interesante"]{
+    color: chocolate;
+    background-color: rgb(175, 234, 236);
+}
+/*Reconvertir un id si hiciera falta*/
+
+[id='p2']{
+    color: rgb(50, 182, 182);
+}
+
+/*Selectores Combinados, están condenados a desaparecer:
+Descendiente: espacio
+Hijo: >
+Hermano ~
+Hermano adyacente + */
+/* article p// article ~ p// article + p*/
+
+/* CSS puede trabajar con anidamientos y es como se trabaja ahora */
+
+article{
+    background-color: rgb(109, 161, 159);
+    & > p{
+        color: aliceblue;
+
+    }
+}

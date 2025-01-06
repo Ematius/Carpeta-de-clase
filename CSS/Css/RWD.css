@@ -1,0 +1,259 @@
+/*desktop first o diseño descendiente*/
+/*
+body{
+    margin: 2rem;
+    background-color: bisque;
+}
+
+@media(max-width: 800px){
+    body{
+        background-color: blueviolet;
+    }
+}
+
+@media(max-width: 400px){
+    body{
+        background-color: chocolate;
+    }
+}
+
+/*mobile first o diseño ascendente*/
+/*
+body{
+    margin: 2rem;
+    background-color: bisque;
+}
+
+@media(min-width: 400px){
+    body{
+        background-color: blueviolet;
+    }
+}
+
+@media(min-width: 800px){
+    body{
+        background-color: chocolate;
+    }
+}
+*/
+/*Esta es la forma moderna*/
+/* Desktop first o diseño descendente
+
+body {
+    margin: 2rem;
+    background-color: bisque;
+}
+
+@media (max-width: 800px) {
+    body {
+        background-color: brown;
+    }
+}
+
+@media (max-width: 400px) {
+    body {
+        background-color: chocolate;
+    }
+} */
+
+/* Mobile first o diseño ascendente */
+
+:root {
+    --font-base: 'Roboto', sans-serif;
+    --font-tech: 'Chakra Petch', sans-serif;
+}
+
+body {
+    font-family: var(--font-base);
+    background-color: bisque;
+    min-width: 260px; /*Esto crea un scrol bajo es como que no se ha hecho mas pequeño*/
+
+    /* @media (width > 400px) {
+        background-color: brown;
+    } */
+}
+.container {
+    max-width: 900px;
+    margin: 0 auto ;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-tech);
+}
+
+img {
+    margin: 0.5rem auto;
+}
+
+nav {
+    max-width: 900px;
+    margin: 0 auto;
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+header {
+    background-color: brown;
+
+    color: bisque;
+    padding: 2rem;
+    nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+    [class*='fa-'] {
+        font-size: 2rem;
+    }
+}
+.menu-tablet {
+    display: none;
+}
+
+footer {
+    background-color: brown;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding-block-end: 1rem; /*Repasar esto*/
+    padding-block-start: 1rem;
+    width: 100%; /*una forma de centrarlo ya que ocuparia todo y seria el centro*/
+}
+
+main {
+    margin: 1.9rem 2rem;
+    h1,
+    h2,
+    h3 {
+        font-family: var(--font-tech);
+        padding-block: 1rem;
+    }
+}
+
+.separator {
+    width: 50%;
+    margin: 2.5rem auto;
+    border: 1px solid brown;
+}
+
+dialog {
+    border: none;
+    background-color: bisque;
+    top: 7rem;
+    left: 0;
+    width: 50%;
+    padding: 1rem;
+    .close {
+        text-align: right;
+        button {
+            padding: 0.2rem;
+        }
+    }
+}
+
+/* @media (min-width: 400px) { */
+
+@media (width > 470px) {
+    body {
+        background-color: bisque;
+    }
+    header{
+        .menu-tablet {
+            display: initial;
+        }
+    
+        .menu-mobile {
+            display: none;
+        }
+        .menu-header {
+            text-align: center;
+            flex-basis: 100%;
+    
+            a {
+                /*como es un elemento inline se convierto en block*/
+                display: block;
+                padding-block-end: 1rem;
+            }
+        }
+
+    }
+}
+@media (width > 500px) {
+    header nav ul {
+        justify-content: center;
+        column-gap: 1.5rem;
+    }
+}
+
+@media (width > 650px) {
+    header nav ul {
+        align-items: baseline;
+    }
+    /* .main-img{
+        float: right;
+        padding-inline-start: 1rem ;
+        width: 50%
+    } */
+     .intro-wrapper{
+        display: flex;
+       
+
+        gap: 1rem;
+
+        & > div{
+            flex-basis: 40%;
+        }
+        & > img{
+            flex-basis: 60%;
+        }
+
+     }
+
+    .menu-header {
+        flex-basis: initial;
+        padding-block-end: 0rem;
+        margin-inline-end: auto;
+
+        a {
+            display: initial;
+        }
+    }
+    body {
+        background-color: rgb(250, 206, 153);
+    }
+    .articles-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+    button{
+        appearance: none;
+        padding: 0.5rem 1rem ;
+        background-color: brown;
+        border: none;
+        margin-block: 1rem;
+        color: bisque;
+    }
+    .final-content{
+        columns:2;
+        
+    }
+}
+
+/* @media (min-width: 800px) { */
+@media (width > 850px) {
+}
+
