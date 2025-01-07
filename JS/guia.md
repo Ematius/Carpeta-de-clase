@@ -554,3 +554,14 @@ Montar un server node
 en una carpeta nueva
 packjson npm init -y
 
+## modelos de renderizado
+
+ - creación manual
+ - SSG(static site generation) - se genera en HTml en el servidor en tiempo compilación (ahead of time)
+ - teoría, hay dos momentos de ejecutar el código JS, tiempo de compilación SSG, genera en el sitio, aqui ya esta el html
+ - SSR(Server side rendering) subo al servidor un programa que haga la ejecucion del codigo JS, en respuesta a la llamada(just in time)
+ - CSR (client side rendering) se hace desde el cliente es lo que hacemos, nuestros componenetes
+ - Repasar para que quede claro porque se va a escuchar mucho mas adelante(just in time)
+
+
+una landingpage es una pagina principal rapida impactante

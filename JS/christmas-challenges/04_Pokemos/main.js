@@ -1,9 +1,10 @@
-import {render} from './components/render.js';
+import { render } from './components/render.js';
 
-function createPokemonCard(pokemon){
+function createPokemonCard(pokemon) {
     const selector = '.main-container';
     const position = 'beforeend';
-    const capitalize = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
+    const capitalize =
+        pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
     const pokemonImg = pokemon.sprites.other['official-artwork'].front_default;
     const template = /*html*/ `
         <div class="pokemon-card">
@@ -13,56 +14,54 @@ function createPokemonCard(pokemon){
         </div>
     `;
     render(selector, position, template);
-    
-    const button = document.querySelector(`.button-details[data-id="${pokemon.id}"]`);
-   
-        button.addEventListener('click', () => {
-            window.location.href = `./components/details.html?id=${pokemon.id}`;
-        });
+
+    const button = document.querySelector(
+        `.button-details[data-id="${pokemon.id}"]`
+    );
+
+    button.addEventListener('click', () => {
+        window.location.href = `./components/details.html?id=${pokemon.id}`;
+    });
 }
 
-    
+function buttonsNextPrevious() {
+    let offset = 0;
 
-
-
-
-
-let offset = 0;
-
-
-function buttonsNextPrevious(){
-    
     const buttonNext = document.querySelector('.next');
     const buttonPrevious = document.querySelector('.previous');
+
+    function checkOffset() {
+        if (offset === 0) {
+            buttonPrevious.setAttribute('disabled', '');
+        } else {
+            buttonPrevious.removeAttribute('disabled')
+        }
+    }
+    checkOffset()
+
     buttonNext.addEventListener('click', () => {
         const pokemonContainer = document.querySelector('.main-container');
         pokemonContainer.innerHTML = '';
         offset += 10;
+        checkOffset()
+        console.log(offset);
         getPokemon(offset);
-        
-        
     });
-
-     if (offset === 0) {
-         buttonPrevious.setAttribute('disabled', '');
-     }
     buttonPrevious.addEventListener('click', () => {
         const pokemonContainer = document.querySelector('.main-container');
         pokemonContainer.innerHTML = '';
         offset -= 10;
+        checkOffset()
+        console.log(offset);
         getPokemon(offset);
-        
     });
-        if (offset === 0) {
-            buttonPrevious.setAttribute('disabled', '');
-        }
-
-
 }
 
-async function getPokemon(offset){
-    try{
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset} &limit=10`);
+async function getPokemon(offset) {
+    try {
+        const response = await fetch(
+            `https://pokeapi.co/api/v2/pokemon?offset=${offset} &limit=10`
+        );
         const data = await response.json();
         const pokemonList = data.results;
         pokemonList.forEach(async (pokemon) => {
@@ -70,21 +69,15 @@ async function getPokemon(offset){
                 const pokemonDetails = await fetch(pokemon.url);
                 const pokemonData = await pokemonDetails.json();
                 createPokemonCard(pokemonData);
-            }   catch (error) {
+            } catch (error) {
                 console.error('Error fetching pokemonData:', error);
-                }
+            }
         });
-    }
-    catch(error){
+    } catch (error) {
         console.error('Error fetching url:', error);
     }
 }
 
-
-
-
 buttonsNextPrevious();
 getPokemon();
-
-
 
