@@ -42,6 +42,10 @@ function buttonsNextPrevious(){
         
         
     });
+
+     if (offset === 0) {
+         buttonPrevious.setAttribute('disabled', '');
+     }
     buttonPrevious.addEventListener('click', () => {
         const pokemonContainer = document.querySelector('.main-container');
         pokemonContainer.innerHTML = '';
@@ -49,6 +53,11 @@ function buttonsNextPrevious(){
         getPokemon(offset);
         
     });
+        if (offset === 0) {
+            buttonPrevious.setAttribute('disabled', '');
+        }
+
+
 }
 
 async function getPokemon(offset){
@@ -76,3 +85,6 @@ async function getPokemon(offset){
 
 buttonsNextPrevious();
 getPokemon();
+
+
+
