@@ -1,8 +1,14 @@
+import {render} from './render.js'
 
 export function createFooter() {
-    const footer = document.createElement('footer');
-    footer.innerHTML = /*html*/ `
+    
+    const selector = 'body'
+    const position = 'afterend'
+    
+    
+    const template = /*html*/ `
+    <footer>
         <p>&copy; 2023 Pet App</p>
-    `;
-    document.body.appendChild(footer);
+    </footer>`;
+    render(selector, position,template);
 }

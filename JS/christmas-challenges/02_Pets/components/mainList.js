@@ -1,8 +1,10 @@
-
+import {render} from './render.js'
 
 function createMainList(pet){
-    const main = document.createElement('main');
-    main.innerHTML = /*html*/`
+    const selector = 'body';
+    const position = 'beforeend'
+    const template = /*html*/ `
+    <main>
         <div>
             <ul class="lista-mascotas">
             <li>Nombre: ${pet.name} </li>
@@ -11,22 +13,27 @@ function createMainList(pet){
             <li>Dueño/a adoptiva/o: ${pet.owner} </li>
             </ul>
         </div>
+    </main>    
     `;
-    document.body.appendChild(main);
+    render(selector, position, template)
 }
 
 
 export function addPetForm() {
-    const form = document.createElement('form');
-    form.innerHTML = /*html*/ `
+    const selector = 'body';
+    const position = 'beforeend';
+    const template = /*html*/ `
+    <form class='form'>
         <div class= form-div>
         <input type="text" class="pet-name" placeholder="Nombre" required>
         <input type="text" class="pet-species" placeholder="Raza" required>
         <input type="text" class="pet-owner" placeholder="Dueño/a adoptiva/o" required>
         <button type="submit">Añadir Mascota</button>
         </div>
+    </form>    
     `;
-    document.body.appendChild(form);
+    render(selector, position, template);
+    const form = document.querySelector('form');
 
     form.addEventListener('submit', (event) => {
         event.preventDefault();

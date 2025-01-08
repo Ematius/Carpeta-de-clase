@@ -1,12 +1,16 @@
+import {render} from './render.js'
 
 export function createHeader (){
-    const header = document.createElement('header');
-    header.innerHTML = /*html*/ `
+    const selector = 'body';
+    const position = 'afterbegin'
+    
+    const template = /*html*/ `
+        <header>
             <h1>
                 Orfanato de mascotas
             </h1>
+        </header>    
         `;
-    document.body.appendChild(header);
-
+    render(selector, position, template);
 }
 

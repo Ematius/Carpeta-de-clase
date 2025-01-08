@@ -59,3 +59,12 @@ input{
     margin-left: 30rem;
     margin-top: 2rem;
 }
+.form{
+    position: fixed;
+    bottom: 3.2rem;
+    left: 30rem;
+    width: 100%;
+    
+    padding: 1rem;
+    
+}
