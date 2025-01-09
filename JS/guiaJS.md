@@ -18,7 +18,7 @@ Si el recurso no esta el servidor devuelve un 404 not found.
 
 #### SSR WEB Dinámica
 
-Otra opción, con una app, es decir una aplicación que cuando alguien le pide un recurso ella lo fabrica. SSR, el recurso se renderiza en el servidor http.
+Otra opción, con una app, es decir una aplicación que cuando alguien le pide un recurso ella lo fabrica. SSR, el recurso se rendering en el servidor http.
 
 Aquí se hizo el app server, que creaba recursos para que el server lo enviase, y aquí podías escribirlo en el lenguaje que quisieras.
 El problema es que no es muy bueno gestionando datos, asi que se le hizo otra capa de software que fue las bases de datos DBMS.
@@ -558,10 +558,24 @@ packjson npm init -y
 
  - creación manual
  - SSG(static site generation) - se genera en HTml en el servidor en tiempo compilación (ahead of time)
- - teoría, hay dos momentos de ejecutar el código JS, tiempo de compilación SSG, genera en el sitio, aqui ya esta el html
- - SSR(Server side rendering) subo al servidor un programa que haga la ejecucion del codigo JS, en respuesta a la llamada(just in time)
- - CSR (client side rendering) se hace desde el cliente es lo que hacemos, nuestros componenetes
+ - teoría, hay dos momentos de ejecutar el código JS, tiempo de compilación SSG, genera en el sitio, aquí ya esta el html
+ - SSR(Server side rendering) subo al servidor un programa que haga la ejecución del código JS, en respuesta a la llamada(just in time)
+ - CSR (client side rendering) se hace desde el cliente es lo que hacemos, nuestros componentes
  - Repasar para que quede claro porque se va a escuchar mucho mas adelante(just in time)
 
 
-una landingpage es una pagina principal rapida impactante
+una landingPage es una pagina principal rápida impactante
+
+pregunta de examen
+
+cuando clonas un proyecto lo primero que haces es npm instal porque necesitas incluir modules, las dependencias, el package.json
+version en el package.json "capuchón es la fidelidad , y el ultimo numero son cambios mínimos, el segundo es mayor peso y el primero version cambios importantes
+
+diferencia en un frameworks es si esta en referencia es todo lo que hay pero se usa poco, por eso mirar los guía
+
+modelo top level repasar
+
+### Accesibilidad
+
+alt, pointer, title, hover, agrandamiento, el idioma
+hay que complementar el color con elementos extra
