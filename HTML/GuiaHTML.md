@@ -17,7 +17,7 @@ Modifica el contenido de palabras o textos
 
 ## Etiquetas más importantes
 
-html head meta favicon body 
+html head meta favicon body
 
 ## Conceptos-validación
 
@@ -28,7 +28,7 @@ WPO
 
 ## Repaso
 
-Sectioning (etiquetas de sección): 
+Sectioning (etiquetas de sección):
     - Se centra en una información
     - Heading(implícito) es decir los títulos h1 , h2, h3 marca los diferentes conjuntos de información, es importante porque son encabezan un apartado
     - Etiquetas semánticas (explicitas)
@@ -95,8 +95,6 @@ Mirar siempre en *MozillaMDN*
   srcset con tres imágenes de diferentes formatos de resolución para asi poder darle a cada dispositivo el tamaño que puede aguantar como máximo 
   picture
   sorce
-
-
 
   tener presente el uso de can I use
 
@@ -204,4 +202,4 @@ main no es obligatorio pero si usar cuando se va mantener el header y el footer,
 dialog> es un mensaje, un pop
 
 ul>li{Aquí el contenido que quieres si es repetido}
- en los ul solo puede haber li, ni párrafo 
+ en los ul solo puede haber li, ni párrafo

@@ -16,15 +16,15 @@ REPETIMOS <https://caniuse.com/> para ver que navegadores lo soportan
 
 Inline: Lo menos posible y muy justificado, da muchos problemas y es ineficiente.
 
-Etiqueta style> en el head: Es mejor opcion que inline pero deja mucho chorro de código y mayor inconveniente es que no te permite compartir entre varias paginas
+Etiqueta style> en el head: Es mejor opción que inline pero deja mucho chorro de código y mayor inconveniente es que no te permite compartir entre varias paginas
 
 Ficheros CSS: Los usados, con link>
 
-el orden es importante en referencia a etiqueta style o fichero, si esta ultimo en el head del html es el que tiene preferencia
+el orden es importante en referencia a etiqueta style o fichero,por la cascada de css
 
 conceptos claves!!
 
-- Conocer bin los selectores
+- Conocer bien los selectores
 - el atributo id va en el html y el selector correspondiente en el css es una # ejemplo: <id=p1 con #p1>
 - conceptos básicos conceptuales que hay que tener bien claros:
   - Selectores
@@ -47,22 +47,22 @@ border-line: es el console.log() de css
 dar padding a un elemento inline, arriba y abajo, por ejemplo un a> hay que convertirlo en block, display: block
 
 pseudo-elementos
-psuedo-clases
+pseudo-clases
 
-psuedoelementos[::] psuedoclase[:]
-:: (aparece la lista de psuedo clases y elementos)
-Se llama psuedo elemento porque no debes escribirlo hace un poco de funcion
+pseudoelementos[::] pseudoclase[:]
+:: (aparece la lista de pseudo clases y elementos)
+Se llama pseudo elemento porque no debes escribirlo hace un poco de función
 
 ::first-line{text-decoration:underline}
 
-las pseudocalses [:]
+las pseudoclases[:]
 
 :hover por ejemplo
 :active
 :checked
 :disabled
 :focus
-los que el espacio que opcupan los nth-...
+los que el espacio que ocupan los nth-...
 
 [tittle=
 p
@@ -82,10 +82,11 @@ color:brown
 
 /_Selector de class:
 Se puede aprovechar para darle valor semántico y es lo que usaremos.
-Se encadena en el html con espacio_/
+Se encadena en el html con espacio_/  
+
 .interesting{
-color: blue;
-background-color: antiquewhite;
+  color: blue;
+  background-color: antiquewhite;
 }
 .sports{
 font-size: 1.2rem;
@@ -162,13 +163,13 @@ gana el que mayor especificidad tiene, por ejemplo
 ser un ID#
 ser una class=
 ser una etiqueta párrafo, section etc...
-ganaria el id
+ganaría el id
 luego clase
 y luego la etiqueta
 
 [id=...] Esto seria igual que # lo único que no tiene tanta especificad y se respetaría el orden en comparación de una class
 
-en inline es lo que mayor especificacion tiene
+en inline es lo que mayor especificación tiene
 
 p{color: ... !important} Usar lo menos posible, porque es importante pisa todo, y habría que usar doble !important
 
@@ -178,7 +179,7 @@ si eres h1,2,3 descendiente de section o article, ... ayuda a escribir menos
 
 pero el "has" es algo nuevo,
 
-cascada dominar herencia, especifidad y orden, ya se puede saber lo que esta pasando y como, MUY IMPORTANTE!!
+cascada dominar herencia, especificad y orden, ya se puede saber lo que esta pasando y como, MUY IMPORTANTE!!
 
 ::before{
 Siempre debe contener content: lo que sea
@@ -269,7 +270,7 @@ tricks
 separar sin hacer bloques es poner un margin-left: auto
 
 grid
-muchas veces hay que convinarlos
+muchas veces hay que combinarlos
 
 display: grid
 
@@ -304,7 +305,7 @@ un mismo trabajo que puede ser para móvil o para pc.
 Es el trabajo con @, hay muchas, las directivas:
 @import url; para importar un css sin hacerlo desde link
 
-La idea es es hacer que sea ordenado por medidas, de mayor a pequeño cuando es diseño desktop
+La idea es hacer que sea ordenado por medidas, de mayor a pequeño cuando es diseño desktop
 y de diseño descendente cuando es de móvil, y la forma nueva es width > xxx
 
 se hace mobile first porque es mas fácil hacer primero lo pequeño (mas fácil hacerlo en pequeño) y luego pasar a lo grande.
@@ -317,7 +318,7 @@ los puntos de corte de cambio de tamaño se hace a ojo, se va aumentando hasta q
 
 li\*5>a>{Item $}
 
-podemos scar algo de pantalla con un posición relative o absoluta y sacarlo de la pantalla y hacer una transición de entrada-- con visibility: hidden--display:none, seria otra opción.
+podemos sacar algo de pantalla con un posición relative o absoluta y sacarlo de la pantalla y hacer una transición de entrada-- con visibility: hidden--display:none, seria otra opción.
 
 auto coge todos los espacios disponibles
 
