@@ -1,3 +1,4 @@
+
 # Etiquetas de sección
 
 Es importante para google, ayuda al SEO.
@@ -37,7 +38,9 @@ Sectioning (etiquetas de sección):
   
 ## Secciones y roles ()
 
-ARIA cree paralelamente con las etiquetas semánticas y se que quedan ambas.
+ARIA:
+una parte de WAI, Accesibilidad Rica Internet Aplicaciones(ARIA) y convertirlas accesibles. Aria seria una semántica añadida para interfaces mas complejos, sean mas especificas.
+
 
 las etiquetas(Semánticos) contienen un rol implícito de ARIA porque tiene mas roles
 
@@ -203,3 +206,15 @@ dialog> es un mensaje, un pop
 
 ul>li{Aquí el contenido que quieres si es repetido}
  en los ul solo puede haber li, ni párrafo
+```
+<figure>
+La etiqueta <figure> se utiliza para agrupar contenido autónomo, como imágenes, gráficos, diagramas, fragmentos de código, etc. Este contenido es independiente del flujo principal del documento, y suele tener una relación con el contenido principal.
+
+<figcaption>
+La etiqueta <figcaption> se utiliza para agregar una leyenda o descripción al contenido dentro de <figure>. Debe ser el primer o último hijo de <figure>.
+```
+>Explicación
+<figure: Agrupa el contenido (en este caso, una imagen).
+<img: La imagen que se incluye dentro del figure>.
+<figcaption: Proporciona una leyenda o descripción para la imagen.
+Estas etiquetas mejoran la accesibilidad y el SEO de tus páginas web al proporcionar una estructura clara y descripciones significativas para el contenido multimedia.

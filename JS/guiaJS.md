@@ -106,7 +106,7 @@ LOs 4 puntos clave para hacer una web, creo que seria innerHTML, query, lo que e
 tres funciones claves que se deben conocer, foreach, map filter
 las tres reciben un callBack para hacer algo, es lo que se llama funciones de orden superior de un array, las tres tienen un bucle, es decir que para cada una ejecuta el callBack que tu le hayan dado, las tres te van a pasar el item, el i y el array por si quieres hacer algo. Estas nunca modifican el array original
 ```javascript
-.map((item, i, array) => {}) te devuelve algo,
+.map((item, i, array) => {}) te devuelve algo.
 .filter((item, i, array) => {})
 .forEach((item, i, array) => {}) No devuelve nada, es un bucle for
 
@@ -377,18 +377,6 @@ type Task = {
 
 ```
 
-## Ejercicios
-
-construirse un toggle con css y javascript
-hacer un ejercicio con apis, con tarjetas por ejemplo
-chismas-challenger hay 5, 1,2,3, son de una tarde y el 4 de un fin de y el ultimo es intenso :
-
-1: convertir en componentes y que salgan uno al lado de otro, leer instrucciones// buscar componentes después de hecho
-2: vació 100%, con componentes funciones, header etc...
-3:hacer dinámico las estrellas, el blanco no valorado, esta sin ver y al valorar pasa a estar en la lista de vistos, una valoración(independizar un componentes para las estrellas)
-4: pagina lista pagina lista, tiene que ir paginado o scroll infinito, listado incluye nombre de Pokemon y su imagen, poder ver en que numero de Pokemon del total, llegar a la pagina EXtra añadir tercera pagina mis Pokemon ponerle un seleccionar los que te gustan y que se guarden ahi. Pista promise.all().promise...
-5:Ya esta hecho pero se puede hacer sin mirar. Acceder a una lista de perros con un perro random, añadir lo que queramos
-
 ## Repasar
 
 - `toggle
@@ -511,14 +499,21 @@ getCharacters()
 
 
 async function getCharacters1() {
-  const URL = "https://dragonball-api.com/api/characters?limit=10";
-  const response = await fetch(URL);
-  let data = "";
+  try{
+      const URL = await "https://dragonball-api.com/api/characters?limit=10";
+      const response = await fetch(URL);
+      let data = "";
 
-  if (response.ok) {
-    data = await response.json();
-  } else {
-    console.log(response.status, response.statusText);
+      if (response.ok) {
+        data = await response.json();
+      } else {
+        console.log(response.status, response.statusText);
+      }
+  }
+  
+  catch{
+    console.error(Error: 'No se accede a la url')
+    
   }
   return data.items;
 }

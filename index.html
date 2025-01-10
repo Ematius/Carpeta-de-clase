@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen Práctico</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* Variables CSS */
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #FF5722;
+}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Flexbox para el nav */
+header nav ul {
+    display: flex;
+    background: var(--primary-color);
+    padding: 10px;
+    list-style: none;
+    justify-content: space-around;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Grid para secciones */
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Estilos para el formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+button {
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Pseudoclase hover para el botón */
+button:hover {
+    background: darkorange;
+}
+
+/* Animación */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+section {
+    animation: fadeIn 1s ease-in-out;
+}
+</style>
+
+<body>
+    <!-- Encabezado con navegación semántica -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#about">Sobre Nosotros</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <section id="home">
+            <h1>Bienvenido a Nuestro Sitio</h1>
+            <p>Este es un sitio de ejemplo para repasar conceptos de HTML, CSS y JavaScript.</p>
+        </section>
+
+        <section id="about">
+            <h2>Sobre Nosotros</h2>
+            <p>Somos una empresa dedicada a la enseñanza de programación.</p>
+        </section>
+
+        <section id="contact">
+            <h2>Contacto</h2>
+            <form id="contactForm">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <script >
+    // Módulo JavaScript para manejar la lógica del formulario y eventos
+        export function setupForm() {
+            const form = document.getElementById('contactForm');
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+
+                try {
+                    const response = await fetch('/submit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    if (response.ok) {
+                        alert('Formulario enviado con éxito.');
+                    } else {
+                        alert('Error al enviar el formulario.');
+                    }
+                } catch (error) {
+                    alert('Error al enviar el formulario.');
+                }
+            });
+        }
+
+        // Render function to log a message
+        export function render() {
+            console.log('Página cargada y lista.');
+        }
+
+        // Event listener for DOMContentLoaded to initialize functions
+        document.addEventListener('DOMContentLoaded', () => {
+            setupForm();
+            render();
+        });
+    
+    </script>
+</body>
+
+</html>
