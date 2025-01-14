@@ -7,9 +7,21 @@ function createPokemonCard(pokemon) {
         pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
     const pokemonImg = pokemon.sprites.other['official-artwork'].front_default;
     const template = /*html*/ `
-        <div class="pokemon-card">
-            <h2>${capitalize}</h2>
-            <button class="button-details"  data-id="${pokemon.id}">details</button>
+    
+     <div class="flip-container">
+            <div class="card">
+                <div class="front">
+                    <h2>${capitalize}</h2>
+                    <button class="button-details"  data-id="${pokemon.id}">details</button>
+                </div>
+                <div class="back">
+                    <p>B</p>
+                </div>
+            </div>
+        </div>;
+    
+    
+    <div class="pokemon-card">
             <article class="pokemon-images">
                 <img src="${pokemonImg}" alt="imagen de ${pokemon.name}" class="pokemon-image">
                 <img src="${pokemonImg}" alt="imagen de ${pokemon.name}" class="pokemon-image">
@@ -84,4 +96,10 @@ async function getPokemon(offset) {
 
 buttonsNextPrevious();
 getPokemon();
+
+// ---flip-container---
+
+
+
+
 
