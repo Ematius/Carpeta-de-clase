@@ -7,24 +7,38 @@ function createPokemonCard(pokemon) {
         pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
     const pokemonImg = pokemon.sprites.other['official-artwork'].front_default;
     const template = /*html*/ `
-    
      <div class="flip-container">
             <div class="card">
                 <div class="front">
                     <h2>${capitalize}</h2>
-                    <button class="button-details"  data-id="${pokemon.id}">details</button>
+                    <button class="button-details"  data-id="${
+                        pokemon.id
+                    }">details</button>
                 </div>
                 <div class="back">
-                    <p>B</p>
+                    <h2>${capitalize}</h2>
+                <img src="${
+                    pokemon.sprites.other['official-artwork'].front_default
+                    }" alt="imagen de ${pokemon.name}" class="pokemon-image">
+                    <p>Height: ${pokemon.height}</p>
+                    <p>Weight: ${pokemon.weight}</p>
+                    <p>Base Experience: ${pokemon.base_experience}</p>
+                    <p>Types: ${pokemon.types
+                        .map((typeInfo) => typeInfo.type.name)
+                        .join(', ')}</p>
                 </div>
             </div>
-        </div>;
+        </div>
     
     
     <div class="pokemon-card">
             <article class="pokemon-images">
-                <img src="${pokemonImg}" alt="imagen de ${pokemon.name}" class="pokemon-image">
-                <img src="${pokemonImg}" alt="imagen de ${pokemon.name}" class="pokemon-image">
+                <img src="${pokemonImg}" alt="imagen de ${
+        pokemon.name
+    }" class="pokemon-image">
+                <img src="${pokemonImg}" alt="imagen de ${
+        pokemon.name
+    }" class="pokemon-image">
             </article>
             
         </div>
@@ -98,6 +112,7 @@ buttonsNextPrevious();
 getPokemon();
 
 // ---flip-container---
+
 
 
 

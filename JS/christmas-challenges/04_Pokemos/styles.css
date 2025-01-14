@@ -167,10 +167,13 @@ button {
 
 .flip-container {
   background-color: transparent;
-  width: 300px;
+  width: 10px;
   height: 300px;
   border: 1px solid #ccc;
-  perspective: 1000px; 
+  perspective: 500px; 
+  
+  
+  
 }
 .card {
   position: relative;
@@ -196,11 +199,11 @@ button {
 }
 .front {
 
-  color: #fff;
+  color: black;
   
 }
 .back {
   
-  color: white;
+  color:black;
   transform: rotateY(180deg);
 }
