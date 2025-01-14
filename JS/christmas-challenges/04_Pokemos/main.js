@@ -9,8 +9,12 @@ function createPokemonCard(pokemon) {
     const template = /*html*/ `
         <div class="pokemon-card">
             <h2>${capitalize}</h2>
-            <img src="${pokemonImg}" alt="imagen de ${pokemon.name}" class="pokemon-image">
             <button class="button-details"  data-id="${pokemon.id}">details</button>
+            <article class="pokemon-images">
+                <img src="${pokemonImg}" alt="imagen de ${pokemon.name}" class="pokemon-image">
+                <img src="${pokemonImg}" alt="imagen de ${pokemon.name}" class="pokemon-image">
+            </article>
+            
         </div>
     `;
     render(selector, position, template);

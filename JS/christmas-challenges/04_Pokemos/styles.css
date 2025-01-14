@@ -38,7 +38,7 @@ h1{
     align-items: center;
     flex-wrap: wrap;
 }
-.pokemon-card{
+.pokemon-card {
     background-color: var(--tertiary-color);
     width: 20vw;
     border-radius: 2rem;
@@ -49,19 +49,83 @@ h1{
     text-align: center;
     align-items: center;
     box-shadow: 1rem 1rem 0.5rem rgba(0, 0, 0, 0.663);
-        img{
-            width: 70%;
-            
-        }
-        button{
-            border:none;
-            background-color: var(--primary-color);
-            border-radius: 1rem;
-            padding: 0.2rem 1rem;
-            margin: 0.5rem;
-            cursor: pointer;
-            color: var(--tertiary-color);
-        }
+}
+
+.pokemon-card img {
+    width: 90%;
+
+}
+
+.pokemon-images {
+    position: relative;
+    transition: all 0.3s ease;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pokemon-images img:first-child {
+    
+    border-radius: 4px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.pokemon-images img:last-child {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    transform: translateY(40%);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+.pokemon-images:hover{
+                transform: 
+                    perspective(250px)
+                    rotateX(10deg)
+                    translateY(-5%)
+                    translateZ(0);
+}
+
+.pokemon-images::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+        to bottom,
+        transparent 10%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgba(0, 0, 0, 0)
+    );
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+.pokemon-images:hover::before {
+    opacity: 1;
+}
+
+.pokemon-images:hover img:last-child {
+    opacity: 1;
+    transform: translateY(10%);
+}
+
+
+
+
+
+button {
+    border: none;
+    background-color: var(--primary-color);
+    border-radius: 1rem;
+    padding: 0.2rem 1rem;
+    margin: 0.5rem;
+    cursor: pointer;
+    color: var(--tertiary-color);
 }
 
 .pagination{

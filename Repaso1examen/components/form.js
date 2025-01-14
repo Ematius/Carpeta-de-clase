@@ -9,29 +9,30 @@ export function form(){
             <fieldset>
                 <legend>Personaje personalizado</legend>
                 <label> Nombre:
-                    <input type="text" placeholder="nombre" required>
+                    <input  class= "names" type="text" placeholder="nombre" required>
                 </label>
                 <label>Fuerza Ki base:
-                    <input type="number" placeholder="Tu Fuerza Ki" required>
+                    <input class="ki" type="number" placeholder="Tu Fuerza Ki" required>
                 </label>
                 <label>Planeta de origen:
-                    <input type="text" placeholder="Tu planeta" required>
+                    <input class="planeta" type="text" placeholder="Tu planeta" required>
                 </label>
+                <button type="submit">crear personaje</button>
             </fieldset>
             <fieldset>
                 <legend>Datos personales</legend>
                 <label for="nombre">Nombre:</label>
-                <input type="text" name="nombre" id="nombre" required>
+                <input type="text" name="nombre" id="nombre" >
                 <label for="apellidos">Apellidos:</label>
-                <input type="text" name="apellidos" id="apellidos" required>
+                <input type="text" name="apellidos" id="apellidos" >
                 <label for="email">Email:</label>
-                <input type="email" name="email" id="email" required>
+                <input type="email" name="email" id="email" >
                 <label for="telefono">Teléfono:</label>
-                <input type="tel" name="telefono" id="telefono" required>
+                <input type="tel" name="telefono" id="telefono" >
                 <label for="fecha">Fecha de nacimiento:</label>
-                <input type="date" name="fecha" id="fecha" required>
+                <input type="date" name="fecha" id="fecha" >
                 <label for="sexo">Sexo:</label>
-                <select name="sexo" id="sexo" required>
+                <select name="sexo" id="sexo" >
                     <option value="hombre">Hombre</option>
                     <option value="mujer">Mujer</option>
                     <option value="otro">Otro</option>
@@ -53,8 +54,39 @@ export function form(){
             </fieldset>
 
         </form>
+        <div class="personalCharacter"></div>
     </main>
 `;
         
     render(selector, position, template);
 }
+
+export function createCharacter(){
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const names = document.querySelector('.names').value;
+        const ki = document.querySelector('.ki').value;
+        const originPlanet = document.querySelector('.planeta').value;
+        const character = {
+            names,
+            ki,
+            originPlanet,
+        };
+        console.log(character);
+
+        const selector = '.personalCharacter';
+        const position = 'beforeend';
+        const template = /*html*/ `
+        <article class="character">
+            <h2>Nombre: ${character.names}</h2>
+            <p>Fuerza Ki: ${character.ki}</p>
+            <p>Planeta de origen: ${character.originPlanet}</p>
+        </article>`;
+        render(selector, position, template);
+        form.reset();
+    });
+
+}
+

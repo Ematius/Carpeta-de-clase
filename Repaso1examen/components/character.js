@@ -19,7 +19,7 @@ export function character(character){
     render(selector, position, template);
 }
 
-async function getCharacters(){
+export async function getCharacters(){
     try{
         const response = await fetch("https://dragonball-api.com/api/characters?limit=10");
         const data = await response.json();
