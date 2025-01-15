@@ -11,7 +11,8 @@ function createPokemonCard(pokemon) {
      <div class="flip-container">
             <div class="card">
                 <div class="front">
-                    <h2>${capitalize}(Detalles)</h2>
+                    <h2>${capitalize}</h2>
+                    <p>(Detalles)</p>
                 </div>
                 <div class="back">
                     <p>Height: ${pokemon.height}</p>
@@ -27,9 +28,9 @@ function createPokemonCard(pokemon) {
     
     <div class="pokemon-card">
             <article class="pokemon-images">
-                <img src="${pokemonImg}" alt="imagen de ${
-        pokemon.name
-    }" class="pokemon-image">
+                <img src="/JS/christmas-challenges/04_Pokemos/img/pokeball_no_background_fixed.png" alt="imagen de ${
+                    pokemon.name
+                }" class="pokemon-image">
                 <img src="${pokemonImg}" alt="imagen de ${
         pokemon.name
     }" class="pokemon-image">
@@ -41,13 +42,7 @@ function createPokemonCard(pokemon) {
 
     render(selector, position, template);
 
-    const button = document.querySelector(
-        `.button-details[data-id="${pokemon.id}"]`
-    );
-
-    button.addEventListener('click', () => {
-        window.location.href = `./components/details.html?id=${pokemon.id}`;
-    });
+    
 }
 
 function buttonsNextPrevious() {
@@ -59,8 +54,10 @@ function buttonsNextPrevious() {
     function checkOffset() {
         if (offset === 0) {
             buttonPrevious.setAttribute('disabled', '');
+            buttonPrevious.classList.add('hidden');
         } else {
             buttonPrevious.removeAttribute('disabled');
+            buttonPrevious.classList.remove('hidden');
         }
     }
     checkOffset();
@@ -107,5 +104,5 @@ async function getPokemon(offset) {
 buttonsNextPrevious();
 getPokemon();
 
-// ---flip-container---
+
 
