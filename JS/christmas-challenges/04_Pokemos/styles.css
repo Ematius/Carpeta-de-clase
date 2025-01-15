@@ -36,6 +36,7 @@ header{
 .main-container{
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(150px, 1fr));
+    gap: 1rem;
     
 }
 .pokemon-details{
@@ -57,6 +58,7 @@ header{
     text-align: center;
     align-items: center;
     box-shadow: 1rem 1rem .5rem rgba(0, 0, 0, 0.663);
+    
 }
 
 .pokemon-card img {
@@ -170,12 +172,14 @@ button {
 
 
 .flip-container {
+    padding-top: 1rem;
   background-color: transparent;
   margin: auto;
   width: 10px;
   height: 30px;
   perspective: 1000px; 
   display: flex;
+  color: black;
  
   
 }
@@ -192,22 +196,31 @@ button {
 }
 
 .front, .back {
-  position: absolute;
+
+  position: fixed;
   width: 10px;
   height: 10px;
   backface-visibility: hidden;
   display: flex;
+  flex-direction: column;
+  
   align-items: center;
   justify-content: center;
   font-size: .5rem;
+  color: black;
 }
 .front {
 
-  color: black;
+  
   
 }
 .back {
-  
-  color:black;
   transform: rotateY(180deg);
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  left: 70px;
+  gap: 0.3rem;
+  
+
 }

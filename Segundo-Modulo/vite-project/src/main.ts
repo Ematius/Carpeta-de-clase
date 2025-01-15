@@ -1,6 +1,8 @@
 console.log('Loaded main.ts');
+import { add } from './services';
 
-let x = 1;
+console.log(add(1, 2));
+
+const x = 1;
 console.log(x);
-let y = 2;
 

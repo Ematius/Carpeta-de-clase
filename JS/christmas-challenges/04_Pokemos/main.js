@@ -11,13 +11,9 @@ function createPokemonCard(pokemon) {
      <div class="flip-container">
             <div class="card">
                 <div class="front">
-                    <h2>${capitalize}Detallates</h2>
+                    <h2>${capitalize}(Detalles)</h2>
                 </div>
                 <div class="back">
-                    <h2>${capitalize}</h2>
-                <img src="${
-                    pokemon.sprites.other['official-artwork'].front_default
-                }" alt="imagen de ${pokemon.name}" class="pokemon-image">
                     <p>Height: ${pokemon.height}</p>
                     <p>Weight: ${pokemon.weight}</p>
                     <p>Base Experience: ${pokemon.base_experience}</p>
