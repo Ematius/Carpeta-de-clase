@@ -18,3 +18,10 @@ comprobar si no es nulo:
     Má segura: if(xxx){
                     Se ejecuta, si es lo esperado si, si no es no
                 }
+### linter
+
+Es una herramienta que te ayuda a tener menos errores, tu estableces tus reglas
+
+## detalles
+
+crear el .editconfig, a la hora de trabajar para compartir mismo sistema de trabajo.

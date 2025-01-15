@@ -11,16 +11,13 @@ function createPokemonCard(pokemon) {
      <div class="flip-container">
             <div class="card">
                 <div class="front">
-                    <h2>${capitalize}</h2>
-                    <button class="button-details"  data-id="${
-                        pokemon.id
-                    }">details</button>
+                    <h2>${capitalize}Detallates</h2>
                 </div>
                 <div class="back">
                     <h2>${capitalize}</h2>
                 <img src="${
                     pokemon.sprites.other['official-artwork'].front_default
-                    }" alt="imagen de ${pokemon.name}" class="pokemon-image">
+                }" alt="imagen de ${pokemon.name}" class="pokemon-image">
                     <p>Height: ${pokemon.height}</p>
                     <p>Weight: ${pokemon.weight}</p>
                     <p>Base Experience: ${pokemon.base_experience}</p>
@@ -45,7 +42,7 @@ function createPokemonCard(pokemon) {
         </div>
     </div>
     `;
-   
+
     render(selector, position, template);
 
     const button = document.querySelector(
@@ -67,16 +64,16 @@ function buttonsNextPrevious() {
         if (offset === 0) {
             buttonPrevious.setAttribute('disabled', '');
         } else {
-            buttonPrevious.removeAttribute('disabled')
+            buttonPrevious.removeAttribute('disabled');
         }
     }
-    checkOffset()
+    checkOffset();
 
     buttonNext.addEventListener('click', () => {
         const pokemonContainer = document.querySelector('.main-container');
         pokemonContainer.innerHTML = '';
         offset += 10;
-        checkOffset()
+        checkOffset();
         console.log(offset);
         getPokemon(offset);
     });
@@ -84,7 +81,7 @@ function buttonsNextPrevious() {
         const pokemonContainer = document.querySelector('.main-container');
         pokemonContainer.innerHTML = '';
         offset -= 10;
-        checkOffset()
+        checkOffset();
         console.log(offset);
         getPokemon(offset);
     });
@@ -115,9 +112,4 @@ buttonsNextPrevious();
 getPokemon();
 
 // ---flip-container---
-
-
-
-
-
 
