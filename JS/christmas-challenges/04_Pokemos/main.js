@@ -7,6 +7,7 @@ function createPokemonCard(pokemon) {
         pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
     const pokemonImg = pokemon.sprites.other['official-artwork'].front_default;
     const template = /*html*/ `
+    <div class="pokemon-card-total">
      <div class="flip-container">
             <div class="card">
                 <div class="front">
@@ -42,7 +43,9 @@ function createPokemonCard(pokemon) {
             </article>
             
         </div>
+    </div>
     `;
+   
     render(selector, position, template);
 
     const button = document.querySelector(

@@ -33,7 +33,11 @@ h1{
 header{
     background-image: url(img/image.png);
 }
-.main-container,
+.main-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(150px, 1fr));
+    
+}
 .pokemon-details{
     background-color: var(--secondary-color);
     display: flex;
@@ -167,10 +171,13 @@ button {
 
 .flip-container {
   background-color: transparent;
+  margin: auto;
   width: 10px;
-  height: 300px;
-  border: 1px solid #ccc;
-  perspective: 500px; 
+  height: 30px;
+  perspective: 1000px; 
+  display: flex;
+  
+  
   
   
   
