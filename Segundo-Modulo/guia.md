@@ -50,6 +50,6 @@ test('add function with 1 and 2 should return 3', () => {
 
 npm run xx -- -v (-- es para notificar la información que quieres ver, es decir en vez de la version de node que es npm seria la de xx)
 
-https://github.com/coreybutler/nvm-windows/releases
+<https://github.com/coreybutler/nvm-windows/releases>
 
 cd direction node archivo.ts
