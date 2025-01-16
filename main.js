@@ -1,8 +1,6 @@
 import { render } from './components/render.js';
 
-
-
-function createPokemonCard(pokemon){
+function createPokemonCard(pokemon) {
     const selector = '.main-container';
     const position = 'beforeend';
     const capitalize =

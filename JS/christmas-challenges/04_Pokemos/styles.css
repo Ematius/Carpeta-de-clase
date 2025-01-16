@@ -26,6 +26,7 @@ header {
     display: flex;
     justify-content: center;
     background-image: url('/JS/christmas-challenges/04_Pokemos/img/image.png');
+    background-size: cover;
     padding: 7rem;
     text-align: center;
     width: 100%;
