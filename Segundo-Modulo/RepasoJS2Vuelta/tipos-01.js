@@ -1,0 +1,171 @@
+
+{ // 1. Tipos de datos primitivos
+
+console.log(22, typeof 22);
+console.log(22n, typeof 22n);
+console.log('pepe', typeof 'pepe');
+console.log(undefined, typeof undefined);
+console.log(null, typeof null);
+console.log({}, typeof {});
+console.log(Symbol(), typeof Symbol());
+
+}
+
+{// variables
+
+    'use strict'; // Modo estricto
+
+    // foo = 'bar'; // Error en modo estricto
+    //console.log(foo);
+
+    //declaración y asignación
+
+    let foo; // declaración
+    foo = 'bar'; // asignación
+    console.log({foo});
+
+    let baz = 22; // Inicialización = declaración y asignación
+    console.log({baz});
+
+    const pi = 3.14; // constante (no se puede reasignar)
+    console.log({pi});
+
+
+
+}
+
+{
+    //Variables con let -> reasignarse y opcionalmente cambia de tipo
+
+    // El tipo depende de el valor
+    // El tipo cambia dinámicamente
+    let foo;
+    console.log({foo});
+    foo = 22;
+    console.log({foo});
+
+
+
+}
+
+console.log('-------------------');
+
+let number = 22;
+let string = 'Hola';
+let n1 = string;
+console.log(n1);
+string= 'Adios';
+console.log(n1);
+
+let rare = 0 / 0;
+
+
+console.log(isNaN(rare));
+console.log(Number.isNaN(rare));
+
+//con conversión de tipos se puede convertir a número
+console.log(isNaN('pepe'));
+// Sin conversión de tipos
+console.log(Number.isNaN('pepe'));
+
+// rare = 1n/0n; error Division by zero
+ rare = 1 / 0; 
+
+ console.log(rare);
+ console.log(Infinity + -Infinity);
+
+ //casting y coercion
+ //coercion -> implícita
+ //casting -> explicita
+
+ //siempre hace coercion
+ let n = 2;
+ let x = '22';
+
+ let resultado = '22' / 2;
+    console.log(resultado);
+    resultado = n + x;
+    console.log(resultado);
+    console.log(n * x);
+    console.log(n - x);
+    console.log(n / x);
+    console.log(n % x);
+    console.log(n + x);
+
+    console.log(x + n);
+    console.log(x - n);
+    console.log(x / n);
+    console.log(x % n);
+
+    console.log(0.5 + 0.1 == 0.6 - true);
+    console.log(0.5 + 0.1 == 0.6 - false); 
+
+//truly, falsy, nullish
+
+
+// x = n ? a : b; hago boolean n y si es true a si es false b
+
+//falsy Estos 8 odiosos son los únicos valores que dan false, los demás dan true
+console.log(Boolean(false));
+console.log(Boolean(0));
+console.log(Boolean(-0));
+console.log(Boolean(0n));
+console.log(Boolean(''));
+console.log(Boolean(NaN));
+//nullish (??)
+console.log(Boolean(undefined));
+console.log(Boolean(null));
+{
+    // Coerción de primitivos a objetos
+    //Los string no tienen propiedades pero por la coerción se puede usar
+    let foo = 'Pepe';
+    console.log(foo.toLowerCase()); // se produce una coerción de string a objeto y es lo que llamamos métodos de string
+    // hay algunas funciones que a su vez soy funciones, como toLowerCase(foo) que se puede introducir un argumento,
+    // en js no todos no son objetos pero tienen un coercion a objeto para poder usar métodos de string
+}
+{
+//funciones {}
+function foo() {console.log('Hola');}//declaración
+const baz = function () {};//asignación de expresión funcional (anónima) la variable tiene un nombre pero la función no
+const arrowFoo = () => {};// asignación de función flecha (anónima)
+
+//Ejecuto, invoco, run la función
+//operación de invocación
+foo();
+baz();
+arrowFoo();
+
+
+// son objetos de primera clase
+
+foo.title = 'funcion declarada' 
+baz.title = 'funcion por asignacion'
+
+
+
+}
+
+
+
+{
+    //objetos
+    const baz = new Object(); //no se usa normalmente
+    const foo = {}
+
+    //los objetos en si son propiedades de elementos 
+    //los objetos tienen propiedades que son variables internas
+
+    //objeto literal(JSON): Douglas Crockford
+    const persona = {
+        nombre: 'Pepe',
+        edad: 22,
+        isAlumno: true,
+        direccion: {
+            calle: 'Pez',
+            numero: '22',
+            ciudad: 'Madrid'
+        },
+       
+    }
+
+}

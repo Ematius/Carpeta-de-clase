@@ -194,4 +194,8 @@ tres terminales, test, lectura y
     Añado el script en package.json
       (nombre es con el que se ejecuta) "build":  "tsc -w"
 
-    y ahora es un buen momento para hacer un initial commit    
+    y ahora es un buen momento para hacer un initial commit  
+
+
+
+
