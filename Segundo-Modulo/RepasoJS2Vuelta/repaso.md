@@ -218,3 +218,40 @@ Ver los errores como coger excepciones, los throw new Error('blablabla')
 
 haces un error.js  y exportas tus const ZeroNoDivision = new Error('') personalizado para poder verlos
 
+
+
+
+## objetos nativos (Solo apunto los que no me se pero mirar documentación del repo)
+//no mutan el original
+
+Object.keys(el objeto)
+Object.values(object)
+Object.entries(object)
+
+        const user = {
+            name:'pepe',
+            age: 22,
+            job: 'developer'
+        }
+
+        console.log(Object.keys(user)) /devuelve un array con las propiedades, con el nombre
+
+        console.log(Object.values(user)) // devuelve un array con los valores de las propiedades
+
+        console.log(Object.entries(user)) // devuelve un array de arrays en donde cada array tiene la propiedad y el valor, 0[name, 'pepe']
+
+        si se tiene un array con estas características se puede usar Object.fromEntries(array) para convertirlo en un objeto.
+
+        const user = {
+            name:'pepe',
+            age: 22,
+            job: 'developer'
+            address: {
+                street: {street,city...}Aquí mantendría el objeto sin transformarlo 
+            }
+        }
+
+
+typeof[] // object,  para js todo es object menos las funciones
+
+repasar .prop

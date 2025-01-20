@@ -188,3 +188,15 @@ console.log(0==NaN);
 
 console.log({} !=[]);
 
+
+const data = [1,2,3]
+
+const data2 = data;
+
+const data3 = data2.concat([48, 49, 50]);
+
+console.log(data3);
+
+
+console.log(data.map(item => item * 2));
+
