@@ -169,3 +169,22 @@ baz.title = 'funcion por asignacion'
     }
 
 }
+let f = 22;
+
+console.log(f.toFixed(2));
+
+console.log(f);
+
+
+console.log(0==[]);
+console.log(0==false);
+console.log(0=='0');
+console.log(0==0);
+console.log(0==true);
+console.log(0=={});
+console.log(0==null);
+console.log(0==undefined);
+console.log(0==NaN);
+
+console.log({} !=[]);
+
