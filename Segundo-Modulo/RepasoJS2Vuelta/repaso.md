@@ -1,4 +1,4 @@
-# Repaso  de JS
+# Repaso  de JS y profundización de nuevos conceptos
 
 tipos de datos:
     son 8
@@ -255,3 +255,285 @@ Object.entries(object)
 typeof[] // object,  para js todo es object menos las funciones
 
 repasar .prop
+
+
+las propiedades de orden superior son las que reciben un dato y ejecutan una función, normalmente iteran ya el array
+
+map()
+console.log(data.map(item => item * 2));
+filter()
+find()
+
+void es solo para las funciones, no para el métodos o propiedades
+
+.reduce(x,c) 
+
+intentar hacer fibonachi con .reduce
+
+## objeto Array
+
+Array.isArray(value)
+Array.of(value)
+Array.from(value)
+
+crear un objeto new Set() y esto tiene sus propios métodos
+
+## Clases no instanciables
+
+Las que no se puede poner new delante
+
+## JSON (serialization)
+
+tiene dos parseIn
+
+stringify
+
+https://justjavascript.com/
+
+## Paradigmas de la programación (JS)
+
+Javascript es multi funcional,.
+
+scope: es un espacio de memoria propio, con un orden y un limite, al que se tiene acceso y en un orden.
+
+Paradigma en la programación:
+    Paradigma funcional: 
+
+        La función devuelve un valor, como seria undefined, y como no existe ninguna función en JS que no devuelva nada, devolvería undefined pero en vez de eso por homogenización de todos los lenguajes, devuelve void que seria "vació"
+
+        Las funciones son de primera clase
+
+        Tipos de funciones:
+            //declaración
+            
+                function makeFoo(param){
+                    console.log(param)
+                } la salida es void 
+                const foo = makeFoo('hola') la salida seria undefined
+
+                void es remetiéndose a funciones, y undefined a datos.
+                
+            //asignación
+            const makeBaz = function (param){console.log(param)} //expresión funcional anónima, funcional expression 
+
+            //arrow function 
+            const makeBazArrow = (param) => console.log('hola')
+                //ejemplo de uso
+                    [1,2,3].map(item => item**2)
+
+            //Arrow y objetos
+
+            const makeObject = (name, age) =>{return {name:name, age: age}} // aquí estaríamos obligados a usar () para no poner return y {}
+            const makeObject = (name, age) => ({name, age}) // este sería los atajos porque si la variable es igual que lo que devuelve, no hace falta volver a ponerlo
+
+            const fooX = makeObject() undefined
+            const fooX = makeObject [object...]
+
+            En el scoop de dentro a afuera se puede leer pero es una mala practica. es decir los datos locales se pueden coger, desde dentro pero no al revés.
+
+
+            //hosting no tiene sentido al usar módulos, es el hecho de que js hace dos pasadas, la primera para ver que tiene y la siguiente ejecuta.
+
+
+    
+        Primer paradigma aparece cuando se escribía todo lineal, y apareció la idea de hacer funciones y organizar el código en bloques y que puedan ser invocados de alguna forma, poder darle un orden.
+        El paradigma funcional, programación imperativa
+
+        JS esta muy orientado al paradigma de objetos.
+
+    El paradigma de orientación a objetos:
+
+
+        si tengo un objeto, y creo una función que cambie valores o propiedades del objeto, como javascript funciona por asignación de valores, cambiaría los valores de todos pero una forma es enviar una copia o recogerlo con una copia, es decir con un des-estructuración o copia con los tres puntos. 
+            const modifyObjet = ({...obj})
+        
+
+        //Des-estructuración
+
+            const createArray = () => [1,2]
+            const createObject = () => ({name:'Pepe', age:23})
+
+            //const data = createArray()
+            //const first = data[0]    
+            //const second = data[1]    
+
+            const [first, second] = createArray()
+            const {name, age} = createObject()
+
+            const createObject = () => ({name:'Pepe', age:23, {address:'c/ Pez', city:'Soria'}})
+        
+            const {name: userName, age, address:{street,city}} = createObject() //des-estructura y le cambias el nombre, los : me permite
+
+            console.log(userName, age, street, city )
+
+            /****/
+
+            function makeFoo({name,age}) console.log(name, age)
+
+            cons obj = () => ({name:'Pepe', age:23, {address:'c/ Pez', city:'Soria'}})
+
+            makeFoo(obj) 
+
+            // al estar des-estructurado en la función recoge solo solo los parámetros deseados ya que la función sabe que entrara un objeto y que solo va a interactuar con esos dos atributos del objeto.
+
+
+            // En la des-estructuración hay 2 operadores los ... pueden ser spread(dispersar) o rest, según donde estén
+                lo llamamos spread cuando se encuentre en la salida
+
+
+            const add = (a, b) => a + b;
+
+            const data [12, 10];
+
+            console.log(add(data[0], data[1])) // sin des-estructuración
+            console.log(add(...data))//suelto los valores y cojo los que la función puede coger, al hacerlo en los argumentos se llama spread
+
+
+            const addPlus = (a, b, ...rest ) => { //quiero recoger el resto de los argumentos, por eso se llama rest
+                console.log(rest);
+                console.log(a + b);
+                };
+            
+            addPlus(1,2,3,4,5,6,7,8)// suma y el resto lo mete en un array
+
+            const addPlus = (...numbers) => {
+                console.log(numbers);
+                const flatNumbers = numbers.flat(); // flat es aplastar, convierte los array de los arrays en un solo array
+                const suma = flatNumbers.reduce((acc, item) => acc + item)
+                console.log(suma);
+                const media = suma / flatNumbers.length;
+                return media;
+            }
+
+            console.log(addPlus(1,2,3,4,5,6,7,8,9,10));
+
+
+            console.log(addPlus(1, 2, 3, 4, [5, 6, 7, 8], 9, 10));
+
+        //ejercicio: hacer una función que de recursividad que lea una cantidad infinita de números con arrays con mas arrays 
+
+            En la res-estructuración al meterla en una función solo es una clonación superficial compartirían profundidad de datos, segundo objetos dentro de objetos solo afecta al primer nivel
+
+            const modifyObject = (obj) =>{
+                //obj = JSON.parse(JSON.stringify(obj)) //solo asi se podría hacer una copia profunda y no superficial.
+                const obj = structuredClone(_obj)
+                obj.job = 'none'
+                obj.address.city = 'Teruel'
+            }
+            const user =  {
+                name:'pepe'
+                age:22,
+                job: 'dev'
+                address:{
+                    street: 'c/ pez'
+                    city: 'Soria'
+                }
+            }
+
+        //Shallow clone(or copy) superficial de primer nivel
+            el ...obj
+        //Deep clone nivel profundo copia todo, clonado a todos los niveles
+
+            obj = JSON.parse(JSON.stringify(obj))
+            const obj = structuredClone(_obj) lo moderno
+
+            muy util para quitar datos vulnerables de un objeto user por ejemplo:
+                const user =  
+                    name:'pepe'
+                    age:22,
+                    job: 'dev'
+                    password:123
+
+                function (...user){
+                    password: '***'
+                    return ...user //esta mal creo ver mejor luego !Repasar esto!
+                }
+        
+        //creación de objeto por constructor
+
+            const user = {
+                name: 'Pepe',
+                age: 22,
+                greet() { return console.log(`Hola, soy ${this.name} y tengo ${this.age} años`)} //greet: function ()... es o mismo pero sin atajo
+            }
+            //No se pueden usar arrayFunction dentro de un objeto porque no funciona, el this no existe en array
+
+            user.greet(); //'Hola, soy Pepe y tengo 22 años'
+
+            acceder a propiedades del objetos
+            const prop = 'name'
+            console.log(user.name)
+            console.log(user[prop])
+
+
+
+            //acceso a datos
+            {
+            console.log(foo); // error de referencia
+            }
+            {
+                let baz = {}
+                console.log(baz.name); // undefined
+                console.log(baz.name.x); //TypeError: cannot read properties of undefined
+                operador condicional changed si tienes duda de si va a llegar, evita que siga leyendo para que no haya TypeError
+                console.log(baz.address?.street)
+            }
+            //recorrer un objeto 
+                Object.entries(user).forEach(([key, value]) => console.log(key, value));
+
+
+        //todos los objetos de JS tiene una propiedad __proto__ y en ese objeto podemos encontrar algunas propiedades de un objeto
+
+            console.log(user.__proto__.__proto__);//null 
+        
+            {
+                const user = {
+                    name: 'Pepe',
+                    age: 22,
+                    greet() {
+                        return console.log(
+                            `Hola, soy ${this.name} y tengo ${this.age} años`
+                        );
+                    },
+                };
+
+                console.log(user.__proto__.__proto__);//null 
+
+                const person = {
+                    teeth:32
+                }
+                user.__proto__ = person;
+
+                console.log(user.teeth);
+                console.log(user.hasOwnProperty('name'));  //true
+                console.log(user.hasOwnProperty('teeth')); // false
+
+                user.teeth = 30;
+                console.log(user.teeth);
+                console.log(user.hasOwnProperty('teeth')); // true
+                //aquí al cogerlo desde proto lo ha cogido para el, a hecho un shadowing
+                
+                ({}).__proto__.taste = 'vainilla'
+                //todos los proto, todos los objetos tiene esa propiedad y ese valor
+
+                [].__proto__.push = () => 'Soy un array'
+                console.log([].push[1])// te cargas el método push de todo tu javascript
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+            
+
+
+
+
+

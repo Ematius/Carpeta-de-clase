@@ -196,35 +196,3 @@ tres terminales, test, lectura y
 
     y ahora es un buen momento para hacer un initial commit  
 
-
-las propiedades de orden superior son las que reciben un dato y ejecutan una función, normalmente iteran ya el array
-
-map()
-console.log(data.map(item => item * 2));
-filter()
-find()
-
-void es solo para las funciones, no para el métodos o propiedades
-
-.reduce(x,c) 
-
-intentar hacer fibonachi con .reduce
-
-## objeto Array
-
-Array.isArray(value)
-Array.of(value)
-Array.from(value)
-
-crear un objeto new Set() y esto tiene sus propios métodos
-
-## CLases no instanciables
-
-Las que no se puede poner new delante
-
-## JSON (serialization)
-
-tiene dos parseIn
-
-stringify
-
