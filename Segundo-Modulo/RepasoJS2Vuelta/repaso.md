@@ -519,6 +519,257 @@ Paradigma en la programación:
                 [].__proto__.push = () => 'Soy un array'
                 console.log([].push[1])// te cargas el método push de todo tu javascript
             }
+            la orientación de objetos de js esta basada en __proto__
+
+            Nunca acceder a __proto__ ni para leerlo, ni modificarlo, con los métodos anteriores.
+            Para hacerlo bien seria:
+            
+             //Estas son formas de copiar objetos legales
+                 Object.create()
+            //Copia
+                 Object.assign()
+                const user2 = Object.assign(user);//es lo mismo que {...user}, pero mas pudiendo copiar mas objetos y siendo mas viejo, nada que ver ocn los proto
+            const user3 = Object.create(person)
+                console.log(user3.teeth);//32
+
+
+            {
+                const mammal = {
+                    hasFur: true,
+                };
+
+                const person = Object.create(mammal);
+                person.teeth = 32;
+
+                //proto de user va a persona, y este a mammal, asi que user hereda de mammal al igual que person
+                const user = Object.create(person);
+                user.name = 'Pepe';
+                user.age = 22;
+
+                //El acceso de propiedades es solo de lectura y no copia
+                console.log(user.teeth);
+                console.log(user.hasFur);
+                console.log(user.hasOwnProperty('teeth'));
+
+                //Pero si se modifica crea la propiedad para que sea suya
+                user.teeth = 30;
+                console.log(user.hasOwnProperty('teeth'));
+                console.log(person.teeth);
+                console.log(user.teeth);
+                //Si no hay modificación no lo crea
+
+                //Herencia sus propiedades sin que sean suyas
+                const user2 = Object.create(user);
+                console.log(user2); {...}
+                console.log(user2.hasOwnProperty('teeth')); //false
+                //si se modifica aun siendo create pasa a ser tuya
+                user2.teeth = 30;{...}
+                console.log(user2.hasOwnProperty('teeth')); //true
+
+                //Copia de objetos
+                const user3 = Object.assign(user);
+                console.log(user3);
+                console.log(user3.hasOwnProperty('teeth')); //true
+            }
+
+            Nos encontrados con Object.assign, Object.create, y {...obj}
+
+            Las funciones tienen prototype que este es un objeto que ese objeto tiene un __proto__ como todos.
+            Cada función tiene su objeto prototype
+
+            Hay una función madre de todos que es Object, que tiene una función prototype que a su vez tiene un objeto proto.
+
+            Object.setPrototypeOf(user, person) quiero que user apunte a person pero ambos deben existir
+
+            //el paradigma funcional: funciones como objetos.
+                No se dará, se usa en la universidad para mentes privilegiadas. 
+
+            //JS lo que hace es darle categoría de primer nivel como un objeto, es decir tener:
+                propiedades
+                variables
+                otra función anidada
+                parámetros
+                devolver otra función
+
+                        { //puedes entrar en las propiedades, heredarlas
+                            //funciones
+
+                            //declarar
+                            function foo(a,b, ...rest){
+                                console.log(a,b,rest.length);
+                            }
+                            //asignar
+                            const foo2 = function (a, b, ...rest) {
+                                console.log(a, b, rest.length);
+                            };
+                            console.log(foo, foo2);
+
+                            foo.title = 'función declarada';
+                            foo2.title = 'función asignada';
+                            console.log(foo, foo2);
+
+                            foo.foo2 = foo2;
+
+                            console.log(foo.foo2);
+
+                            foo.foo2('pepe', 22, 1, 2, 3, 4)
+
+                        }
+                        { //encapsulando o anidando en funciones
+
+                            const makeFoo = function (a, b, ...rest) {
+                                const r = [a,b]
+                                console.log(a, b, rest.length);
+
+                                const innerFoo = () => {
+                                    console.log('Soy innerFoo');
+                                }
+                            };
+                            //makeFoo(1).innerFoo(); //error no se puede acceder a innerFoo porque es una propiedad privada
+                        }
+
+            //programación funcional (Expresión funcional inmediatamente invocada)
+
+                    (function(a){
+                        const r = [a];
+                        return () => {
+                            console.log(r);
+                            console.log('Soy IIFE');
+                        };
+                    })(22)(); Expresión funcional inmediatamente invocada
+
+            //Más programación funcional que aunque no se la usaremos es por saber lo que es
+
+            {
+                const counterCreator = () => {
+                    let value = 0;
+
+                    const counter = () => {
+                        value++;
+                        console.log(value);
+                    };
+                    return counter;
+                };
+                //el scoop de value es independiente por cada llamada por diferentes llamadas
+
+                const counter1 = counterCreator();
+                counter1();//1
+                counter1();//2
+
+                const counter2 = counterCreator();
+                counter2();//1
+                counter2();//2
+                // Ejemplo adicional de closure
+                const createAdder = (x) => {
+                    return (y) => {
+                        return x + y;
+                    };
+                };
+
+                const add5 = createAdder(5);
+                console.log(add5(2)); // 7
+                console.log(add5(10)); // 15
+
+                const add10 = createAdder(10);
+                console.log(add10(2)); // 12
+                console.log(add10(10)); // 20
+            }
+            {
+                const counterCreator = () => {
+                    let value = 0;
+
+                    const counter = () => {
+                        value++;
+                        console.log(value);
+                    };
+                    const increase = () => {
+                        value--;
+                        console.log(value);
+                    };
+
+                    return { counter, increase };
+                };
+                const counter1 = counterCreator();
+                counter1.counter();
+                counter1.increase(); 
+
+                const counter2 = counterCreator();
+                counter2.counter();
+                counter2.increase();
+                
+            }
+            javascript tutorial for beginner | learning funcional
+
+### Como afronta el paradigma de orientación a objetos desde JS
+
+    //patrones de la ejecución de las funciones
+        //el patron this
+    
+            {
+            //Patrones de ejecución
+            
+            const foo = function(){
+                console.log('Soy foo');
+                console.log(' this: ', this); //this depende del entorno, es el objeto global del entorno de ejecución(node y navegador)
+            }
+            const fooArrow = () => {
+                console.log('Soy fooArrow');
+                console.log(' this: ', this); //this es el objeto que contiene la función
+            }
+            //patron de ejecución
+
+            foo() //this es el objeto global
+            fooArrow() //this es el objeto que contiene un objeto
+            console.log(globalThis); //En el modo strict puedes acceder al globalThis
+
+            //patron método
+
+            const obj1 = {
+                title : 'Soy obj1', //propiedad
+                foo : foo, //método
+            }
+            obj1.foo(); //this es el objeto que contiene el método
+
+            //this es un objeto si es invocado desde un objeto pero si es invocado desde una función es el objeto global
+
+            //constructor patron
+
+            new foo(); //this es el objeto que se crea con new
+
+            const nObj = new foo(); //Por poner el new devuelve this{}
+            console.log(nObj);//foo{}
+
+            //Apply pattern
+
+            const obj2 = function(){
+                title = 'Soy obj2';
+                
+            }
+            foo.apply(obj2); //this es el objeto que se pasa como argumento
+            //this: [function: 'Soy obj2' ]
+
+            //las arrow function el this no se puede cambiar
+
+            //new fooArrow(); //error no se puede usar new con arrow function, no se puede cambiar el this
+            fooArrow.apply(obj2); //this es el objeto que se pasa como argumento
+
+            //un arrow cambia el scoop y como se interpreta el this
+            }
+
+        //funciones constructoras
+
+        constructor es cuando se crea con new
+
+        ////copiar 14-class.js
+
+        //extra
+            //se puede definir static block
+        
+        //variables privadas
+        #name
+
+        //calistenix
+            //si la propiedad es privada no debe haber getter o setter, se modifica por métodos
 
 
 

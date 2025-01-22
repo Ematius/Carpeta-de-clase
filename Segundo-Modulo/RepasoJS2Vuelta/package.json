@@ -1,13 +1,15 @@
 {
-  "name": "repasojs2vuelta",
-  "version": "1.0.0",
-  "main": "repaso.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "type": "module"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+    "name": "repasojs2vuelta",
+    "version": "1.0.0",
+    "main": "repaso.js",
+   
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "type": "module"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": ""
 }
+
