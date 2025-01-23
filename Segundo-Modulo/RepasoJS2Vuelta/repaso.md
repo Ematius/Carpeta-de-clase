@@ -771,8 +771,19 @@ Paradigma en la programación:
         //calistenix
             //si la propiedad es privada no debe haber getter o setter, se modifica por métodos
 
+        //concepto atributos estáticos, es que cuelga de la clase padre, y para obtenerlo de una subclase debes "pedirlo"
 
 
+
+//repaso del día anterior
+    Funciones de orden superior, y los closure y el scoop que crea.
+//Lo más importante 
+    //Patrones de ejecución. this
+    //constructor: "Clases".
+    constructores y miembros estáticos
+
+
+//cuando una funcion o una class necesita
 
 
 
