@@ -31,7 +31,7 @@ s(10, 20);
         //as unknown (Te conviertes en desconocido) y as number (te conviertes en número) que te lo digo yo
 
         const z = document.querySelector('h1') as unknown as number;
-        add(z, 2); //no daría error porque z es de tipo number debido a los as que he implementado, pero a la hora de ejecución daría error
+        //add(z, 2); //no daría error porque z es de tipo number debido a los as que he implementado, pero a la hora de ejecución daría error
 
         const z2 = document.querySelector('h1') as HTMLHeadingElement;
         //esta aserción es razonable porque se sabe que el h1 es un HTMLHeadingElement, y TS te deja.
@@ -66,7 +66,7 @@ s(10, 20);
     //delete user.job;
     for (const key in user as { [key: string]: string | number }) {
         {
-            const element = user[key];
+            //const element = user[key];
         }
     }
     //los if se llaman guardas de tipos
@@ -135,7 +135,7 @@ s(10, 20);
     fooString(id);
     //fooNumber(id); //no da error porque id puede ser string o number
 
-    let x: string | number = 0;
+   // let x: string | number = 0;
     //fooString(x); //da error porque porque no se que es, si es nombre o string
     //x.toLocaleString(); //da error porque no se sabe si es string o number
 
@@ -148,7 +148,7 @@ s(10, 20);
         }
         console.log(a);
     };
-    foo(x);
+   // foo(x);
 
     //union de tipos literales
     let state: 'Idle' | 'Success' | 'Error'; // parece un boolean propio creado
@@ -189,14 +189,14 @@ s(10, 20);
     type C = A & B;
 
     let c1 : {id:number}& {name:string};
-    c1 = {id:12, name:'Pepe'}; //aquí une en vez de ver que hay en común
-    console.log(c1); 
+   // c1 = {id:12, name:'Pepe'}; //aquí une en vez de ver que hay en común
+  //  console.log(c1); 
 
-    let x = {}// esto es un tipado de objeto vacío
+  /*  let x = {}// esto es un tipado de objeto vacío
     console.log(x);
     let y: {[key: string]:any} = {} //esto es un objeto vacío con cualquier tipo de valor
     y.id = 12;
-    y.name = 'Pepe'
+    y.name = 'Pepe'*/
 
 }
 

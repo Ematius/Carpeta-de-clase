@@ -1,18 +1,10 @@
-// Clase define factura (Invoice)
-// Numero de factura
-// Concepto
-// Numero
-// precio unidad
-// print: La factura:
-//  - Su numero
-//  - El concepto X número --- precio
-//  - Total + IVA
+
 
 class Company {
     #nif;
     #name;
 
-    constructor(nif, name) {
+    constructor(nif:string, name:string) {
         this.#nif = nif;
         this.#name = name;
     }
@@ -28,7 +20,7 @@ class Company {
 
 
 export class Invoice {
-    // propiedades y métodos static
+  
     static #brand = new Company('68323392y', 'Boracay');
     static #lastId = 0;
     static #getID() {
@@ -37,7 +29,7 @@ export class Invoice {
         return id;
     }
     
-    static productsCatalog = {
+    static productsCatalog: { [key in 'ordenador' | 'monitor' | 'teclado' | 'raton' | 'impresora']: number } = {
         ordenador: 1000,
         monitor: 200,
         teclado: 50,
@@ -45,17 +37,15 @@ export class Invoice {
         impresora: 150,
     };
 
-    // declaración de propiedades preferiblemente privadas
+    
     #id = Invoice.#getID();
     #client;
     #product;
     #amount;
     #unityPrice
     #iva;
-    
 
-    // constructor
-    constructor(client, product, amount, iva = 1.21,) {
+    constructor(client: Company, product: 'ordenador' | 'monitor' | 'teclado' | 'raton' | 'impresora', amount:number, iva = 1.21,) {
         this.#client = client;
         this.#product = product;
         this.#amount = amount;
@@ -65,7 +55,7 @@ export class Invoice {
     get client() {
         return this.#client;
     }
-    set amount(amount) {
+    set amount(amount: number) {
         this.#amount = amount;
     }
 
@@ -96,20 +86,32 @@ export class Invoice {
     }
 }
 
-const client1 = new Company('5656565843D', 'Acme');
-const invoice1 = new Invoice(client1, 'apples', 20, 4, 1.04);
-const invoice2 = new Invoice(
-    new Company('6567565843D', 'CAS'),
-    'mobile',
-    1,
-    400
-);
-const invoice3 = new Invoice(invoice2.client, 'apples', 20, 4, 1.04);
+const invoice = new Invoice( new Company('1234x', 'Emad'),'ordenador', 10,)
+invoice.printInvoice();
 
-console.log(invoice1, invoice2);
-// invoice1.printInvoice();
-// invoice2.printInvoice();
-// invoice3.printInvoice();
+console.log('***************************************');
+
+const invoice2 = new Invoice(new Company('1234x', 'Emad'),'monitor', 5,)
+invoice2.printInvoice();
+
+console.log('***************************************');
+
+const invoice3 = new Invoice(new Company('1234x', 'Emad'),'teclado', 2,)
+invoice3.printInvoice();
+
+console.log('***************************************');
+
+const invoice4 = new Invoice(new Company('1234x', 'Emad'),'raton',4,)
+invoice4.printInvoice();
+
+console.log('***************************************');
+
+
+// const client1 = new Company('5656565843D', 'Acme');
+// const invoice1 = new Invoice(client1, 'ordenador', 20, 1.04);
+// const invoice2 = new Invoice(new Company('6567565843D', 'CAS'),'monitor',1, 1.21);
+
+// console.log(invoice1, invoice2);
 
 // Relaciones entre clases
 // Agregación / Composición v. Asociación
@@ -125,36 +127,3 @@ console.log(invoice1, invoice2);
 // - La posibilidad de añadirlos mediante un método
 
 // - Ejercicio resuelto
-
-const invoice4 = new Invoice(
-    new Company('1234x', 'Emad'),
-    'ordenador',
-    10,
-)
-invoice4.printInvoice();
-console.log('***************************************');
-const invoice5 = new Invoice(
-    new Company('1234x', 'Emad'),
-    'monitor',
-    5,
-)
-invoice5.printInvoice();
-
-console.log('***************************************');
-
-const invoice6 = new Invoice(
-    new Company('1234x', 'Emad'),
-    'teclado',
-    2,
-)
-invoice6.printInvoice();
-
-console.log('***************************************');
-
-const invoice7 = new Invoice(
-    new Company('1234x', 'Emad'),
-    'raton',
-    4,
-)
-invoice7.printInvoice();
-console.log('***************************************');
