@@ -119,12 +119,7 @@ console.log(invoice1, invoice2);
 // - La posibilidad de añadirlos mediante un método
 
 // - Ejercicio resuelto
-// ordenador: 1000,
-//         monitor: 200,
-//         teclado: 50,
-//         raton: 25,
-//         impresora: 150,
-//         apples: 4,
+
 const invoice4 = new Invoice(
     new Company('1234x', 'Emad'),
     'ordenador',
