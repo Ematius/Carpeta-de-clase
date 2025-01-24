@@ -36,6 +36,7 @@ export class Invoice {
         const id = String(year) + '/' + String(++this.#lastId);
         return id;
     }
+    
     static productsCatalog = {
         ordenador: 1000,
         monitor: 200,
@@ -70,7 +71,7 @@ export class Invoice {
 
     printInvoice() {
         // const price = this.#calculatePrice();
-        const total = this.#unityPrice * this.#iva;
+        const total = (this.#unityPrice *this.#amount)* this.#iva;
 
         const invoice = `
         ${Invoice.#brand.name}
@@ -128,14 +129,14 @@ console.log(invoice1, invoice2);
 const invoice4 = new Invoice(
     new Company('1234x', 'Emad'),
     'ordenador',
-    1,
+    10,
 )
 invoice4.printInvoice();
 console.log('***************************************');
 const invoice5 = new Invoice(
     new Company('1234x', 'Emad'),
     'monitor',
-    1,
+    5,
 )
 invoice5.printInvoice();
 
@@ -144,7 +145,7 @@ console.log('***************************************');
 const invoice6 = new Invoice(
     new Company('1234x', 'Emad'),
     'teclado',
-    1,
+    2,
 )
 invoice6.printInvoice();
 
@@ -153,7 +154,7 @@ console.log('***************************************');
 const invoice7 = new Invoice(
     new Company('1234x', 'Emad'),
     'raton',
-    1,
+    4,
 )
 invoice7.printInvoice();
 console.log('***************************************');

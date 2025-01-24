@@ -783,7 +783,10 @@ Paradigma en la programación:
     constructores y miembros estáticos
 
 
-//cuando una funcion o una class necesita
+//cuando una función o una class necesita
+
+//modelado de datos en orientación a objetos, UML
+Tener claro la diferencia a la hora de instancia datos o heredar datos
 
 
 
