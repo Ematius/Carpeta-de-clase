@@ -5,7 +5,8 @@
     "type": "module",
     "scripts": {
         "test": "vitest",
-        "build": "tsc -w"
+        "build": "tsc -w",
+        "lint":"eslint "
     },
     "keywords": [],
     "author": "",
