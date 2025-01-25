@@ -42,17 +42,19 @@ export class Invoice {
     #unityPrice;
     #iva;
     
+    
 
     constructor(
         client: Company,
         product: 'ordenador' | 'monitor' | 'teclado' | 'raton' | 'impresora',
+        unitPrice: number,
         amount: number,
         iva = 1.21,
     ) {
         this.#client = client;
         this.#product = product;
         this.#amount = amount;
-        this.#unityPrice = Invoice.productsCatalog.find((item)=> item.name === product)?.price; 
+        this.#unityPrice = Invoice.productsCatalog.find((item) => item.name === product)?.price;
         this.#iva = iva;
     }
     get client() {
@@ -68,8 +70,9 @@ export class Invoice {
 
     printInvoice() {
         // const price = this.#calculatePrice();
-        const totalSinIva = this.#unityPrice * this.#amount;
-        const total = this.#unityPrice * this.#amount * this.#iva;
+        const unityPrice = this.#unityPrice ?? 1;
+        const totalSinIva = unityPrice * this.#amount;
+        const total = unityPrice * this.#amount * this.#iva;
 
         const invoice = `
         ${Invoice.#brand.name}
