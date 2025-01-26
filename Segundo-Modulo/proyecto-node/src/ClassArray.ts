@@ -18,7 +18,6 @@ class Company {
 }
 
 
-
 export class Invoice {
     static #brand = new Company('68323392y', 'Boracay');
     static #lastId = 0;
@@ -64,6 +63,12 @@ export class Invoice {
         this.#amount = amount;
     }
 
+    increaseAmount(extraAmount: number) {
+        this.#amount += extraAmount;
+        console.log(`La cantidad se ha incrementado en ${extraAmount}. Nueva cantidad: ${this.#amount}`);
+        } 
+    
+
     // #calculatePrice() {
     //     return this.#amount * this.#unityPrice;
     // }
@@ -92,23 +97,26 @@ export class Invoice {
     }
 }
 
-const invoice = new Invoice( new Company('1234x', 'Emad'),'ordenador', 10,)
+const invoice = new Invoice( new Company('1234x', 'Emad'),'ordenador', 10, 2 )
 invoice.printInvoice();
 
 console.log('***************************************');
 
-const invoice2 = new Invoice(new Company('1234x', 'Emad'),'monitor', 5,)
+const invoice2 = new Invoice(new Company('1234x', 'Emad'),'monitor', 5, 3)
 invoice2.printInvoice();
 
 console.log('***************************************');
 
-const invoice3 = new Invoice(new Company('1234x', 'Emad'),'teclado', 2,)
+const invoice3 = new Invoice(new Company('1234x', 'Emad'),'teclado', 2, 4)
 invoice3.printInvoice();
 
 console.log('***************************************');
 
-const invoice4 = new Invoice(new Company('1234x', 'Emad'),'raton',4,)
+const invoice4 = new Invoice(new Company('1234x', 'Emad'),'raton',4, 5)
 invoice4.printInvoice();
+invoice4.increaseAmount(3);
+invoice4.printInvoice();
+
 
 console.log('***************************************');
 

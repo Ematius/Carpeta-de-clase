@@ -22,7 +22,7 @@ Instrucción clave para compilar en en modo watch en package.json
 
 "build": "tsc -w"
 
-mpn run build en la consola, el nombre puede ser el que quieras, normalmente es dev o build
+npm run build en la consola, el nombre puede ser el que quieras, normalmente es dev o build
 
 instalar el linter para que nos diga buenas practicas
 

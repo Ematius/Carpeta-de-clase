@@ -20,7 +20,6 @@ class Company {
 
 
 export class Invoice {
-  
     static #brand = new Company('68323392y', 'Boracay');
     static #lastId = 0;
     static #getID() {
@@ -28,8 +27,15 @@ export class Invoice {
         const id = String(year) + '/' + String(++this.#lastId);
         return id;
     }
-    
-    static productsCatalog: { [key in 'ordenador' | 'monitor' | 'teclado' | 'raton' | 'impresora']: number } = {
+
+    static productsCatalog: {
+        [key in
+            | 'ordenador'
+            | 'monitor'
+            | 'teclado'
+            | 'raton'
+            | 'impresora']: number;
+    } = {
         ordenador: 1000,
         monitor: 200,
         teclado: 50,
@@ -37,15 +43,19 @@ export class Invoice {
         impresora: 150,
     };
 
-    
     #id = Invoice.#getID();
     #client;
     #product;
     #amount;
-    #unityPrice
+    #unityPrice;
     #iva;
 
-    constructor(client: Company, product: 'ordenador' | 'monitor' | 'teclado' | 'raton' | 'impresora', amount:number, iva = 1.21,) {
+    constructor(
+        client: Company,
+        product: 'ordenador' | 'monitor' | 'teclado' | 'raton' | 'impresora',
+        amount: number,
+        iva = 1.21,
+    ) {
         this.#client = client;
         this.#product = product;
         this.#amount = amount;
@@ -58,6 +68,12 @@ export class Invoice {
     set amount(amount: number) {
         this.#amount = amount;
     }
+    increaseAmount(extraAmount: number) {
+        this.#amount += extraAmount;
+        console.log(
+            `La cantidad se ha incrementado en ${extraAmount}. Nueva cantidad: ${this.#amount}`,
+        );
+    }
 
     // #calculatePrice() {
     //     return this.#amount * this.#unityPrice;
@@ -66,7 +82,7 @@ export class Invoice {
     printInvoice() {
         // const price = this.#calculatePrice();
         const totalSinIva = this.#unityPrice * this.#amount;
-        const total = (this.#unityPrice *this.#amount)* this.#iva;
+        const total = this.#unityPrice * this.#amount * this.#iva;
 
         const invoice = `
         ${Invoice.#brand.name}
@@ -102,6 +118,8 @@ invoice3.printInvoice();
 console.log('***************************************');
 
 const invoice4 = new Invoice(new Company('1234x', 'Emad'),'raton',4,)
+invoice4.printInvoice();
+invoice4.increaseAmount(5);
 invoice4.printInvoice();
 
 console.log('***************************************');
