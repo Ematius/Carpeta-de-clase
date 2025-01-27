@@ -1,10 +1,8 @@
-
-
 class Company {
-    #nif;
-    #name;
+    #nif: string;
+    #name: string;
 
-    constructor(nif:string, name:string) {
+    constructor(nif: string, name: string) {
         this.#nif = nif;
         this.#name = name;
     }
@@ -12,12 +10,13 @@ class Company {
     get nif() {
         return this.#nif.toUpperCase();
     }
+
     get name() {
         return this.#name;
     }
 }
 
-
+type ProductName = 'ordenador' | 'monitor' | 'teclado' | 'raton' | 'impresora';
 
 export class Invoice {
     static #brand = new Company('68323392y', 'Boracay');
@@ -29,12 +28,7 @@ export class Invoice {
     }
 
     static productsCatalog: {
-        [key in
-            | 'ordenador'
-            | 'monitor'
-            | 'teclado'
-            | 'raton'
-            | 'impresora']: number;
+        [key in ProductName]: number;
     } = {
         ordenador: 1000,
         monitor: 200,
@@ -52,7 +46,7 @@ export class Invoice {
 
     constructor(
         client: Company,
-        product: 'ordenador' | 'monitor' | 'teclado' | 'raton' | 'impresora',
+        product: ProductName,
         amount: number,
         iva = 1.21,
     ) {
@@ -102,28 +96,27 @@ export class Invoice {
     }
 }
 
-const invoice = new Invoice( new Company('1234x', 'Emad'),'ordenador', 10,)
+const invoice = new Invoice(new Company('1234x', 'Emad'), 'ordenador', 10);
 invoice.printInvoice();
 
 console.log('***************************************');
 
-const invoice2 = new Invoice(new Company('1234x', 'Emad'),'monitor', 5,)
+const invoice2 = new Invoice(new Company('1234x', 'Emad'), 'monitor', 5);
 invoice2.printInvoice();
 
 console.log('***************************************');
 
-const invoice3 = new Invoice(new Company('1234x', 'Emad'),'teclado', 2,)
+const invoice3 = new Invoice(new Company('1234x', 'Emad'), 'teclado', 2);
 invoice3.printInvoice();
 
 console.log('***************************************');
 
-const invoice4 = new Invoice(new Company('1234x', 'Emad'),'raton',4,)
+const invoice4 = new Invoice(new Company('1234x', 'Emad'), 'raton', 4);
 invoice4.printInvoice();
 invoice4.increaseAmount(5);
 invoice4.printInvoice();
 
 console.log('***************************************');
-
 
 // const client1 = new Company('5656565843D', 'Acme');
 // const invoice1 = new Invoice(client1, 'ordenador', 20, 1.04);
@@ -145,3 +138,7 @@ console.log('***************************************');
 // - La posibilidad de añadirlos mediante un método
 
 // - Ejercicio resuelto
+
+
+
+//añadir un método nuevo que añada más productos a la factura
