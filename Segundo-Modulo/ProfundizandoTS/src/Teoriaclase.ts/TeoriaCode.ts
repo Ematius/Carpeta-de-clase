@@ -461,3 +461,6 @@ console.log(fooInstance.foo('a', 'b')); // "ab"
 
 }
 
+
+
+//repasar tipos genericos y utilitis de typescript
