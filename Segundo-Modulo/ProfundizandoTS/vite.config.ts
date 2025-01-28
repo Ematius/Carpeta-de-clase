@@ -1,9 +1,9 @@
-import { defineConfig } from 'vitest/config';
+import { defineConfig } from 'vitest/config.js';
 
 export default defineConfig({
     // Your configuration options here
-    test:{
+    test: {
         globals: true,
         include: ['src/**/*.spec.ts'],
-    }
+    },
 });
