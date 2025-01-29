@@ -9,6 +9,15 @@ Tuplas: es una array limitada, de valores y de tipos, ayuda mucho ha hacer una a
 || = me vale que seas este o este
 && = objetos que sean varias cosas
 
+## Extensiones
+
+- **Prettier** (formateador de código)
+- **ESLint** (linter)
+- **JavaScript and TypeScript Nightly** (4M): habilita la versión más reciente (nightly) de TypeScript (typescript@next) como la versión integrada de TypeScript de VS Code utilizada para potenciar IntelliSense de JavaScript y TypeScript.
+- **Pretty TypeScript Errors** (1M): mejora la visualización de los errores de TypeScript en VS Code.
+- **Twoslash Query Comments** (65K): permite usar // ^? dentro de tu editor para resaltar tipos en línea.
+- **JSON to TS** (660K): extrae de JSON los tipos/interfaces de TypeScript.
+
 ## Concepto de tipos propios
 
   Esta en 02-tipos.ts todo el contenido
@@ -236,6 +245,55 @@ agregación y composición: agregación es yo tengo un perro, existimos independ
 liberaría y modulo podemos verlo intercambiables, librería seria muchas funciones en el mismo fichero y modulo es separado, las librerías es para openCode
 
 namespace: es para organizarse cuando haces una librería con muchas cosas
+
+#### 4pilares de OOP
+
+  - Abstracción (clases)
+  - Encapsulación (objetos)
+  - Herencia
+  - Polimorfismo
+
+#### Elementos de OOP
+
+  - clases
+  - objetos
+  - gerencia y polimorfismo
+  - relacion entre objetos y clases
+    - asociacion, agregacion, composicion
+  - Modularidad, genericidad y sobrecarga
+
+#### Tipado avanzado
+
+Generics
+  - en funciones
+  - en clases
+
+## tipos (type queries)
+
+const user = {
+  name = 'Pepe',
+  age = 30,
+}
+
+type UserType = typeof user; //{name:'Pepe'. age:number}
+
+keyof = dame las claves de un typo
+typeof =  dame el tipo de 
+
+keyof no podria sacar a user pero al poner keyof typeof ya me dejaria, porque user 
+
+## las utilidades de tipos
+es como funciones de typos
+info-ts/info.md linea 1939
+
+partial<.T> convierte todos los tipados opciones
+required<.T> Es lo contrario hace requeridas todas
+readonly<.T> convierte todas las propiedades en read 
+pick<T, K> Es para coger una parte  type PickUser = Pick<user, name | age>, aunque haya mas propiedades solo se coge esas
+Omit<User, 'job'> solo que quedas con esa que quieres
+
+
+
 
 
 

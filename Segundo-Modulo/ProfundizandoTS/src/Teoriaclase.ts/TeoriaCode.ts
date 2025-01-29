@@ -1,5 +1,6 @@
 /* eslint-disable*/
 
+import { X } from "vitest/dist/chunks/reporters.D7Jzd9GS";
 import { a } from "vitest/dist/chunks/suite.B2jumIFP";
 
 //alias de tipos
@@ -464,3 +465,28 @@ console.log(fooInstance.foo('a', 'b')); // "ab"
 
 
 //repasar tipos genericos y utilitis de typescript
+
+//repasar
+{
+    const makeTuple = <X, Y>(x: X, y: Y): [X, Y] => [x, y];
+    const tuple = makeTuple('pepe', 22); // [string, number] por inferencia
+    //      ^?   Es una extensión
+    console.log(tuple); // ['pepe', 22]
+}
+
+//utilidades de typos
+{
+    type User = {
+        name: string;
+        age: number;
+        job?: string;
+    };
+    type UserRequired = Required<User>;
+    type UserPartial = Partial<User>;
+    type UserReadonly = Readonly<User>;
+    type UserPick = Pick<User, 'name' | 'age'>;
+    type UserExtract = Extract<User, { age: number }>;
+    type UserOmit = Omit<User, 'job'>;
+    
+
+}
