@@ -1,5 +1,5 @@
 /// <reference types="vitest" />
-import { defineConfig } from 'vitest/config';
+import { defineConfig } from 'vitest/config.js';
 import { resolve } from 'path';
 
 export default defineConfig({
@@ -10,10 +10,9 @@ export default defineConfig({
     build: {
         rollupOptions: {
             input: {
-                main: resolve(__dirname,'index.html'),
+                main: resolve(__dirname, 'index.html'),
                 about: resolve(__dirname, 'about.html'),
-            }
+            },
         },
-    }
+    },
 });
-

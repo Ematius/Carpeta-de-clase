@@ -299,3 +299,14 @@ Omit<User, 'job'> solo que quedas con esa que quieres
 
 
 
+
+## El testing
+
+Hay que tener en cuenta si al testar se han tenido en cuenta todas las lineas del código
+Es porque se mira el happy coding es decir cuando sale mal pero los throw error no, y hay que testearlos también
+El uso de testingCover mira todas las lineas, es decir los throw los try pero no si sale algo mal, es decir poner un 0, un -0, introducir datos, los conocimientos vienen de entender la lógica del negocio o proyecto y posibles fallos
+
+## Detalles de buenas practicas
+
+
+ponerse un checkextra poniendo loo que esperas que devuelva
