@@ -1,3 +1,7 @@
+---
+
+---
+
 # Teoría
 
 Que es node
@@ -41,4 +45,76 @@ El event loop que esta en node, es quien esta observando que JS cuando termine s
 05.asíncrono.md en 8js.pro, carpeta info
 En references ver las animaciones y la explicación
 
+
+Repasar que es un closure, a la otra de usar módulos.
+
+
+## Node
+
+Los módulos son importa entender node porque muchas de sus funciones están en módulos. Hay módulos nativos o de librerías que hay que instalar (express)
+
+En el core de node contiene muchísimos módulos de forma nativa
+Node es entorno de ejecución que interpreta JS
+Es un entorno en el sistema operativo console.log(global) accedes a las propiedades internas de node, son pocas porque esta modulado, asi que se ven pocas cosas pero hay importar las que usas
+
+
+10 CSS PRO Tips and Tricks you NEED to know
+
+¡Guía de CSS Flexbox para aprender de forma sencilla!
+Aprende CSS Grid MUY FÁCIL con ejercicios
+
+
+Hemos instalado un librería https://www.npmjs.com/package/cross-env?activeTab=readme
+para desde bash leer como si fuera windows en la terminar
+luego tocado el package.json para luego arrancar con npm run start o star:dev en el archivo al dist/...js
+
+---descanso
+
+instalamos esta librería <https://www.npmjs.com/package/dotenv> para leer los datos de .env están en package.json estas en dependencias.
+Todo lo que se instala aquí hay que llamarlo, miramos la documentación 
+import 'dotenv/config'
+
+NODE es un REPL, 
+crear de CLI(Command line interface)
+
+Tiene que tener dos cosas:
+Ejecutable fácil
+Procesar argumentos(comandos ejecutables)
+
+el terminar apuntando a src pongo node cli, se va crea, hago un slice para quitar los dos primero de la array que me da respecto a los argumentos que estoy introduciendo en el CLI
+node cli, que es apuntado a mi archivo ejecutando quiero decir
+
+Se busca una librería para hacer mas ameno esta
+https://www.npmjs.com/package/minimist?activeTab=readme
+https://www.npmjs.com/package/yargs?activeTab=readme
+https://www.npmjs.com/package/commander
+
+npm install minimist
+
+npm install -D @types/minimist
+
+Meter un switch-case o if else sobre ello
+
+hacerlo con yargs en cli.ts
+documentación  y en info.node.md
+
+
+trabajar con ficheros desde node
+import { resolve } from 'path';
+
+
+//Esto me da en la carpeta que se esta resolviendo el fichero
+const dataPath = resolve('../data');
+//al agregar el ./ me da la ruta absoluta de la carpeta donde se encuentra el fichero
+//puedo poner otra ruta y me dará la ruta absoluta de esa carpeta
+//es util para que te digan donde están tus ficheros
+console.log(dataPath);
+
+se puede crear y escribir ficheros aunque lo veamos
+
+sacar un cli con yarg y commander,
+
+mi cli haga un crud, crear, leer, update y delete,
+
+helper mock hacelro de verdad
 

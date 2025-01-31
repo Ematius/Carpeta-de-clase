@@ -95,7 +95,7 @@ import { test, expect, describe} from "vitest";
 también necesito configurar a ts para que sepa lo que es un test() en XXX.test.ts  en tsconfig.json donde queramos ponemos
 "types": ["vitest/globals"],
 
-Para que el builder coja mas paginas y no solo la primera, hay que volver a vite.config.ts y añadir:
+Para que el builder coja mas paginas y no solo la primera, hay que volver a vite.config.ts y añadir, NO es necesario:
 import { resolve } from 'path';
 solución rápida instalar node
   build: {
