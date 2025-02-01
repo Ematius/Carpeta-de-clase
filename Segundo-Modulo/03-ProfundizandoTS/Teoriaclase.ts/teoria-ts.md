@@ -9,6 +9,15 @@ Tuplas: es una array limitada, de valores y de tipos, ayuda mucho ha hacer una a
 || = me vale que seas este o este
 && = objetos que sean varias cosas
 
+## Extensiones
+
+- **Prettier** (formateador de código)
+- **ESLint** (linter)
+- **JavaScript and TypeScript Nightly** (4M): habilita la versión más reciente (nightly) de TypeScript (typescript@next) como la versión integrada de TypeScript de VS Code utilizada para potenciar IntelliSense de JavaScript y TypeScript.
+- **Pretty TypeScript Errors** (1M): mejora la visualización de los errores de TypeScript en VS Code.
+- **Twoslash Query Comments** (65K): permite usar // ^? dentro de tu editor para resaltar tipos en línea.
+- **JSON to TS** (660K): extrae de JSON los tipos/interfaces de TypeScript.
+
 ## Concepto de tipos propios
 
   Esta en 02-tipos.ts todo el contenido
@@ -237,9 +246,70 @@ liberaría y modulo podemos verlo intercambiables, librería seria muchas funcio
 
 namespace: es para organizarse cuando haces una librería con muchas cosas
 
+#### 4pilares de OOP
+
+  - Abstracción (clases)
+  - Encapsulación (objetos)
+  - Herencia
+  - Polimorfismo
+
+#### Elementos de OOP
+
+  - clases
+  - objetos
+  - gerencia y polimorfismo
+  - relacion entre objetos y clases
+    - asociacion, agregacion, composicion
+  - Modularidad, genericidad y sobrecarga
+
+#### Tipado avanzado
+
+Generics
+  - en funciones
+  - en clases
+
+## tipos (type queries)
+
+const user = {
+  name = 'Pepe',
+  age = 30,
+}
+
+type UserType = typeof user; //{name:'Pepe'. age:number}
+
+keyof = dame las claves de un typo
+typeof =  dame el tipo de 
+
+keyof no podria sacar a user pero al poner keyof typeof ya me dejaria, porque user 
+
+## las utilidades de tipos
+es como funciones de typos
+info-ts/info.md linea 1939
+
+partial<.T> convierte todos los tipados opciones
+required<.T> Es lo contrario hace requeridas todas
+readonly<.T> convierte todas las propiedades en read 
+pick<T, K> Es para coger una parte  type PickUser = Pick<user, name | age>, aunque haya mas propiedades solo se coge esas
+Omit<User, 'job'> solo que quedas con esa que quieres
 
 
 
 
 
 
+<<<<<<< HEAD:Segundo-Modulo/ProfundizandoTS/teoria-ts.md
+=======
+
+
+
+## El testing
+
+Hay que tener en cuenta si al testar se han tenido en cuenta todas las lineas del código
+Es porque se mira el happy coding es decir cuando sale mal pero los throw error no, y hay que testearlos también
+El uso de testingCover mira todas las lineas, es decir los throw los try pero no si sale algo mal, es decir poner un 0, un -0, introducir datos, los conocimientos vienen de entender la lógica del negocio o proyecto y posibles fallos
+
+## Detalles de buenas practicas
+
+
+ponerse un checkextra poniendo loo que esperas que devuelva
+>>>>>>> 10d793a2e922ec12ee9d406b6476f4721eab722e:Segundo-Modulo/03-ProfundizandoTS/Teoriaclase.ts/teoria-ts.md

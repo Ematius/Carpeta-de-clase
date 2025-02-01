@@ -1,11 +1,12 @@
 {
     "MD013": false,
-
-    "list-marker-space": {
-        "ul_multi": 3,
-        "ul_single": 3
+    "MD030": {
+        "ul_single": 1,
+        "ul_multi": 1
     },
-
+    "MD026": {
+        "punctuation": ".,;:!?"
+    },
     "ul-indent": {
         "indent": 4
     },

@@ -203,7 +203,3 @@ s(10, 20);
 //Intentar hacer lo de las facturas con typos
 
 //los 4 pilares de OOP
-{
-    En
-
-}
