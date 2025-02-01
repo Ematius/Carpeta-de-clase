@@ -10,6 +10,7 @@ export class ODMLite<T extends WithId> implements TypeODM<T> {
         this.file = file;
     }
 
+
     //Aumentamos tipado y devolvemos un objeto de tipo T
     private readDB(): Record<string, T[]> {
         const txtData = readFromDisk(this.file);
