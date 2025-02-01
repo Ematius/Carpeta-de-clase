@@ -1,5 +1,5 @@
 
-import { readFromDisk, writeToDisk } from "./helpers";
+import { createFromDisk ,readFromDisk, updateFromDisk, deleteFromDisk  } from "./helpers";
 
 //Cambiarlo a collection en vez de file(Ejercicio de clase)
 
