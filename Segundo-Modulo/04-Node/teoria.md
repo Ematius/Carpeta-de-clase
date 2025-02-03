@@ -110,11 +110,46 @@ const dataPath = resolve('../data');
 //es util para que te digan donde están tus ficheros
 console.log(dataPath);
 
-se puede crear y escribir ficheros aunque lo veamos
 
-sacar un cli con yarg y commander,
 
-mi cli haga un crud, crear, leer, update y delete,
 
-helper mock hacelro de verdad
+03/02/25
+Repaso del 30/01/25
+¿Qué sistemas de módulos hay?
 
+Hay dos: 
+CommonJS y ECMAScript Modules (ESM). 
+ECMAScript Modules es el estándar de JavaScript, es decir, el que emite las reglas que hay que seguir.
+
+import {resolve, join} from 'path'; //esto es un destructuring, se importa resolve y join de path
+
+El objeto globalThis. en node de global y en el navegador es windows. El console.log esta en global
+
+process es la variable que te pone en contacto con que se esta ejecutando en mi código y tiene una variable args que coge automáticamente que pase por process
+
+
+el await desmonta la promesa, es necesario para hacer algo cuando vas a recibir una promesa, y una vez desmontada para volver a montarla al haber puesto await necesitas poner async
+
+diferencia entre any y unknown
+  any es no tengo ni idea del tipo
+  no se el tipo de esto, aquí no te deja acceder a las propiedades asi que hay que hacer una guarda de tipos
+
+En casa copiar y revisar 
+9.node, src, odm, services, types(cli-commander) nodo ts
+
+el repo tira del odm,
+
+cualquier tipo de aplicación CRUD CLI que gestione base de datos etc...
+
+
+cli-commander depende del// capa aplicación ultima de creación y a única del usuario
+repo-notes depend de odm // capa de repositorio de datos, es la encargada de conectar, asociación entre clases, usan el odn o tienen un odm como quieras llamarlo
+odm-lite// clase 
+
+cli wizard archivo 9.node/src/cli-wizard.ts
+
+instalar nom i inquirer
+type el en import introducido
+type list tu eliges
+type checkbox
+type confirm que son boolean
