@@ -153,3 +153,12 @@ type el en import introducido
 type list tu eliges
 type checkbox
 type confirm que son boolean
+
+Estructura de Archivos
+
+app.ts → Punto de entrada, usa RepoNoteFile para leer las notas.
+cli-commnder.ts → Maneja los comandos de la CLI (all, find, add, update, delete).
+helpers.ts → Funciones para leer y escribir archivos.
+odm-lite.ts → Mini-ODM para manejar almacenamiento en archivos JSON.
+repo-notes-file.ts → Implementación de un repositorio para manejar notas.
+types.ts → Definición de tipos e interfaces.

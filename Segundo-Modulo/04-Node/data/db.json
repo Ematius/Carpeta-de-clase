@@ -1,0 +1,30 @@
+{
+    "notes": [
+        { "id": "a06ea5d9", "content": "Content 2" },
+        { "id": "b06ea5d9", "content": "Content 3" },
+        { "content": "Nota 3", "id": "08a8a618" }
+    ],
+    "users": [
+        {
+            "id": 1,
+            "name": "admin",
+            "email": "",
+            "password": "admin",
+            "role": "admin"
+        },
+        {
+            "id": 2,
+            "name": "user",
+            "email": "",
+            "password": "user",
+            "role": "user"
+        },
+        {
+            "id": 2,
+            "name": "user",
+            "email": "",
+            "password": "user",
+            "role": "user"
+        }
+    ]
+}
