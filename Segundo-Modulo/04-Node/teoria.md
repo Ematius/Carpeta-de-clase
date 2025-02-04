@@ -162,3 +162,48 @@ helpers.ts → Funciones para leer y escribir archivos.
 odm-lite.ts → Mini-ODM para manejar almacenamiento en archivos JSON.
 repo-notes-file.ts → Implementación de un repositorio para manejar notas.
 types.ts → Definición de tipos e interfaces.
+
+04/02/2025
+
+## Servidor Node HTTP (Web Server)
+
+Que es un servidor http.
+
+request
+-   url (uri)
+-   method: get/post, put, patch delete
+    -   Get  Solicita un recuerdo o datos desde el servidor
+    -   Post Envía datos al servidor para ser procesados, pero sin que se vea, por nadie
+    -   Put Envía datos al servidor para cerrar o reemplazar un recurso
+    -   Patch Similar a put, actualiza parcialmente
+    -   Delete Elimina un recurso del servidor
+-   headers (metadatos relativos a la pregunta)
+response
+-   status( estado de la respuesta de 100 a 500)
+-   body (el contenido de la respuesta)
+-   headers (metadatos relativos a la respuesta)
+
+A la hora de que haya un problema ver de donde viene el problema lo primero. Mirando el Network de la pagina, mirando el headers, y en que estado esta el status.
+
+petición contiene:
+
+  método hay 4
+  url quiero esto 
+  encabezado datos de donde viene
+  cuerpo nada 
+
+respuesta:
+
+  devuelve un cuerpo
+
+
+## Crear un servidor
+
+
+
+
+
+
+
+
+

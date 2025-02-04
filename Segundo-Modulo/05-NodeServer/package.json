@@ -1,21 +1,22 @@
 {
-    "name": "Node.Server",
+    "name": "05-NodeServer",
     "version": "1.0.0",
     "main": "index.js",
     "type": "module",
     "scripts": {
         "test": "vitest run",
         "build": "tsc -w",
-        "lint": "eslint ",
+        "lint": "eslint , --ext .ts",
         "test:c": "vitest run --coverage",
-        "start": "node dist/sample.js",
-        "start:dev": "cross-env NODE_ENV=dev node dist/sample.js"
+        "start": "node dist/index.js",
+        "start:dev": "cross-env NODE_ENV=dev DEBUG=app* node --watch dist/index.js"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "devDependencies": {
         "@eslint/js": "^9.18.0",
+        "@types/debug": "^4.1.12",
         "@types/minimist": "^1.2.5",
         "@types/node": "^22.13.0",
         "@vitest/coverage-v8": "^2.1.8",
@@ -31,8 +32,8 @@
     },
     "dependencies": {
         "cross-env": "^7.0.3",
+        "debug": "^4.4.0",
         "dotenv": "^16.4.7"
-        
     },
     "description": ""
 }
