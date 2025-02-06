@@ -1,38 +1,43 @@
-import express, { NextFunction, Request, Response } from 'express';
+import { resolve } from 'path';
+import express from 'express';
+import createDebug from 'debug';
+import morgan from 'morgan';
+import {
+    getController,
+    notFoundController,
+    postController,
+} from './controllers.js';
+import { logger } from './middleware.js';
 
-//aquí esta la aplicación de express
 export const app = express();
+const debug = createDebug('demo:app');
 
-//quitarle la publicidad de express
+const __dirname = resolve();
+const publicPath = resolve(__dirname, 'public');
+
+debug('Iniciando App...');
+
 app.disable('x-powered-by');
 
+// Middlewares
+app.use(morgan('common'));
+app.use(express.json());
+app.use(logger('debugger'));
+app.use(express.static(publicPath));
 
-//Esto es un middleware, es decir, una función que se ejecuta antes de llegar a la ruta
-app.use((req:Request, res: Response, next: NextFunction)=>{
-    debug(req.method, req.url);
-    console.log('Middleware 1');
-    next();
-})
-
-
-const controller = (req: Request, res: Response) => {
-    res.send('Hola Mundo!');
-};
-
-//si el método es get y la url es /, entonces responde con un mensaje
-// app.get('/', (req:Request, res:Response) => {
-//     res.send('Hola Mundo!');
+// app.use(async (req: Request, res: Response, next: NextFunction) => {
+//     if (req.url === '/favicon.ico') {
+//         const filePath = resolve(publicPath, 'favicon.ico');
+//         const buffer = await fs.readFile(filePath);
+//         res.setHeader('Content-Type', 'image/svg+xml');
+//         res.send(buffer);
+//     } else {
+//         next();
+//     }
 // });
-
-//salta según el método, es decir si es get, post, put, delete, patch
-app.post('/', controller);
+app.get('/', getController);
+app.post('*', postController);
 app.patch('/');
 app.put('/');
 app.delete('/');
-
-app.use('*', (req: Request, res: Response) => {
-    res.status(404)
-        .send('Method not allowed')
-        .setHeader('Content-Type', 'text/plain; charset=utf-8')
-
-});
+app.use('*', notFoundController);

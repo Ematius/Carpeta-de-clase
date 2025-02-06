@@ -1,27 +1,15 @@
 import { createServer } from 'node:http';
 import type { ServerResponse } from 'node:http';
-
-
 import 'dotenv/config';
 import createDebug from 'debug';
-import { HtmlError } from './error';
-// Objetivo: Iniciar el servidor de express en el archivo index.ts
-import { app } from './app';
+import { HtmlError } from './error.js';
+import { createHtmlString } from './template.js';
 
-//--------------------------------------------------------------------------------------------
-//esto es para que el servidor escuche en el puerto 3000
-// const port = 3000;
-// app.listen(port, () => {
-    //     console.log(`Example app listening on port ${port}`);
-    // });
-    //--------------------------------------------------------------------------------------------
-    
+import { app } from './app.js';
 
-const debug = createDebug('app:server');
-
+const debug = createDebug('demo:server');
+debug('Iniciando servidor...');
 const PORT = process.env.PORT || 3000;
-
-
 
 const listenManager = () => {
     const addr = server.address();
@@ -31,13 +19,13 @@ const listenManager = () => {
         bind = 'pipe ' + addr;
     } else {
         bind =
-        addr.address === '::'
-        ? `http://localhost:${addr?.port}`
-        : `${addr.address}:${addr?.port}`;
+            addr.address === '::'
+                ? `http://localhost:${addr?.port}`
+                : `${addr.address}:${addr?.port}`;
     }
     console.log(`Server listening on ${bind}`);
     debug(`Servidor escuchando en ${bind}`);
-}
+};
 
 const errorManager = (error: Error | HtmlError, response: ServerResponse) => {
     if (!('status' in error)) {
@@ -47,10 +35,22 @@ const errorManager = (error: Error | HtmlError, response: ServerResponse) => {
             status: 'Internal Server Error',
         };
     }
-    
-    
-    const server = createServer(app);
-    server.listen(PORT);
-    server.on('listening', listenManager);
-    server.on('error', errorManager);
-}
+
+    const publicMessage = `Error: ${error.statusCode} ${error.status}`;
+    debug(publicMessage, error.message);
+
+    const html = createHtmlString(
+        'Error | Node Server',
+        'Error',
+        publicMessage,
+    );
+    response.statusCode = error.statusCode;
+    response.statusMessage = error.status;
+    response.setHeader('Content-Type', 'text/html; charset=utf-8');
+    response.end(html);
+};
+
+const server = createServer(app);
+server.listen(PORT);
+server.on('listening', listenManager);
+server.on('error', errorManager);

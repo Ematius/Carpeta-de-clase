@@ -1,0 +1,47 @@
+{
+    "name": "06-express",
+    "version": "1.0.0",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "dev": "nodemon",
+        "test": "vitest run",
+        "build": "tsc -w",
+        "lint": "eslint , --ext .ts",
+        "test:c": "vitest run --coverage",
+        "start": "node dist/index.js",
+        "start:dev": "cross-env NODE_ENV=dev DEBUG=demo* node --watch dist/index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@eslint/js": "^9.18.0",
+        "@types/debug": "^4.1.12",
+        "@types/express": "^5.0.0",
+        "@types/morgan": "^1.9.9",
+        "@types/node": "^22.13.1",
+        "@vitest/coverage-v8": "^2.1.8",
+        "eslint": "^9.18.0",
+        "globals": "^15.14.0",
+        "nodemon": "^3.1.9",
+        "prettier": "^3.4.2",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.7.3",
+        "typescript-eslint": "^8.20.0",
+        "vitest": "^2.1.9"
+    },
+    "prettier": {
+        "singleQuote": true
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "cross-env": "^7.0.3",
+        "debug": "^4.4.0",
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "morgan": "^1.10.0",
+        "pino": "^9.6.0"
+    },
+    "description": ""
+}
