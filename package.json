@@ -16,7 +16,8 @@
     "dependencies": {
         "debug": "^4.4.0",
         "ifcd0210_2024": "file:",
-        "json-server": "^1.0.0-beta.3"
+        "json-server": "^1.0.0-beta.3",
+        "pino": "^9.6.0"
     },
     "devDependencies": {
         "@types/debug": "^4.1.12",

@@ -49,3 +49,36 @@ origen
  protocolo 
  host 
  puerto
+
+Los controladores son 
+
+El fichero html, se lo debo dar al servidor para poder verlo 
+
+error de 500 es que el servidor no esta
+
+cors: 
+
+En el public metemos el el index.html y el .js y el facicon
+
+Montar servidor node de estaticos con express. En public van html y js, favicon
+
+en los cross origin segurite  CORS = el navegador a decidido bloquear el navegador por las politicas, no he pasado el chequeo de acces-controll-Allow-Origin. problema en las cabeceras del server.
+res.setHeader('access-control-aloow.orige'=el nombre del error , '*'= a todos o especifico a quien le dejes)
+añadir despues set.header(...., get post...)
+
+installar npm cors
+
+
+hay 4 middleware
+de dos parametros
+de tres parametros
+de cuatro parametros
+
+Un next('...'), si next tiene parametros saltate todos los next hasta el que tiene paremetro de error
+la buena politica seria meter new Error de JS y mejor aun seria HTMLError creado por nosotros
+
+patch modifica, de toda la vida update
+
+post crea,
+
+las funciones normales no tienen un this. por defecto, es un this. segun quien la ejecute es decir en tiempo de ejecución, para que eso no pase se pone .bind( quien quieres que sea el this.) para ello entender el concepto de los .bind()

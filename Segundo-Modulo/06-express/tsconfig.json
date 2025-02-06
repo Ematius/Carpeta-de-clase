@@ -109,6 +109,6 @@
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
 
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "public/index.js"],
     "exclude": ["vitest/globals"]
 }

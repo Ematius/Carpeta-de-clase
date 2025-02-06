@@ -1,7 +1,7 @@
 export const createHtmlString = (
-    title: string,
-    header: string,
-    content?: string,
+    title: string, // Título de la página
+    header: string, // Encabezado de la página
+    content?: string, // Contenido opcional de la página
 ) => `
     <!DOCTYPE html>
     <html lang="es">
@@ -39,4 +39,4 @@ export const createHtmlString = (
     </body>
 
     </html>
-`;
+`; // Función que genera una cadena HTML con los parámetros title, header y content
