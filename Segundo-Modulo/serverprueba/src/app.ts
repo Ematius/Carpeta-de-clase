@@ -1,36 +1,70 @@
-//Este archivo define la aplicación Express, las rutas y el middleware:
-
+import { resolve } from 'path';
 import express from 'express';
-
+import createDebug from 'debug';
 import morgan from 'morgan';
+import cors from 'cors';
+import {
+    getIndexController,
+    notFoundController,
+    postController,
+} from './controllers.js';
+import { logger } from './middleware.js';
+import { errorManager } from './errors.js';
+import { usersRouter } from './routers/users.routers.js';
 
-import routes from './routes/index.js';
+export const app = express();
+const debug = createDebug('demo:app');
 
-const app = express();
+const __dirname = resolve();
+const publicPath = resolve(__dirname, 'public');
+
+debug('Iniciando App...');
+
+app.disable('x-powered-by');
 
 // Middlewares
+
 app.use(cors());
-app.use(morgan('dev'));
-app.use(express.json()); // Para recibir JSON en las peticiones
-app.use(express.urlencoded({ extended: true }));
 
-// Rutas
-app.use('/api', routes);
+// app.use((_req, res, next) => {
+//     debug('CORS middleware');
+//     res.setHeader('Access-Control-Allow-Origin', ['*']);
+//     res.setHeader(
+//         'Access-Control-Allow-Methods',
+//         'GET, POST, PUT, DELETE, OPTIONS',
+//     );
+//     res.setHeader(
+//         'Access-Control-Allow-Headers',
+//         'Content-Type, Authorization',
+//     );
+//     next();
+// });
 
-// Middleware para manejar errores
-app.use((req, res) => {
-    res.status(404).json({ message: 'Ruta no encontrada' });
-});
+app.use(morgan('common'));
+app.use(express.json());
+app.use(logger('debugger'));
+app.use(express.static(publicPath));
 
-import { errorHandler } from './middleware/errorHandler.js';
-app.use(errorHandler);
+// app.use(async (req: Request, res: Response, next: NextFunction) => {
+//     if (req.url === '/favicon.ico') {
+//         const filePath = resolve(publicPath, 'favicon.ico');
+//         const buffer = await fs.readFile(filePath);
+//         res.setHeader('Content-Type', 'image/svg+xml');
+//         res.send(buffer);
+//     } else {
+//         next();
+//     }
+// });
+//
 
-import { logger } from './middleware/logger.js';
-app.use(logger);
+app.get('/', getIndexController);
+app.get('/about', getIndexController);
+app.get('/contacts', getIndexController);
+app.post('/contacts', postController);
+app.get('/portfolio', getIndexController);
 
+app.use('/api/users', usersRouter);
 
-export default app;
-function cors(): any {
-    throw new Error('Function not implemented.');
-}
+app.use('*', notFoundController);
 
+app.use(errorManager);

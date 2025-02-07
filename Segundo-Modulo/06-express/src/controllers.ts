@@ -1,60 +1,91 @@
-import type { Request, Response } from 'express'; // Importa los tipos Request y Response de Express
-import createDebug from 'debug'; // Importa la función createDebug del paquete debug
+// Importamos los tipos `Request` y `Response` de Express para definir correctamente los parámetros de las funciones.
+import type { Request, Response } from 'express';
 
-// Controlador para manejar las peticiones GET
-export const getController = (_req: Request, res: Response) => {
-    const debug = createDebug('demo:getController'); // Crea una instancia de debug para el controlador GET
-    debug('Petición recibida'); // Muestra un mensaje de depuración indicando que se recibió una petición
+// Importamos `debug` para registrar mensajes en la consola, útil para depuración.
+import createDebug from 'debug';
 
-    res.send('Hola Mundo!'); // Envía una respuesta con el texto 'Hola Mundo!'
+// Importamos la función `renderIndexHtml` desde la carpeta de vistas, que genera la respuesta en HTML.
+import { renderIndexHtml } from './views/index-html.js';
+
+// -------------------- Controlador para GET en la página principal --------------------
+
+// `getIndexController` maneja las solicitudes GET para la página de inicio y otras rutas asociadas.
+export const getIndexController = (_req: Request, res: Response) => {
+    // Creamos un namespace para depuración asociado a este controlador.
+    const debug = createDebug('demo:getController');
+    debug('Petición recibida'); // Mensaje de depuración indicando que se ha recibido una solicitud.
+
+    // Establecemos el encabezado `Content-Type` de la respuesta a HTML con codificación UTF-8.
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+
+    // Enviamos el contenido HTML generado por `renderIndexHtml()`.
+    res.send(renderIndexHtml());
 };
 
-// Controlador para manejar las peticiones POST
+// -------------------- Controlador para POST en '/contacts' --------------------
+
+// `postController` maneja las solicitudes POST enviadas a '/contacts'.
 export const postController = (req: Request, res: Response) => {
-    const debug = createDebug('demo:postController'); // Crea una instancia de debug para el controlador POST
-    debug('Datos recibidos'); // Muestra un mensaje de depuración indicando que se recibieron datos
+    // Creamos un namespace para depuración asociado a este controlador.
+    const debug = createDebug('demo:postController');
+    debug('Datos recibidos'); // Mensaje de depuración indicando que se han recibido datos.
 
-    // let body = '';
-    // request.on('data', (chunk) => {
-    //     body += chunk.toString();
-    // });
+    // Obtenemos los datos enviados en el cuerpo de la solicitud.
+    const data = req.body;
 
-    const data = req.body; // Obtiene los datos del cuerpo de la petición
-    // Haríamos algo con los datos recibidas
-    // const data = JSON.parse(body);
+    // Generamos un identificador único para el dato recibido usando `crypto.randomUUID()`.
+    data.id = crypto.randomUUID();
 
-    data.id = crypto.randomUUID(); // Genera un ID único para los datos recibidos
+    // Creamos la respuesta en formato JSON, con un mensaje y los datos recibidos.
     const result = {
-        message: 'Datos recibidos', // Mensaje de respuesta
-        data, // Datos recibidos con el ID añadido
+        message: 'Datos recibidos',
+        data,
     };
 
-    res.status(201); // Establece el código de estado de la respuesta a 201 (Creado)
-    //response.setHeader('Content-Type', 'application/json; charset=utf-8');
-    res.json(result); // Envía la respuesta en formato JSON
+    // Establecemos el código de estado HTTP a 201 (Created), indicando que se ha creado un nuevo recurso.
+    res.status(201);
 
-    // request.on('end', () => {
-    //     Haríamos algo con los datos recibidas
-    //     const data = JSON.parse(body);
-    //     data.id = crypto.randomUUID();
-
-    //     const result = {
-    //         message: 'Datos recibidos',
-    //         data,
-    //     };
-
-    //     response.statusCode = 201;
-    //     response.setHeader('Content-Type', 'application/json; charset=utf-8');
-    //     response.end(JSON.stringify(result));
-    // });
+    // Enviamos la respuesta en formato JSON.
+    res.json(result);
 };
 
-// Controlador para manejar las peticiones no encontradas
+// -------------------- Controlador para manejar rutas no encontradas --------------------
+
+// `notFoundController` maneja cualquier solicitud a una ruta inexistente.
 export const notFoundController = (_req: Request, res: Response) => {
-    const debug = createDebug('demo:notFoundController'); // Crea una instancia de debug para el controlador de peticiones no encontradas
-    debug('Petición recibida'); // Muestra un mensaje de depuración indicando que se recibió una petición
+    // Creamos un namespace para depuración asociado a este controlador.
+    const debug = createDebug('demo:notFoundController');
+    debug('Petición recibida en una ruta no válida'); // Mensaje de depuración.
 
-    res.status(405); // Establece el código de estado de la respuesta a 405 (Método no permitido)
-    res.setHeader('Content.Type', 'text/plain; charset=utf-8'); // Establece el encabezado Content-Type de la respuesta
-    res.send('Method not allowed'); // Envía una respuesta con el texto 'Method not allowed'
+    // Establecemos el código de estado HTTP a 405 (Method Not Allowed), indicando que el método no está permitido.
+    res.status(405);
+
+    // Establecemos el encabezado de tipo de contenido como texto plano con codificación UTF-8.
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+
+    // Enviamos la respuesta indicando que el método no está permitido.
+    res.send('Method not allowed');
 };
+
+/* 
+Explicación General
+Este módulo define tres controladores en Express.js, cada uno de los cuales gestiona un tipo de solicitud HTTP en la aplicación:
+
+getIndexController (Maneja solicitudes GET)
+
+Se usa para servir la página principal y otras rutas relacionadas.
+Devuelve una respuesta HTML generada por renderIndexHtml().
+Configura el encabezado Content-Type para asegurar la codificación adecuada.
+postController (Maneja solicitudes POST)
+
+Se usa para recibir datos enviados desde el cliente (por ejemplo, un formulario de contacto).
+Extrae el body de la solicitud y le agrega un identificador único generado con crypto.randomUUID().
+Devuelve una respuesta JSON con los datos recibidos y un mensaje de confirmación.
+Establece el código de estado 201 (Created) para indicar que se ha creado un nuevo recurso.
+notFoundController (Maneja rutas no encontradas)
+
+Se activa cuando una solicitud se realiza a una ruta no definida.
+Responde con un código 405 (Method Not Allowed) indicando que el método de la petición no está permitido.
+Devuelve un mensaje en texto plano como respuesta.
+Cada controlador usa createDebug() para registrar eventos en la consola, lo que facilita la depuración durante el desarrollo.
+*/

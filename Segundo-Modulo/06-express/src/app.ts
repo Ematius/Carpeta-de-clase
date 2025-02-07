@@ -1,78 +1,104 @@
-import { resolve } from 'path'; // Importa la función resolve del módulo path para resolver rutas de archivos
-import express, { NextFunction } from 'express'; // Importa el módulo express para crear el servidor
-import createDebug from 'debug'; // Importa la función createDebug del módulo debug para registrar eventos
-import morgan from 'morgan'; // Importa el middleware morgan para registrar solicitudes HTTP
-import {getController, notFoundController, postController} from './controllers.js'; // Importa los controladores personalizados
-import { logger } from './middleware.js'; // Importa el middleware personalizado logger
-import cors from 'cors'; // Importa el middleware cors para permitir solicitudes de otros dominios
-import { Request, Response } from 'express'; // Importa los tipos Request y Response de Express
+// Importamos `resolve` del módulo 'path' para resolver rutas de archivos y directorios en el sistema.
+import { resolve } from 'path';
 
+// Importamos el framework `express` para construir aplicaciones web y APIs con Node.js.
+import express from 'express';
 
+// Importamos `debug` de la librería 'debug' para la depuración de la aplicación.
+import createDebug from 'debug';
 
-export const app = express(); // Crea una instancia de la aplicación Express
-const debug = createDebug('demo:app'); // Crea un debug con el nombre 'demo:app'
+// Importamos `morgan`, un middleware para registrar las solicitudes HTTP en la consola.
+import morgan from 'morgan';
 
-const __dirname = resolve(); // Obtiene el directorio actual
-const publicPath = resolve(__dirname, 'public'); // Resuelve la ruta al directorio public
+// Importamos `cors`, un middleware que habilita el intercambio de recursos entre diferentes dominios (Cross-Origin Resource Sharing).
+import cors from 'cors';
 
-debug('Iniciando App...'); // Registra el mensaje 'Iniciando App...' en la consola
+// Importamos los controladores que manejan las peticiones HTTP para distintas rutas.
+import {
+    getIndexController, // Maneja las solicitudes GET para la página de inicio y otras rutas.
+    notFoundController, // Maneja solicitudes a rutas inexistentes (404).
+    postController, // Maneja solicitudes POST, por ejemplo, para enviar formularios.
+} from './controllers.js';
 
-app.disable('x-powered-by'); // Deshabilita el encabezado 'X-Powered-By' por razones de seguridad
+// Importamos un middleware personalizado para la gestión de logs en la aplicación.
+import { logger } from './middleware.js';
 
-// Middlewares
+// Importamos un manejador de errores global para capturar y responder a errores de la aplicación.
+import { errorManager } from './errors.js';
 
-app.use(cors()); // Usa el middleware cors para permitir solicitudes de otros dominios
+// Importamos el enrutador específico para manejar las rutas relacionadas con los usuarios.
+import { usersRouter } from './routers/users.routers.js';
 
+// Creamos una instancia de la aplicación Express.
+export const app = express();
 
-//app.use(cors()); // Usa el middleware cors para permitir solicitudes de otros dominios
+// Configuramos la herramienta de depuración con el namespace 'demo:app'.
+const debug = createDebug('demo:app');
 
-app.use(morgan('common')); // Usa el middleware morgan para registrar solicitudes HTTP en formato 'common'
-app.use(express.json()); // Usa el middleware express.json() para parsear cuerpos de solicitudes JSON
-app.use(logger('debugger')); // Usa el middleware personalizado logger con el nombre 'debugger'
-app.use(express.static(publicPath)); // Sirve archivos estáticos desde el directorio public
+// Obtenemos el directorio base del proyecto utilizando `resolve()`.
+const __dirname = resolve();
 
-// app.use(async (req: Request, res: Response, next: NextFunction) => {
-//     if (req.url === '/favicon.ico') {
-//         const filePath = resolve(publicPath, 'favicon.ico');
-//         const buffer = await fs.readFile(filePath);
-//         res.setHeader('Content-Type', 'image/svg+xml');
-//         res.send(buffer);
-//     } else {
-//         next();
-//     }
-// });
-//'/hola, crea otra pagina
-app.get('/', getController); // Define una ruta GET para la raíz ('/') que usa el controlador getController. 
-app.post('*', postController); // Define una ruta POST para cualquier ruta ('*') que usa el controlador postController
-app.patch('/'); // Define una ruta PATCH (sin controlador definido)
-app.put('/'); // Define una ruta PUT (sin controlador definido)
-app.delete('/'); // Define una ruta DELETE (sin controlador definido)
-app.use('*', notFoundController); // Define un controlador para cualquier ruta no encontrada ('*') que usa el controlador notFoundController
+// Definimos la ruta a la carpeta `public`, donde estarán los archivos estáticos (HTML, CSS, imágenes, etc.).
+const publicPath = resolve(__dirname, 'public');
 
+// Mostramos un mensaje en la consola de depuración indicando que la aplicación se está iniciando.
+debug('Iniciando App...');
 
-//La posición es importante por la sobrecarga de de parámetros
-app.use((err:Error, _req: Request, res: Response, next:NextFunction) => {
-    debug('Error:', err);
-    res.status(500);
-    res.send('Internal Server Error');
-});
+// Deshabilitamos el encabezado `x-powered-by` de Express por razones de seguridad, ya que puede revelar que usamos Express.
+app.disable('x-powered-by');
 
+// -------------------- Middlewares --------------------
 
+// Habilitamos `cors` para permitir peticiones desde distintos orígenes.
+app.use(cors());
 
+// Configuramos `morgan` en modo 'common' para registrar las solicitudes HTTP en la consola.
+app.use(morgan('common'));
 
-/*function cors() {
-    return (req: express.Request, res: express.Response, next: express.NextFunction) => {
-        res.header('Access-Control-Allow-Origin', '*');
-        res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
-        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-        if (req.method === 'OPTIONS') {
-            res.sendStatus(200);
-        } else {
-            next();
-        }
-    };
-}
+// Habilitamos el soporte para recibir JSON en las solicitudes HTTP (cuerpo de la petición).
+app.use(express.json());
+
+// Activamos el middleware `logger` que hemos definido previamente, usando el nivel 'debugger'.
+app.use(logger('debugger'));
+
+// Servimos archivos estáticos desde la carpeta `public`, para servir HTML, imágenes, CSS, etc.
+app.use(express.static(publicPath));
+
+// -------------------- Rutas --------------------
+
+// Definimos las rutas GET principales de la aplicación y las enlazamos con el controlador `getIndexController`.
+// Cuando un usuario accede a estas rutas, se ejecutará la lógica dentro de `getIndexController`.
+app.get('/', getIndexController);
+app.get('/about', getIndexController);
+app.get('/contacts', getIndexController);
+app.get('/portfolio', getIndexController);
+
+// Ruta POST para '/contacts'. Se activa cuando un usuario envía un formulario en esta ruta.
+app.post('/contacts', postController);
+
+// Asignamos el `usersRouter` a la ruta base '/api/users', lo que significa que cualquier solicitud a '/api/users' será manejada por este enrutador.
+app.use('/api/users', usersRouter);
+
+// Si el usuario accede a una ruta que no existe, se activa `notFoundController` para devolver un error 404.
+app.use('*', notFoundController);
+
+// -------------------- Manejo de Errores --------------------
+
+// Manejamos errores centralizados con `errorManager`, lo que evita la caída de la aplicación por errores inesperados.
+app.use(errorManager);
+
+/*
+Explicación General
+Importaciones: Se incluyen librerías y módulos personalizados.
+Configuración: Se establecen variables como el directorio base y la ruta pública.
+Middlewares:
+Se activan herramientas como cors, morgan, express.json(), y express.static().
+Definición de rutas:
+Se configuran rutas GET para las páginas principales (/, /about, etc.).
+Se establece una ruta POST para manejar formularios.
+Se incorpora un enrutador específico para los usuarios en /api/users.
+Se define una ruta comodín (*) para manejar páginas no encontradas.
+Manejo de errores: Se configura errorManager como middleware global para capturar y gestionar errores.
+Este código establece un backend bien estructurado con Express.js, asegurando modularidad, seguridad y registro de solicitudes.
 
 */
-
-
