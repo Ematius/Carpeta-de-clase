@@ -82,3 +82,5 @@ patch modifica, de toda la vida update
 post crea,
 
 las funciones normales no tienen un this. por defecto, es un this. segun quien la ejecute es decir en tiempo de ejecución, para que eso no pase se pone .bind( quien quieres que sea el this.) para ello entender el concepto de los .bind()
+
+const html = String.raw, el raw que es una función transformadora que esta dentro de edma6 y hace que no se escape nada de codigo en el string, el problema de lit (html)

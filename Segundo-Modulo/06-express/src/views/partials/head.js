@@ -1,6 +1,5 @@
 // import { html } from 'lit-html';
-
-export const createHead = (title: string) => {
+export const createHead = (title) => {
     return /*html*/ `
         <head>
             <meta charset="UTF-8" />

@@ -1,23 +1,18 @@
 // import { html } from 'lit-html';
-
 const items = [
     { label: 'Index', path: './' },
     { label: 'Portfolio', path: './portfolio' },
     { label: 'Contacts', path: './contacts' },
     { label: 'About', path: './about' },
 ];
-
 export const menuItems = items
-    .map(
-        (item) => /*html */`
+    .map((item) => /*html */ `
             <li class="menu-tablet">
                 <a href="${item.path}">${item.label}</a>
             </li>
-        `,
-    )
+        `)
     .join('');
-
-export function createHeader(title: string) {
+export function createHeader(title) {
     const img = './assets/logo-golden-bisque.svg';
     const cssClass = 'main-header';
     const headerTemplate = /*html*/ `

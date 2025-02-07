@@ -2,7 +2,7 @@ import { menuItems } from './header.js';
 // import { html } from 'lit-html';
 
 export function createDialogNav() {
-    const template = `
+    const template = /*html*/ `
         <dialog>
             <p class="close">
                 <button class="fa-solid fa-xmark"></button>

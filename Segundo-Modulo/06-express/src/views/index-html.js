@@ -1,16 +1,12 @@
 // import { html } from 'lit-html';
-
 import { createHeader } from './partials/header.js';
 import { createHead } from './partials/head.js';
 import { createFooter } from './partials/footer.js';
-
 const html = String.raw;
-
 export const renderIndexHtml = () => {
     const title = 'Inicio | Cliente de Express';
     const pageTitle = 'Cliente de Express';
-
-    return html`
+    return html `
         <!DOCTYPE html>
         <html lang="en">
             ${createHead(title)}

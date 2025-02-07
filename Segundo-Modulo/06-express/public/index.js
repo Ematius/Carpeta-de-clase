@@ -1,3 +1,6 @@
+
+
+
 document.querySelector('button').addEventListener('click', () => {
     const server = 'http://localhost:3000';
     fetch(`${server}/`, {
