@@ -2,17 +2,14 @@
 import express from 'express';
 import createDebug from 'debug';
 import { resolve } from 'path';
-
-import { getIndexController } from './controllers.js';
+import { getIndexController, serverJson, getGames} from './controllers.js';
 import { logger } from './middleware.js';
 import { renderDetails } from './views/details.js';
-
-
-
-
+;
 
 
 export const app = express();
+
 
 
 //-------middleware de logging---------------
@@ -30,11 +27,20 @@ debug('Iniciando App...');
 
 app.disable('x-powered-by');
 
+// -------------------- Middlewares para procesar json--------------------
+
+app.use(express.json());
 
 // -------------------- Rutas --------------------
 
 app.get('/', getIndexController);
+app.get('/prueba', getGames);
+
 app.get('/details', (req, res) => {
     res.send(renderDetails);
 });
+
+
+
+
 

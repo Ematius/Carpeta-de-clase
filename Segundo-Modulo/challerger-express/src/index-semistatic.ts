@@ -1,21 +1,6 @@
-import { juegos } from './data.js';
 
-const html = String.raw;
 
-const listadoJuegos = juegos
-    .map((juego) => {
-        return html`
-            <section>
-                <div>
-                    <h2>${juego.nombre}</h2>
-                    <p>Precio: ${juego.precio}</p>
-                    <button data="${juego.id}"><a href="/details">detalles</a></button> 
-                </div>
-            </section>
-        `;
-    })
-    .join('');
-
+const html = String.raw
 
 
 export const renderIndexSemiStatic = () => {
@@ -34,6 +19,9 @@ export const renderIndexSemiStatic = () => {
                     href="favicon.svg"
                     type="image/x-icon"
                 />
+          
+                <script type="module" src="" defer></script>
+                <script type="module" src="" defer></script>
                 <title>${title}</title>
             </head>
 
@@ -47,19 +35,31 @@ export const renderIndexSemiStatic = () => {
                     </nav>
                 </header>
                 <main class="hero">
-                    <section>${listadoJuegos}</section>
-                    <form action="post" >
+                    <div id="games-container">  </div>
+                    <form action="products" method="post">
                         <label>
-                            <input type="text" placeholder="id" />
+                            <input type="text" name="id" placeholder="id" />
                         </label>
                         <label>
-                            <input type="text" placeholder="Nombre del juego" />
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Nombre del juego"
+                            />
                         </label>
                         <label>
-                            <input type="text" placeholder="Precio del juego" />
+                            <input
+                                type="text"
+                                name="price"
+                                placeholder="Precio del juego"
+                            />
                         </label>
                         <label>
-                            <input type="text" placeholder="Detalle del juego" />
+                            <input
+                                type="text"
+                                name="details"
+                                placeholder="Detalle del juego"
+                            />
                         </label>
                         <button>Enviar Nuevo productor</button>
                     </form>
@@ -68,10 +68,10 @@ export const renderIndexSemiStatic = () => {
                 <footer>
                     <p>Challenger Express</p>
                 </footer>
-               
             </body>
         </html>`;
 };
+
 
 
 
