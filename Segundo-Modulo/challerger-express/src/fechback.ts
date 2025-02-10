@@ -1,3 +1,4 @@
+import fs from 'fs';
 
 
 interface Juego {
@@ -9,8 +10,10 @@ interface Juego {
 
 // ✅ 1️⃣ Obtener los juegos del backend
 export const getJuegos = async (): Promise<Juego[]> => {
-    const response = await fetch('http://localhost:3000/api/products');
+    const response = await fetch('http://localhost:3000/products');
     const juegos = await response.json();
+
+    fs.writeFileSync('data.json', JSON.stringify(juegos), { flag: 'w' });
 
     // Convertir a array de objetos clave-valor
     return juegos.map((juego: Juego) => ({

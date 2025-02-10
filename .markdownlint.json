@@ -1,22 +1,24 @@
 {
-    "MD013": false,
+  "MD013": false,
 
-    "list-marker-space": {
-        "ul_multi": 3,
-        "ul_single": 3
-    },
+  "MD030": {
+    "ol_multi": 1,
+    "ol_single": 1,
+    "ul_multi": 3,
+    "ul_single": 3
+  },
 
-    "ul-indent": {
-        "indent": 4
-    },
-    "br_spaces": true,
-    "blank_lines": false,
-    "list_item_empty_lines": true,
-    "single-trailing-newline": false,
-    "strict": {
-        "ul": true,
-        "ol": true,
-        "blanks": true
-    },
-    "no-trailing-spaces": false
+  "ul-indent": {
+    "indent": 4
+  },
+  "br_spaces": true,
+  "blank_lines": false,
+  "list_item_empty_lines": true,
+  "single-trailing-newline": false,
+  "strict": {
+    "ul": true,
+    "ol": true,
+    "blanks": true
+  },
+  "no-trailing-spaces": false
 }

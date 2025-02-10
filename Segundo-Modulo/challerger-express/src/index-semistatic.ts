@@ -24,8 +24,8 @@ export const renderIndexSemiStatic = () => {
                     type="image/x-icon"
                 />
           
-                <script type="module" src="../public/fechFront.js" defer> </script>
-                <script type="module" src="" defer></script>
+                <script type="module" src="fechFront.js" defer> </script>
+                <script type="module" src="index.js" defer></script>
                 <title>${title}</title>
             </head>
 

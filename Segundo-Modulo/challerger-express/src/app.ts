@@ -2,7 +2,7 @@
 import express from 'express';
 import createDebug from 'debug';
 import { resolve } from 'path';
-import { getIndexController, serverJson} from './controllers.js';
+import { getIndexController, postController, serverJson} from './controllers.js';
 import { logger } from './middleware.js';
 import { renderDetails } from './views/details.js';
 ;
@@ -17,9 +17,9 @@ app.use(logger('debugger'));
 
 const debug = createDebug('demo:app');
 //---- 
-const __dirname = resolve();
 
-const publicPath = resolve(__dirname, 'public');
+
+const publicPath = resolve('public');
 
 app.use(express.static(publicPath));
 
@@ -34,7 +34,7 @@ app.use(express.json());
 // -------------------- Rutas --------------------
 
 app.get('/', getIndexController);
-
+app.post('/product', postController);
 app.get('/api/products', serverJson)
 app.get('/details', (req, res) => {
     res.send(renderDetails);

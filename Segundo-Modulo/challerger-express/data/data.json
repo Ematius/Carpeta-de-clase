@@ -1,5 +1,4 @@
 [
-
     {
         "id": 1,
         "nombre": "Super Mario Bros",
@@ -12,17 +11,23 @@
         "precio": 1500,
         "detalle": "Juego de aventuras"
     },
-    {
-        "id": 3,
-        "nombre": "Pokemon",
-        "precio": 2000,
-        "detalle": "Juego de rol"
-    },
+    { "id": 3, "nombre": "Pokemon", "precio": 2000, "detalle": "Juego de rol" },
     {
         "id": 4,
         "nombre": "Donkey Kong",
         "precio": 2500,
         "detalle": "Juego de plataformas"
+    },
+    {
+        "id": "5",
+        "name": "dragon ball",
+        "price": "100",
+        "details": "Juego de combates"
+    },
+    {
+        "id": "6",
+        "name": "dragon ball super",
+        "price": "1000",
+        "details": "Juego de combates super combates"
     }
 ]
-

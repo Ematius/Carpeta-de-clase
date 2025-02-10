@@ -43,8 +43,14 @@ export const postController = (req: Request, res: Response) => {
     debug('Petición recibida');
     debug(newProduct);
     const filePath = path.resolve('data', 'data.json');
-    const dataJson = JSON.stringify(newProduct, null, 2);
-    fs.writeFileSync(filePath, dataJson, { flag: 'a+' });
+
+    const data = fs.readFileSync(filePath, 'utf-8' );
+    const products = JSON.parse(data);
+
+    products.push(newProduct);
+
+    fs.writeFileSync(filePath, JSON.stringify(products));
+
     res.json({ message: 'Producto recibido' });
 };
 

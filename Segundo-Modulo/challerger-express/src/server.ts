@@ -1,4 +1,4 @@
-
+// 1️⃣
 import { createServer } from 'node:http';
 
 import 'dotenv/config';
@@ -52,6 +52,7 @@ const server = createServer(app);
 
 server.listen(PORT);
 
+//on es un método para escuchar eventos, porque node esta orientado a eventos
 server.on('listening', listenManager);
 
 
