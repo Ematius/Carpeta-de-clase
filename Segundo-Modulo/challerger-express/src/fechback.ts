@@ -1,4 +1,4 @@
-import fs from 'fs';
+//import fs from 'fs';
 
 
 interface Juego {
@@ -13,7 +13,7 @@ export const getJuegos = async (): Promise<Juego[]> => {
     const response = await fetch('http://localhost:3000/products');
     const juegos = await response.json();
 
-    fs.writeFileSync('data.json', JSON.stringify(juegos), { flag: 'w' });
+    //fs.writeFileSync('data.json', JSON.stringify(juegos), { flag: 'R+' });
 
     // Convertir a array de objetos clave-valor
     return juegos.map((juego: Juego) => ({

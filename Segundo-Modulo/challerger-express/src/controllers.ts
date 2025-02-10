@@ -34,9 +34,6 @@ export const serverJson = async (_req: Request, res: Response) => {
     }
 };
 
-
-
-
 export const postController = (req: Request, res: Response) => {
     const newProduct = req.body;
     const debug = createDebug('demo:postController');
@@ -55,3 +52,18 @@ export const postController = (req: Request, res: Response) => {
 };
 
 
+// export const deleteController = (req: Request, res: Response) => {
+
+//     const id = req.params.id;
+//     const debug = createDebug('demo:deleteController');
+//     debug('Petición recibida');
+//     const filePath = path.resolve('data', 'data.json');
+//     const data = fs.readFileSync(filePath, 'utf-8' );
+//     const products = JSON.parse(data);
+
+//     const newProducts = products.filter((product: any) => product.id !== id);
+
+//     fs.writeFileSync(filePath, JSON.stringify(newProducts));
+
+//     res.json({ message: 'Producto eliminado' });
+// }

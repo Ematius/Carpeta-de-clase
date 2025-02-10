@@ -30,7 +30,7 @@ app.disable('x-powered-by');
 
 app.use(express.json());
 
-// -------------------- Rutas --------------------
+// -------------------- Rutas / manejador de eventos --------------------
 
 app.get('/', getIndexController);
 app.post('/product', postController);

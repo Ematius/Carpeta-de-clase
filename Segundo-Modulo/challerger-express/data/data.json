@@ -29,5 +29,6 @@
         "name": "dragon ball super",
         "price": "1000",
         "details": "Juego de combates super combates"
-    }
+    },
+    { "id": "7", "name": "prueba", "price": "123", "details": "prueba" }
 ]
