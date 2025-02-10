@@ -1,21 +1,6 @@
-//import { getJuegos } from './fetchBack.js';
 
-// export const renderGames = async () => {
-//     const juegos = await getJuegos(); // Obtenemos los juegos
 
-//     return juegos
-//         .map(
-//             (juego) => `
-//     <div>
-//         <h1>${juego.nombre}</h1>
-//         <p>Precio: $${juego.precio}</p>
-//     </div>
-// `,
-//         )
-//         .join('');
-// };
-
-const renderGames = async () => {
+export const renderGamesDetails = async () => {
     const response = await fetch('http://localhost:3000/api/products');
     const juegos = await response.json();
 
@@ -32,11 +17,12 @@ const renderGames = async () => {
     <div>
       <h1>${juego.nombre}</h1>
       <p>Precio: $${juego.precio}</p>
-        <a href="details.html">detalles</a>
+      <p>${juego.detalle}</p>
+      <a href="http://localhost:3000/">Volver</a>
     </div>
   `,
         )
         .join('');
 };
 
-renderGames();
+renderGamesDetails();

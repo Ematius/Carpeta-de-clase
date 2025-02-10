@@ -4,8 +4,7 @@ import createDebug from 'debug';
 import { resolve } from 'path';
 import { getIndexController, postController, serverJson} from './controllers.js';
 import { logger } from './middleware.js';
-import { renderDetails } from './views/details.js';
-;
+
 
 
 export const app = express();
@@ -36,9 +35,8 @@ app.use(express.json());
 app.get('/', getIndexController);
 app.post('/product', postController);
 app.get('/api/products', serverJson)
-app.get('/details', (req, res) => {
-    res.send(renderDetails);
-});
+
+
 
 
 
