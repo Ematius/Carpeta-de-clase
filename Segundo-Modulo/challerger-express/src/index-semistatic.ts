@@ -1,6 +1,10 @@
 
 
-const html = String.raw
+
+
+
+const html = String.raw;
+
 
 
 export const renderIndexSemiStatic = () => {
@@ -20,7 +24,7 @@ export const renderIndexSemiStatic = () => {
                     type="image/x-icon"
                 />
           
-                <script type="module" src="" defer></script>
+                <script type="module" src="../public/fechFront.js" defer> </script>
                 <script type="module" src="" defer></script>
                 <title>${title}</title>
             </head>
@@ -35,7 +39,7 @@ export const renderIndexSemiStatic = () => {
                     </nav>
                 </header>
                 <main class="hero">
-                    <div id="games-container">  </div>
+                    <div id="games-container"> </div>
                     <form action="products" method="post">
                         <label>
                             <input type="text" name="id" placeholder="id" />
