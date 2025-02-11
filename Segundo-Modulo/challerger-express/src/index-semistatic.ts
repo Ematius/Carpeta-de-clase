@@ -3,6 +3,7 @@
 
 
 
+
 const html = String.raw;
 
 
@@ -74,6 +75,7 @@ export const renderIndexSemiStatic = () => {
                 </footer>
             </body>
         </html>`;
+
 };
 
 

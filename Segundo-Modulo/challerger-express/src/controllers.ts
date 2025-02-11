@@ -37,7 +37,7 @@ export const serverJson = async (_req: Request, res: Response) => {
 export const postController = (req: Request, res: Response) => {
     const newProduct = req.body;
     const debug = createDebug('demo:postController');
-    debug('Petición recibida');
+    debug('Petición recibida el home');
     debug(newProduct);
     const filePath = path.resolve('data', 'data.json');
 

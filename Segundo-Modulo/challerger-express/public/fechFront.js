@@ -15,9 +15,12 @@
 //         .join('');
 // };
 
+
+
 const renderGames = async () => {
     const response = await fetch('http://localhost:3000/api/products');
     const juegos = await response.json();
+    
 
     const contenedor = document.getElementById('games-container');
 
