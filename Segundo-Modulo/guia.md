@@ -196,3 +196,33 @@ tres terminales, test, lectura y
 
     y ahora es un buen momento para hacer un initial commit  
 
+
+## Mirar guía en challenger-express
+
+levantar servidor (DEbo meter los pasos)
+Diferentes enfoques
+
+    - SSG: Static Site Generation
+    - SSR: Server Side Render
+
+
+## DB
+
+Usan lenguajes específicos de ámbito, es decir es especifico para DB, no vale para programar ni gestionar otras cosas, llamado también lenguaje declarativo
+
+Importante sSistema de gestión de bases de datos relacionales:
+    - Son dos cosas:
+      - 1️⃣ Donde se almacenan 
+      - 2️⃣ El lenguaje que lo gestiona (sistema gestor de datos)
+  
+Componentes SQL:
+    - Lenguaje de definición de datos (DDL): creación de tablas, normalmente de las dan
+    - **Lenguaje manipulación de datos(DML): El CRUD: Select, Insert, Update,Delete**
+    - Lenguaje de control de datos(DCL): control de accesos
+
+### Estandarización
+
+Dos organizaciones ANSI y ISO
+
+pass de superbase:Curso@2025
+
