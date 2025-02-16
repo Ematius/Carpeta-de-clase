@@ -18,8 +18,8 @@ Un sistema para gestionar una escuela
 
 
 
-------------Biblioteca------------
- ------------------------------------------------
+## Biblioteca
+
 |📌 1. Planteamiento de los Requisitos del Sistema  |
  ------------------------------------------------
 
@@ -46,13 +46,12 @@ Entidades Principales:
 
 📌 Relaciones:
 
- 
-|Relación   |Explicación |                                                                                |  Cardinalidad |
-|----------- ------------ -------------------------------------------------------------------------------- ---------------|
-|Usuario    |Préstamo    |Un usuario puede hacer varios préstamos,y  un préstamo a un solo usuario.       |     1:N       |
-|Libro      |Préstamo    |Un libro puede estar en un solo préstamo activo a la vez.                       |     N:1       |
-|Préstamo   |Fecha       |Cada préstamo tiene una fecha de inicio y una fecha esperada de devolución.     |     1:1       |
- 
+| Relación   | Explicación                                                                 | Cardinalidad |
+|------------|-----------------------------------------------------------------------------|--------------|
+| Usuario - Préstamo | Un usuario puede hacer varios préstamos, y un préstamo a un solo usuario. | 1:N          |
+| Libro - Préstamo   | Un libro puede estar en un solo préstamo activo a la vez.           | N:1          |
+| Préstamo - Fecha   | Cada préstamo tiene una fecha de inicio y una fecha esperada de devolución. | 1:1          |
+
 
 
  
@@ -83,11 +82,11 @@ Entidades Principales:
 | id_libro(FK)        |                                                                                     
 | Fecha de inicio     |                                                                             
 | Fecha de devolución |                                                                 
- --------------------    
+     
                                                                                     
 
 
-------------Venta de billetes de avion------------
+## Venta de billetes de avion
 
 
  
@@ -115,11 +114,11 @@ Entidades Principales:
 📌 Relaciones:
 
  
-|Relación            |Explicación |                                               |  Cardinalidad |
-|-------------------- ------------------------------------------------------------ ---------------|
-|Usuario - billete   |Un usuario puede tener varios billete y no al revés         |     1:N       |
-|Billete - vuelo     |Un billete pertenece a un vuelo y un vuelo muchos billetes  |     1:N       |
-|Vuelo   - aerolínea |Un vuelo pertenece a una aerolínea, este tiene muchos vuelos|     1:N       |
+| Relación            | Explicación                                                         | Cardinalidad |
+|---------------------|---------------------------------------------------------------------|--------------|
+| Usuario - Billete   | Un usuario puede tener varios billetes y no al revés                | 1:N          |
+| Billete - Vuelo     | Un billete pertenece a un vuelo y un vuelo tiene muchos billetes    | 1:N          |
+| Vuelo - Aerolínea   | Un vuelo pertenece a una aerolínea, esta tiene muchos vuelos        | 1:N          |
 
  
 |📌 3. Diseño de las tablas y sus atributos  -    |
@@ -159,7 +158,7 @@ Entidades Principales:
 
 
 
------------------------- Gestionar tienda de determinados productos ----------
+##  Gestionar tienda de determinados productos 
 
  
 |📌 1. Planteamiento de los Requisitos del Sistema |
@@ -186,12 +185,11 @@ Entidades principales:
 
 📌 Relaciones:
 
-|Relación            |Explicación |                                               |  Cardinalidad |
-|-------------------- ------------------------------------------------------------ ---------------|
-|Sección - Producto  |Una sección tiene M productos, y un producto una sección    |     1:N       |
-|Historial - Pago    |Una compra puede tener varios pagos asociados               |     1:1       |
-
- ------------------------------------------------
+| Relación            | Explicación                                                         | Cardinalidad |
+|---------------------|---------------------------------------------------------------------|--------------|
+| Sección - Producto  | Una sección tiene M productos, y un producto pertenece a una sección | 1:N          |
+| Historial - Pago    | Una compra puede tener varios pagos asociados                       | 1:1          |
+ 
 |📌 3. Diseño de las tablas y sus atributos  - tienda    |
  ------------------------------------------------
 
