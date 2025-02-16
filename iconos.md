@@ -1,9 +1,7 @@
-# Iconos para descripción del proyecto
+# Lista de Iconos
 
 ## Estado del Proyecto
 -   ✅ Completado
--   🚧 En progreso
--   ❌ No completado
 -   🔄 Actualizando
 
 ## Números
@@ -17,6 +15,19 @@
 -   8️⃣ Ocho
 -   9️⃣ Nueve
 -   🔟 Diez
+
+## Flechas
+-   ⬆️ Flecha hacia arriba
+-   ⬇️ Flecha hacia abajo
+-   ⬅️ Flecha hacia la izquierda
+-   ➡️ Flecha hacia la derecha
+-   ↗️ Flecha hacia arriba a la derecha
+-   ↘️ Flecha hacia abajo a la derecha
+-   ↙️ Flecha hacia abajo a la izquierda
+-   ↖️ Flecha hacia arriba a la izquierda
+-   🔄 Flecha en círculo (actualizando)
+-   ↔️ Flecha horizontal
+-   ↕️ Flecha vertical
 
 ## Prioridad
 -   🔴 Alta prioridad
@@ -73,5 +84,12 @@
 -   📈 Incremento
 -   📉 Decremento
 
-
-
+## Entidades Principales
+-   🧑‍💻 Usuario
+-   🎫 Billete
+-   ✈️ Vuelo
+-   🏢 Aerolínea
+-   📂 Sección
+-   📦 Producto
+-   📜 Historial
+-   💳 Pago
