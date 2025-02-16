@@ -189,5 +189,3 @@ Explicación de los iconos utilizados:
 6. Método .sort()
 
 
-
-
