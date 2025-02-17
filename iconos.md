@@ -2,6 +2,7 @@
 
 ## Estado del Proyecto
 -   ✅ Completado
+-   ❌ Eliminar (X)
 -   🔄 Actualizando
 
 ## Números

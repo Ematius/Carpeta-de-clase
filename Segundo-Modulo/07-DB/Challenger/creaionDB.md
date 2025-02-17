@@ -16,7 +16,8 @@ Un sistema para gestionar una escuela
 3️⃣ Construir el sistema de tablas en SQL
 4️⃣ Normalizar la base de datos
 
-
+--- bonus--- hacerlo con  <https://jorgesanchez.net/ermaker/>
+<https://jorgesanchez.net/>
 
 ## Biblioteca
 
@@ -48,41 +49,63 @@ Entidades Principales:
 
 | Relación   | Explicación                                                                 | Cardinalidad |
 |------------|-----------------------------------------------------------------------------|--------------|
-| Usuario - Préstamo | Un usuario puede hacer varios préstamos, y un préstamo a un solo usuario. | 1:N          |
+| Usuario - Préstamo | Un usuario puede hacer varios préstamos, y un préstamo a un solo usuario. | 1:N          | Escribe
 | Libro - Préstamo   | Un libro puede estar en un solo préstamo activo a la vez.           | N:1          |
 | Préstamo - Fecha   | Cada préstamo tiene una fecha de inicio y una fecha esperada de devolución. | 1:1          |
 
+| Autor - Libro      | Relación del autor libro | 1:N | 🔄
+| Libro - editorial  |  |  | 🔄
 
 
  
 |📌 3. Diseño de las tablas y sus atributos      |
  ------------------------------------------------
 
- 
- 
-|   🧑‍💻 Usuario        |  
+|   🧑‍💻 Usuario        |
  ---------------------
 | id_user(PK)         |
 | Nombre              |
 | Contacto            |
 | Fecha de nacimiento |
+| teléfono            | 🔄
+
  
 |   📚 Libro          |
  ---------------------
 | id_libro(PK)        |
 | Titulo              |
-| Autor               |
+| Autor               | ❌ 
 | Categoría           |
 | Estado de disponible|
-                                                        
-|   🔄 Préstamo       |                                                                 
- --------------------                                                                      
-| id_préstamo(PK)     |
-| id_user(FK)         |                                                                                 
-| id_libro(FK)        |                                                                                     
-| Fecha de inicio     |                                                                             
-| Fecha de devolución |                                                                 
-     
+| Fecha de publicación| 🔄
+| Formato             | 🔄
+| Signature           | 🔄
+| Localización        | 🔄
+
+    |   🧑‍💻 Autor  📚     | 🔄
+    ---------------------
+    | id_autor(PK)        | 🔄
+    | Nombre              | 🔄
+    | Apellidos           | 🔄
+    | Fecha de nacimiento | 🔄
+
+    |   🧑📄 Editorial   | 🔄
+    ---------------------
+    | id_editorial(PK)    | 🔄
+    | Nombre              | 🔄
+    | idiomas             | 🔄
+    | Teléfono | 🔄
+    | dirección | 🔄
+    | email | 🔄
+                                                            
+    |   🔄 Préstamo       | ❌ Es una relación no una
+    --------------------                                                                      
+    | id_préstamo(PK)     |
+    | id_user(FK)         |                                                                                 
+    | id_libro(FK)        |                                                                                     
+    | Fecha de inicio     |                                                                             
+    | Fecha de devolución |                                                                 
+        
                                                                                     
 
 
@@ -108,8 +131,12 @@ La base de datos debe permitir gestionar los siguientes aspectos:
 Entidades Principales:
 
 🧑‍💻 El usuario ➡️ (Persona que compra el billete)
-🎫 El billete ➡️ (El ticket que representa un asiento en un vuelo)
-✈️ El vuelo   ➡️ (La información del vuelo programado)
+    aerolinea ➡️
+    Conexion  ➡️   (Hacia donde va)
+   El vuelo   ➡️ (La información del vuelo programado)
+🎫 booking     ➡️ (representa la cantidad de huecos)
+
+ ✈️  aviones  ➡️ (Para datos técnicos)
 
 📌 Relaciones:
 
@@ -148,17 +175,19 @@ Entidades Principales:
 | Nª asiento          |
 | Precio              |
  
-|   🏢 Aerolínea     |
+|   🏢 Aerolínea     | (carrier)
  ---------------------
 | id_aerolinea(PK)    |
 | nombre              |
-                                                          
+
+
                                                                                     
 
 
 
 
-##  Gestionar tienda de determinados productos 
+
+## Gestionar tienda de determinados productos 
 
  
 |📌 1. Planteamiento de los Requisitos del Sistema |
@@ -178,6 +207,7 @@ La base de datos debe permitir gestionar los siguientes aspectos:
 
 Entidades principales:
 
+   
 📂 Sección    ➡️ (Agrupan productos)
 📦 Producto   ➡️ (Bienes a la venta)
 📜 Historial  ➡️ (Registro de ventas)
@@ -221,3 +251,16 @@ Entidades principales:
 | Monto               |
 | Método de pago      |
  
+
+
+
+
+ entidades:
+
+ producto 
+ client
+ category
+ provider
+ order
+ order_detail
+ shipper

@@ -148,3 +148,4 @@ Este te ayuda a estructural
 
 
 Una clave primaria debe ser inmutable y tampoco debe ser null
+

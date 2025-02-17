@@ -226,22 +226,22 @@ Son un conjunto de atributos que permite **identificar unívocamente** a una ent
    -   Implementación: La clave de una tabla aparece múltiples veces en la tabla relacionada.
    -   Es el tipo de relación más común.
    -   Ejemplo: Lista de tweets (post, notas...):
-     -   Un autor tiene múltiples notas.
-     -   Cada nota tiene un solo autor.
-     -   Relación: Autor 1 ---- N Nota.
+   -   Un autor tiene múltiples notas.
+   -   Cada nota tiene un solo autor.
+   -   Relación: Autor 1 ---- N Nota.
 
 3. **Relaciones muchos a muchos (N:M)**:
    -   Múltiples elementos de una entidad se relacionan con múltiples elementos de otra entidad.
    -   Ejemplo: Un estudiante puede inscribirse en múltiples cursos, y cada curso puede tener múltiples estudiantes.
    -   Implementación: Se crea una tabla intermedia para descomponer la relación en una serie de relaciones 1:N.
    -   Ejemplo: Relación Estudiante - Curso:
-     -   Un estudiante puede inscribirse en múltiples cursos.
-     -   Cada curso puede tener múltiples estudiantes.
-     -   Tabla intermedia: `Inscripciones` con columnas `estudiante_id` y `curso_id`.
+   -   Un estudiante puede inscribirse en múltiples cursos.
+   -   Cada curso puede tener múltiples estudiantes.
+   -   Tabla intermedia: `Inscripciones` con columnas `estudiante_id` y `curso_id`.
 
-### Ejemplo de tablas y relaciones
+### Ejemplo de tablas y relaciones -
 
-#### Tabla `Usuario`
+#### Tabla `Usuario` -
 
 | id  | nombre | email               |
 |-----|--------|---------------------|
@@ -296,5 +296,25 @@ Con esta estructura, puedes ver cómo las entidades, atributos y relaciones se r
 
 
 
+## Que es un servidor de base de datos
 
+El servidor-cliente que es
+
+El servidor no solo guarda los datos, si no también un motor de lógica de gestión de datos
+
+El cliente es un mero interfaz desde un gráfico a un interfaz
+
+Lo primero que se hace es conectar y definir los parámetros de conexión
+Lo segundo es enviar instrucciones
+Lo ultimo es cerrar la conexión
+
+
+La diferencia entre diagrama entidad-relación  y diagrama de tablas
+
+La de entidad relación es lo abstracto, el planteamiento
+diagrama de tablas es cuando ya se puede plasmar es decir tiene en cuenta las tablas de relación etc...
+
+
+
+En el diagrama si usan las identificaciones de las lineas que sean continuas dices que es identificadora por lo tanto lleva las claves, y discontinua es no identificadora
 
