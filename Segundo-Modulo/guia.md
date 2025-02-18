@@ -2,231 +2,353 @@
 
 ## Builder
 
-Hay que hacer un builder para minification, uglification.
-Vamos a usar Vite.
-hay diferencias entre compilar y builder técnicamente.
-Es una herramienta solo para desarrolladores.
-
-## vite
-
-Borrar los ficheros de de demo y ya hacer el  initial commit y colgar el repo
-
-## TS
-
-comprobar si no es nulo:
-    Menos segura: operador ! = me da igual yo lo compruebo asi que déjame en paz (! = not)
-    Má segura: if(xxx){
-                    Se ejecuta, si es lo esperado si, si no es no
-                }
-### linter
-
-Es una herramienta que te ayuda a tener menos errores, tu estableces tus reglas
-
-## detalles
-
-crear el .editconfig, a la hora de trabajar para compartir mismo sistema de trabajo.
-
-## cuando hacer el initial commit
-
-npm json
-...
-con el lint termina
-
-## testing
-
-usamos vitest hay varios en el mercado, jasmine y otro que no recuerdo
-npm install -D vitest
-npm run test
-
-Me perdido se hará mañana de nuevo
-
-hay que hacer un test por cada prueba y no una global porque la respuesta no es especifica
-
-test('add function with 1 and 2 should return 3', () => {
-    expect(add(1, 2)).toBe(3);
-    });
-
-## cmd
-
-npm run xx -- -v (-- es para notificar la información que quieres ver, es decir en vez de la version de node que es npm seria la de xx)
-
-para instalar nvm lo primero
-<https://github.com/coreybutler/nvm-windows/releases>
-
-cd direction node archivo.ts
+Hay que hacer un builder para minification, uglification. Vamos a usar Vite. Hay diferencias entre compilar y builder técnicamente. Es una herramienta solo para desarrolladores.
 
 ## Vite
 
-es para front, es para comprimir y reducir bites es solo para los usuarios
+Borrar los ficheros de demo y hacer el initial commit y colgar el repo.
 
-## desde 0 Instalarlo
+## TypeScript (TS)
 
-en la carpeta donde quiero que haga el proyecto de vite introduces por comandos:
+### Comprobar si no es nulo
 
-npm create vite@lastest (seguir procesos) url(https://es.vite.dev/)
+- Menos segura: operador `!` = me da igual, yo lo compruebo así que déjame en paz (! = not).
+- Más segura: `if(xxx){ ... }` se ejecuta si es lo esperado, si no, no.
 
-añadir el .editorconfig creando o pegando de un proyecto anterior
+### Linter
 
-luego instalar prettier(npm i -D prettier) la de para decir que es una dependencia de desarrollo
-en package.json añadimos configuración de prettier
+Es una herramienta que te ayuda a tener menos errores, tú estableces tus reglas.
 
-luego instalo ESlint [url](https://eslint.org/)  npm init @eslint/config@latest
+## Detalles
 
-instalar entorno de testing vitetest [https://vitest.dev](https://vitest.dev)   npm install -D vitest
-pasos para seguir
+Crear el `.editconfig` para compartir el mismo sistema de trabajo.
 
-configurar vite
-crear un fichero vite.config.ts
-entra en [esta URL](https://vitest.dev/config/file.html#managing-vitest-config-file)
-y copias :
+## Initial Commit
 
+- npm json
+- Con el lint termina
+
+## Testing
+
+Usamos Vitest. Hay varios en el mercado, como Jasmine y otros.
+
+```bash
+npm install -D vitest
+npm run test
+```
+
+Es importante hacer un test por cada prueba y no uno global porque la respuesta no es específica.
+
+```typescript
+test('add function with 1 and 2 should return 3', () => {
+  expect(add(1, 2)).toBe(3);
+});
+```
+
+## Comandos
+
+```bash
+npm run xx -- -v
+```
+
+(-- es para notificar la información que quieres ver, es decir, en vez de la versión de node que es npm, sería la de xx).
+
+Para instalar nvm lo primero:
+
+<https://github.com/coreybutler/nvm-windows/releases>
+
+```bash
+cd direction node archivo.ts
+```
+
+## Vite
+
+Es para front, para comprimir y reducir bytes, es solo para los usuarios.
+
+## Desde 0 Instalarlo
+
+En la carpeta donde quiero que haga el proyecto de Vite, introduces por comandos:
+
+```bash
+npm create vite@latest
+```
+
+Seguir procesos: <https://es.vite.dev/>
+
+Añadir el `.editorconfig` creando o pegando de un proyecto anterior.
+
+Luego instalar Prettier:
+
+```bash
+npm i -D prettier
+```
+
+En `package.json` añadimos configuración de Prettier.
+
+Luego instalar ESLint: <https://eslint.org/>
+
+```bash
+npm init @eslint/config@latest
+```
+
+Instalar entorno de testing Vitest: <https://vitest.dev>
+
+```bash
+npm install -D vitest
+```
+
+Pasos para seguir:
+
+Configurar Vite, crear un fichero `vite.config.ts`:
+
+```typescript
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
-    test: {
-        globals: true,
-    },
+  test: {
+    globals: true,
+  },
 });
+```
 
-con esto nos ahorramos, que cuando creemos un XXX.test.ts podamos poner
-import { test, expect, describe} from "vitest";
- en vez de poner esto en todos se ha hecho global al ponerlo en true.
+Con esto nos ahorramos que cuando creemos un `XXX.test.ts` podamos poner:
 
-también necesito configurar a ts para que sepa lo que es un test() en XXX.test.ts  en tsconfig.json donde queramos ponemos
+```typescript
+import { test, expect, describe } from 'vitest';
+```
+
+En vez de poner esto en todos, se ha hecho global al ponerlo en true.
+
+También necesito configurar TS para que sepa lo que es un `test()` en `XXX.test.ts`. En `tsconfig.json` donde queramos ponemos:
+
+```json
 "types": ["vitest/globals"],
+```
 
-Para que el builder coja mas paginas y no solo la primera, hay que volver a vite.config.ts y añadir, NO es necesario:
+Para que el builder coja más páginas y no solo la primera, hay que volver a `vite.config.ts` y añadir (NO es necesario):
+
+```typescript
 import { resolve } from 'path';
-solución rápida instalar node
-  build: {
-        rollupOptions: {
-            input: {{
-                main: resolve(__dirname,'index.html'),
-                about: resolve(__dirname, 'about.html'),
-            }
-        },
-    }
 
-las paginas van fuera de src, van en la raíz del proyecto, cada pagina puede ir en una carpeta, la carpeta puede tener el nombre de lo que seria la pagina creado, footer, about etc... pero dentro seria index porque busca por defecto index y en el src poner todos los ts, puedes meterlo en carpetas cada uno si quieres.
+export default defineConfig({
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        about: resolve(__dirname, 'about.html'),
+      },
+    },
+  },
+});
+```
+
+Las páginas van fuera de `src`, van en la raíz del proyecto. Cada página puede ir en una carpeta, la carpeta puede tener el nombre de lo que sería la página creada, footer, about, etc. Pero dentro sería `index` porque busca por defecto `index` y en el `src` poner todos los TS, puedes meterlo en carpetas cada uno si quieres.
 
 ## Teoría
 
-Saber si nuestra web necesita un servidor de aplicaciones (que recoja información haga procesos necesarios y de una respuesta)o solo un servidor de http 
-Con vite solo quiero subir lo que esta en la carpeta dist
+Saber si nuestra web necesita un servidor de aplicaciones (que recoja información, haga procesos necesarios y dé una respuesta) o solo un servidor de HTTP.
 
-npm run build generas el dist que realmente seria el producto, esta bien como comprobación pero realmente este comando ya lo hace el servidor
+Con Vite solo quiero subir lo que está en la carpeta `dist`.
 
-netlify o vercel son una capa gratuita para despliegue desde github 
-  por dentro genera npm run build por dentro y lo mismo en pc sale online
-  Hay que darle las variables de entorno si son necesarias porque de otra forma al no tenerla la contraseña o lo que necesite pues no funcionaria
-(Si compras un dominio puedes enlazarlo en el si quieres)
+```bash
+npm run build
+```
 
-desde la rama haces una pullRequest y asi no despliegas directamente, y se merge la pullRequest
+Generas el `dist` que realmente sería el producto. Está bien como comprobación pero realmente este comando ya lo hace el servidor.
 
-## como añadir vite a un proyecto ya empezado
+Netlify o Vercel son una capa gratuita para despliegue desde GitHub. Por dentro genera `npm run build` y lo mismo en PC sale online. Hay que darle las variables de entorno si son necesarias porque de otra forma al no tenerla la contraseña o lo que necesite pues no funcionaría. (Si compras un dominio puedes enlazarlo en el si quieres).
 
-una opción es crear un proyecto nuevo y colocar manualmente
+Desde la rama haces una pull request y así no despliegas directamente, y se merge la pull request.
 
-otra opción es copiar package.json + tsconfig + vite.config.ts + eslint.config.js + package-lock.json y reagrupar las carpetas como vite
+## Cómo añadir Vite a un proyecto ya empezado
 
-## refrescos y como empezar un proyecto 
-$ npm init -y es para crear node(se crea package.json)
-añadir a mano ty: module
+Una opción es crear un proyecto nuevo y colocar manualmente.
 
-npm i -D prettier (se crea package-lock.json)
+Otra opción es copiar `package.json`, `tsconfig`, `vite.config.ts`, `eslint.config.js`, `package-lock.json` y reagrupar las carpetas como Vite.
 
-npx ... -v busca el lo que estas buscando si esta en node modules y si no esta lo busca e instala 
+## Refrescos y cómo empezar un proyecto
 
-$ npx tsc --init (crea el fichero de configuración) y crea un fichero un tsconfig.json 
-    entramos y cambiamos :
-        "target": "", cambiar este por el mas nuevo "target": "ESNext",
-        "module": "ESNext",
-        "rootDir": "./src", 
-        "outDir": "./dist",
+```bash
+npm init -y
+```
 
-en package.json:
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "tsc -w"
-    }
+Es para crear node (se crea `package.json`). Añadir a mano:
 
-luego 
+```json
+"type": "module"
+```
 
-npm init @eslint/config@latest instalar linter
+```bash
+npm i -D prettier
+```
 
-luego 
+(se crea `package-lock.json`).
 
+```bash
+npx tsc --init
+```
+
+Crea el fichero de configuración y crea un fichero `tsconfig.json`. Entramos y cambiamos:
+
+```json
+"target": "ESNext",
+"module": "ESNext",
+"rootDir": "./src",
+"outDir": "./dist",
+```
+
+En `package.json`:
+
+```json
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -w"
+}
+```
+
+Luego:
+
+```bash
+npm init @eslint/config@latest
+```
+
+Instalar linter.
+
+Luego:
+
+```bash
 npm install -D vitest
-hay que crear el fichero vite.config.ts
+```
 
-en tsconfig.json "exclude": ["vite.config.ts"]
+Hay que crear el fichero `vite.config.ts`.
 
-tres terminales, test, lectura y 
+En `tsconfig.json`:
 
-## repaso de instalacion
+```json
+"exclude": ["vite.config.ts"]
+```
 
-    Proyecto con node
+Tres terminales: test, lectura y ...
 
-    punto de partida
+## Repaso de instalación
 
-    necesitas un .json = npm init -y
-    necesito prettier local = npm i -D prettier
-    en package.json: añadimos si queremos "prettier"{"singleQuote":true}
+Proyecto con node:
 
-    instalar y configurar TS
-    npm i -D typescript
-    configurar npx tsc --init
+1. Necesitas un `.json`:
 
-    reviso los valores de tsconfig.ts "rootDir": "./src" y "outDir": "./dist donde buscar y donde escribir
+```bash
+npm init -y
+```
 
-    instalar Eslint= npm init @eslint/config@lastest (mirar la pagina por si esta mal escrito)
-    añadir en el package.json 
-        "lint": "eslint ."
+2. Necesito Prettier local:
 
-    instalo vitest = npm  mirar pagina
-        e incluir en vite.config.ts poner defineConfig ...
-        modifico "test": "vitest"
+```bash
+npm i -D prettier
+```
 
-    buscamos en el ts.config
-        añadimos compilerOptions{
-                ....
-                }
-    Añado el script en package.json
-      (nombre es con el que se ejecuta) "build":  "tsc -w"
+En `package.json` añadimos si queremos:
 
-    y ahora es un buen momento para hacer un initial commit  
+```json
+"prettier": {
+    "singleQuote": true
+}
+```
 
+3. Instalar y configurar TS:
+
+```bash
+npm i -D typescript
+npx tsc --init
+```
+
+Revisar los valores de `tsconfig.ts`:
+
+```json
+"rootDir": "./src",
+"outDir": "./dist"
+```
+
+4. Instalar ESLint:
+
+```bash
+npm init @eslint/config@latest
+```
+
+Añadir en `package.json`:
+
+```json
+"lint": "eslint ."
+```
+
+5. Instalar Vitest:
+
+```bash
+npm install -D vitest
+```
+
+Incluir en `vite.config.ts`:
+
+```typescript
+import { defineConfig } from 'vitest/config';
+
+export default defineConfig({
+  test: {
+    globals: true,
+  },
+});
+```
+
+Modificar `package.json`:
+
+```json
+"scripts": {
+    "test": "vitest"
+}
+```
+
+Buscar en `tsconfig` y añadir:
+
+```json
+"compilerOptions": {
+    ...
+}
+```
+
+Añadir el script en `package.json`:
+
+```json
+"build": "tsc -w"
+```
+
+Y ahora es un buen momento para hacer un initial commit.
 
 ## Mirar guía en challenger-express
 
-levantar servidor (DEbo meter los pasos)
-Diferentes enfoques
+Levantar servidor (Debo meter los pasos).
 
-    - SSG: Static Site Generation
-    - SSR: Server Side Render
+Diferentes enfoques:
 
+- SSG: Static Site Generation
+- SSR: Server Side Render
 
-## DB
+## Base de Datos (DB)
 
-Usan lenguajes específicos de ámbito, es decir es especifico para DB, no vale para programar ni gestionar otras cosas, llamado también lenguaje declarativo
+Usan lenguajes específicos de ámbito, es decir, es específico para DB, no vale para programar ni gestionar otras cosas, llamado también lenguaje declarativo.
 
-Importante sSistema de gestión de bases de datos relacionales:
-    - Son dos cosas:
-      - 1️⃣ Donde se almacenan 
-      - 2️⃣ El lenguaje que lo gestiona (sistema gestor de datos)
-  
+Importante Sistema de gestión de bases de datos relacionales:
+
+- Son dos cosas:
+  - 1️⃣ Donde se almacenan.
+  - 2️⃣ El lenguaje que lo gestiona (sistema gestor de datos).
+
 Componentes SQL:
-    - Lenguaje de definición de datos (DDL): creación de tablas, normalmente de las dan
-    - **Lenguaje manipulación de datos(DML): El CRUD: Select, Insert, Update,Delete**
-    - Lenguaje de control de datos(DCL): control de accesos
+
+- Lenguaje de definición de datos (DDL): creación de tablas, normalmente de las dan.
+- **Lenguaje manipulación de datos (DML): El CRUD: Select, Insert, Update, Delete**.
+- Lenguaje de control de datos (DCL): control de accesos.
 
 ### Estandarización
 
-Dos organizaciones ANSI y ISO
+Dos organizaciones: ANSI y ISO.
 
-pass de superbase:Curso@2025
-
-
-
-
-
+Pass de superbase: Curso@2025
