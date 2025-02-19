@@ -18,9 +18,9 @@
 En bases de datos relacionales, los conceptos de entidad y atributo son fundamentales:
 
 -   **Entidades**: Representan objetos o conceptos en el mundo real que queremos almacenar en la base de datos.
-  -   Ejemplo: En una base de datos de películas, una entidad podría ser "Película".
+-   Ejemplo: En una base de datos de películas, una entidad podría ser "Película".
 -   **Atributos**: Son las características o propiedades de una entidad.
-  -   Ejemplo: Para la entidad "Película", sus atributos podrían ser: id, title, genre, release_year.
+-   Ejemplo: Para la entidad "Película", sus atributos podrían ser: id, title, genre, release_year.
 
 ## 2 Fase - Relaciones
 
@@ -38,9 +38,9 @@ En bases de datos relacionales, los conceptos de entidad y atributo son fundamen
 ### Explicación de Relaciones
 
 -   **Cardinalidad**: Define la cantidad de instancias de una entidad que pueden estar asociadas con instancias de otra entidad.
-  -   Ejemplo: M:N (Muchos a Muchos), 1:N (Uno a Muchos), N:1 (Muchos a Uno), 1:1 (Uno a Uno).
+-   Ejemplo: M:N (Muchos a Muchos), 1:N (Uno a Muchos), N:1 (Muchos a Uno), 1:1 (Uno a Uno).
 -   **Opcionalidad**: Indica si la relación es opcional o obligatoria.
-  -   Ejemplo: 1:1 (Uno a Uno), 0:0 (Opcional).
+-   Ejemplo: 1:1 (Uno a Uno), 0:0 (Opcional).
 
 ## 3 Fase - Diagrama de Entidad-Relación
 
@@ -60,9 +60,9 @@ Crear un diagrama de entidad-relación (ERD) para visualizar las entidades y sus
 Una clave primaria debe ser inmutable y no debe ser null.
 
 -   Formatos de claves primarias:
-  -   `INT UNSIGNED AUTO_INCREMENT PRIMARY KEY`
-  -   `BINARY(16) DEFAULT (UUID_TO_BIN(UUID()))`
-  -   `VARCHAR(36) DEFAULT (UUID())`
+-   `INT UNSIGNED AUTO_INCREMENT PRIMARY KEY`
+-   `BINARY(16) DEFAULT (UUID_TO_BIN(UUID()))`
+-   `VARCHAR(36) DEFAULT (UUID())`
 
 ## Tipos de Datos
 
@@ -199,22 +199,247 @@ OFFSET 5;
 -   [Northwind MySQL Database Examples](https://en.wikiversity.org/wiki/Database_Examples/Northwind/MySQL)
 -   [MySQL Documentation](https://dev.mysql.com/)
 
+## Operaciones CRUD
+
+### INSERT (Create)
+
+```sql
+INSERT INTO table_name (column1, column2, ...)
+VALUES (value1, value2, ...);
+```
+
+### UPDATE (Update)
+
+```sql
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+```
+
+### DELETE (Delete)
+
+```sql
+DELETE FROM table_name
+WHERE condition;
+```
+
+### Diferencias entre DELETE y TRUNCATE
+
+-   `DELETE FROM` elimina filas de una tabla.
+-   `TRUNCATE TABLE` elimina todas las filas de una tabla y actualiza a 0 el AUTO_INCREMENT. Es más rápido que `DELETE FROM`, pero no se puede usar si hay claves foráneas.
+
+### Ejemplo de UPDATE
+
+```sql
+UPDATE users
+SET name = 'Jose', age = 22
+WHERE id = 1;
+```
+
+Si no se pone `WHERE`, cambiaría el nombre y edad de todos los registros.
+
+### Ejemplo de DELETE
+
+```sql
+DELETE FROM users
+WHERE id = 1;
+```
+
+## Subqueries
+
+Un subquery es una consulta dentro de otra consulta. Los joins son muy rápidos, y los subqueries se usan para búsquedas muy específicas.
+
+### Ejemplo de Subquery
+
+```sql
+SELECT firstName, lastName
+FROM employees
+WHERE employeeID IN (SELECT employeeID FROM orders WHERE orderDate > '2023-01-01');
+```
+
+## Joins
+
+Los joins se utilizan para combinar filas de dos o más tablas, basadas en una columna relacionada entre ellas.
+
+### Ejemplo de Join
+
+```sql
+SELECT e.firstName, e.lastName, o.orderID
+FROM employees e
+JOIN orders o ON e.employeeID = o.employeeID;
+```
+
+## Views
+
+Las views son tablas virtuales basadas en el resultado de una consulta SQL. Se utilizan para simplificar consultas complejas y mejorar la seguridad.
+
+### Ejemplo de View
+
+```sql
+CREATE VIEW ventas AS
+SELECT
+    CONCAT_WS(' ', firstName, lastName) AS fullName,
+    o.orderID,
+    od.productID,
+    p.productName,
+    p.unit,
+    od.quantity,
+    p.price,
+    FORMAT(od.quantity * p.price, 0) AS total
+FROM employees e
+JOIN orders o USING (employeeID)
+JOIN orderDetails od ON o.orderID = od.orderID
+JOIN products p ON od.productID = p.productID
+ORDER BY e.lastName;
+```
+
+## Variables en SQL
+
+Las variables se utilizan para almacenar resultados de subqueries y manipularlos posteriormente.
+
+### Ejemplo de Variable
+
+```sql
+SET @total_sales = (SELECT SUM(price) FROM sales);
+```
+
+## Transacciones
+
+Las transacciones permiten agrupar varias operaciones SQL en una sola unidad de trabajo. Si alguna operación falla, todas las operaciones se deshacen.
+
+### Ejemplo de Transacción
+
+```sql
+BEGIN;
+UPDATE accounts SET balance = balance - 100 WHERE account_id = 1;
+UPDATE accounts SET balance = balance + 100 WHERE account_id = 2;
+COMMIT;
+```
+
+## Procedimientos Almacenados
+
+Un procedimiento almacenado es un conjunto de instrucciones SQL que se ejecutan como una unidad. Pueden aceptar parámetros de entrada y salida, y realizar operaciones complejas en la base de datos.
+
+### Ejemplo de Procedimiento Almacenado
+
+```sql
+DELIMITER //
+
+CREATE PROCEDURE actualizar_salario (IN empleado_id INT, IN nuevo_salario DECIMAL(10, 2))
+BEGIN
+    UPDATE empleados
+    SET salario = nuevo_salario
+    WHERE id = empleado_id;
+END //
+
+DELIMITER ;
+```
+
+Para ejecutar el procedimiento:
+
+```sql
+CALL actualizar_salario(1, 50000.00);
+```
+
+## Funciones
+
+Una función es similar a un procedimiento almacenado, pero siempre devuelve un valor. Se utilizan principalmente para realizar cálculos o transformaciones de datos y se pueden llamar desde consultas SQL.
+
+### Ejemplo de Función
+
+```sql
+DELIMITER //
+
+CREATE FUNCTION calcular_impuesto (precio DECIMAL(10, 2))
+RETURNS DECIMAL(10, 2)
+BEGIN
+    DECLARE impuesto DECIMAL(10, 2);
+    SET impuesto = precio * 0.21;
+    RETURN impuesto;
+END //
+
+DELIMITER ;
+```
+
+Para utilizar la función en una consulta:
+
+```sql
+SELECT producto_id, precio, calcular_impuesto(precio) AS impuesto
+FROM productos;
+```
+
+## Diferencias entre Procedimientos Almacenados y Funciones
+
+-   **Devolución de Valor**: Las funciones siempre devuelven un valor, mientras que los procedimientos almacenados no necesariamente lo hacen.
+-   **Uso en Consultas**: Las funciones se pueden utilizar directamente en consultas SQL, mientras que los procedimientos almacenados no.
+-   **Parámetros de Salida**: Los procedimientos almacenados pueden tener parámetros de salida (OUT), mientras que las funciones no.
+
+## Ventajas y Desventajas
+
+### Ventajas
+
+-   **Modularidad**: Permiten dividir el código en módulos reutilizables.
+-   **Rendimiento**: Al estar precompilados, pueden ejecutarse más rápidamente.
+-   **Seguridad**: Pueden restringir el acceso directo a las tablas.
+
+### Desventajas
+
+-   **Complejidad**: Pueden aumentar la complejidad del código si no se gestionan adecuadamente.
+-   **Depuración**: Puede ser más difícil depurar procedimientos almacenados y funciones en comparación con el código SQL dinámico.
 
 
-INSERT (Create)
-INSERT INTO
-VALUES
-SET
-UPDATE (Update)
-UPDATE
-SET
-WHERE
-DELETE (Delete)
-DELETE FROM
+Triggers
+Los triggers (disparadores) son bloques de código SQL que se ejecutan automáticamente en respuesta a ciertos eventos en la base de datos. Los triggers son una característica poderosa de MySQL que permite automatizar tareas, mantener la integridad de los datos y aplicar reglas de negocio de manera eficiente.
 
-WHERE
-DELETE FROM users v.s. TRUNCATE TABLE users
+Un ejemplo habitual es asignar un valor a un atributo calculado en función de otros atributos de la tabla.
 
-DELETE FROM elimina filas de una tabla
-TRUNCATE TABLE elimina todas las filas de una tabla
-TRUNCATE TABLE es más rápido que DELETE FROM, y actualiza a 0 el AUTO_INCREMENT. Sin embargo, no se puede usar si hay claves foráneas**
+Por ejemplo, para una tabla de empleados, se puede tener un trigger que actualice el salario de un empleado cuando se modifica su nivel de experiencia. La función esta vinculada al update es decir que si se cambia cualquier campo, se activaría automáticamente el trigger, puede no afectar pero si se activa
+
+
+DELIMITER //
+
+
+CREATE TRIGGER actualizar_salario
+BEFORE UPDATE ON empleados
+FOR EACH ROW
+BEGIN
+    IF NEW.experiencia > 5 THEN
+        SET NEW.salario = NEW.salario * 1.1;
+    END IF;
+END //
+
+DELIMITER ;
+En este otro ejemplo, se actualiza el número de likes de un tweet cada vez que se inserta un nuevo like en la tabla tweet_likes.
+
+DELIMITER $$
+
+
+
+CREATE TRIGGER update_num_likes
+AFTER INSERT ON tweet_likes
+FOR EACH ROW
+BEGIN
+  UPDATE tweets
+  SET num_likes = num_likes + 1
+  WHERE tweet_id = NEW.tweet_id;
+END $$
+Igualmente habría que crear un trigger para decrementar el número de likes cuando se elimina un like.
+
+
+
+DELIMITER $$
+CREATE TRIGGER decrease_num_likes
+AFTER DELETE ON tweet_likes
+FOR EACH ROW
+BEGIN
+  UPDATE tweets
+  SET num_likes = num_likes - 1
+  WHERE tweet_id = OLD.tweet_id;
+END $$
+
+
+## SQLite
+
+  no necesita de servidor, es decir q
+
+  colocar donde quieras, coger la ruta del url de carpetas y metaerlo en el path del windowns 
