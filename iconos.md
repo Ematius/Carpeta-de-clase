@@ -94,3 +94,10 @@
 -   📦 Producto
 -   📜 Historial
 -   💳 Pago
+
+## Plugging Better Comments
+
+    //? azul
+    //* verde 
+    //! rojo
+    //TODO naranja
