@@ -1,11 +1,29 @@
+// Importamos el tipo `RowDataPacket` desde 'mysql2/promise'.
 import type { RowDataPacket } from 'mysql2/promise';
 
-// interface Category extends mysql.RowDataPacket {
-//     id: number;
-//     name: string;
-// };
+import { UUID } from 'crypto';
 
+// Definimos el tipo `Generes` Para el CRUD 'generes'.
+// Este tipo extiende `RowDataPacket` para incluir metadatos de MySQL.
 export type Generes = {
-    id: number;
-    name: string;
+    id: number; // ID del género
+    name: string; // Nombre del género
 } & RowDataPacket;
+
+
+// Definimos el tipo `Movies` para el CRUD de 'movies'.
+export type Movies = {
+    movie_id: UUID;
+    title: string;
+    release_year: number;
+    director: string;
+    duration: number;
+    poster: string;
+    rate: number;
+} & RowDataPacket;
+
+
+/*
+Explicación General:
+Este archivo define el tipo `Generes`, que representa una fila en la tabla 'generes' de la base de datos. El tipo incluye las propiedades `id` y `name`, y extiende `RowDataPacket` para incluir metadatos de MySQL.
+*/
