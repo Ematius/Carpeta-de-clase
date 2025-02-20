@@ -23,3 +23,8 @@ export const openConnection = async () => {
 };
 
 //TODO  hacer un crud con películas, el problema esta en el ID que es un binario, hay que hacer un casting
+
+
+DB_USERNAME=root
+DB_PASSWORD=Curso@2025
+DB_DATABASE=movies_db
