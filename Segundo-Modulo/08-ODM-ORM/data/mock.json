@@ -1,0 +1,98 @@
+[
+    {
+        "id": "57293b41-e896-4a7d-a006-74cc8e5c2506",
+        "name": "Guepardo",
+        "englishName": "Cheetah",
+        "sciName": "Acinonyx jubatus",
+        "diet": "Carnívoro",
+        "lifestyle": "Diurno",
+        "location": "Asia y Africa",
+        "slogan": "¡El mamífero terrestre más rápido del mundo!",
+        "group": "Mamíferos",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Cheetah_%28Acinonyx_jubatus%29_female_2.jpg/640px-Cheetah_%28Acinonyx_jubatus%29_female_2.jpg"
+    },
+    {
+        "id": "fee9d3af-ff97-47a0-a15c-87fd8008ceec",
+        "name": "Elefante",
+        "englishName": "Elephant",
+        "sciName": "Loxodonta africana",
+        "diet": "Herbívoro",
+        "lifestyle": "Diurno",
+        "location": "Africa y Asia",
+        "slogan": "¡El mamífero terrestre más grande del mundo!",
+        "group": "Mamíferos",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/African_elephant_%28Loxodonta_africana%29_2.jpg/640px-African_elephant_%28Loxodonta_africana%29_2.jpg"
+    },
+    {
+        "id": "8addc45a-0693-49aa-aac7-76ef26b23bb8",
+        "name": "Jirafa",
+        "englishName": "Giraffe",
+        "sciName": "Giraffa camelopardalis",
+        "diet": "Herbívoro",
+        "lifestyle": "Diurno",
+        "location": "Africa",
+        "slogan": "¡El mamífero terrestre más alto del mundo!",
+        "group": "Mamíferos",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Giraffe_Mikumi_National_Park.jpg/640px-Giraffe_Mikumi_National_Park.jpg"
+    },
+    {
+        "id": "358fdb01-9e27-4ae5-88d1-e7240b26c577",
+        "name": "León",
+        "englishName": "Lion",
+        "sciName": "Panthera leo",
+        "diet": "Carnívoro",
+        "lifestyle": "Diurno",
+        "location": "Africa",
+        "slogan": "¡El rey de la selva!",
+        "group": "Mamíferos",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Lion_waiting_in_Namibia.jpg/800px-Lion_waiting_in_Namibia.jpg"
+    },
+    {
+        "id": "bf6cd612-c260-4309-866a-8ae33aaa674c",
+        "name": "Pingüino",
+        "englishName": "Penguin",
+        "sciName": "Spheniscidae",
+        "diet": "Carnívoro",
+        "lifestyle": "Diurno",
+        "location": "Antártida",
+        "slogan": "¡El ave mejor vestida del mundo!",
+        "group": "Aves",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Emperor_Penguin_Manchot_empereur.jpg/640px-Emperor_Penguin_Manchot_empereur.jpg"
+    },
+    {
+        "id": "7b3e02ca-e2af-4ca0-86ec-55e92dd679eb",
+        "name": "Oso Polar",
+        "englishName": "Polar Bear",
+        "sciName": "Ursus maritimus",
+        "diet": "Carnívoro",
+        "lifestyle": "Diurno",
+        "location": "Ártico",
+        "slogan": "¡El carnívoro terrestre más grande del mundo!",
+        "group": "Mamíferos",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Polar_Bear_-_Alaska_%28cropped%29.jpg/800px-Polar_Bear_-_Alaska_%28cropped%29.jpg"
+    },
+    {
+        "id": "6d41af32-f75a-4c3c-b837-63ec9ec78e2d",
+        "name": "Tigre",
+        "englishName": "Tiger",
+        "sciName": "Panthera tigris",
+        "diet": "Carnívoro",
+        "lifestyle": "Diurno",
+        "location": "Asia",
+        "slogan": "¡La especie de gato más grande del mundo!",
+        "group": "Mamíferos",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Bengal_tiger_%28Panthera_tigris_tigris%29_female_3.jpg/640px-Bengal_tiger_%28Panthera_tigris_tigris%29_female_3.jpg"
+    },
+    {
+        "id": "d082780d-68fc-4e6e-9f29-923ad16901b",
+        "name": "Cebra",
+        "englishName": "Zebra",
+        "sciName": "Equus quagga",
+        "diet": "Herbívoro",
+        "lifestyle": "Diurno",
+        "location": "Africa",
+        "slogan": "¡El animal más rayado del mundo!",
+        "group": "Mamíferos",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Equus_quagga_burchellii_-_Etosha%2C_2014.jpg/640px-Equus_quagga_burchellii_-_Etosha%2C_2014.jpg"
+    }
+]

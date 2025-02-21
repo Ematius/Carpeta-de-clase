@@ -7,7 +7,7 @@ import type { Genere, GenereRow } from './entities';
 export class ManageGeneres {
     // El constructor recibe una conexión a la base de datos y la asigna a una propiedad privada.
     constructor(private connection: Connection) {}
-    //TODO cambiar los arrow funcion por funciones normales y tipar lo que devuelve :Promise<Genere[]>
+    //TODO cambiar los arrow función por funciones normales y tipar lo que devuelve :Promise<Genere[]>
     // Método para obtener todos los géneros.
     async getAllGeneres(): Promise<Genere[]> {
         // Definimos la consulta SQL para obtener todos los géneros.
@@ -64,7 +64,7 @@ export class ManageGeneres {
         // Si se afectó una fila, obtenemos y devolvemos el género actualizado.
         if (result.affectedRows === 1) {
             console.log('GenereRow updated with id:', id);
-            return this.getGenereById(id);
+            return [await this.getGenereById(id)];
         }
         throw new Error('Genere not updated');
     }
@@ -84,14 +84,12 @@ export class ManageGeneres {
         // Si se afectó una fila, devolvemos el género eliminado.
         if (result.affectedRows === 1) {
             console.log('GenereRow deleted with id:', id);
-            return genereForDelete;
+            return [genereForDelete];
         }
 
         throw new Error('Genere not deleted');
     }
 }
 
-/*
-Explicación General:
-Este archivo define la clase `ManageGeneres`, que maneja las operaciones CRUD (Crear, Leer, Actualizar, Eliminar) relacionadas con los géneros en la base de datos. La clase utiliza una conexión a la base de datos para ejecutar consultas SQL y devolver los resultados correspondientes.
-*/
+//TODO Explicación General: Este archivo define la clase `ManageGeneres`, que maneja las operaciones CRUD (Crear, Leer, Actualizar, Eliminar) relacionadas con los géneros en la base de datos. La clase utiliza una conexión a la base de datos para ejecutar consultas SQL y devolver los resultados correspondientes.
+

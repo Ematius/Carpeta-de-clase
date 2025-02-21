@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Demo products</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="shortcut icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../guide.css" />
+  <link rel="stylesheet" href="../main.css" />
+  <script src="../index.js" type="module" defer></script>
+</head>
+
+<body>
+  <header class="main-header">
+    <nav>
+      <ul>
+        <li class="menu-header">
+          <a href="./index.html">
+            <img src="../assets/logo-brown-bisque.svg" width="50" alt="Logo" />
+            <h1 id="header1" data-id="1" class="h2">
+              Products
+            </h1>
+          </a>
+        </li>
+        <li class="menu-mobile">
+          <a href="#">
+            <span class="fa-solid fa-bars"></span>
+          </a>
+        </li>
+        <li class="menu-tablet">
+          <a href="/">Inicio</a>
+        </li>
+        <li class="menu-tablet">
+          <a href="/products">Productos</a>
+        </li>
+        <li class="menu-tablet">
+          <a href="/about">About</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <dialog>
+    <p class="close">
+      <button class="fa-solid fa-xmark"></button>
+    </p>
+    <nav class="h5">
+      <ul>
+        ${renderMenu(menuItems)}
+      </ul>
+    </nav>
+  </dialog>
+  <main>
+    <section>
+      <h2 class="h3">About</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore distinctio saepe hic, fuga reprehenderit
+        nemo modi beatae culpa tenetur aspernatur, deleniti in molestias ipsum, eos quod pariatur sequi delectus odio?
+      </p>
+    </section>
+  </main>
+  <footer>
+    <address>
+      <span>
+        <a href="https://cursoscastraining.es/cursos-subvencionados/centro-de-formacion-digital-de-san-blas/"
+          target="_blank">CAS Training</a>
+      </span>
+      <span>
+        <a href="https://cursoscastraining.es/cursos-subvencionados/centro-de-formacion-digital-de-san-blas/"
+          target="_blank">Centro de Formación Digital San Blas (CFD-SB)</a>
+      </span>
+      <span>C. de Arcos de Jalón, 15</span>
+      <span>San Blas</span>
+      <span>28037 Madrid</span>
+    </address>
+    <p>
+      Diseño aplicado a partir de la
+      <a href="./guide.html">Guía de Estilo</a>
+    </p>
+    <p>
+      <small>© 2024 -
+        <a href="mailto:alce65@hotmail.es">Alejandro Cerezo</a></small>
+    </p>
+    <nav class="inline">
+      <ul>
+        <li class="menu-tablet">
+          <a href="https://www.linkedin.com/in/alejandrocerezo/" title="LinedIn" target="_blank">
+            <i class="fa-brands fa-brands fa-linkedin" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li class="menu-tablet">
+          <a href="https://github.com/alce65" title="GitHub" target="_blank">
+            <i class="fa-brands fa-brands fa-github" aria-hidden="true"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </footer>
+
+</body>
+
+</html>
