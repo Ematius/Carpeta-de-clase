@@ -5,14 +5,16 @@ import { UUID } from 'crypto';
 
 // Definimos el tipo `Generes` Para el CRUD 'generes'.
 // Este tipo extiende `RowDataPacket` para incluir metadatos de MySQL.
-export type Generes = {
+export type Genere = {
     id: number; // ID del género
     name: string; // Nombre del género
-} & RowDataPacket;
+};
+
+export type GenereRow = Genere & RowDataPacket;
 
 
 // Definimos el tipo `Movies` para el CRUD de 'movies'.
-export type Movies = {
+export type Movie = {
     movie_id: UUID;
     title: string;
     release_year: number;
