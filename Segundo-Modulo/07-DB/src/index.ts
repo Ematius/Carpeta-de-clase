@@ -1,92 +1,37 @@
-//hacemos una conexión a la base de datos para hacer consultas (QUERYS)
-//es un driver, es muy fácil conectar pero limita
-/*
-import mysql from 'mysql2/promise';
-import { Connection } from 'mysql2/typings/mysql/lib/Connection';
-
-//import { loadEnvFile } from 'process';
-
-//creamos un tipado para luego usarla en la consulta, haciéndole un genérico de tipado
-//el tipado es propio de mysql2, Hay que hacer la extensión de RowDataPacket para poder tiparlo en la consulta await de mas abajo
-// debes extenders RowDataPacket para que pueda tipar la consulta de la base de datos y tiparlo bien
-interface Category extends mysql.RowDataPacket {
-    ID: number;
-    name: string;
-}
-
- Si quieres hacerlo modo TS
-type Category = {
-    ID: number; 
-    name: string;
-} & mysql.RowDataPacket;
-
-
-//cargamos la lectura de .env para tener acceso a la base de datos
-//loadEnvFile('.env');
-
-//creamos un objeto con las propiedades de la conexión a la base de datos
-const dataConnection = {
-    //esta apuntado al .env con process que es nativo de node
-    host: process.env.DB_HOST || 'localhost', //si no hay nada en .env, por defecto localhost
-    //el puerto debe ser un number, asi que casteamos a number
-    port: Number(process.env.DB_PORT) || 3306, //si no hay nada en .env, por defecto 3306
-    user: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE,
-};
-
-//creamos la conexión a la base de datos dándole los 4 parámetros necesarios
-//Recibe como parámetro un objeto con las propiedades de la conexión que están en .env
-//No olvidar que siempre algo asíncrono debe tener catch si o si
-try {
-    const connection = await mysql.createConnection(dataConnection);
-    console.log(
-        'connection to server: ',
-        //Entras a las propiedades del objeto connection
-        connection.config.host,
-        connection.config.port,
-        connection.config.database,
-    );
-    //catch no puedes tiparlo, no puedo hacer una anotación de tipos porque lo coge tod
-    //esta es la consulta que haría en mySQL y la guardo en una constante
-    const query = 'select genere_id as ID,  name from generes';
-    //esto es un query de promesas de mysql2, y meto el parámetro lo que quiero preguntar de la base de datos
-    //hay que meterlo en una constante para leerlo mas fácilmente
-    //const r =await connection.query(query);
-    //console.log(r); // esto es un array de objetos, en este caso era una tupla de 2 elementos
-    //uno es lo que le pedido y la segunda array son los metadatos, no se quiere para nada
-    //por las razones anteriores desestructuramos la tupla y nos quedamos con la primera
-    const [rows] = await connection.query<Category[]>(query);
-    console.log(rows); // asi ya solo me muestra lo que nos interesa
-} catch (error) {
-    //hacemos un casting de tipos y aserción
-    //para ser mas finos hace una guarda de tipos porque al coger todo no sabemos que puede coger el catch
-    if (error instanceof Error) {
-        console.log((error as Error).message);
-    } else {
-        console.log(error);
-    }
-}
-
-
-No olvidar diferencias entre array y tupla
-arr : string[] array
-tuple: [string, number, boolean]
- */
-
+// Importamos la función `openConnection` desde el archivo 'db.js' para abrir una conexión a la base de datos.
 import { openConnection } from './db.js';
+// Importamos la clase `ManageGeneres` desde el archivo 'generes.js' para manejar operaciones relacionadas con géneros.
 import { ManageGeneres } from './generes.js';
+
+// Cargamos las variables de entorno desde el archivo '.env'.
 process.loadEnvFile('.env');
 
 try {
+    // Abrimos una conexión a la base de datos.
     const connection = await openConnection();
+    // Creamos una instancia de `ManageGeneres` pasando la conexión de la base de datos.
     const manageGeneres = new ManageGeneres(connection);
+    // Obtenemos todos los géneros desde la base de datos.
     const generes = await manageGeneres.getAllGeneres();
+    // Imprimimos los géneros obtenidos en la consola.
     console.log(generes);
 } catch (error) {
+    // Si ocurre un error, verificamos si es una instancia de `Error`.
     if (error instanceof Error) {
+        // Imprimimos el mensaje de error en la consola.
         console.error(error);
     } else {
+        // Imprimimos el error en la consola.
         console.error(error);
     }
 }
+
+/*
+Explicación General:
+Este archivo es el punto de entrada de la aplicación. Su objetivo es:
+1. Cargar las variables de entorno desde el archivo '.env'.
+2. Abrir una conexión a la base de datos utilizando `openConnection`.
+3. Crear una instancia de `ManageGeneres` para manejar operaciones relacionadas con géneros.
+4. Obtener y mostrar todos los géneros desde la base de datos.
+5. Manejar cualquier error que ocurra durante el proceso.
+*/
