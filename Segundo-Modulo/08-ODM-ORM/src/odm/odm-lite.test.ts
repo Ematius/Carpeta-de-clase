@@ -18,6 +18,8 @@ const DB = {
     items: ITEMS,
 };
 
+
+
 describe('Given a instance of class ORMLite', () => {
     const file = 'file.json';
     const collection = 'items';

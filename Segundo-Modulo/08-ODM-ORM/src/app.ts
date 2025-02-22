@@ -16,8 +16,35 @@ import { createProductsRouter } from './routers/products.router.js';
 import { HomePage } from './views/pages/home-page.js';
 import { ProductsController } from './controllers/products.mvc.controller.js';
 import { AnimalFileRepo } from './models/animals.json.repository.js';
+import { openConnection } from './server/connect.db.js';
+import { ManageGeneres } from './orm/generes.js';
 const debug = createDebug('demo:app');
 debug('Loaded module');
+
+process.loadEnvFile('.env');
+
+
+try {
+    // Abrimos una conexión a la base de datos.
+    const connection = await openConnection();
+    // Creamos una instancia de `ManageGeneres` pasando la conexión de la base de datos.
+    const manageGeneres = new ManageGeneres(connection);
+    // Obtenemos todos los géneros desde la base de datos.
+    const generes = await manageGeneres.getAllGeneres();
+    // Imprimimos los géneros obtenidos en la consola.
+    console.log(generes);
+} catch (error) {
+    // Si ocurre un error, verificamos si es una instancia de `Error`.
+    if (error instanceof Error) {
+        // Imprimimos el mensaje de error en la consola.
+        console.error(error);
+    } else {
+        // Imprimimos el error en la consola.
+        console.error(error);
+    }
+}
+
+
 
 export const createApp = (connection: Connection) => {
     debug('Iniciando App...');
