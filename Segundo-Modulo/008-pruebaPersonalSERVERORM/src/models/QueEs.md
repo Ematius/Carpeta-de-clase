@@ -1,0 +1,1 @@
+para definir la conexión a MySQL o los modelos de tus datos.

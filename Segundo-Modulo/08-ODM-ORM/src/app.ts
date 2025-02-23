@@ -79,10 +79,10 @@ export const createApp = (connection: Connection) => {
     const homeController = new HomeController(homeView);
     app.get('/', homeController.getPage);
 
-    const animalModel = new AnimalFileRepo(connection);
-    const productsController = new ProductsController(animalModel);
+    //const animalModel = new AnimalFileRepo(connection);
+    //const productsController = new ProductsController(animalModel);
 
-    app.use('/products', createProductsRouter(productsController));
+    //app.use('/products', createProductsRouter(productsController));
 
     app.get('*', notFoundController);
     app.use('*', notMethodController);
