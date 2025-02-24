@@ -5,6 +5,7 @@ import debug from "debug";
 
 
 debug('Iniciando modelMovie...');
+
 export class ManageMovies {
 
     constructor(private connection: Connection) {}

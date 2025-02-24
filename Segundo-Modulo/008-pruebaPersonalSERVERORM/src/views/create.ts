@@ -29,6 +29,7 @@ export const createMovie = async (
         next(error);
     }
 }
+
 // Controlador para manejar la solicitud POST y guardar los datos en la base de datos
 export const createMovieDB = async (
     req: Request,

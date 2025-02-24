@@ -12,5 +12,6 @@ export type Movie = {
     poster: string;
     rate: number;
 } & RowDataPacket;
+//dejarlo por separado del rowdatapacket te deja usarlo mas adelante en otros archivos más puros
 
 export type GenereRow = RowDataPacket;

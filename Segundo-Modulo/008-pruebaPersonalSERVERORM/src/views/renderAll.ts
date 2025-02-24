@@ -7,6 +7,7 @@ import debug from 'debug';
 //esta en la clave, movieManger hace una instancia de ManageMOvie que es quien lanza las query y esta tiene como parámetro que es la conexion a la base de datos
 
 const movieManager = new ManageMovies(await openConnection());
+
 debug('Entrando en renderMovies');
 export const renderMovies = async (
     req: Request,
