@@ -4,8 +4,10 @@ import createDebug from 'debug';
 import morgan from 'morgan';
 import cors from 'cors';
 //import router from './routers/movieRoutes.js';
-import { renderMovies } from './views/renderAll.js';
+
 import { createMovie } from './views/create.js';
+
+import { getAllMovies } from './controllers/controller.js';
 
 //configuración básica de un servidor express
 
@@ -69,7 +71,7 @@ app.get('/', (req, res) => {
     res.send(html);
 });
 
-app.use('/movies', renderMovies);
+app.use('/movies', getAllMovies);
 app.use('/createMovies', createMovie);
 
 

@@ -26,7 +26,11 @@ export const openConnection = async () => {
     //! Creamos una conexión a la base de datos utilizando las propiedades definidas.
     const connection = await mysql.createConnection(dataConnection);
     //? Imprimimos en la consola información sobre la conexión al servidor.
-    
+    console.log(
+        `Connected to MySQL Server: ${dataConnection.host}:${dataConnection.port}
+        Database: ${dataConnection.database}
+        User: ${dataConnection.user}`
+    );
     // Imprimimos en la consola información sobre la conexión a la base de datos.
     console.log('Connection to DB:', connection.config.database);
     // Devolvemos la conexión creada.

@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import { ManageMovies } from '../models/modelMovie.js';
-import { openConnection } from '../config/database.js';
+
+import debug from 'debug';
+import { renderMovies } from '../views/renderAll.js';
+
 
 
 // // Instanciamos la clase que gestiona las películas
@@ -8,6 +10,16 @@ import { openConnection } from '../config/database.js';
 // const movieManager = new ManageMovies(await openConnection());
 
 // // Definimos los controladores
+
+
+
+
+export const getAllMovies = async(req: Request, res: Response) => {
+    debug('Petición recibida en getAllMovies');
+    res.send(renderMovies());
+};
+
+
 
 
 
