@@ -59,6 +59,10 @@ Función para gestionar la puesta en marcha del servidor
 
 Eventos del Servidor
 
+### index 
+
+donde se escucha el servidor
+
 ### Archivo database.ts (carpeta config)
 
 configuración de la conexión a MySQL
