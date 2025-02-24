@@ -1,26 +1,26 @@
-import { Router } from 'express';
-import { getAllMovies, getMovieById, createMovie, updateMovie, deleteMovie } from '../controllers/controller.js';
-import createDebug from 'debug';
-import { renderMovies } from '../controllers/render.js';
+// import { Router } from 'express';
+// import {  getMovieById, createMovie, updateMovie, deleteMovie } from '../controllers/controller.js';
+// import createDebug from 'debug';
+// import { renderMovies } from '../views/render.js';
 
 
 
-const debug = createDebug('demo:routers:products');
-debug('Loaded module movie routes');
+// const debug = createDebug('demo:routers:products');
+// debug('Loaded module movie routes');
 
 
 
-const router = Router();
+// const router = Router();
 
-debug('Configurando rutas de productos');
+// debug('Configurando rutas de productos');
 
-router.get('/', renderMovies);
+// //este ya esta
 
-router.get('/a', getAllMovies);
-router.get('/:id', getMovieById);
-router.post('/', createMovie);
-router.put('/:id', updateMovie);
-router.delete('/:id', deleteMovie);
+// router.get('/', );
+// router.get('/:id', getMovieById);
+// router.post('/', createMovie);
+// router.put('/:id', updateMovie);
+// router.delete('/:id', deleteMovie);
 
 
-export default router;
+// export default router;

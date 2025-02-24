@@ -1,8 +1,10 @@
 import { Connection, ResultSetHeader  } from "mysql2/promise";
 //import { openConnection } from "../config/database.js";
 import { Movie } from "./modelTypeMovie.js"
+import debug from "debug";
 
 
+debug('Iniciando modelMovie...');
 export class ManageMovies {
 
     constructor(private connection: Connection) {}

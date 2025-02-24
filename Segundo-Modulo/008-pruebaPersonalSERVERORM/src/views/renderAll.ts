@@ -2,9 +2,12 @@
 import { Request, Response, NextFunction } from 'express';
 import { ManageMovies } from '../models/modelMovie.js';
 import {openConnection} from '../config/database.js';
+import debug from 'debug';
+
+//esta en la clave, movieManger hace una instancia de ManageMOvie que es quien lanza las query y esta tiene como parámetro que es la conexion a la base de datos
 
 const movieManager = new ManageMovies(await openConnection());
-
+debug('Entrando en renderMovies');
 export const renderMovies = async (
     req: Request,
     res: Response,
@@ -13,7 +16,7 @@ export const renderMovies = async (
     try {
         // Ejecuta la consulta para obtener todas las películas
         const movies = await movieManager.getAllMovies();
-
+        
         // Construye la cadena HTML manualmente
         let html = `
       <!DOCTYPE html>

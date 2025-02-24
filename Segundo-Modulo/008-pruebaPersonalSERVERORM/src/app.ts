@@ -3,7 +3,9 @@ import express from 'express';
 import createDebug from 'debug';
 import morgan from 'morgan';
 import cors from 'cors';
-import router from './routers/movieRoutes.js';
+//import router from './routers/movieRoutes.js';
+import { renderMovies } from './views/renderAll.js';
+import { createMovie } from './views/create.js';
 
 //configuración básica de un servidor express
 
@@ -19,7 +21,7 @@ const publicPath = resolve(__dirname, 'public');
 
 
 // Mostramos un mensaje en la consola de depuración indicando que la aplicación se está iniciando.
-debug('Iniciando App...');
+debug('demo:App');
 
 // Deshabilitamos el encabezado `x-powered-by` de Express por razones de seguridad, ya que puede revelar que usamos Express.
 app.disable('x-powered-by');
@@ -45,9 +47,10 @@ app.use(express.static(publicPath));
 
 // -------------------- Rutas --------------------
 
-app.use('/', router);
 
-app.get('/inicio', (req, res) => {
+
+
+app.get('/', (req, res) => {
     const html = `
     <!DOCTYPE html>
     <html lang="es">
@@ -58,11 +61,16 @@ app.get('/inicio', (req, res) => {
     <body>
       <h1>Bienvenido a la aplicación de películas</h1>
       <p>Esta es una página renderizada manualmente.</p>
-    </body>
+        <p>Para ver la lista de películas, visita <a href="http://localhost:3000/movies">/movies</a></p>
+        <p>Para crear una película, visita <a href="http://localhost:3000/createMovies">/createMovies</a></p>
+        </body>
     </html>
   `;
     res.send(html);
 });
+
+app.use('/movies', renderMovies);
+app.use('/createMovies', createMovie);
 
 
 

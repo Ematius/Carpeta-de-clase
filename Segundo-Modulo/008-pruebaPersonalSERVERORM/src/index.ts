@@ -6,7 +6,7 @@ import { app } from './app.js';
 import { openConnection } from './config/database.js';
 
 const debug = createDebug('demo:server');
-debug('Iniciando servidor...');
+debug('archivo index...');
 const PORT = process.env.PORT || 3001;
 
 const errorManager = (error: NodeJS.ErrnoException) => {

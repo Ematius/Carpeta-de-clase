@@ -84,3 +84,19 @@ en la carpeta de routers definimos las rutas
 ### archivo app
 
 Integramos las rutas a la aplicacion express
+
+
+### reguia
+
+app es como funcionara y a punta a render
+en render esta conectada a la base de datos y es donde se hace la query desde modelMOvie 
+
+solo con app, render y modelmovies ya esta funcionando
+
+order de archivos
+
+app/server/index/render/modelMOvie/database asi arranca
+
+para tocar es app/ render/ modelmovie
+
+
