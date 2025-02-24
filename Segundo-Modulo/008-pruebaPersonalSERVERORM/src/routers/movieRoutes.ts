@@ -14,13 +14,13 @@ const router = Router();
 
 debug('Configurando rutas de productos');
 
-router.get('/', getAllMovies);
+router.get('/', renderMovies);
+
+router.get('/a', getAllMovies);
 router.get('/:id', getMovieById);
 router.post('/', createMovie);
 router.put('/:id', updateMovie);
-router.delete('/:id', deleteMovie)
+router.delete('/:id', deleteMovie);
 
-// Ruta para renderizar en HTML (manualmente)
-router.get('/render', renderMovies);
 
 export default router;

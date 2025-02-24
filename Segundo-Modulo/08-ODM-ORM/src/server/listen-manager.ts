@@ -2,12 +2,14 @@
 import createDebug from 'debug';
 // Importa el módulo 'http' de Node.js
 import { Server } from 'node:http';
+import { createServer } from 'node:http';
 
+const server = createServer();
 // Crea una instancia de depuración con el nombre 'demo:server:listening'
 const debug = createDebug('demo:server:listening');
 
 // Exporta la función 'listenManager' que toma un servidor como argumento
-export const listenManager = (server: Server) => {
+const listenManager = (server: Server) => {
     // Obtiene la dirección del servidor
     const addr = server.address();
     // Si la dirección es nula, retorna
@@ -31,3 +33,6 @@ export const listenManager = (server: Server) => {
         debug(`Servidor escuchando en ${bind}`);
     }
 };
+
+
+listenManager(server);

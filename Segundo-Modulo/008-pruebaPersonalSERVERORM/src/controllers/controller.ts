@@ -5,7 +5,7 @@ import { openConnection } from '../config/database.js';
 
 // Instanciamos la clase que gestiona las películas
 
-const movieManager = new ManageMovies(await  openConnection());
+const movieManager = new ManageMovies(await openConnection());
 
 // Definimos los controladores
 

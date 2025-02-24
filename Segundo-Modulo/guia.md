@@ -352,3 +352,7 @@ Componentes SQL:
 Dos organizaciones: ANSI y ISO.
 
 Pass de superbase: Curso@2025
+
+
+Instancia es crear un objeto y crearlo asi que hay tener en cuenta que si instancia una vez seria un singleton
+Hay un repo y un controller por producto
