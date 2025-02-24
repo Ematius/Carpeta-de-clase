@@ -17,7 +17,7 @@ export const renderMovies = async (
     try {
         // Ejecuta la consulta para obtener todas las películas
         const movies = await movieManager.getAllMovies();
-        
+        //TODO MEterlo en una funcion que devuelve el html
         // Construye la cadena HTML manualmente
         let html = `
       <!DOCTYPE html>
