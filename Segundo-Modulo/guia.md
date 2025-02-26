@@ -356,3 +356,24 @@ Pass de superbase: Curso@2025
 
 Instancia es crear un objeto y crearlo asi que hay tener en cuenta que si instancia una vez seria un singleton
 Hay un repo y un controller por producto
+
+
+La llamada a una class busca el constructor, es lo que ejecuta, ejecuta sus métodos, ç
+
+
+## prisma
+
+
+Es un CLI un interfaz, es una instalación de dependencias
+
+init: hace el setup de la instalación
+
+
+## npx
+
+busca cosas que esten en mi jackage.json y las ejecuta o las busca en internet si no estan y las instala e ejecuta
+
+npx prisma --version 
+
+npx hace lo mismo que los script pero si solo lo vas ejecutar una vez es mejor que crear un script
+

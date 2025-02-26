@@ -8,7 +8,7 @@ import debug from 'debug';
 
 const movieManager = new ManageMovies(await openConnection());
 
-debug('Entrando en renderMovies');
+debug('demo:Entrando en renderMovies');
 export const renderMovies = async (
     req: Request,
     res: Response,

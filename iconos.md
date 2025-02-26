@@ -34,6 +34,7 @@
 -   🔴 Alta prioridad
 -   🟡 Prioridad media
 -   🟢 Baja prioridad
+-   🎯 Conclusión
 
 ## Tipos de Tareas
 -   📝 Tarea
