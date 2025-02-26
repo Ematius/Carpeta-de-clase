@@ -377,3 +377,8 @@ npx prisma --version
 
 npx hace lo mismo que los script pero si solo lo vas ejecutar una vez es mejor que crear un script
 
+
+## API
+
+La idea es que api no da paginas ni interfaz web si no datos en bruto y que tu lo crees, y tu interfaz hable con mi API.
+

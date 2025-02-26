@@ -82,16 +82,15 @@ npm init -y
 Estas son las librerías que tu aplicación usará en tiempo de ejecución:
 
 ```bash
-npm install express cors debug dotenv mysql2 zod morgan body-parser cross-env
+npm install express cors debug mysql2 zod morgan body-parser cross-env
 ```
 
 -   `express`: Framework para el servidor web.
 -   `cors`: Middleware para habilitar CORS (Cross-Origin Resource Sharing).
 -   `debug`: Para registrar mensajes de depuración.
--   `dotenv`: Para cargar variables de entorno desde un archivo .env.
 -   `mysql2`: Cliente MySQL con soporte para promesas.
 -   `zod`: Librería para validación y parsing de datos.
--   `morgan`: Middleware de registro de solicitudes HTTP.
+-   `morgan`: Middleware de registro de solicitudes HTTP. ¿?Explicar mas
 -   `body-parser`: Middleware para analizar el cuerpo de las solicitudes HTTP entrantes.
 -   `cross-env`: Permite establecer variables de entorno de forma compatible en Windows, Linux y macOS.
 
@@ -170,7 +169,7 @@ Would you like to install them now? · No / Yes
 
 Which package manager do you want to use? · npm
 
-### 3.5 Introducción manual en el package.json (Incorporar morgan)
+### 3.5 Introducción manual en el package.json (Incorporar morgan) Poner imagen de ejemplo como en el tsconfig pero con el package.json
 
 ```json
 "scripts": {
@@ -188,7 +187,7 @@ Estos son los dos necesarios realmente y que se usarán, el resto pueden estar p
 cross-env NODE_ENV=dev DEBUG=demo*
 ```
 
--   `cross-env`: Es una herramienta que te permite establecer variables de entorno.
+-   `cross-env`: Es una herramienta que te permite establecer variables de entorno. lo que se delante del script package
 -   `NODE_ENV=dev`: Establece la variable de entorno NODE_ENV en "dev", lo que suele indicar que la aplicación se está ejecutando en modo de desarrollo.
 -   `DEBUG=demo:*`: Establece la variable DEBUG en "demo\*", lo que le dice a la librería debug que muestre sólo los mensajes cuyo namespace empiece por "demo". Esto te ayuda a filtrar y ver solo los logs de interés.
 
@@ -198,7 +197,7 @@ node --watch --env-file=.env ./dist/index.js
 
 -   `node`: Ejecuta la aplicación con Node.js.
 -   `--watch`: Activa el modo "watch" de Node, que reinicia automáticamente la aplicación cuando detecta cambios en los archivos.
--   `--env-file=.env`: Informa a Node que cargue las variables de entorno desde el archivo .env (esto es útil para que las variables definidas en ese archivo estén disponibles durante la ejecución).
+-   `--env-file=.env`: Informa a Node que cargue las variables de entorno desde el archivo .env 
 -   `./dist/index.js`: Es el punto de entrada compilado (por TypeScript) de tu aplicación, ubicado en la carpeta dist.
 
 ### 3.6 Crea tu archivo .env
