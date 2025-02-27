@@ -907,3 +907,26 @@ Error ocurre en una ruta o middleware
    ├──> (⚠️ Actualmente falta `res.send()`, por lo que la respuesta no se envía)
    │
    └──> **El cliente queda esperando sin respuesta (debe corregirse)**
+
+
+### 4.8 creamos el repository.ts
+
+Es el destinado para hablar con la base de datos, en este caso sera con prisma, es el CRUD con la base de datos, establece la conexión y la interacción
+
+
+### 4.9 creamos el controller.ts
+
+es el que recibe la petición url del cliente y devuelve la respuesta ya que tiene en el constructor al repository y puede acceder a sus metodos CRUD, asi que interpreta la peticion, y usa el metodo adecuado que ofrezca el repository
+
+
+### 4.10 Creamos el router
+
+
+este archivo es el orquestador en realidad, ya que hace hace instancias de clase y al controllers le pasa como parametro la clase creada de repo con sus metodos. asi que sincroniza e une el repository que habla con la base de datos y el controller que recibe la peticion del usuario y envia la respuesta despues de haberse comunicado y usados los metedos del repo
+
+
+💡 Conclusión
+🔹 users.router.ts conecta Express con UsersController.
+🔹 UsersController llama a UserRepo para obtener los datos.
+🔹 UserRepo usa Prisma para hacer la consulta SQL real.
+🔹 Los datos suben hasta UsersController y se envían al cliente como JSON.

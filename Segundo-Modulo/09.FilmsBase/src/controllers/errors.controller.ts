@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import createDebug from 'debug';
 import { HttpError } from '../types/http-error.js';
-import { AppResponseShadow } from '../types/app-response.js';
+import { AppResponse } from '../types/app-response.js';
 // import { ErrorPage } from '../views/pages/error-page.js';
 
 const debug = createDebug('films:errorManager');
@@ -27,7 +27,7 @@ export const errorManager = (
 
     res.status(err.statusCode);
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    const response: AppResponseShadow <unknown> = {
+    const response: AppResponse<unknown> = {
         results: null,
         error: publicMessage,
     }

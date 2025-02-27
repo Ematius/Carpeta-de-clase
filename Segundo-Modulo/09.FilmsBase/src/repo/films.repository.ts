@@ -1,8 +1,9 @@
 import createDebug from 'debug';
 import type { Repository } from './repository.type.js';
-import { PrismaClient } from '@prisma/client';
+//Es la conexión a la base de datos que hace prisma 
+import { PrismaClient, Film  } from '@prisma/client';
 // Film:esto lo hace prima hace un tipado de ts desde la referencia del prisma client y ya se puede hacer
-import { Film } from '@prisma/client'; 
+
 
 const debug = createDebug('demo:repository:film');
 

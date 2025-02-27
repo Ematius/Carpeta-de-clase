@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from 'express';
+import express from 'express';
 import createDebug from 'debug';
 import { resolve } from 'path';
 import morgan from 'morgan';
@@ -13,6 +13,7 @@ import {
 import { errorManager } from './controllers/errors.controller.js';
 
 import { filmsRouter } from './router/films.router.js';
+import { usersRouter } from './router/users.router.js';
 
 
 // import { createProductsRouter } from './routers/products.router.js';
@@ -57,8 +58,9 @@ export const createApp = () => {
  //createFilmssRouter(filmsController));
 
     //req:Request de express Estas son las 5 básicas que hay que saber
-   app.use('/apì/films', filmsRouter);
-
+    //aquí se delega el control a productsController de la ruta api/films, es decir, cuando llegue a esta ruta se delega el control a productsController
+   app.use('/api/films', filmsRouter);
+   app.use('/api/users', usersRouter);
    
 
     app.get('*', notFoundController);//método de consulta get lanza un 404//cuando no encuentra la ruta lo envía a notFoundController que esta en base controller y este lo envía a error controllers que tiene el manager de errores

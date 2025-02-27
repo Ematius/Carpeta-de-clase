@@ -32,3 +32,14 @@ model Film {
     @@unique([title, releaseYear])
     @@index([title])
 }
+
+model User {
+  id       String  @id @default(uuid()) @map("user_id")
+  name     String
+  email    String  @unique
+  password String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users") // Mapea la tabla a "users" en la BD
+}
