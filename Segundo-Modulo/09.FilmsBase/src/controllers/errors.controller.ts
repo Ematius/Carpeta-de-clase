@@ -1,9 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
 import createDebug from 'debug';
-import { HttpError } from '../errors/http-error.js';
+import { HttpError } from '../types/http-error.js';
+import { AppResponseShadow } from '../types/response.js';
 // import { ErrorPage } from '../views/pages/error-page.js';
 
-const debug = createDebug('demo:errorManager');
+const debug = createDebug('films:errorManager');
 
 export const errorManager = (
     err: HttpError | Error,
@@ -26,5 +27,11 @@ export const errorManager = (
 
     res.status(err.statusCode);
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    // res.send(view.render({ errorMessage: publicMessage }));
+    const response: AppResponseShadow <unknown> = {
+        results: null,
+        error: publicMessage,
+    }
+    //mi respuesta es un json
+    res.json(response);
 };
+

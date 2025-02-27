@@ -1,5 +1,5 @@
 import type { ServerResponse } from 'node:http';
-import { HttpError } from '../errors/http-error.js';
+import { HttpError } from '../types/http-error.js';
 import createDebug from 'debug';
 const debug = createDebug('films:server:errors');
 

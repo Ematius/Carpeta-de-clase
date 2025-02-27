@@ -1,0 +1,34 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DB_URL")
+}
+
+//las tablas por convenio se nombran en plural y en minúsculas
+//@ las arrobas se usan para añadir metadata a los campos
+//son tipos de datos de prisma, tiene una lista de datos definidos
+model Film {
+  id          String      @id @default(uuid()) @map("film_id") //mapea el campo de la base de datos
+  title       String
+  description String
+  releaseYear Int @map("release_year") //mapea el campo de la base de datos
+  rating      Decimal
+  director    String
+  duration    Int
+  poster      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+    //la doble arroba se mapea a toda la base de datos
+    @@map("films")
+    @@unique([title, releaseYear])
+    @@index([title])
+}
