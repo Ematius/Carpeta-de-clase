@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,33 +7,71 @@ datasource db {
   url      = env("DB_URL")
 }
 
-//las tablas por convenio se nombran en plural y en minúsculas
-//@ las arrobas se usan para añadir metadata a los campos
-//son tipos de datos de prisma, tiene una lista de datos definidos
 model Film {
-  id          String      @id @default(uuid()) @map("film_id") //mapea el campo de la base de datos
+  id          String   @id @default(uuid()) @map("film_id")
   title       String
   description String
-  releaseYear Int @map("release_year") //mapea el campo de la base de datos
+  releaseYear Int      @map("release_year")
   rating      Decimal
   director    String
   duration    Int
   poster      String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-    //la doble arroba se mapea a toda la base de datos
-    @@map("films")
-    @@unique([title, releaseYear])
-    @@index([title])
+
+  //esto es una relación N:M al poner films Films[] en la entidad Category, se crea una tabla intermedia directamente
+  categories Category[]
+
+  @@unique([title, releaseYear])
+  @@index([title])
+  @@map("films")
 }
 
-model User {
-  id       String  @id @default(uuid()) @map("user_id")
-  name     String
-  email    String  @unique
-  password String
+model Category {
+  id        String   @id @default(uuid()) @map("category_id")
+  name      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@map("users") // Mapea la tabla a "users" en la BD
+  films Film[]
+
+  @@map("categories")
+}
+
+model User {
+  id        String   @id @default(uuid()) @map("user_id")
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  notes   Notes[]
+  profile Profile?
+
+  @@map("users")
+}
+
+model Profile {
+  id        String   @id @default(uuid()) @map("profile_id")
+  bio       String
+  createdAt DateTime @default(now()) @ignore
+  updatedAt DateTime @updatedAt @ignore
+
+  User   User   @relation(fields: [userId], references: [id])
+  userId String @unique @map("user_id")
+
+  @@map("profiles")
+}
+
+model Notes {
+  id        String   @id @default(uuid()) @map("note_id")
+  content   String
+  createAt  DateTime @default(now()) @ignore
+  updatedAt DateTime @updatedAt @ignore
+
+  User   User?   @relation(fields: [userId], references: [id])
+  userId String? @map("user_id")
+
+  @@map("notes")
 }

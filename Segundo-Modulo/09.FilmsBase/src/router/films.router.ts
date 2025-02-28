@@ -1,19 +1,23 @@
 
 import { Router } from 'express';
 import { FilmsController } from '../controllers/films.controller.js';
-import { Repository } from '../repo/repository.type.js';
-import { Film } from '@prisma/client';
-import { FilmRepo } from '../repo/films.repository.js';
+import createDebug from 'debug';
+const debug = createDebug('films:router:films');
 
 
-export const filmsRouter = Router();
+//soy un router que tiene un controlador y un repositorio mételos desde fuera
+export const createFilmsRouter = (
+    filmsController: FilmsController,
+) =>{
+    debug('Configurando router de films');
+    const filmsRouter = Router();
+    filmsRouter.get('/', filmsController.getAll);
+    filmsRouter.get('/:id', filmsController.getById);
+    filmsRouter.post('/create', filmsController.create);
+    filmsRouter.patch('/:id', filmsController.update);
+    filmsRouter.delete('/:id', filmsController.delete);
+    return filmsRouter;
+}
 
-const repoFilms: Repository<Film> = new FilmRepo();
-const filmsController = new FilmsController(repoFilms);
 
-filmsRouter.get('/', filmsController.getAll);
-filmsRouter.get('/:id', filmsController.getById);
-filmsRouter.post('/create', filmsController.create);
-filmsRouter.patch('/:id', filmsController.update);
-filmsRouter.delete('/:id', filmsController.delete);
 

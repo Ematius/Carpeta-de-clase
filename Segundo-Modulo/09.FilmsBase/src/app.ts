@@ -12,8 +12,12 @@ import {
 
 import { errorManager } from './controllers/errors.controller.js';
 
-import { filmsRouter } from './router/films.router.js';
+import { createFilmsRouter} from './router/films.router.js';
 import { usersRouter } from './router/users.router.js';
+import { Film } from '@prisma/client';
+import { FilmsController } from './controllers/films.controller.js';
+import { FilmRepo } from './repo/films.repository.js';
+import { Repository } from './repo/repository.type.js';
 
 
 // import { createProductsRouter } from './routers/products.router.js';
@@ -47,15 +51,13 @@ export const createApp = () => {
     app.use(debugLogger('debug-logger'));
     app.use(express.static(publicPath));
 
-    // Routes
-
-   
-
-  
-    //al poner use estamos diciendo que se va a usar en todas las rutas que empiecen con api/products delegamos el control a productsController
-    //app.use('api/films', createFilmsRouter(filmsController));
-
- //createFilmssRouter(filmsController));
+    // Control de capas
+    const repoFilms: Repository<Film> = new FilmRepo(); //instanciación de la clase FilmRepo
+    const filmsController = new FilmsController(repoFilms); //instanciamos e hacemos una inyección de dependencias
+    const filmsRouter = createFilmsRouter(filmsController); //creamos el router de films
+    
+    
+    // Routes registro de rutas
 
     //req:Request de express Estas son las 5 básicas que hay que saber
     //aquí se delega el control a productsController de la ruta api/films, es decir, cuando llegue a esta ruta se delega el control a productsController

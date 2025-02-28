@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DB_URL")
+}
+
+model City {
+  id          Int     @id @default(autoincrement()) @map("ID")
+  name        String  @default("") @db.Char(35) @map("Name")
+  countryCode String  @default("") @db.Char(3) @map("CountryCode")
+  district    String  @default("") @db.Char(20) @map("District")
+  population  Int     @default(0)  @map("Population")
+  country     Country @relation(fields: [countryCode], references: [code], onDelete: NoAction, onUpdate: NoAction, map: "city_ibfk_1")
+
+  @@index([countryCode], map: "CountryCode")
+  @@map("city")
+}
+
+model Country {
+  code            String            @id @default("") @db.Char(3) @map("Code")
+  name            String            @default("") @db.Char(52) @map("Name")
+  continent       CountryContinent  @default(Asia) @map("Continent")
+  region          String            @default("") @db.Char(26) @map("Region")
+  surfaceArea     Decimal           @default(0.00) @db.Decimal(10, 2) @map("SurfaceArea")
+  indepYear       Int?              @db.SmallInt @map("IndepYear")
+  population      Int               @default(0) @map("Population") 
+  lifeExpectancy  Decimal?          @db.Decimal(3, 1) @map("LifeExpectancy") 
+  GNP             Decimal?          @db.Decimal(10, 2) @map("GNP")
+  GNPOld          Decimal?          @db.Decimal(10, 2) @map("GNPOld")
+  localName       String            @default("") @db.Char(45) @map("LocalName")
+  governmentForm  String            @default("") @db.Char(45) @map("GovernmentForm")
+  headOfState     String?           @db.Char(60) @map("HeadOfState")
+  capital         Int?              @map("Capital")
+  code2           String            @default("") @db.Char(2) @map("Code2")
+  city            City[]            
+  countryLanguage CountryLanguage[]
+
+  @@map("country")
+}
+
+model CountryLanguage {
+  countryCode String                     @default("") @db.Char(3) @map("CountryCode")
+  language    String                     @default("") @db.Char(30) @map("Language")
+  isOfficial  IsOfficialLanguage @default(F) @map("IsOfficial")
+  percentage  Decimal                    @default(0.0) @db.Decimal(4, 1) @map("Percentage")
+  country     Country                    @relation(fields: [countryCode], references: [code], onDelete: NoAction, onUpdate: NoAction, map: "countryLanguage_ibfk_1")
+
+  @@id([countryCode, language])
+  @@index([countryCode], map: "CountryCode")
+  @@map("countrylanguage")
+}
+
+enum CountryContinent {
+  Asia
+  Europe
+  North_America @map("North America")
+  Africa
+  Oceania
+  Antarctica
+  South_America @map("South America")
+}
+
+enum IsOfficialLanguage {
+  T
+  F
+}

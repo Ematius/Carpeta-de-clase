@@ -100,3 +100,25 @@ app/server/index/render/modelMOvie/database asi arranca
 para tocar es app/ render/ modelmovie
 
 
+prima son dos partes el CLI y el Client
+lo que instalamos es el CLI, es un interfaz de lineas de comandos que lo que hace general un CLI y un cliente que se genera específicamente en el proceso
+
+
+La introspección en prisma, coger una base de datos, mira y extrae el modelo
+
+después de tener la base con los errores lo aconsejable es empezar por el modelo de datos,
+
+un ORM hablas sql es lo normal pero prima a crea el client exclusivo del proyecto
+
+Generate solo genera el cliente 
+migrate hace la escritura en sql y al final crea el client de nuevo
+
+
+un ORM es el intermediario entre ts y sql
+control F para selecionar pelabras desde buscar 
+control D es manual una por una
+
+
+por **decision de diseño** es como se llama el hacer por capas un proyecto 
+
+

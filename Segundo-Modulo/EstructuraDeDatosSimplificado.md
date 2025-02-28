@@ -191,3 +191,30 @@ Cliente (Postman, navegador)
 🔹 Middleware de errores → Facilita el manejo de respuestas.
 
 Ahora puedes repasar rápidamente sin leer 900 líneas de código. 🚀🔥
+
+
+En capas seria:
+
+index 
+app
+router
+controller
+repository
+base de datos
+
+Esto es para crear la tabla en la base de datos
+npx prisma migrate dev --name add_users_table
+
+esto es para generar el modelo en mi sistema
+npx prisma generate
+
+para para relacionar dos tablas
+npx format
+
+cargar la base de datos en wordbench
+npx prisma db pull
+
+Cross-env se fija en el sistema operativo y lo transforma 
+
+
+arrow function

@@ -907,3 +907,180 @@ Error ocurre en una ruta o middleware
    ├──> (⚠️ Actualmente falta `res.send()`, por lo que la respuesta no se envía)
    │
    └──> **El cliente queda esperando sin respuesta (debe corregirse)**
+
+
+
+### 4.8 response.ts 
+
+
+```TS
+//import { HttpError } from "./http-error";
+
+//! Es muy importante codificar el tipo de respuesta que se espera de la API y el tipo de error que se espera
+
+//Este es e tipado de la respuesta de la API
+//Es un objeto que tiene dos propiedades, results y error 
+//results es un array de tipo T que respondes si sale bien la petición
+//error es un objeto de tipo HttpError o null que respondes si sale mal la petición
+//este es el momento en el que puedes decidir que tipo de respuesta vas a devolver desde la api según lo que pase
+// export type AppResponse<T> = {
+//   results: T[]; //? Esta seria la respuesta de la API
+//   error: HttpError | null; //? Puede ser null si no hay error
+// };
+
+
+//Este es el tipado de la respuesta de la API y sería para una api publica porque no da detalles del error, solo el error
+export type AppResponseShadow<T> = {
+    results: T[]| null; 
+    error: string;
+};
+
+
+
+```
+
+
+
+
+#### instalamos prima 
+
+npx prisma init --datasource-provider mysql
+
+Saldrá la carpeta de prisma con un fichero schema.prima.
+
+#### .env 
+
+   DB_URL="mysql://root:Curso@2025@localhost:3306/movies"
+
+### configuramos el modelo en el archivo schema.prisma
+
+```prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DB_URL")
+}
+
+
+
+
+//las tablas por convenio se nombran en plural y en minúsculas
+//@ las arrobas se usan para añadir metadata a los campos
+//son tipos de datos de prisma, tiene una lista de datos definidos
+model Film {
+  id          String      @id @default(uuid()) @map("film_id") //mapea el campo de la base de datos
+  title       String
+  description String
+  releaseYear Int @map("release_year") //mapea el campo de la base de datos
+  rating      Decimal
+  director    String
+  duration    Int
+  poster      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+    //la doble arroba se mapea a toda la base de datos
+    @@map("films")
+    @@unique([title, releaseYear])
+    @@index([title])
+}
+
+```
+
+se puede usar help para ver las opciones posible
+
+Una vez hecho el modelo de la tabla hacemos un migrate dev es decir npx prisma migrate dev y luego initial
+
+en la carpeta de prisma se crea una carpeta con la tabla y ya se ha ejecutado en el base de datos
+
+
+
+### Creamos el filmsrepository.ts
+
+aquí es el interface del crud con prima
+
+```ts
+import createDebug from 'debug';
+import type { Repository } from './repository.type.js';
+import { PrismaClient } from '@prisma/client';
+// Film:esto lo hace prima hace un tipado de ts desde la referencia del prisma client y ya se puede hacer
+import { Film } from '@prisma/client'; 
+
+const debug = createDebug('demo:repository:film');
+
+
+export class FilmRepo implements Repository<Film> {
+    prisma: PrismaClient; // Conexión a la base de datos hecha por prisma
+    constructor() {
+        debug('Instanciando repo for film');
+        this.prisma = new PrismaClient();
+    }
+
+    private animalRowToAnimal(row: unknown): Film {
+        return row as Film
+    }
+
+    async read(): Promise<Film[]> {
+        //this.prisma. Conecta con la base de datos y que tienes para darme
+        const films = await this.prisma.film.findMany();//film.findMany() me devuelve ya el tipado de ts 
+        debug(films);
+        return films;
+        //return await this.prisma.film.findMany();
+    }
+
+    async readById(id: string): Promise<Film> {
+        const film = await this.prisma.film.findUniqueOrThrow({
+            where: {id},//: id, es un atajo de js por eso funciona//donde el id que me pasan sea igual al id de la base de datos    
+        });
+        return film;
+    }
+
+    async create(data: Omit<Film, 'id'>): Promise<Film> {
+        
+        const film = await this.prisma.film.create({
+            data
+        });
+        return film;
+    }
+
+    async update(
+        id: string,
+        data: Partial<Omit<Film, 'id'>>,
+    ): Promise<Film> {
+        debug('Updating animal with id:', id);
+
+        const film = await this.prisma.film.update({
+            where: {id},
+            data,
+        });
+        return film;
+    }
+
+    async delete(id: string): Promise<Film> {
+        const film = await this.prisma.film.delete({
+            where: { id },
+        });
+        return film;
+    }
+}
+```
+
+### films.router.ts
+
+router al ser algo de nativo de express es una funcion que lo que hace es pero todas las url que lleguen a app, se pasan a router y el decide que hacer con 
+
+### films.controller
+
+aqui hay una clase con las funciones de la direccion final la respuesta final
+va a gestionar lo que hace con el cuerpo del req.body
+
+
+### hacer un user
+
+desde prisma sin relacion con las peliculas
+
+### 
+guia personal, app recoge la url, lo envia a router, router discrimina que es y hace la llamada a la instancia de la clase que hay en controller y envia la gestion adecuada
