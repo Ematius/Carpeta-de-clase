@@ -110,7 +110,45 @@ export const getCitiesWithPopulationGreaterThan = async (population: number) => 
 }
 
 
-await getCitiesWithPopulationGreaterThan(10000000)
+//await getCitiesWithPopulationGreaterThan(10000000)
 
 //prisma.$executeRaw() aquí se puede ejecutar cualquier query de SQL
 //prisma.$executeRawUnsafe() 
+
+
+/*
+## Ejercicio 1
+
+-   Listar todos los países con su población y su extensión, incluyendo los correspondientes alias adecuados en español
+-   Añadir un elemento calculado: la densidad
+-   Listar los 10 primeros países
+-   Listar los países entre el 10 y el 20
+-   Ordenar la salida según población (sin verla)
+-   Ver la población y comprobar el orden
+*/
+
+// Listar todos los países con su población y su extensión, incluyendo los correspondientes alias adecuados en español
+export const getCountryWithPopulationAndExtension = async () => {
+    const countries = await prisma.country.findMany({
+        select: {
+            name: true,
+            population: true,
+            surfaceArea: true,
+            code: true,
+            
+        },
+    });
+    console.log(countries);
+}
+
+//await getCountryWithPopulationAndExtension();
+
+//Listar los 10 primeros países
+export const getFirstTenCountries = async () => {
+    const countries = await prisma.country.findMany({
+        take: 10,
+    });
+    console.log(countries);
+}
+
+await getFirstTenCountries();
