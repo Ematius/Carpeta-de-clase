@@ -1,8 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 import { Repository } from "../repo/repository.type.js";
 import { User } from "@prisma/client";
-import { AppResponse } from "../types/app-response.js";
+import type { AppResponse } from "../types/app-response";
 import createDebug from 'debug';
+import { AuthService } from "../services/auth.service.js";
 const debug = createDebug('users:controller:users');
 
 
@@ -39,8 +40,9 @@ export class UsersController {
     };
 
     create = async (req: Request, res: Response, next: NextFunction) => {
-        const newData = req.body;
         try {
+            const newData = req.body;
+            newData.password = await AuthService.hasPassword(newData.password);
             const user = await this.repoUsers.create(newData);
             res.json(this.makeResponse([user]));
         } catch (error) {
@@ -68,3 +70,6 @@ export class UsersController {
         }
     };
 }
+
+
+//aquí seria la lógica del negocio

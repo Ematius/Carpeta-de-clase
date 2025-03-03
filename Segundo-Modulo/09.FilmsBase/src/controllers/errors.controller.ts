@@ -4,6 +4,7 @@ import { HttpError } from '../types/http-error.js';
 import { AppResponse } from '../types/app-response.js';
 // import { ErrorPage } from '../views/pages/error-page.js';
 
+
 const debug = createDebug('films:errorManager');
 
 export const errorManager = (

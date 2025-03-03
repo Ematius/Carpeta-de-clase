@@ -1,7 +1,7 @@
 import { NextFunction,Request, Response } from "express";
 import { Repository } from "../repo/repository.type.js";
 import { Film } from "@prisma/client";
-import { AppResponse } from "../types/app-response.js";
+import type { AppResponse } from "../types/app-response";
 import createDebug from 'debug';
 const debug = createDebug('films:controller:films');
 

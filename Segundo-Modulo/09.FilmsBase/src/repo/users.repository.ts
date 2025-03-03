@@ -3,8 +3,9 @@ import type { Repository } from './repository.type.js';
 import { PrismaClient, User  } from '@prisma/client';
 
 
-const debug = createDebug('demo:repository:user');
+const debug = createDebug('films:repository:user');
 
+type UserWithoutPassword = Omit<User, 'password'>;
 
 export class UserRepo implements Repository<User> {
     prisma: PrismaClient;
@@ -26,9 +27,10 @@ export class UserRepo implements Repository<User> {
         return user;
     }
 
-    async create(data: Omit<User, 'id'>): Promise<User> {
+    async create(data: Omit<User, 'id'>): Promise<UserWithoutPassword> {
         const user = await this.prisma.user.create({
-            data
+            data,
+            omit: {password: true},
         });
         return user;
     }
@@ -53,3 +55,6 @@ export class UserRepo implements Repository<User> {
         return user;
     }
 }
+
+
+//aqui seria la logica de datos
