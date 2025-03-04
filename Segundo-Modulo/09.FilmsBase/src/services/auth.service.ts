@@ -22,15 +22,20 @@ export class AuthService {
         return compare(password, hash);
     }
 
-    static async generateToken(payload: Payload){
+    static async generateToken(payload: Payload) {
         //da error de tipo pero en el env puedo comprobarlo por ello poner el as, o poner una guarda
-       const secret = process.env.JWT_SECRET as string;
+        const secret = process.env.JWT_SECRET as string;
         jwt.sign(payload, secret);
+    }
+    static async verifyToken(token: string) {
+        const secret = process.env.JWT_SECRET as string;
+        const result = jwt.verify(token, secret);
+        if (typeof result === 'string') {
+            throw new Error('Token no válido');
+        }
+        return result as Payload;
     }
 
     //result es string y payload es de tipo Payload, asi que para mi que sea un string es un error, no me vale
     //asi que hay que hacer una salva de tipo
-
-
-
 }

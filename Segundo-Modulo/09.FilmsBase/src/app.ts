@@ -21,6 +21,7 @@ import { FilmRepo } from './repo/films.repository.js';
 import { Repository } from './repo/repository.type.js';
 import { UsersRepo } from './repo/users.repository.js';
 import { UsersController } from './controllers/users.controller.js';
+import { AuthInterceptor } from './middleware/auth.interceptor.js';
 
 
 // import { createProductsRouter } from './routers/products.router.js';
@@ -56,9 +57,12 @@ export const createApp = () => {
     app.use(express.static(publicPath));
 
     // Control de capas
-    const repoFilms: Repository<Film> = new FilmRepo(); //instanciación de la clase FilmRepo
+    const authInterceptor = new AuthInterceptor();
+
+
+    const repoFilms: Repository<Film> = new FilmRepo(); //instantiation de la clase FilmRepo
     const filmsController = new FilmsController(repoFilms); //instanciamos e hacemos una inyección de dependencias
-    const filmsRouter = createFilmsRouter(filmsController); //creamos el router de films
+    const filmsRouter = createFilmsRouter(authInterceptor, filmsController); //creamos el router de films
     //Patron de inyección de dependencias desde fuera
     
     const repoUsers = new UsersRepo();

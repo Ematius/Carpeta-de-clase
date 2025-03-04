@@ -72,9 +72,10 @@ export class UsersController {
             if (!isValid) {
                 throw error;
             }
-            const token = await AuthService.generateToken(
-                { id: user.id, email: user.email }
-            );
+            const token = await AuthService.generateToken({
+                id: userWithoutPasswd.id,
+                email: userWithoutPasswd.email,
+            });
             
             const response = {
                 ...userWithoutPasswd,

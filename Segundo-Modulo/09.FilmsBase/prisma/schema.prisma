@@ -12,7 +12,7 @@ model Film {
   title       String
   description String
   releaseYear Int      @map("release_year")
-  rating      Int
+  rating      Float
   director    String
   duration    Int
   poster      String

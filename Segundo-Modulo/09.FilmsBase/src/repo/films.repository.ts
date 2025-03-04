@@ -1,7 +1,7 @@
 import createDebug from 'debug';
 import type { Repository } from './repository.type.js';
 //Es la conexión a la base de datos que hace prisma 
-import { PrismaClient, Film  } from '@prisma/client';
+import { PrismaClient, Film} from '@prisma/client';
 // Film:esto lo hace prima hace un tipado de ts desde la referencia del prisma client y ya se puede hacer
 
 
@@ -33,7 +33,8 @@ export class FilmRepo implements Repository<Film> {
     async create(data: Omit<Film, 'id'>): Promise<Film> {
         
         const film = await this.prisma.film.create({
-            data
+            data,
+            
         });
         return film;
     }
