@@ -3,7 +3,20 @@
 import { $Enums, PrismaClient, Prisma } from '@prisma/client';
 
 console.log('Hello, world By Prisma ORM!');
-const prisma = new PrismaClient();
+//Extendemos 
+const prisma = new PrismaClient().$extends({
+    result: {
+        country: {
+            density: {
+                needs: { population: true, surfaceArea: true },
+                compute(country) {
+                    return country.population / country.surfaceArea.toNumber();
+                },
+            },
+        },
+    },
+});
+
 
 export const getCountries = async () => {
     const countries = await prisma.country.findMany();
@@ -134,14 +147,35 @@ export const getCountryWithPopulationAndExtension = async () => {
             name: true,
             population: true,
             surfaceArea: true,
-            code: true,
-            
+            code: true,            
         },
     });
     console.log(countries);
 }
 
-//await getCountryWithPopulationAndExtension();
+ //await getCountryWithPopulationAndExtension();
+
+//-   Añadir un elemento calculado: la densidad
+export const calDensity = async () =>{
+    const country = await prisma.country.findMany({
+        select: {
+            name: true,
+            population: true,
+            surfaceArea: true,
+        },})
+        return country.map((country) => {
+            const density = country.population / country.surfaceArea.toNumber();
+            return {
+                ...country,
+                density,
+            };
+        });
+    };
+
+    
+
+
+
 
 //Listar los 10 primeros países
 export const getFirstTenCountries = async () => {
@@ -149,6 +183,129 @@ export const getFirstTenCountries = async () => {
         take: 10,
     });
     console.log(countries);
+};
+
+//await getFirstTenCountries();
+
+
+
+//Nombre de la ciudad, país y su forma de gobierno de las ciudades de más de x de habitantes de z continentes
+
+
+export const getCitiesPoliticsWithPopulationGreaterThan = async (
+    limit: number,
+    continent: $Enums.CountryContinent
+) =>{
+    const cities = await prisma.city.findMany({
+        select:{
+            name:true,
+            country:{
+                select:{
+                    name:true,
+                    governmentForm:true
+                    
+                }
+            }
+        },
+        where: {
+            population: {
+                gt:limit
+            },
+            country:{
+                continent
+            }
+        },
+        
+    })
+    return console.log(cities); 
+
 }
 
-await getFirstTenCountries();
+//await getCitiesPoliticsWithPopulationGreaterThan(3_000_000,'Europe');
+
+
+ //Seleccionamos ciudades Europeas de más de 1.500.000 de habitantes 
+ // indicado el país al que pertenecen y sus lenguajes oficiales
+
+
+ export const lenguasOficiales = async () =>{
+    const cities = await prisma.city.findMany({
+        select: {
+            name: true,
+            country: {
+                select: {
+                    name: true,
+                    countryLanguage:{
+                        select: {
+                            language:true,
+                            isOfficial:true
+                        }
+                    }
+                },
+            },
+        },
+        where: {
+            population: {
+                gt: 1500000,
+            },
+            country:{
+                continent:'Europe'
+            }
+            
+        },
+    });
+    return console.log(cities); 
+ }
+
+ //await lenguasOficiales()
+
+
+
+// ## Ejercicio 5
+
+// Funciones de agregación
+
+// -   Cuantos países hay en el mundo según nuestra tabla
+// -   Cual es la superficie total del mundo
+// -   Cual es la superficie media de los países del mundo
+// -   Cual es el país más grande del mundo
+// -   Cual es el país más pequeño del mundo
+
+// -   Cual es la superficie y la población de cada continente
+
+export const calCountry = async () => {
+    const result = await prisma.country.aggregate({
+        _count:{code:true},
+        _sum: {surfaceArea:true,
+            population:true
+        }, //superficie total
+        _avg:{surfaceArea:true,
+            population:true
+        },
+        _max:{region:true}
+    })
+    ;
+    return result
+    
+}
+
+
+
+await calCountry()
+
+const getContienentSurface = async () => {
+    const result = await prisma.country.groupBy({
+        by: ['continent'],
+        _sum: {
+            surfaceArea: true,
+            population: true,
+        },
+        _avg:{
+            population:true,
+            surfaceArea:true
+        }
+    });
+    console.log(result);
+};
+
+await getContienentSurface()

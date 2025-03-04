@@ -23,3 +23,5 @@ los @map() son los nombres que van a la base de datos, asi que hay que conservar
 migrate es para la base de datos
 
 generate es para generar el modelo o actualizar
+
+prisma.$extends es para aumentar el modelo, el cliente, el nombre y query

@@ -15,11 +15,11 @@ import { errorManager } from './controllers/errors.controller.js';
 import { createFilmsRouter} from './router/films.router.js';
 import { createUsersRouter} from './router/users.router.js';
 
-import type { Film, User } from '@prisma/client';
+import type { Film } from '@prisma/client';
 import { FilmsController } from './controllers/films.controller.js';
 import { FilmRepo } from './repo/films.repository.js';
 import { Repository } from './repo/repository.type.js';
-import { UserRepo } from './repo/users.repository.js';
+import { UsersRepo } from './repo/users.repository.js';
 import { UsersController } from './controllers/users.controller.js';
 
 
@@ -59,8 +59,9 @@ export const createApp = () => {
     const repoFilms: Repository<Film> = new FilmRepo(); //instanciación de la clase FilmRepo
     const filmsController = new FilmsController(repoFilms); //instanciamos e hacemos una inyección de dependencias
     const filmsRouter = createFilmsRouter(filmsController); //creamos el router de films
+    //Patron de inyección de dependencias desde fuera
     
-    const repoUsers:Repository<User> = new UserRepo();
+    const repoUsers = new UsersRepo();
     const usersController = new UsersController(repoUsers)
     const usersRouter = createUsersRouter(usersController)
     

@@ -12,13 +12,12 @@ model Film {
   title       String
   description String
   releaseYear Int      @map("release_year")
-  rating      Decimal
+  rating      Int
   director    String
   duration    Int
   poster      String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
+  createdAt   DateTime @default(now()) @ignore
+  updatedAt   DateTime @updatedAt @ignore
   //esto es una relación N:M al poner films Films[] en la entidad Category, se crea una tabla intermedia directamente
   categories Category[]
 
