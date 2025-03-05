@@ -14,6 +14,9 @@ export class AuthInterceptor {
         debug('authenticate');
 
         //req.cookies
+        //esta es la respuesta del servidor al cliente, y es poner bearer y el token es un standard
+        //Se envía en el headers de la petición
+        //El standar es Bearer token enviada en el header de la petición
         const { authorization } = req.headers;
 
         if (!authorization || authorization.includes('Bearer') === false) {
@@ -28,7 +31,9 @@ export class AuthInterceptor {
 
         const token = authorization.split(' ')[1];
         try {
-            await AuthService.verifyToken(token);
+            //aquí se verifica el token el JWT
+           const payload =  await AuthService.verifyToken(token);
+           
             next();
         } catch (err) {
             const newError = new HttpError(
@@ -39,4 +44,10 @@ export class AuthInterceptor {
             next(newError);
         }
     };
+
+
+
+
+
+
 }

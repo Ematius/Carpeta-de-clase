@@ -12,6 +12,8 @@ export const UserCreateDTO = z.object({
     name: z.string().min(3).nonempty(),
     email: z.string().email().nonempty(),
     password: z.string().min(6).nonempty(),
+    //al tener default se puede omitir, no se puede hacer al registrarte
+    //role: z.nativeEnum(Role).default(Role.USER),
     //satisfies es como el as de TS
     //satisface el esquema de Prisma.UserUncheckedCreateInput
     //El DTO de prisma es UserUncheckedCreateInput

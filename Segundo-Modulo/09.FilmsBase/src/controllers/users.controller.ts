@@ -8,6 +8,11 @@ import { UserCreateDTO, UserLoginDTO } from '../dto/users.dto.js';
 import { ZodError } from 'zod';
 const debug = createDebug('films:controllers:users');
 
+//aqui se genera el token y se manda al cliente
+//tambien se manda la respuesta al cliente
+//tambien usa el repo
+
+
 export class UsersController {
     constructor(private repoUsers: UsersRepo) {
         debug('Instanciando');
@@ -80,11 +85,13 @@ export class UsersController {
                 throw error;
                 
             }
-            
+            //si llego hasta aquí es que todo esta bien y genero la información importante según mi modelo
+            //esto lo genera el token el authService
+            //se esta alimentando del tipado que hay en auth.service.ts y este realmente genera el token
             const token = await AuthService.generateToken({
                 id: userWithoutPasswd.id,
                 email: userWithoutPasswd.email,
-                
+                role: userWithoutPasswd.role,
             });
             
             

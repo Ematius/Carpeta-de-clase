@@ -43,6 +43,7 @@ model User {
   name      String
   email     String   @unique
   password  String
+  role      Role     @default(USER)
   createdAt DateTime @default(now()) @ignore
   updatedAt DateTime @updatedAt @ignore
 
@@ -75,3 +76,10 @@ model Notes {
 
   @@map("notes")
 }
+
+enum Role{
+    USER
+    EDITOR
+    ADMIN
+}
+
