@@ -8,6 +8,7 @@ import { UserCreateDTO, UserLoginDTO } from '../dto/users.dto.js';
 import { ZodError } from 'zod';
 const debug = createDebug('films:controllers:users');
 
+
 //aqui se genera el token y se manda al cliente
 //tambien se manda la respuesta al cliente
 //tambien usa el repo
@@ -15,7 +16,7 @@ const debug = createDebug('films:controllers:users');
 
 export class UsersController {
     constructor(private repoUsers: UsersRepo) {
-        debug('Instanciando');
+        
     }
 
     private makeResponse(results: UserWithoutPasswd[]) {
@@ -52,38 +53,33 @@ export class UsersController {
         try {
             //esto solo es un cambio de nombre de password a clientPassword
             const { email, password: clientPassword } = req.body;
-            try{
+            try {
                 UserLoginDTO.parse({ email, password: clientPassword });
-               
             } catch (err) {
-                
-                error.message = (err as ZodError).message//.errors[0].message;
+                error.message = (err as ZodError).message; //.errors[0].message;
                 //esto se llama rethrow error capturo el error y lo vuelvo a lanzar
-                throw error
+                throw error;
             }
             //es una validación de que si no hay email o password se lanza un error
-           
 
             const user = await this.repoUsers.getByEmail(email);
             if (user === null) {
-                
                 throw error;
             }
             // password; // cliente -> sin encriptar
             // user.password; // base de datos -> encriptado
-            
+
             const { password: hashedPassword, ...userWithoutPasswd } = user;
             
+
+
             const isValid = await AuthService.comparePassword(
-                
                 clientPassword,
                 hashedPassword,
             );
-            
-            if (!isValid) {
 
+            if (!isValid) {
                 throw error;
-                
             }
             //si llego hasta aquí es que todo esta bien y genero la información importante según mi modelo
             //esto lo genera el token el authService
@@ -93,17 +89,17 @@ export class UsersController {
                 email: userWithoutPasswd.email,
                 role: userWithoutPasswd.role,
             });
-            
-            
-            const response = {
-                ...userWithoutPasswd,
-                token,
-            }
 
-            //esto es mandar el cookie al cliente y no hace falta un js que los recoja
-            res.cookie('token', token)
-            //esto es para mandar la respuesta al cliente en json, necesitamos un js que la recoja 
-            res.json(this.makeResponse([response]));
+            const results = {
+                token,
+            };
+            res.cookie('token', token);
+            res.json([
+                {
+                    results,
+                    error: '',
+                },
+            ]);
         } catch (error) {
             next(error);
         }

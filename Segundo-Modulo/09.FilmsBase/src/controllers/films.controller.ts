@@ -30,6 +30,7 @@ export class FilmsController {
     getAll = async (req: Request, res: Response, next:NextFunction) => {
         try{
             const film = await this.repoFilms.read();
+            debug(film)
             res.json(this.makeResponse(film));
         }
         catch(error){
@@ -49,6 +50,7 @@ export class FilmsController {
 
     create = async (req: Request, res: Response, next: NextFunction) => {
         try{
+            debug(req.body)
             FilmCreateDTO.parse(req.body);
             const newData:FilmCreateDTO = req.body;
             const film = await this.repoFilms.create(newData);

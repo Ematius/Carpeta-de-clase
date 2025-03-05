@@ -1,4 +1,5 @@
 import { hash, compare } from 'bcryptjs';
+import debug from 'debug';
 import jwt, {JwtPayload}  from 'jsonwebtoken';
 
 const SALTS = 10;
@@ -13,6 +14,7 @@ interface Payload extends JwtPayload  { //hereda de JwtPayload
 
 export class AuthService {
     static async hashPassword(password: string): Promise<string> {
+        debug('LLego a hashPassword');
         return hash(password, SALTS);
     }
 
@@ -20,6 +22,7 @@ export class AuthService {
         password: string,
         hash: string,
     ): Promise<boolean> {
+        debug('LLego a comparePassword');
         return compare(password, hash);
     }
 
@@ -27,7 +30,8 @@ export class AuthService {
     static async generateToken(payload: Payload) {
         //da error de tipo pero en el env puedo comprobarlo por ello poner el as, o poner una guarda
         const secret = process.env.JWT_SECRET as string;
-        jwt.sign(payload, secret);
+        //si no retornas el token
+        return jwt.sign(payload, secret);
     }
     //aquí se verifica el token con la comparación del secreto
     //await AuthService.verifyToken(token) viene de aquí

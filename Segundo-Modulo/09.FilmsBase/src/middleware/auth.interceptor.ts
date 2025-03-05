@@ -12,13 +12,14 @@ export class AuthInterceptor {
 
     authenticate = async (req: Request, _res: Response, next: NextFunction) => {
         debug('authenticate');
-
+        
+        //req.cookies
+        const { authorization } = req.headers;
+        
         //req.cookies
         //esta es la respuesta del servidor al cliente, y es poner bearer y el token es un standard
         //Se envía en el headers de la petición
         //El standar es Bearer token enviada en el header de la petición
-        const { authorization } = req.headers;
-
         if (!authorization || authorization.includes('Bearer') === false) {
             const newError = new HttpError(
                 'Token not found',
@@ -31,9 +32,9 @@ export class AuthInterceptor {
 
         const token = authorization.split(' ')[1];
         try {
-            //aquí se verifica el token el JWT
-           const payload =  await AuthService.verifyToken(token);
-           
+            // const payload =
+            await AuthService.verifyToken(token);
+            // req.session.save = payload;
             next();
         } catch (err) {
             const newError = new HttpError(
@@ -44,10 +45,4 @@ export class AuthInterceptor {
             next(newError);
         }
     };
-
-
-
-
-
-
 }

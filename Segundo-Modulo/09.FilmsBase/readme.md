@@ -113,6 +113,9 @@ con el token enviado al login lo cojo para poder acceder al films
 guardar el playload es para hacer sesiones mas o menos
 
 
+npx prisma studio
+
+
 
 
 
