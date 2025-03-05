@@ -12,7 +12,7 @@ export const createUsersRouter = (
     usersController: UsersController,) =>{
     debug('Configurando router de users');
     const usersRouter = Router();
-    usersRouter.post('/register', usersController.create);
+
     usersRouter.post('/login', usersController.login);
     usersRouter.post('/create', usersController.create);
     // usersRouter.get('/', usersController.getAll);

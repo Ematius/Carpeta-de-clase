@@ -68,7 +68,6 @@ export class FilmsController {
         } catch (error) {
             next(error);
             }
-            
         };
     
         delete = async (req: Request, res: Response, next: NextFunction) => {

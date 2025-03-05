@@ -49,7 +49,9 @@ export class UsersController {
             const { email, password: clientPassword } = req.body;
             try{
                 UserLoginDTO.parse({ email, password: clientPassword });
+               
             } catch (err) {
+                
                 error.message = (err as ZodError).message//.errors[0].message;
                 //esto se llama rethrow error capturo el error y lo vuelvo a lanzar
                 throw error
@@ -59,23 +61,32 @@ export class UsersController {
 
             const user = await this.repoUsers.getByEmail(email);
             if (user === null) {
+                
                 throw error;
             }
             // password; // cliente -> sin encriptar
             // user.password; // base de datos -> encriptado
             
             const { password: hashedPassword, ...userWithoutPasswd } = user;
+            
             const isValid = await AuthService.comparePassword(
+                
                 clientPassword,
                 hashedPassword,
             );
+            
             if (!isValid) {
+
                 throw error;
+                
             }
+            
             const token = await AuthService.generateToken({
                 id: userWithoutPasswd.id,
                 email: userWithoutPasswd.email,
+                
             });
+            
             
             const response = {
                 ...userWithoutPasswd,

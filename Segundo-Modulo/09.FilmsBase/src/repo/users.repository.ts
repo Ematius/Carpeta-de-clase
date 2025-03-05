@@ -18,6 +18,7 @@ export class UsersRepo {
                 email,
             },
         });
+        debug(user);
 
         return user;
     }
@@ -25,11 +26,13 @@ export class UsersRepo {
     async create(data: Omit<User, 'id'>): Promise<UserWithoutPasswd> {
         debug('Creating new user');
         const user = await this.prisma.user.create({
+           
             data,
             omit: {
                 password: true,
             },
         });
+         debug(user);
 
         return user;
     }
@@ -40,6 +43,7 @@ export class UsersRepo {
 // import createDebug from 'debug';
 // import type { Repository } from './repository.type.js';
 // import { PrismaClient, User  } from '@prisma/client';
+
 
 // const debug = createDebug('films:repository:user');
 
