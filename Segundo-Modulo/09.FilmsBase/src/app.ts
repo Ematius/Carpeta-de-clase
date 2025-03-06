@@ -22,7 +22,6 @@ import { ReviewsController } from './controllers/reviews.controller.js';
 import { ReviewRepo } from './repo/reviews.repository.js';
 import { createReviewsRouter } from './router/reviews.router.js';
 import { Payload } from './services/auth.service.js';
-import { BaseRepository } from './repo/BaseRepository.js';
 
 // import { createProductsRouter } from './routers/products.router.js';
 // import { HomePage } from './views/pages/home-page.js';

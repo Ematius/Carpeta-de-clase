@@ -1,7 +1,8 @@
 //import createDebug from 'debug';
 
 //Es la conexión a la base de datos que hace prisma 
-import { PrismaClient, Film} from '@prisma/client';
+import { Film, PrismaClient} from '@prisma/client';
+//import { Repository } from './repository.type';
 // Film:esto lo hace prima hace un tipado de ts desde la referencia del prisma client y ya se puede hacer
 import { BaseRepository } from './BaseRepository.js';
 
@@ -10,7 +11,7 @@ import { BaseRepository } from './BaseRepository.js';
 
 export class FilmRepo extends BaseRepository<Film> {
     constructor() {
-        super(new PrismaClient().film);
+        super(Film);
     }
 }
 

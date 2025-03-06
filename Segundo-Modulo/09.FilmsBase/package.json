@@ -5,8 +5,8 @@
     "type": "module",
     "scripts": {
         "start": "node dist/index.js",
-        "start:dev": "cross-env NODE_ENV=dev DEBUG=* node --watch --env-file=.env ./dist/index.js",
-        "config": "cross-env NODE_ENV=dev DEBUG=* node --env-file=.env ./dist/config.js",
+        "start:dev": "cross-env NODE_ENV=dev DEBUG=films node --watch --env-file=.env ./dist/index.js",
+        "config": "cross-env NODE_ENV=dev DEBUG=films node --env-file=.env ./dist/config.js",
         "build": "tsc -w",
         "test": "vitest run",
         "test:c": "vitest run --coverage",
