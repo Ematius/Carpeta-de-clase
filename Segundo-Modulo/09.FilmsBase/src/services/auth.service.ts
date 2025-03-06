@@ -4,7 +4,7 @@ import jwt, {JwtPayload}  from 'jsonwebtoken';
 
 const SALTS = 10;
 
-interface Payload extends JwtPayload  { //hereda de JwtPayload
+export interface Payload extends JwtPayload  { //hereda de JwtPayload
     id: string;
     email: string;
     role: string;

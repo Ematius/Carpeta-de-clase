@@ -20,6 +20,7 @@ model Film {
   updatedAt   DateTime @updatedAt @ignore
   //esto es una relación N:M al poner films Films[] en la entidad Category, se crea una tabla intermedia directamente
   categories Category[]
+  userRevisors Review[]
 
   @@unique([title, releaseYear])
   @@index([title])
@@ -36,6 +37,19 @@ model Category {
 
   @@map("categories")
 }
+model Review {
+  id         String @id @default(uuid()) @map("review_id")
+  filmId     String @map("film_id")
+  userId     String @map("user_id")
+  film       Film   @relation(fields: [filmId], references: [id])
+  user       User   @relation(fields: [userId], references: [id])
+  content    String
+  userRating Int    @default(0) @map("rating")
+
+  @@unique([filmId, userId])
+  @@map("review_user_film")
+}
+
 
 
 model User {
@@ -49,9 +63,17 @@ model User {
 
   notes   Notes[]
   profile Profile?
-
+  filmRevised Review[]
+    @@index([email])
   @@map("users")
 }
+
+enum Role {
+  USER
+  EDITOR
+  ADMIN
+}
+
 
 model Profile {
   id        String   @id @default(uuid()) @map("profile_id")
@@ -77,9 +99,4 @@ model Notes {
   @@map("notes")
 }
 
-enum Role{
-    USER
-    EDITOR
-    ADMIN
-}
 
