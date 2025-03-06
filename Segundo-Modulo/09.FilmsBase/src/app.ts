@@ -3,18 +3,14 @@ import createDebug from 'debug';
 import { resolve } from 'path';
 import morgan from 'morgan';
 import cors from 'cors';
-import bodyParser from 'body-parser';
 import { debugLogger } from './middleware/debug-logger.js';
 import {
     notFoundController,
     notMethodController,
 } from './controllers/base.controller.js';
-
 import { errorManager } from './controllers/errors.controller.js';
-
 import { createFilmsRouter} from './router/films.router.js';
 import { createUsersRouter} from './router/users.router.js';
-
 import type { Film } from '@prisma/client';
 import { FilmsController } from './controllers/films.controller.js';
 import { FilmRepo } from './repo/films.repository.js';
@@ -23,17 +19,23 @@ import { UsersRepo } from './repo/users.repository.js';
 import { UsersController } from './controllers/users.controller.js';
 import { AuthInterceptor } from './middleware/auth.interceptor.js';
 
-
 // import { createProductsRouter } from './routers/products.router.js';
 // import { HomePage } from './views/pages/home-page.js';
-
-
-
-
+//import { Payload } from '@prisma/client/runtime/library.js';
 
 
 const debug = createDebug('films:app');
 debug('Loaded module');
+
+//extendemos el module de express
+// declare module 'express' {
+//     interface Request{
+//         user: Payload
+//     }
+// }
+
+
+
 
 export const createApp = () => {
     debug('Iniciando App...');
@@ -51,8 +53,8 @@ export const createApp = () => {
     if (!process.env.DEBUG) {
         app.use(morgan('dev'));
     }
-    app.use(express.json());//al pasar por aquí lo parsea a json
-    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(express.json());//necesario para convertir el body de la petición en json objeto
+    app.use(express.urlencoded({ extended: true })); //necesario para convertir el formulario en objeto
     app.use(debugLogger('debug-logger'));
     app.use(express.static(publicPath));
 
@@ -75,8 +77,9 @@ export const createApp = () => {
 
     //req:Request de express 
     //aquí se delega el control a productsController de la ruta api/films, es decir, cuando llegue a esta ruta se delega el control a productsController
-   app.use('/api/films', filmsRouter);
-   app.use('/api/users', usersRouter);
+  
+    app.use('/api/films', filmsRouter);
+    app.use('/api/users', usersRouter);
    
 
     app.get('*', notFoundController);//método de consulta get lanza un 404//cuando no encuentra la ruta lo envía a notFoundController que esta en base controller y este lo envía a error controllers que tiene el manager de errores

@@ -13,6 +13,7 @@ export const createFilmsRouter = (
 ) => {
     debug('Configurando router de films');
     const filmsRouter = Router();
+    //el primer interceptor comprueba el token
     filmsRouter.get('/', authInterceptor.authenticate, filmsController.getAll);
     filmsRouter.get(
         '/:id',
