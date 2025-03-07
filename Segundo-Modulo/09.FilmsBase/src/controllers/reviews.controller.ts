@@ -45,6 +45,7 @@ export class ReviewsController {
         debug('create');
         try {
             ReviewCreateDTO.parse(req.body);
+            req.body.userId = req.user!.id;
 
             const newData: ReviewCreateDTO = req.body;
             const review = await this.repoReviews.create(newData);

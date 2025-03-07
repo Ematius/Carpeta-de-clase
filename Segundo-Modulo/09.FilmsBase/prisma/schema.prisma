@@ -46,6 +46,8 @@ model Review {
   content    String
   userRating Int    @default(0) @map("rating")
 
+    //Esto hace que la combinación de filmId y userId sea única
+    //asi que un usuario solo puede hacer un content por película
   @@unique([filmId, userId])
   @@map("review_user_film")
 }

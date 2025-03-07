@@ -104,6 +104,10 @@ export class UsersController {
             next(error);
         }
     }
+
+    update ()
+
+
 }
 
 

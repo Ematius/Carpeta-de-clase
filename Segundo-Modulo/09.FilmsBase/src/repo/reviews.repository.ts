@@ -2,6 +2,7 @@ import createDebug from 'debug';
 import type { Repository } from './repository.type.js';
 import { PrismaClient } from '@prisma/client';
 import { Review } from '@prisma/client';
+import { ReviewCreateDTO, ReviewUpdateDTO } from '../dto/reviews.dto.js';
 
 const debug = createDebug('movies:repository:reviews');
 
@@ -14,7 +15,12 @@ export class ReviewRepo implements Repository<Review> {
 
     async read(): Promise<Review[]> {
         debug('Reading reviews');
-        const reviews = await this.prisma.review.findMany();
+        const reviews = await this.prisma.review.findMany({
+            include: {
+                user: true,
+                film: true,
+            },
+        });
         return reviews;
 
         // return await this.prisma.review.findMany();
@@ -24,13 +30,17 @@ export class ReviewRepo implements Repository<Review> {
         debug('Reading review with id');
         const review = await this.prisma.review.findUniqueOrThrow({
             where: { id },
+            include: {
+                user: true,
+                film: true,
+            },
         });
 
         return review;
     }
 
-    async create(data: Omit<Review, 'id'>): Promise<Review> {
-       
+    async create(data: ReviewCreateDTO): Promise<Review> {
+       ReviewCreateDTO.parse(data); // Validación de los datos con Zod en tiempo de ejecución
         const review = await this.prisma.review.create({
             data: {
                 content: data.content,
@@ -49,10 +59,10 @@ export class ReviewRepo implements Repository<Review> {
 
     async update(
         id: string,
-        data: Partial<Omit<Review, 'id'>>,
+        data: ReviewUpdateDTO,
     ): Promise<Review> {
         debug('Updating review with id:', id);
-
+        ReviewUpdateDTO.parse(data);
         const review = await this.prisma.review.update({
             where: { id },
             data,
@@ -63,6 +73,7 @@ export class ReviewRepo implements Repository<Review> {
 
     async delete(id: string): Promise<Review> {
         debug('Deleting review with id:', id);
+       
         const review = await this.prisma.review.delete({
             where: {
                 id,

@@ -36,6 +36,15 @@ export class UsersRepo {
 
         return user;
     }
+
+    async update() 
+
+    async delete() 
+
+
+
+
+
 }
 
 

@@ -210,3 +210,17 @@ buscador control + F
 
 
 hacer una clase abstracta y hacer films y review 
+
+
+Hay que leer el CRUD de prisma
+
+
+En postaman podemos definir enviarament para cuando segun el pc por trabajo de local host
+
+Hay dos tipos de vida de token un refresh token y un token de larga vida, cuando recibes los dos token se complica la cosa, hay dato del token automatico i at:..... que es el momento en el que se genero
+Las sesiones y los token son dos caras del mismo tema, las sesiones las guarda el servidor y la identificacion se guardan en el la cookie
+
+
+
+
+

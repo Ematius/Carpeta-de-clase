@@ -64,28 +64,38 @@ export const createApp = () => {
     app.use(express.static(publicPath));
 
     // Control de capas
-    //interceptor de autenticación
+    
     const authInterceptor = new AuthInterceptor();
 
+    //interceptor de autenticación
+    const repoUsers = new UsersRepo();
+    
     //films
     const repoFilms: Repository<Film> = new FilmRepo(); //instantiation de la clase FilmRepo
+    
     const filmsController = new FilmsController(repoFilms); //instanciamos e hacemos una inyección de dependencias
+    
     const filmsRouter = createFilmsRouter(authInterceptor, filmsController); //creamos el router de films
     //Patron de inyección de dependencias desde fuera
-
+    
     //users
-    const repoUsers = new UsersRepo();
+    
     const usersController = new UsersController(repoUsers);
+    
     const usersRouter = createUsersRouter(usersController);
-
+    
     // Reviews
+    
     const reviewsRepo: Repository<Review> = new ReviewRepo();
+    
     const reviewsController = new ReviewsController(reviewsRepo);
-     const reviewsRouter = createReviewsRouter(
-         authInterceptor,
-         reviewsController,
-     );
-
+    
+    
+    const reviewsRouter = createReviewsRouter(
+        authInterceptor,
+        reviewsController,
+    );
+    
 
     // Routes registro de rutas
 
