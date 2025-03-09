@@ -27,6 +27,8 @@ model Film {
 
   categories Categories[]
 
+  userRevisors Review[]
+
   @@unique([title, releaseYear])
   @@index([title])
   @@map("films")
@@ -40,43 +42,42 @@ model Categories {
 
   films Film[]
 
-
   @@map("categories")
 }
 
-// model FilmCategories {
+model Review {
+  id         String @id @default(uuid()) @map("review_id")
+  filmId     String @map("film_id")
+  userId     String @map("user_id")
+  film       Film   @relation(fields: [filmId], references: [id])
+  user       User   @relation(fields: [userId], references: [id])
+  content    String
+  userRating Int    @default(0) @map("rating")
 
-//     filmId     String     @map("film_id")
-//     categoryId String     @map("category_id")
-//     film       Film       @relation(fields: [filmId], references: [id])
-//     category   Categories @relation(fields: [categoryId], references: [id])
-//     order      Int        @default(0)   @map("order")
-    
-//     @@id([filmId, categoryId])
-//     @@map("film_categories")
-
-// }
-
+  @@unique([filmId, userId])
+  @@map("review_user_film")
+}
 
 model User {
-  id         String   @id @default(uuid()) @map("user_id")
-  email      String   @unique
-  handleName String?  @map("handle_name")
+  id         String  @id @default(uuid()) @map("user_id")
+  email      String  @unique
+  handleName String? @map("handle_name")
   password   String
-  firstName  String   @map("first_name")
-  lastName   String   @map("last_name")
+  firstName  String  @map("first_name")
+  lastName   String  @map("last_name")
 
-  role      Role   @default(USER)
-  createdAt  DateTime @default(now()) @ignore
-  updatedAt  DateTime @updatedAt @ignore
+  role      Role     @default(USER)
+  createdAt DateTime @default(now()) @ignore
+  updatedAt DateTime @updatedAt @ignore
 
   notes   Notes[]
   profile Profile?
 
+  filmRevised Review[]
+
   @@index([email])
   @@map("users")
 }
-
 
 enum Role {
   USER

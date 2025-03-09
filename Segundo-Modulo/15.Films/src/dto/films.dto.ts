@@ -1,6 +1,6 @@
 import { Prisma } from '@prisma/client';
 import createDebug from 'debug';
-const debug = createDebug('films:dto:film');
+const debug = createDebug('movies:dto:film');
 debug('Loaded module');
 
 import { z } from 'zod';

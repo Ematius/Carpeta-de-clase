@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Books {
+  id        String  @id @default(uuid()) @map("book_id")
+  title     String  @unique(map: "title") 
+  author    String  
+  year      Int
+  genre     String  
+  available Boolean @default(true)
+
+  @@unique([title, year])
+  @@index([title])
+  @@map("books")
+  
+}

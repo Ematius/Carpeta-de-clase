@@ -1,16 +1,51 @@
 import { Router } from 'express';
 import createDebug from 'debug';
 import { UsersController } from '../controllers/users.controller';
-const debug = createDebug('films:router:users');
+import { Role } from '@prisma/client';
+import { AuthInterceptor } from '../middleware/auth.interceptor';
+const debug = createDebug('movies:router:users');
 
-export const createUsersRouter = (usersController: UsersController) => {
+// Los métodos del controller no son arrow functions
+// para tener aquí un ejemplo del uso de bind
+
+export const createUsersRouter = (
+    authInterceptor: AuthInterceptor,
+    usersController: UsersController,
+) => {
     debug('Ejecutando createFilmsRouter');
     const usersRouter = Router();
-    //usersRouter.get('/', usersController.getAll);
-    //usersRouter.get('/:id', usersController.getById);
+    usersRouter.get(
+        '/',
+        authInterceptor.authenticate,
+        authInterceptor.hasRole(Role.ADMIN),
+        usersController.getAll.bind(usersController),
+    );
+    usersRouter.get(
+        '/:id',
+        authInterceptor.authenticate,
+        authInterceptor.hasRole(Role.ADMIN),
+        usersController.getById.bind(usersController),
+    );
     usersRouter.post('/register', usersController.create.bind(usersController));
     usersRouter.post('/login', usersController.login.bind(usersController));
-    //usersRouter.patch('/:id', usersController.update);
-    //usersRouter.delete('/:id', usersController.delete);
+    usersRouter.patch(
+        '/role/:id',
+        authInterceptor.authenticate,
+        authInterceptor.hasRole(Role.ADMIN),
+        usersController.setRole,
+    );
+    usersRouter.patch(
+        '/:id',
+        authInterceptor.authenticate,
+        authInterceptor.isUser,
+        usersController.update,
+    );
+
+    usersRouter.delete(
+        '/:id',
+        authInterceptor.authenticate,
+        authInterceptor.isUser,
+        usersController.delete,
+    );
     return usersRouter;
 };

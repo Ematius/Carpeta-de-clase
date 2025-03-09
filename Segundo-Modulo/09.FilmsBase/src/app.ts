@@ -55,7 +55,7 @@ export const createApp = () => {
 
     // Middlewares
     app.use(cors());
-    if (!process.env.DEBUG) {
+    if (process.env.DEBUG) {
         app.use(morgan('dev'));
     }
     app.use(express.json()); //necesario para convertir el body de la petición en json objeto

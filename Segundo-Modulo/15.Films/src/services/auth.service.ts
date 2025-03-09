@@ -3,7 +3,7 @@ import jwt, { JwtPayload } from 'jsonwebtoken';
 
 const SALTS = 10;
 
-interface Payload extends JwtPayload {
+export interface Payload extends JwtPayload {
     id: string;
     email: string;
     role: string;

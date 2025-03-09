@@ -19,13 +19,19 @@ import { FilmRepo } from './repo/films.repository.js';
 import { FilmsController } from './controllers/films.controller.js';
 import { UsersController } from './controllers/users.controller.js';
 import { AuthInterceptor } from './middleware/auth.interceptor.js';
-// import session from 'express-session';
+import { Payload } from './services/auth.service.js';
+import { ReviewsController } from './controllers/reviews.controller.js';
+import { ReviewRepo } from './repo/reviews.repository.js';
+import { createReviewsRouter } from './router/reviews.router.js';
 
-// import { createProductsRouter } from './routers/products.router.js';
-// import { HomePage } from './views/pages/home-page.js';
-
-const debug = createDebug('films:app');
+const debug = createDebug('movies:app');
 debug('Loaded module');
+
+declare module 'express' {
+    interface Request {
+        user?: Payload;
+    }
+}
 
 export const createApp = () => {
     debug('Iniciando App...');
@@ -45,27 +51,31 @@ export const createApp = () => {
     }
     app.use(express.json());
     app.use(bodyParser.urlencoded({ extended: true }));
-    // app.use(
-    //     session({
-    //         secret: '',
-    //     }),
-    // );
-
     app.use(debugLogger('debug-logger'));
     app.use(express.static(publicPath));
 
-    const authInterceptor = new AuthInterceptor();
-    const repoFilms: Repository<Film> = new FilmRepo();
-    const filmsController = new FilmsController(repoFilms);
+    // Controllers, Repositories... instances
+
+    const filmsRepo: Repository<Film> = new FilmRepo();
+    const usersRepo = new UsersRepo();
+    const reviewsRepo: ReviewRepo = new ReviewRepo();
+
+    const authInterceptor = new AuthInterceptor(reviewsRepo);
+    const filmsController = new FilmsController(filmsRepo);
+    const usersController = new UsersController(usersRepo);
+    const reviewsController = new ReviewsController(reviewsRepo);
 
     const filmsRouter = createFilmsRouter(authInterceptor, filmsController);
-    const repoUsers = new UsersRepo();
-    const usersController = new UsersController(repoUsers);
-    const usersRouter = createUsersRouter(usersController);
+    const usersRouter = createUsersRouter(authInterceptor, usersController);
+    const reviewsRouter = createReviewsRouter(
+        authInterceptor,
+        reviewsController,
+    );
 
     // Routes registry
     app.use('/api/films', filmsRouter);
     app.use('/api/users', usersRouter);
+    app.use('/api/reviews', reviewsRouter);
 
     app.get('*', notFoundController); // 404
     app.use('*', notMethodController); // 405
