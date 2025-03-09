@@ -67,7 +67,7 @@ model User {
   profile Profile?
   filmRevised Review[]
     @@index([email])
-  @@map("users")
+    @@map("users")
 }
 
 enum Role {

@@ -61,6 +61,7 @@ export const createApp = () => {
     const reviewsRepo: ReviewRepo = new ReviewRepo();
 
     const authInterceptor = new AuthInterceptor(reviewsRepo);
+    
     const filmsController = new FilmsController(filmsRepo);
     const usersController = new UsersController(usersRepo);
     const reviewsController = new ReviewsController(reviewsRepo);

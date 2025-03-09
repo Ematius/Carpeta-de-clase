@@ -14,9 +14,36 @@ model Books {
   year      Int
   genre     String  
   available Boolean @default(true)
+  reviews   Review[]
 
   @@unique([title, year])
   @@index([title])
   @@map("books")
   
+}
+
+model User {
+  id        String   @id @default(uuid()) @map("user_id")
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now()) @ignore
+  updatedAt DateTime @updatedAt @ignore
+  reviews   Review[]
+
+    @@index([email])
+    @@map("users")
+}
+
+model Review {
+  id         String @id @default(uuid()) @map("review_id")
+  bookId     String @map("film_id")
+  userId     String @map("user_id")
+  book       Books  @relation(fields: [bookId], references: [id])
+  user       User   @relation(fields: [userId], references: [id])
+  content    String
+  userRating Int    @default(0) @map("rating")
+
+  @@unique([bookId, userId])
+  @@map("review_user_film")
 }

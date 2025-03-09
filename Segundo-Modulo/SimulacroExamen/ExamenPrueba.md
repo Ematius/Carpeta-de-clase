@@ -4,6 +4,9 @@ Descripción del Proyecto
 
 Debes desarrollar una API REST con Node.js y TypeScript utilizando Express. La API gestionará un sistema de biblioteca que permitirá a los usuarios gestionar libros. Se utilizará Prisma como ORM para conectarse a una base de datos MySQL.
 
+
+
+
 **Requisitos del Proyecto**
 
 1️⃣Configuración del Entorno
@@ -38,19 +41,14 @@ Debes desarrollar una API REST con Node.js y TypeScript utilizando Express. La A
 -   Los usuarios deben poder registrarse (/register) y hacer login (/login).
 -   Proteger los endpoints de CRUD para que solo usuarios autenticados puedan acceder a ellos.
 
-5️⃣Manejo de Errores y Validaciones
-
--   Implementar validaciones para las rutas, asegurando que los datos sean correctos antes de insertarlos en la base de datos.
--   Manejar errores de forma adecuada devolviendo respuestas HTTP claras.
-
-Hasta aquí yo creo que sera lo mínimo exigido para el examen y los puntos 6 y 7  creo que podrían entrar como extra, esto es meramente mi opinion
-
-6️⃣Crear tablas adicionales desde prisma
+5️⃣Crear tablas adicionales desde prisma relacionales
 
 -   Crear tablas relacional entre usuarios y libros para escribir opiniones
 -   Solo pueden escribir opiniones y reseñas los usuarios registrados
+
+Hasta aquí yo creo que sera lo mínimo exigido para el examen y los puntos 5 y 6  creo que podrían entrar como extra, esto es meramente mi opinion
   
-7️⃣ Jerarquía de roles
+6️⃣ Jerarquía de roles
 
 -   Crear una jerarquía de roles
   
@@ -71,5 +69,3 @@ INSERT INTO books (book_id, title, author, year, genre, available) VALUES
 
 
 
-
-JWT_SECRET="Estoesunsecreto"

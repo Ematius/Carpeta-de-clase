@@ -7,7 +7,6 @@ const SALTS = 10;
 export interface Payload extends JwtPayload  { //hereda de JwtPayload
     id: string;
     email: string;
-    role: string;
 }
 //Esto podría ir en el interceptor pero lo separamos para mejorar el trabajo en capas
 
@@ -18,20 +17,21 @@ export class AuthService {
         return hash(password, SALTS);
     }
 
-    static async comparePassword(
-        password: string,
-        hash: string,
-    ): Promise<boolean> {
-        debug('LLego a comparePassword');
-        return compare(password, hash);
-    }
-
+    
     //aquí con el secreto y el hash se genera el token
     static async generateToken(payload: Payload) {
         //da error de tipo pero en el env puedo comprobarlo por ello poner el as, o poner una guarda
         const secret = process.env.JWT_SECRET as string;
         //si no retornas el token
         return jwt.sign(payload, secret);
+    }
+    
+    static async comparePassword(
+        password: string,
+        hash: string,
+    ): Promise<boolean> {
+        debug('LLego a comparePassword');
+        return compare(password, hash);
     }
     //aquí se verifica el token con la comparación del secreto
     //await AuthService.verifyToken(token) viene de aquí
