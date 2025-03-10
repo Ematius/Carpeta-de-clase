@@ -32,20 +32,20 @@ export const createUsersRouter = (
         '/role/:id',
         authInterceptor.authenticate,
         authInterceptor.hasRole(Role.ADMIN),
-        usersController.setRole,
+        usersController.setRole.bind(usersController),
     );
     usersRouter.patch(
         '/:id',
         authInterceptor.authenticate,
         authInterceptor.isUser,
-        usersController.update,
+        usersController.update.bind(usersController),
     );
 
     usersRouter.delete(
         '/:id',
         authInterceptor.authenticate,
         authInterceptor.isUser,
-        usersController.delete,
+        usersController.delete.bind(usersController),
     );
     return usersRouter;
 };

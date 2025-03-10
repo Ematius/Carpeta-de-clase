@@ -140,7 +140,7 @@ export class UsersController {
             if (!newData.role) {
                 throw new HttpError('Role is required', 400, 'Bad Request');
             }
-            const user = await this.repoUsers.update(id, newData.role);
+            const user = await this.repoUsers.update(id, {role: newData.role});
             res.json(this.makeResponse([user]));
         } catch (error) {
             next(error);
@@ -154,7 +154,7 @@ export class UsersController {
             if (!newData.password) {
                 throw new HttpError('Password is required', 400, 'Bad Request');
             }
-            const user = await this.repoUsers.update(id, newData.password);
+            const user = await this.repoUsers.update(id, {password: newData.password});
             res.json(this.makeResponse([user]));
         } catch (error) {
             next(error);
