@@ -11,7 +11,7 @@ export const UserCreateDTO = z.object({
     password: z.string().min(5).nonempty(),
     firstName: z.string().min(3).nonempty(),
     lastName: z.string().min(3).nonempty(),
-}) satisfies z.Schema<Prisma.UserCreateInput>;
+}).strict() satisfies z.Schema<Prisma.UserCreateInput>;
 
 export const UserLoginDTO = z.object({
     email: z.string().email().nonempty(),

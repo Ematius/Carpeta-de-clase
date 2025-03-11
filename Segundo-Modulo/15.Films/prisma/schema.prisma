@@ -36,7 +36,7 @@ model Film {
 
 model Categories {
   id        String   @id @default(uuid()) @map("category_id")
-  name      String
+  name      String   @unique
   createdAt DateTime @default(now()) @ignore
   updatedAt DateTime @updatedAt @ignore
 

@@ -1,0 +1,43 @@
+---
+import type { Char}  from'../../types/types'
+import ThumbsUp from '../icons/thumbs-up.astro';
+import ThumbsDown from'../icons/thumbs-down.astro'
+
+
+type Props = {
+
+    age: Char['age'];
+    isAlive: Char['isAlive']
+
+}
+const {age, isAlive} = Astro.props
+const size = '1.1rem'
+
+---
+
+
+<div class="character__info">
+    <ul>
+        <li>Edad: {age} años</li>
+        <li>
+                        <span>Estado:</span>
+                        {
+                            <span class="live" hidden={!isAlive}>
+                                <ThumbsUp height={size} width={size} />
+                            </span>
+
+                            <span class="die" hidden={isAlive}>
+                                <ThumbsDown height={size} width={size}/>
+                            </span>
+                             
+                        }
+        </li>
+    </ul>
+</div>
+
+<style>
+span{
+    
+}
+
+</style>
