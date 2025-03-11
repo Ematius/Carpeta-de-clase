@@ -1,0 +1,51 @@
+---
+
+
+---
+ 
+
+
+
+ <div>
+    <p>Una frase que dice alguien</p>
+    <img src="../../assets/no-one.jpg" />
+  </div>
+
+  <style>
+div {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    padding: 0 100px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+    right: 100vw;
+    left: -100vw;
+
+    
+    &.on {
+        right: 0;
+        left: 0;
+        background-color: rgba(255, 255, 255, 1);
+    }
+}
+p {
+        line-height: 1.2;
+        font-size: calc(1.625rem + 4.5vw);
+        font-weight: 300;
+}
+
+img {
+        width: 70px;
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+}
+
+
+
+  </style>

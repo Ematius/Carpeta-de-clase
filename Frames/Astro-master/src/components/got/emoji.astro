@@ -1,0 +1,30 @@
+---
+import type {Category} from '../../types/types.js' 
+
+type Props = {
+    category: Category
+}
+//Record es de typescript, primer es la variable y valor
+const icons: Record<Category, string> = {
+    king:'👑',
+    fighter: '🗡',
+    adviser: '🎓',
+    squire:'🛡'
+}
+const {category}= Astro.props
+//trabajo con biblioteca de datos
+---
+
+
+<i>{ icons[category] }</i>
+
+<style>
+
+    i{
+    font-style: normal;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+
+}
+</style>

@@ -1,0 +1,37 @@
+---
+import type { Char } from '../../types/types'
+
+type Props = {
+    character: Char
+}
+
+const {character: {
+    category, 
+    reignYears, 
+    adviseTo, 
+    serveLevel, 
+    servesTo, 
+    skillLevel, 
+    weapon } } = Astro.props
+---
+
+<ul>
+    {
+        category === 'king' && 
+        <li>Años de reinado: {reignYears}</li>
+    }
+    {
+        category === 'fighter' &&  
+        <li>Arma: {weapon}</li>
+        <li>Destreza: {skillLevel}</li>
+    }
+    {
+        category === 'adviser' &&  
+        <li>Asesora a: {adviseTo?.name + ' ' + adviseTo?.family}</li>
+    }
+    {
+        category === 'squire' &&  
+        <li>Peloteo: {serveLevel}</li>
+        <li>Sirve a: {servesTo?.name + ' ' + servesTo?.family}</li>
+    }
+</ul>

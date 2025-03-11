@@ -1,0 +1,43 @@
+---
+//esto es todo en tiempo de compilación, por eso en html ya sale sin código JS
+//los componentes deben ser el primer string en mayúscula porque si no lo interpreta como componente de html
+// FrontMater
+// Aquí JS/TS
+
+import Layout from '../layouts/layout2.astro';
+import Comunicaciones from '../components/got/comunicaciones.astro';
+import type { Char } from '../types/types'
+import Character from '../components/got/character.astro';
+import DATA from '../data/data.json'
+
+console.log(DATA);
+
+---
+
+<Layout>
+    <div >
+        <ul>
+            {
+                DATA.map((item) => <Character character={item as Char}/>)
+            }
+        </ul>
+    </div>
+    <Comunicaciones />
+</Layout>
+
+<style>
+div {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 100vh;
+    align-items: center;
+    /* width: 100%; */
+    margin-inline: 1rem;
+    margin-block: 1rem;
+}
+ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 2rem;
+}
+</style>

@@ -1,0 +1,95 @@
+---
+
+import Extras from './extras.astro'
+import type { Char } from '../../types/types'
+import Info from './info.astro'
+import Actions from './actions.astro'
+import Emoji from './emoji.astro'
+
+type Props = {
+    character: Char
+}
+
+const { character } = Astro.props
+
+const fullName = `${character.name} ${character.family}`
+const image = `/src/assets/${character.name}.jpg`
+const imageAlt = `Imagen de ${fullName}`
+
+---
+
+<li class="character">
+    <div class="card" data-id={character.name}>
+        <img src={image} alt={imageAlt} />
+        <div class="card-body">
+            <h2>{fullName}</h2>
+            <Info  age={character.age} isAlive={character.isAlive}/>
+            <div class="overlay">
+                <Extras character={character}/>
+                <Actions character={character}/>
+            </div>
+        </div>
+        <Emoji category={character.category}/>
+    </div>
+</li>
+
+<style>
+  h2 {
+    font-size: calc(1.275rem + 0.3vw);
+    margin: 0;
+    margin-block-end: 1rem;
+    
+}
+.card-body {
+    padding: 1.25rem;
+    flex: 1 1 auto;
+}
+h2 {
+    height: 60px;
+}
+img {
+    object-fit: cover;
+    object-position: top;
+    height: 200px;
+    width: 100%;
+}
+.card {
+    position: relative;
+    border: none;
+    background-color: #331c0e;
+    color: #fff;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.overlay {
+    border-radius: 0.25rem;
+    position: absolute;
+    padding: 25px 15px;
+    top: -100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s;
+}
+
+.character:nth-child(even) .character__overlay {
+    top: 100%;
+}
+.character:hover .overlay {
+    opacity: 1;
+    pointer-events: all;
+    top: 0;
+}
+
+
+
+</style>
