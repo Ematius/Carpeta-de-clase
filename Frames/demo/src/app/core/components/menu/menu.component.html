@@ -1,0 +1,15 @@
+<nav>
+  <ul>
+    @if(isLogin){
+      <li><a [routerLink]="'/profile'">Profile</a></li>
+      <li><a [routerLink]="'/logout'">Logout</a></li>
+    } @else (){
+      <li><a [routerLink]="'/login'">Login</a></li>
+      <li><a [routerLink]="'/register'">Register</a></li>
+    }
+    @for (item of items; track item.path) {
+      <li><a [routerLink]="item.path" routerLinkActive="active">{{ item.label }}</a></li>
+    }
+
+  </ul>
+</nav>

@@ -171,3 +171,147 @@ lo hago sobre el lenguaje de angular uso @ en el html
 al poner [ ] estoy haciendo una interpolacion 
 
 
+
+## repaso 
+
+introducion angular
+
+conceptos del cli angular
+comandos del cli: generate, serve, build
+
+que es un componentes: una clase con un decorador componente
+componentes: clase TS, template HTML+, estilos css
+
+
+
+
+
+
+https://robbowen.digital/ me gusta esta idea
+
+
+## nuevo de angular
+
+
+
+angular tiene unos schematic 
+
+para eslint
+
+ng add @angular-eslint/schematics
+
+mirar si la biblioteca que queremos incluir a angular esta instalación tiene schematic para que sea más fácil la instalación
+
+para prettier en mi configuración de angular
+npm i -D prettier
+
+
+los type no se pueden extender directamente y los interfaces si
+y los interfaces no se pueden usar con valores primitivos y los type si
+
+
+### formas de separar
+
+por feature o por tipos
+
+en proyectos grandes mejor por features 
+dos grandes carpetas:
+el core, común, sharer lo que compartes todas, el header, footer
+y otras carpetas son las características que tendrá mi app es decir home, user etc... y en cada una los componentes
+
+
+
+tenemos en app.componentes en la raíz de src el RouterOutlet este hace referencia al app.router.ts que es el que hará el efecto de estar navegando entre paginas
+mirar app.componentes.ts y app.router es el que en-ruta
+
+app.componentes.ts en la raíz src esto:
+
+```ts
+import { RouterOutlet } from '@angular/router';
+  imports: [ RouterOutlet...]
+```
+
+y se añade en el archivo 
+
+```ts
+archivo app.router.ts
+
+import { Routes } from '@angular/router';
+import { HomeComponent } from './feature/home/home.component';
+import { FilmsComponent } from './feature/films/films.component';
+import { AboutComponent } from './feature/about/about.component';
+
+export const routes: Routes = [
+  { path: 'home', component: HomeComponent },
+  { path: 'films', component: FilmsComponent },
+  { path: 'about', component: AboutComponent },
+
+];
+```
+de forma natural recarga y se pierde las variables de memoria pero no es util para los links interntor asi que href no se puede usar, se usa routerLink
+
+angular esta hecho por componentes es un sistema modular asi que hay que avisarle que vamos a usar el modulo concreto de angular que es el de enrutamiento hay que importarlo en el .ts
+
+```ts
+@Component({
+  selector: 'app-menu',
+  imports: [], Aquí es donde hay que poner el modulo que vamos a usar de angular
+  templateUrl: './menu.component.html',
+  styleUrl: './menu.component.css'
+
+    imports: [RouterLink],
+})
+```
+
+también podemos usar el RouterModule porque Angular aunque ahi esta todo cuando va descargarse en el cliente solo usa lo que es necesario
+Y así conseguimos hacer una simplePage
+
+
+Angular devtool
+
+ng build
+
+
+## lazy page
+
+cargar las paginas que vas usando y no toda la app 
+
+en app.router (sniper a-r...lazy)
+
+```ts
+  {
+    path: 'home',
+    loadComponent: () => import('./feature/home/home.component').then(m => m.HomeComponent),
+  },
+ 
+```
+hay una forma con un export default
+
+hay que configurar el server a SPA para que devuelva el index.html porque este tiene un main.js, que es el en-ruta
+
+```ts
+export default class AboutComponent {
+
+}
+y 
+  {
+    path: 'about',
+    loadComponent: () => import('./feature/about/about.component'),
+  },
+```
+
+
+## user
+
+
+ng g c user/register  
+
+
+windows . es para los logos de windows
+
+en angular todo son métodos
+
+Estructura de control de flujo es lo de @if... 
+
+
+

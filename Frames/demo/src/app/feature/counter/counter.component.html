@@ -1,0 +1,26 @@
+<div>
+  <h2>Counter</h2>
+  <button (click)="changeCount(-1)" [disabled]="count <= -5 ">➖</button>
+  <span [class]= "count < 0 ? 'negative': ''" > {{count}}  </span>
+  <button (click)="changeCount(+1)" [disabled]="count >= +5 " >➕</button>
+  @if (count === 5){
+    <p>Has llegado al máximo</p>
+  }
+  @if (count === -5) {
+    <p>Has llegado al mínimo</p>
+  }
+</div>
+
+
+<div>
+  <h2>Counter</h2>
+  <button (click)="changeCount(-1)" [disabled]="count <= -5 ">➖</button>
+  <span [class]="{negative: count < 0}"> {{count}} </span>
+  <button (click)="changeCount(+1)" [disabled]="count >= +5 ">➕</button>
+  @if (count === 5){
+  <p>Has llegado al máximo</p>
+  }
+  @if (count === -5) {
+  <p>Has llegado al mínimo</p>
+  }
+</div>

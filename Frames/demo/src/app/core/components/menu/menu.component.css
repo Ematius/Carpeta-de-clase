@@ -1,0 +1,25 @@
+:host {
+  display: block;
+}
+
+nav {
+ width: 40px;
+ height: 140px;
+ background-color: #ec30309c;
+
+ box-sizing: border-box;
+ color: #fff;
+ overflow: hidden;
+ border-radius: 1rem ;
+ transition: width .75s ease;
+ font-size: large;
+}
+nav:hover {
+ width: 200px;
+}
+
+.active{
+  font-weight: bold;
+  font-size: x-large;
+  transform: scale(1.2);
+}
