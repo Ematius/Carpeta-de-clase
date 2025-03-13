@@ -315,3 +315,46 @@ Estructura de control de flujo es lo de @if...
 
 
 
+
+angular
+
+enrutamiento: componenetes-paginas
+lazy loading
+elementos del template
+  interpolacion
+  directivas: estructurales y de atributo
+  controles de flujo
+  eventos
+
+
+ngModel = hace que haya escucha en los dos sentidos, lo que escribes en la vista se escribe en las tripas
+
+
+angular pipes
+
+
+incorpora signals
+es una variable reactiva que cuando cambia emite un evento.
+
+
+{{}} interpolacion
+
+[] 
+() esto es un evento
+[()] esto es ambas cosas
+
+la visa habla con el () y el componente con [] a la vista 
+
+
+## hablar entre compoennetes padre hijo
+
+el padre le da cosas al hijo con un [ ] un input y el hijo al padre se llama output []  los input y los output lo usaremos con la signal input y la signal output, anteriormente lo hemos usado siempre con decoradores @input @output
+
+el hijo tiene el input que recibe del padre como parametro 
+
+para que el hijo emita al padre es a traves de los outPut
+
+
+
+ng g interface films/types/film
+

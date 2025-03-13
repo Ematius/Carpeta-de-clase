@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-counter-signal',
+  selector: 'app-counter',
   imports: [],
   templateUrl: './counter.component.html',
   styleUrl: './counter.component.css',
 })
-export class CounterSignalComponent {
+export class CounterComponent {
   count = 0;
   changeCount(value: number) {
     this.count += value;

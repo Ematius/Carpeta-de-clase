@@ -1,5 +1,5 @@
 <div>
-  <h2>Signal</h2>
+  <h2>Counter</h2>
   <button (click)="changeCount(-1)" [disabled]="count <= -5 ">➖</button>
   <span [class]= "count < 0 ? 'negative': ''" > {{count}}  </span>
   <button (click)="changeCount(+1)" [disabled]="count >= +5 " >➕</button>
@@ -13,7 +13,7 @@
 
 
 <div>
-  <h2>Signal</h2>
+  <h2>Counter</h2>
   <button (click)="changeCount(-1)" [disabled]="count <= -5 ">➖</button>
   <span [class]="{negative: count < 0}"> {{count}} </span>
   <button (click)="changeCount(+1)" [disabled]="count >= +5 ">➕</button>

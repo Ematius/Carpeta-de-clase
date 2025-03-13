@@ -1,1 +1,8 @@
 <p>about works!</p>
+
+<p>Hola, {{user || "amigo"}}</p>
+
+<input placeholder='Escribe tu nombre' type="text" [(ngModel)]=user />
+
+<button (click)="clean()">Borrar</button>
+<app-counter-signal></app-counter-signal>
