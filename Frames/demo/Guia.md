@@ -352,9 +352,34 @@ el padre le da cosas al hijo con un [ ] un input y el hijo al padre se llama out
 
 el hijo tiene el input que recibe del padre como parametro 
 
-para que el hijo emita al padre es a traves de los outPut
+para que el hijo emita al padre es a traves de los outPu
 
 
 
 ng g interface films/types/film
 
+
+se llama input en los dos lados, el input siempre va del padre al hijo
+los input se pueden hacer requeridos de este modo no olvidamos los parametros
+x = input.required<T>();
+
+
+ng g s --help la s es de services
+
+por defecto los servicios son flat eso quiere que no crean carpetas asi que hay que hacer la carpeta si quieres
+
+## servicies 
+la inyecion de dependencias la hace angular inperativamente 
+cuando metemos <app-hijo etc..> y en el router
+
+pones un decorador @injectable({}) y ponerlo en el constructor como un tipado x : injector normalmente solo hay una sola instancia en todo la aplicación la forma antigua
+
+la moderna es  class y {
+  a = inject(j)
+}
+
+La inyeccion de dependencias se hace una vez, asi que solo se inyecta las dependencias una vez cuando se hace la app
+los servicies son es una comunicacion este componentes
+Nullinyector quiere decir que tienes algo provisto en algun sitio y no lo tiene
+
+RxJS es uan biblioteca reactiva 
