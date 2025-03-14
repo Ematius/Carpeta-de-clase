@@ -383,3 +383,33 @@ los servicies son es una comunicacion este componentes
 Nullinyector quiere decir que tienes algo provisto en algun sitio y no lo tiene
 
 RxJS es uan biblioteca reactiva 
+
+
+
+repo con un fech repo.service.ts capacidad de recoger datos
+
+el servicio de estado state.service.ts que tiene crud el inyecto el repo y tiene un signal con films el constructor clo que hace s la cagad e los datos
+
+      el set es porque se actuliza al signal
+
+
+y ya empiezas con los componenetes
+
+empiezas con el mas generico o pequeño
+
+los compoennetes tiene logica de componentes
+
+list.componenetes
+
+
+fiml. compoenent el click pertenece a hijo en el pintado  es logica presentacional,  por eso necesita conectar con el estado de datos stateservice.
+
+add.edit lo pasa lo mismo
+
+es el padre es que no hace nada ahora
+
+
+las partes gordas de angular
+router, componentes, servicio y conexión. 
+
+build de angular ni server 
