@@ -413,3 +413,7 @@ las partes gordas de angular
 router, componentes, servicio y conexión. 
 
 build de angular ni server 
+
+
+la signal es de escritura esto es un disparate y para protegerlo haciendola privada pero hay una forma mejor 
+que es haciendo los valores computados lo que hay que tener en cuenta con ellos es que angular la ha variado varias veces asi que hay que ver la documentacion para ver la ultima estable seria   computed computed signals en prueba y posible cambio a futuro es linkedsignal 
