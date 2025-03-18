@@ -1,6 +1,6 @@
 import { Component, inject, input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Film } from '../../types/film';
+import { Film } from '../../../core/types/film';
 import { StateService } from '../../services/state.service';
 
 @Component({

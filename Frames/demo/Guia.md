@@ -505,3 +505,137 @@ jwtDecode
 pipe buscarlo en internet
 
 la comunicacion de padre-hijo se usa para las iteraciones, y teniendo servicios se usa para casi todo ya que contiene la logica de la app y la clave es inject(meter la clase que se quiere inyectar, es como ponerla en el constructor)
+
+
+
+la diferencia entre inject y tienerlo en el constructor en la ejecucion si lo injectas no hace nada, debes usarlo pero si lo tienes en el contructor se antiva directamente al entrar
+
+en cursos son pesos pesados Dmytro Mezhenzyi algo asi rainer bdeborach esos ultimos dos son desde 0 se puede
+
+akotech esta muy bien deja muy claro recomendable  este de momento ha enfocado mucho
+
+gentleman programing es conocido y muy bueno aunque se enrolla
+
+carlos morales
+
+deborah es peso pesado asi qu verlo
+
+
+
+## formularios angular
+
+
+tiene dos puntos vista y datos y elejir por cual empezar
+
+```ts
+
+//son objetos que representan un grupo de controlles de un formulario
+//FormControls -> están los form controls que representan los campos de un formulario introduccion de dato radio button checkbox etc...
+//FromArray -> es un array de form controls. Cuanto hay un campo de formulario que puede tener varios valores extra, un trabajo y + mas trabajo
+//FormGroup -> contiene todos los formControls y fromArrays
+//Son objetos de JS que van a representar los campos de un formulario
+//Esto serian el dataDriven, 
+formData = new FormGroup();
+
+
+```
+pero asi no se hace se usa formBuilder de angular
+
+factory frente a un contructor, contructor es cuando ponemos new precedido de nombre, y tenemos otras que hacemos createetc.. y ya nos dan el new
+
+el servicio hay que inyectarlo
+
+
+----
+
+una clase no puede llamar a clase log es dentro del constructor, dentro del contructor es dondo puedo ver cosas, dentro del constructor 
+
+
+````ts
+  imports: [ReactiveFormsModule],
+  template: 
+  <form [formGroup]="formGroup">
+
+  [formGroup]es propia de angular 
+
+  formGroup = this.fb.group({
+    name: [''],
+    email: [''],
+    password: [''],
+  });
+  este es propio
+  
+
+  <label for="name">
+      <span>Name></span>
+      <input type="text" formControlName="name" />
+    </label>
+//formControlName viene de angular
+
+```
+
+
+
+```
+
+ <form [formGroup]="formGroup">
+    <label for="name">
+      <span>Name></span>
+      <input type="text" formControlName="name" />
+    </label>
+    <label for="email">
+      <span>Email></span>
+      <input type="email" formControlName="email" />
+    </label>
+    <label for="handleName">
+      <span>Handle Name></span>
+      <input type="text" formControlName="handleName" />
+    </label>
+    <label for="password">
+      <span>Password></span>
+      <input type="password" formControlName="password" />
+    </label>
+    <label for="firstName">
+      <span>First Name></span>
+      <input type="text" formControlName="firstName" />
+    </label>
+    <label for="lastName">
+      <span>Last Name></span>
+      <input type="text" formControlName="lastName" />
+    </label>
+    <button type="submit">Register</button>
+
+    el boton va a disparar el onsumit() que tenemos como funcion
+
+
+```
+como es un formulario dataDriven el required no es de html es desde fromgrop de angular que usamos 
+
+hay que saberse la firma 
+```ts
+ formGroup = this.fb.group({
+    email: ['', Validators.required],
+    name: ['', Validators.required],
+    handleName: ['', Validators.required],
+    password: ['', Validators.required],
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
+  });
+
+
+```
+ email: ['', [Validators.required, Validators.email]], 
+ esto seria para hacer una consulta asyncrona a la base de datos para ver si el email es repetido 
+el tercer validador tercero fuera del array serian los asyncronos
+
+
+algoritmo que depende de un patron, es con reges
+
+algoritmo que depende de algoritmo,
+
+
+LAS SIGNAL PARA ACTUALIZARLAS .UPDATE(LO QUE QUIERO ACTUALIZAR) Y PARA INTRODUCIR DATOS .SET(LO QUE QUIERO ACTUALIZAR)
+
+.computed crea una signal de solo lectura
+
+

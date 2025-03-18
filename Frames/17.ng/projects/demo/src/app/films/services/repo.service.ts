@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Film } from '../types/film';
+import { Film } from '../../core/types/film';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { UserService } from '../../user/services/user.service';

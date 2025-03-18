@@ -1,5 +1,5 @@
 import { Component, inject, input } from '@angular/core';
-import { Film } from '../../types/film';
+import { Film } from '../../../core/types/film';
 import { StateService } from '../../services/state.service';
 
 @Component({

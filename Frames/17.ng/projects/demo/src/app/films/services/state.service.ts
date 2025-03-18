@@ -1,5 +1,5 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
-import { Film } from '../types/film';
+import { Film } from '../../core/types/film';
 import { RepoService } from './repo.service';
 
 @Injectable({
@@ -49,8 +49,8 @@ export class StateService {
           this._films().map((f) =>
             f.id === film.id
               ? { ...f, title: film.title, releaseYear: film.releaseYear }
-              : f,
-          ),
+              : f
+          )
         );
       },
       error: (error) => {
