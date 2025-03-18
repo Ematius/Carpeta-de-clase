@@ -369,6 +369,7 @@ ng g s --help la s es de services
 por defecto los servicios son flat eso quiere que no crean carpetas asi que hay que hacer la carpeta si quieres
 
 ## servicies 
+
 la inyecion de dependencias la hace angular inperativamente 
 cuando metemos <app-hijo etc..> y en el router
 
@@ -417,3 +418,90 @@ build de angular ni server
 
 la signal es de escritura esto es un disparate y para protegerlo haciendola privada pero hay una forma mejor 
 que es haciendo los valores computados lo que hay que tener en cuenta con ellos es que angular la ha variado varias veces asi que hay que ver la documentacion para ver la ultima estable seria   computed computed signals en prueba y posible cambio a futuro es linkedsignal 
+
+El uso de componentes es por la reusability
+
+
+el fech tiene dos parametros la url y un objeto de configuracion
+{un objeto de configuración} despues de la url
+
+
+const response = await fetch ('http://...', 
+{method: 'Post',
+header: {
+  ''Content-Type': 'application/json'
+},
+body: JSON.stringify(data)
+})
+const films = await.response.json()
+
+
+## Los fetch en angular 
+
+angular trabaja con observables biblioteca RxJS mirar
+son promesas con esteroides, el carne de hamburguesero
+
+httpClient
+se debe inyectar y es con algo tan sencillo como httpClient = inject(HttpClient) El HttpClient es una clase de angular que el mismo importa
+loadFilms() en vez de devolver una promesa devuelve un observable
+
+
+```angular
+
+export class RepoService {
+url = 'http...'
+httpClient = inject(HttpClient)
+
+loadFilms(){
+  return this.httpClient.get(this.url);
+}
+
+}
+
+```
+repo.service.ts y state.service.ts se comunican entre observables
+en el repo pones el metodo y en state.service colocas el suscribe que es lo mismo que un .then
+
+
+un observable es una string que puede ser observable y emite un aviso de que han llegado los datos, lo bueno es que antes de que avise de que han llegado los datos puedo entrar antes, eso se hace con pipe()solo veremos el map de RxJS
+## incorporar en casa
+
+repo.service.ts 
+state.service.ts este habla con 
+app.config.ts
+
+
+repo es el que pide, y state es el que recibe y habla con el repo realmente y se subcribe. y en app meto meto el propider para poder, el provider introduces la inyeccion de dependencias
+
+code.
+
+
+los componentes hablan con el state, ahablas de signal, y hablan a traves de dunciones y el state le pasa los datos al repo y el repo con el back y el bacl al repo y el repo al state y este esta conectado con los componentes por el signal
+
+
+en el fondo los signal y los observables y lo que hacemos en ambos casos es una subcribe porque si cambian yo cambio
+
+
+hago una peticion get all desde el state al back y recibo las peliculas.
+
+hago la peliculas add y me response la pelicula con el id 
+
+pero hay que sincronicar lo que hay en la base de datos y lo que esta lo que se y eso es introducir el add con lo leido, pero el leido es el auntiguo, asi que hay que setear los datos set() 
+
+otra estrategia seria despues de terminar cualquier funcion se lanza un getAll 
+
+la primera es para datos muy estables que no necesitan muchos cambios
+
+
+el proivider es para servicios con necesidad de inyeccion de servicies
+
+para hablar un compoenente con un servicio hay que hacer un decorador con inyectable
+
+el repo del front desde el repo o el service habla con el back desde el inject(HttpClient)
+
+hechar un vistazo a os interceptores en los fech a la hora del uso de token despues del login se ve en repo.service que en vez de header habria un fech de angular
+jwtDecode
+
+pipe buscarlo en internet
+
+la comunicacion de padre-hijo se usa para las iteraciones, y teniendo servicios se usa para casi todo ya que contiene la logica de la app y la clave es inject(meter la clase que se quiere inyectar, es como ponerla en el constructor)

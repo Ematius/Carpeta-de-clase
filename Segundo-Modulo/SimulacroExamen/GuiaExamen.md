@@ -245,7 +245,7 @@ Recordatorio el flujo de datos de la req, es desde el front hago una petición a
 Asi que la primera capa de la *req* es *app*, luego pasamos al *router*, de ahí al *controller* y por ultimo al *repo*.
 
 
- ### **Primero** 
+### **Primero** 
  
  Volvemos a app e integramos las nuevas rutas una que lleve al router y gestión de errores 
 ```js
