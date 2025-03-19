@@ -1505,3 +1505,20 @@ export const createReviewsRouter = (
 
 
 
+
+## Instalar Multer 
+
+sirve para enviar formData que sirve para recogerlo en el back 
+
+iunstalar usarlo como interceptor
+
+multer va en la creacion de usuario
+
+multer crea el fichero
+const upload es un fichero que tiene interceptor, es donde se guardara
+hay que ponerle tamañados y tipos etc.. limites 
+multer construye un middelware con el formato que le digas 
+
+
+incluir en angular hay que poner un en vez de formControlName es un #patata, 
+hay que poner un metodo que observe los cambios register.component @viewChild('#patata') es como hacer un documenqueryselector, vete y mira que esta con el decorador #patata y el tipado es de angular, por ello se llama ElementRef, referencia de angular para un DOM, TS dice que necesita inicializador pero angular ya le da uno

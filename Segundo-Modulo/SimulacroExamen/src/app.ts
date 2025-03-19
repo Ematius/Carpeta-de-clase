@@ -16,12 +16,14 @@ import { AuthInterceptor } from './middleware/auth.interceptor.js';
 import { ReviewRepo } from './repository/reviews.repository.js';
 import { ReviewsController } from './controllers/review.controller.js';
 import { createReviewsRouter } from './router/reviewRouter.js';
+import { FileInterceptor } from './middleware/file.interceptor';
 
 declare module 'express' {
     interface Request {
         user?: Payload;
     }
 }
+
 
 
 const debug = createDebug('library:app');
@@ -55,11 +57,17 @@ export const createApp = () => {
     const booksRepo = new BookRepo();
     const booksController = new BooksController(booksRepo);
     const booksRouter = createBooksRouter(authInterceptor, booksController);
-
+        const fileInterceptor = new FileInterceptor();
 
     const usersRepo = new UserRepo();
     const usersController = new UsersController(usersRepo);
-    const usersRouter = createUserRouter(usersController);
+    const usersRouter = createUserRouter(fileInterceptor, usersController);
+
+    
+
+    
+
+
 
     const reviewsRepo: ReviewRepo = new ReviewRepo();
     const reviewsController = new ReviewsController(reviewsRepo);

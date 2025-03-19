@@ -551,7 +551,7 @@ el servicio hay que inyectarlo
 una clase no puede llamar a clase log es dentro del constructor, dentro del contructor es dondo puedo ver cosas, dentro del constructor 
 
 
-````ts
+```ts
   imports: [ReactiveFormsModule],
   template: 
   <form [formGroup]="formGroup">
@@ -576,7 +576,7 @@ una clase no puede llamar a clase log es dentro del constructor, dentro del cont
 
 
 
-```
+```ts
 
  <form [formGroup]="formGroup">
     <label for="name">
@@ -637,5 +637,53 @@ algoritmo que depende de algoritmo,
 LAS SIGNAL PARA ACTUALIZARLAS .UPDATE(LO QUE QUIERO ACTUALIZAR) Y PARA INTRODUCIR DATOS .SET(LO QUE QUIERO ACTUALIZAR)
 
 .computed crea una signal de solo lectura
+
+
+el login desde el front es tener un token guardado en memoria y actualizarlo, y para logout es lo mismo.
+
+ver los signal como async se convierte en promesa hasta que se resuelva se arrastra en las signal es igual, en el momento quehaces uno debes convertir todo lo siguiente a signal, si no se pierde y se convierte en variable normal
+
+ionics para app para hacer hibrido desde hacer una aplicacion web se compacta para que sea para movil tambien
+
+
+en el approuterm hay que decir al final del lazy el .then para que importa o poner en el componente export default 
+
+los inpuit y los output son siempre signal tambien aunque no los marques
+
+
+para recoger los id por parametros hace falta un servicio de angular, que ese es actuvateRoute, y se injecta
+
+
+en el template uso directivas y por eso se mete en el import de component y el inject(...) en el class vale, y llo que esta en las class se ponen solo en el import
+
+usamos [] cuando quiero que entienda lo que voy 
+cuando quiero que interprete el string ocmo angular
+[href] = "film?.poster" marcada en la clase la url real
+href = "url real"
+
+
+subcribe es como se resuelve los observables, es como el .then el await
+
+
+se pone let patata$ es una variable observable, es un estandar
+
+
+ver el state.service getFilms() tambien usa of que es de la biblioteca rxJS que convierte todo en observable
+
+ver la variable de template de film.detail
+
+usar un pipe para las subcribciones y resolver los observables, @let (patata | async) esto seria la subcribcion el async
+
+los providers es que proveen a la aplicacion
+
+hay una relacion entre signal y observables
+
+
+## seleccion de archivo
+
+esto supone dos cambios en el front y el back
+el formulario deve ser formData nativo de JS se ve en user.service
+
+
 
 
