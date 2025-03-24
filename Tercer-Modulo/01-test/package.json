@@ -1,0 +1,35 @@
+{
+    "name": "01-test",
+    "version": "1.0.0",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "build": "tsc -w",
+        "start": "node ./dist/index.js",
+        "test": "vitest --watch false"
+    },
+    "keywords": [],
+    "author": "Emad",
+    "license": "ISC",
+    "description": "Testing",
+    "prettier": {
+        "singleQuote": true
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.23.0",
+        "@types/node": "^22.13.12",
+        "eslint": "^9.23.0",
+        "globals": "^16.0.0",
+        "prettier": "^3.5.3",
+        "typescript": "^5.8.2",
+        "typescript-eslint": "^8.27.0",
+        "vitest": "^3.0.9"
+    },
+    "dependencies": {
+        "commander": "^13.1.0",
+        "cross-env": "^7.0.3",
+        "dotenv": "^16.4.7",
+        "inquirer": "^12.5.0",
+        "minimist": "^1.2.8"
+    }
+}

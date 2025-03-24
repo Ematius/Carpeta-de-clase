@@ -685,5 +685,10 @@ esto supone dos cambios en el front y el back
 el formulario deve ser formData nativo de JS se ve en user.service
 
 
+la interaccion entre el dom y ts es poco precuente ya que angular te lo facilita con el data Bainding
+
+seleccion de mecanismos de DOM hay un metodo de referencia con #name pones el nombre que quieras y en la class pones @viewChild('name') fileAvatar :ElementRev y  guardara en la variable fileAvatar con tipado ElementRev, tambien sepuede hacer asi: fileAvatar = viewChild<ElementRev>('name) es en metodo signal y asi no se usa el import
+
+
 
 
