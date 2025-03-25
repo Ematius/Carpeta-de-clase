@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Películas</title>
+  <link rel="shortcut icon" href="favicon.svg" type="image/x-icon" />
+</head>
+
+<body>
+  <header>
+    <h1>Api de películas</h1>
+    <section>
+      <h2>EndPoints</h2>
+      <h3>
+        Películas (estilo e-Commerce o administrado)
+      </h3>
+      <ul>
+        <li>
+          <code>GET /films</code> - Listado de películas
+        </li>
+        <li>
+          <code>GET /films/:id</code> - Detalle de una película
+        </li>
+        <li>
+          <code>POST /films</code> - Crear una película [Editor]
+        </li>
+        <li>
+          <code>PATCH /films/:id</code> - Actualizar una película [Editor]
+        </li>
+        <li>
+          <code>DELETE /films/:id</code> - Borrar una película / [Editor]
+        </li>
+      </ul>
+      <h3>Categories</h3>
+      <ul>
+        <li>
+          <code>GET /categories</code> - Listado de categorías
+        </li>
+        <!-- <li>
+          <code>GET /categories/:id</code> - Detalle de una categoría
+        </li> -->
+        <li>
+          <code>POST /categories</code> - Crear una categoría [Admin]
+        </li>
+        <!-- <li>
+          <code>PATCH /categories/:id</code> - Actualizar una categoría [Admin]
+        </li>
+        <li>
+          <code>DELETE /categories/:id</code> - Borrar una categoría / [Admin]
+        </li> -->
+      </ul>
+      <h3>Usuarios</h3>
+      <ul>
+
+        <li>
+          <code>GET /users</code> - Listado de usuarios [Admin]
+        </li>
+        <li>
+          <code>GET /users/:id</code> - Detalle de un usuario [Admin / Propio]
+        </li>
+        <li>
+          <code>POST /users/register</code> - Crear un usuario (Registrar)
+        </li>
+        <li>
+          <code>POST /users/login</code> - Iniciar sesión
+        </li>
+        <li>
+          <code>PATCH /users/role</code> - Cambio de Rol [Admin]
+        </li>
+        <li>
+          <code>PATCH /users/:id</code> - Actualizar un usuario excepto rol [Propio]
+        </li>
+        <li>
+          <code>DELETE /users/:id</code> - Borrar un usuario / Eliminar un usuario [Admin / Propio]
+        </li>
+      </ul>
+      <h3>
+        Reviews (Estilo per-to-per)
+      </h3>
+      <ul>
+        <li>
+          <code>GET /reviews</code> - Listado de reviews [User]
+        </li>
+        <li>
+          <code>GET /reviews/:id</code> - Detalle de una review [User]
+        </li>
+        <li>
+          <code>POST /reviews</code> - Crear una review [User]
+        </li>
+        <li>
+          <code>PATCH /reviews/:id</code> - Actualizar una review [Propio]
+        </li>
+        <li>
+          <code>DELETE /reviews/:id</code> - Borrar una review / [Propio]
+        </li>
+      </ul>
+    </section>
+  </header>
+</body>
+
+</html>

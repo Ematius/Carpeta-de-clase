@@ -1,0 +1,110 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DB_URL")
+}
+
+model Film {
+  id          String   @id @default(uuid()) @map("film_id")
+  title       String
+  description String
+  releaseYear Int      @map("release_year")
+  rating      Float
+  director    String
+  duration    Int
+  poster      String
+  createdAt   DateTime @default(now()) @ignore
+  updatedAt   DateTime @updatedAt @ignore
+
+  categories Category[]
+
+  userRevisors Review[]
+
+  @@unique([title, releaseYear])
+  @@index([title])
+  @@map("films")
+}
+
+model Category {
+  id        String   @id @default(uuid()) @map("category_id")
+  name      String   @unique
+  createdAt DateTime @default(now()) @ignore
+  updatedAt DateTime @updatedAt @ignore
+
+  films Film[]
+
+  @@map("categories")
+}
+
+model Review {
+  id         String @id @default(uuid()) @map("review_id")
+  filmId     String @map("film_id")
+  userId     String @map("user_id")
+  film       Film   @relation(fields: [filmId], references: [id])
+  user       User   @relation(fields: [userId], references: [id])
+  content    String
+  userRating Int    @default(0) @map("rating")
+
+  @@unique([filmId, userId])
+  @@map("review_user_film")
+}
+
+model User {
+  id         String  @id @default(uuid()) @map("user_id")
+  email      String  @unique
+  handleName String? @map("handle_name")
+  password   String
+  firstName  String  @map("first_name")
+  lastName   String  @map("last_name")
+  avatar     String? @default("")
+
+  role      Role     @default(USER)
+  createdAt DateTime @default(now()) @ignore
+  updatedAt DateTime @updatedAt @ignore
+
+  notes   Notes[]
+  profile Profile?
+
+  filmRevised Review[]
+
+  @@index([email])
+  @@map("users")
+}
+
+enum Role {
+  USER
+  EDITOR
+  ADMIN
+}
+
+model Profile {
+  id        String   @id @default(uuid()) @map("profile_id")
+  bio       String
+  createdAt DateTime @default(now()) @ignore
+  updatedAt DateTime @updatedAt @ignore
+  User      User     @relation(fields: [userId], references: [id])
+  userId    String   @unique @map("user_id")
+
+  @@map("profiles")
+}
+
+model Notes {
+  id        String   @id @default(uuid()) @map("note_id")
+  content   String
+  createdAt DateTime @default(now()) @ignore
+  updatedAt DateTime @updatedAt @ignore
+
+  User   User   @relation(fields: [userId], references: [id])
+  userId String @map("user_id")
+
+  @@map("notes")
+}
