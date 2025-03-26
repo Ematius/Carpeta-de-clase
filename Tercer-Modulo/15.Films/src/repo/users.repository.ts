@@ -5,10 +5,10 @@ const debug = createDebug('movies:repository:users');
 export type UserWithoutPasswd = Omit<User, 'password'>;
 
 export class UsersRepo {
-    prisma: PrismaClient;
-    constructor() {
+    ;
+    constructor(private prisma: PrismaClient) {
         debug('Instanciando');
-        this.prisma = new PrismaClient();
+
     }
 
     async read(): Promise<User[]> {

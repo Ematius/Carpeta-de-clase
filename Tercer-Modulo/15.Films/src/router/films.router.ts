@@ -13,7 +13,7 @@ export const createFilmsRouter = (
     debug('Ejecutando createFilmsRouter');
 
     const filmsRouter = Router();
-    filmsRouter.get('/', filmsController.getAll);
+    filmsRouter.get('/', filmsController.getAll);//registra
     filmsRouter.get('/:id', filmsController.getById);
     filmsRouter.post(
         '/',

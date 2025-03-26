@@ -7,10 +7,10 @@ import { ReviewCreateDTO, ReviewUpdateDTO } from '../dto/reviews.dto.js';
 const debug = createDebug('movies:repository:reviews');
 
 export class ReviewRepo implements Repository<Review> {
-    prisma: PrismaClient;
-    constructor() {
+    ;
+    constructor( private prisma: PrismaClient) {
         debug('Instanciando');
-        this.prisma = new PrismaClient();
+       
     }
 
     async read(): Promise<Review[]> {
