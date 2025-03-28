@@ -85,3 +85,19 @@ cuando se hace a cada función
 Act es el verbo es lo que hace, es la acción
 Arrange
 Assets
+
+## detalles
+
+un expect puedo contener otro expect para comprobar algo concreto y en vez de expect() seria expect. envuelto con toHvaeBeenCalledWith(expect.lo que quieres)
+
+## Super test
+
+npm install -D supertest
+
+npm install -D @types/supertest
+
+importamos
+
+import request from 'supertest'
+
+request().get()

@@ -3,18 +3,16 @@ import { vi } from 'vitest';
 import { FilmCreateDTO } from '../dto/films.dto';
 import { PrismaClient } from '@prisma/client';
 
+const mockFilm = { categories: [{ name: 'Action' }] };
+const mockFilms = [mockFilm];
 
 const mockPrisma = {
     film: {
-        findMany: vi.fn().mockResolvedValue([]),
-        findUniqueOrThrow: vi.fn().mockResolvedValue({
-            categories: [],
-        }),
-        create: vi.fn().mockResolvedValue({}),
-        update: vi.fn().mockResolvedValue({
-            categories: ['Action'],
-        }),
-        delete: vi.fn().mockResolvedValue({}),
+        findMany: vi.fn().mockResolvedValue(mockFilms),
+        findUniqueOrThrow: vi.fn().mockResolvedValue(mockFilm),
+        create: vi.fn().mockResolvedValue(mockFilm),
+        update: vi.fn().mockResolvedValue(mockFilm),
+        delete: vi.fn().mockResolvedValue(mockFilm),
     },
 } as unknown as PrismaClient;
 
@@ -35,7 +33,6 @@ describe('Given class FilmRepo', () => {
     beforeAll(() => {
         // Arrange
         filmRepo = new FilmRepo(mockPrisma);
-
     });
 
     describe('When we instantiate it', () => {
@@ -53,7 +50,7 @@ describe('Given class FilmRepo', () => {
             // Act
             const result = await filmRepo.read();
             // Assert
-            expect(result).toStrictEqual([]);
+            expect(result).toStrictEqual(mockFilms);
             expect(mockPrisma.film.findMany).toHaveBeenCalled();
         });
     });
@@ -63,7 +60,7 @@ describe('Given class FilmRepo', () => {
             // Act
             const result = await filmRepo.readById('1');
             // Assert
-            expect(result).toStrictEqual({ categories: [] });
+            expect(result).toStrictEqual(mockFilm);
             expect(mockPrisma.film.findUniqueOrThrow).toHaveBeenCalled();
         });
     });
@@ -71,9 +68,11 @@ describe('Given class FilmRepo', () => {
     describe('When create is called', () => {
         test('Then it should return a Film', async () => {
             // Act
-            const result = await filmRepo.create({} as FilmCreateDTO);
+            const result = await filmRepo.create({
+                categories: [{ name: 'Action' }],
+            } as unknown as FilmCreateDTO);
             // Assert
-            expect(result).toStrictEqual({});
+            expect(result).toStrictEqual(mockFilm);
             expect(mockPrisma.film.create).toHaveBeenCalled();
         });
     });
@@ -83,17 +82,27 @@ describe('Given class FilmRepo', () => {
             // Act
             const result = await filmRepo.update('1', {} as FilmCreateDTO);
             // Assert
-            expect(result).toStrictEqual({ categories: ['Action'] });
+            expect(result).toStrictEqual(mockFilm);
             expect(mockPrisma.film.update).toHaveBeenCalled();
         });
     });
 
-    describe('When toggleCategory is called', () => {
+    describe('When toggleCategory is called with a existing category', () => {
         test('Then it should return a Film', async () => {
             // Act
             const result = await filmRepo.toggleCategory('1', 'Action');
             // Assert
-            expect(result).toStrictEqual({ categories: ['Action'] });
+            expect(result).toStrictEqual(mockFilm);
+            expect(mockPrisma.film.update).toHaveBeenCalled();
+        });
+    });
+
+    describe('When toggleCategory is called with a inexistent category', () => {
+        test('Then it should return a Film', async () => {
+            // Act
+            const result = await filmRepo.toggleCategory('1', 'Drama');
+            // Assert
+            expect(result).toStrictEqual(mockFilm);
             expect(mockPrisma.film.update).toHaveBeenCalled();
         });
     });
@@ -103,7 +112,7 @@ describe('Given class FilmRepo', () => {
             // Act
             const result = await filmRepo.delete('1');
             // Assert
-            expect(result).toStrictEqual({});
+            expect(result).toStrictEqual(mockFilm);
             expect(mockPrisma.film.delete).toHaveBeenCalled();
         });
     });
