@@ -2,10 +2,10 @@
   "MD013": false,
 
   "MD030": {
-    "ol_multi": 1,
-    "ol_single": 1,
-    "ul_multi": 3,
-    "ul_single": 3
+    "ol_multi": 4,
+    "ol_single": 2,
+    "ul_multi": 1,
+    "ul_single": 1
   },
 
   "ul-indent": {
