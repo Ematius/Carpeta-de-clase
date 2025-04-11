@@ -368,3 +368,13 @@ https://www.freecodecamp.org/news/gitting-things-done-book/
   Cheat sheet de git. _Roger Dudler_. 2013.
 
 - [Think Like (a) Git](https://think-like-a-git.net/)
+
+## husky
+
+mirar los haskys que no llegue a tiempo en clase
+
+
+
+
+
+
