@@ -10,9 +10,7 @@ export interface Payload extends JwtPayload {
 }
 
 export class AuthService {
-    
     static async hashPassword(password: string): Promise<string> {
-        console.log('aquí');
         return hash(password, SALTS);
     }
 

@@ -110,12 +110,7 @@ describe('Given a instance of AuthInterceptor', () => {
             const interceptorRole = interceptor.hasRole(role);
             interceptorRole(req, res, nextMock);
             // Assert
-            expect(nextMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    statusCode: 403,
-                }),
-                //noPermissionError
-            );
+            expect(nextMock).toHaveBeenCalledWith(noPermissionError);
         });
     });
 
@@ -149,8 +144,72 @@ describe('Given a instance of AuthInterceptor', () => {
         });
     });
 
-    //describe('When isOwnerReview is called', () => {});
+    describe('When isOwnerReview is called', () => {
+        (repoReviews.readById as Mock).mockResolvedValue({
+            userId: '1',
+        });
+        // Arrange;
+        test('Then it should detect NO user', async () => {
+            // Arrange
+            req.user = undefined;
+            // Act
+            await interceptor.isOwnerReview(req, res, nextMock);
+            // Assert
+            expect(nextMock).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    statusCode: 403,
+                }),
+                //noPermissionError
+            );
+        });
+        test('Then it should detect OWNER user', async () => {
+            // Arrange
+            req.user = {
+                id: '1',
+                role: 'USER',
+            } as Payload;
+            req.params = {};
+
+            await interceptor.isOwnerReview(req, res, nextMock);
+            // Assert
+            expect(nextMock).toHaveBeenCalledWith();
+        });
+        test('Then it should detect NOT OWNER user', async () => {
+            // Arrange
+            req.user = {
+                id: '2',
+                role: 'USER',
+            } as Payload;
+            req.params = {};
+            await interceptor.isOwnerReview(req, res, nextMock);
+            // Assert
+            expect(nextMock).toHaveBeenCalledWith(noPermissionError);
+        });
+
+        test('Then it should detect INVALID review', async () => {
+            // Arrange
+            (repoReviews.readById as Mock).mockRejectedValueOnce(
+                noPermissionError,
+            );
+            req.user = {
+                id: '1',
+                role: 'USER',
+            } as Payload;
+            req.params = {};
+            await interceptor.isOwnerReview(req, res, nextMock);
+            // Assert
+            expect(nextMock).toHaveBeenCalledWith(noPermissionError);
+        });
+    });
 });
 
-//const spy = vi.spyOn(createDebug, 'default');
-//expect(spy).toHaveBeenCalled();
+// Ejemplo de spying a function
+// test.only('should call console.log', () => {
+//     // Arrange
+//     const spy = vi.spyOn(console, 'log');
+//     // Act
+//     AuthInterceptor.foo();
+//     // Assert
+//     expect(spy).toHaveBeenCalled();
+//     expect(console.log).toHaveBeenCalled();
+// });

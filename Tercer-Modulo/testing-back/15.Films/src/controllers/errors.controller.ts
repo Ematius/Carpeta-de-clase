@@ -23,8 +23,8 @@ export const errorManager = (
             ...err,
             cause: `Prisma Code ${err.code} in ${err.meta?.modelName} model`,
             message: (err.meta?.cause as string) || '',
-            statusCode: 400,
-            status: 'Bad Request',
+            statusCode: err.code === 'P2025' ? 404 : 400,
+            status: err.code === 'P2025' ? 'Not found ' : 'Bad Request',
         };
     } else if (err instanceof PrismaClientValidationError) {
         err = {

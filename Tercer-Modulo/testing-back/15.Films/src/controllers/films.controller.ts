@@ -48,6 +48,7 @@ export class FilmsController {
 
             const newData: FilmCreateDTO = req.body;
             const film = await this.repoFilms.create(newData);
+            res.status(201);
             res.json(this.makeResponse([film]));
         } catch (error) {
             next(error);
@@ -75,7 +76,6 @@ export class FilmsController {
         debug('setCategory');
         try {
             const { id, name: category } = req.params;
-            console.log(id, category);
             const film = await this.repoFilms.toggleCategory(id, category);
             res.json(this.makeResponse([film]));
         } catch (error) {

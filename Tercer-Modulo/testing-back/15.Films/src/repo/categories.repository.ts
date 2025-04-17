@@ -6,10 +6,10 @@ import { Category } from '@prisma/client';
 const debug = createDebug('movies:repository:categories');
 
 export class CategoryRepo implements Repository<Category> {
-    ;
+ 
     constructor(private prisma: PrismaClient) {
         debug('Instanciando');
-      
+        ;
     }
 
     async read(): Promise<Category[]> {
