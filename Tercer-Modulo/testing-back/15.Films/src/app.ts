@@ -59,11 +59,10 @@ export const createApp = () => {
 
     // Controllers, Repositories... instances
     const prisma = new PrismaClient();
-
     const filmsRepo = new FilmRepo(prisma);
-    const usersRepo = new UsersRepo(prisma);
-    const reviewsRepo: ReviewRepo = new ReviewRepo(prisma);
-    const categoriesRepo = new CategoryRepo(prisma);
+    const usersRepo = new UsersRepo();
+    const reviewsRepo: ReviewRepo = new ReviewRepo();
+    const categoriesRepo = new CategoryRepo();
 
     const authInterceptor = new AuthInterceptor(reviewsRepo);
     const fileInterceptor = new FileInterceptor();
